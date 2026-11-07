@@ -1,0 +1,1130 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-11-07T16:45:49.128Z",
+  "comp": ".impeccable/mocks/san-miguel-bc-02.png",
+  "warnings": [
+    "region campus: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region header: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region emerald-field: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region about-ground: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspect": 1.7768,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#e9f7f1",
+      "coverage": 0.4827
+    },
+    {
+      "hex": "#39b897",
+      "coverage": 0.2683
+    },
+    {
+      "hex": "#7f8890",
+      "coverage": 0.0951
+    },
+    {
+      "hex": "#0a2318",
+      "coverage": 0.078
+    },
+    {
+      "hex": "#58656c",
+      "coverage": 0.0759
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0278,
+      "strength": 0.34
+    },
+    {
+      "y": 0.0556,
+      "strength": 0.3874
+    },
+    {
+      "y": 0.0833,
+      "strength": 1
+    },
+    {
+      "y": 0.1528,
+      "strength": 0.366
+    },
+    {
+      "y": 0.5,
+      "strength": 0.202
+    },
+    {
+      "y": 0.5833,
+      "strength": 0.4816
+    },
+    {
+      "y": 0.6111,
+      "strength": 0.287
+    },
+    {
+      "y": 0.6667,
+      "strength": 0.8867
+    },
+    {
+      "y": 0.7222,
+      "strength": 0.3805
+    },
+    {
+      "y": 0.7639,
+      "strength": 0.3206
+    },
+    {
+      "y": 0.7917,
+      "strength": 0.7279
+    },
+    {
+      "y": 0.8194,
+      "strength": 0.2292
+    },
+    {
+      "y": 0.8611,
+      "strength": 0.9199
+    },
+    {
+      "y": 0.9028,
+      "strength": 0.4102
+    },
+    {
+      "y": 0.9583,
+      "strength": 0.3748
+    }
+  ],
+  "regions": [
+    {
+      "id": "campus",
+      "kind": "image",
+      "note": "Sunlit photographic contemporary university courtyard: foreground plants, concrete paths, distant modern building. Clean photo only, no UI, lettering, signs or logos; generate the obscured areas behind text as continuous campus photography.",
+      "grid": null,
+      "bleed": true,
+      "box": {
+        "x": 0,
+        "y": 0.0893,
+        "w": 1,
+        "h": 0.7651
+      },
+      "px": {
+        "x": 0,
+        "y": 84,
+        "w": 1672,
+        "h": 720
+      },
+      "aspect": 2.3222,
+      "palette": [
+        {
+          "hex": "#39b897",
+          "coverage": 0.4043
+        },
+        {
+          "hex": "#eaf7ed",
+          "coverage": 0.2399
+        },
+        {
+          "hex": "#7c868e",
+          "coverage": 0.157
+        },
+        {
+          "hex": "#565f66",
+          "coverage": 0.1079
+        },
+        {
+          "hex": "#3c4737",
+          "coverage": 0.0909
+        }
+      ],
+      "detail": {
+        "energy": 56.1964
+      },
+      "medium": "raster",
+      "plate": "assets/plates/campus.png",
+      "text": null
+    },
+    {
+      "id": "header",
+      "kind": "chrome",
+      "note": "Plain cool white navigation background.",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.0893
+      },
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 1672,
+        "h": 84
+      },
+      "aspect": 19.9048,
+      "palette": [
+        {
+          "hex": "#e9f7f7",
+          "coverage": 0.9319
+        },
+        {
+          "hex": "#0b2515",
+          "coverage": 0.0237
+        },
+        {
+          "hex": "#0a1111",
+          "coverage": 0.0166
+        },
+        {
+          "hex": "#0a8d68",
+          "coverage": 0.0148
+        },
+        {
+          "hex": "#b7c4c4",
+          "coverage": 0.0129
+        }
+      ],
+      "detail": {
+        "energy": 41.1188
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "mark",
+      "kind": "text",
+      "note": "ITSM bold geometric sans wordmark.",
+      "grid": null,
+      "box": {
+        "x": 0.0514,
+        "y": 0.0159,
+        "w": 0.0754,
+        "h": 0.0521
+      },
+      "px": {
+        "x": 86,
+        "y": 15,
+        "w": 126,
+        "h": 49
+      },
+      "aspect": 2.5714,
+      "palette": [
+        {
+          "hex": "#eaf5f4",
+          "coverage": 0.4971
+        },
+        {
+          "hex": "#0a2a19",
+          "coverage": 0.2397
+        },
+        {
+          "hex": "#081813",
+          "coverage": 0.1559
+        },
+        {
+          "hex": "#738a81",
+          "coverage": 0.0647
+        },
+        {
+          "hex": "#bdccc6",
+          "coverage": 0.0426
+        }
+      ],
+      "detail": {
+        "energy": 30.2116
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "name",
+      "kind": "text",
+      "note": "Instituto Tecnológico de San Miguel name in two lines.",
+      "grid": null,
+      "box": {
+        "x": 0.1513,
+        "y": 0.0128,
+        "w": 0.1459,
+        "h": 0.0457
+      },
+      "px": {
+        "x": 253,
+        "y": 12,
+        "w": 244,
+        "h": 43
+      },
+      "aspect": 5.6744,
+      "palette": [
+        {
+          "hex": "#e9f5f5",
+          "coverage": 0.775
+        },
+        {
+          "hex": "#09100b",
+          "coverage": 0.1036
+        },
+        {
+          "hex": "#415c51",
+          "coverage": 0.0518
+        },
+        {
+          "hex": "#112d1d",
+          "coverage": 0.0399
+        },
+        {
+          "hex": "#adbdbb",
+          "coverage": 0.0297
+        }
+      ],
+      "detail": {
+        "energy": 70.0984
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "fiction",
+      "kind": "text",
+      "note": "Institution ficticia portfolio disclosure.",
+      "grid": null,
+      "box": {
+        "x": 0.1519,
+        "y": 0.0606,
+        "w": 0.1423,
+        "h": 0.017
+      },
+      "px": {
+        "x": 254,
+        "y": 57,
+        "w": 238,
+        "h": 16
+      },
+      "aspect": 14.875,
+      "palette": [
+        {
+          "hex": "#ecf5f6",
+          "coverage": 0.7815
+        },
+        {
+          "hex": "#a8b1b2",
+          "coverage": 0.0924
+        },
+        {
+          "hex": "#29353b",
+          "coverage": 0.0567
+        },
+        {
+          "hex": "#777c87",
+          "coverage": 0.0378
+        },
+        {
+          "hex": "#515a62",
+          "coverage": 0.0315
+        }
+      ],
+      "detail": {
+        "energy": 73.9138
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav",
+      "kind": "control",
+      "note": "Four institutional navigation links.",
+      "grid": null,
+      "box": {
+        "x": 0.308,
+        "y": 0.0244,
+        "w": 0.2297,
+        "h": 0.0329
+      },
+      "px": {
+        "x": 515,
+        "y": 23,
+        "w": 384,
+        "h": 31
+      },
+      "aspect": 12.3871,
+      "palette": [
+        {
+          "hex": "#e9f7f7",
+          "coverage": 0.8679
+        },
+        {
+          "hex": "#0a0e0b",
+          "coverage": 0.062
+        },
+        {
+          "hex": "#91a9a1",
+          "coverage": 0.0273
+        },
+        {
+          "hex": "#435d50",
+          "coverage": 0.0251
+        },
+        {
+          "hex": "#6a7d78",
+          "coverage": 0.0177
+        }
+      ],
+      "detail": {
+        "energy": 63.3986
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "access",
+      "kind": "control",
+      "note": "Student and teacher access buttons.",
+      "grid": null,
+      "box": {
+        "x": 0.5622,
+        "y": 0.0191,
+        "w": 0.1543,
+        "h": 0.0446
+      },
+      "px": {
+        "x": 940,
+        "y": 18,
+        "w": 258,
+        "h": 42
+      },
+      "aspect": 6.1429,
+      "palette": [
+        {
+          "hex": "#ecf8f7",
+          "coverage": 0.7695
+        },
+        {
+          "hex": "#a9d5c6",
+          "coverage": 0.1161
+        },
+        {
+          "hex": "#5aaa91",
+          "coverage": 0.0728
+        },
+        {
+          "hex": "#1b825f",
+          "coverage": 0.0208
+        },
+        {
+          "hex": "#154332",
+          "coverage": 0.0208
+        }
+      ],
+      "detail": {
+        "energy": 55.3262
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "preferences",
+      "kind": "control",
+      "note": "Language, three themes and movement controls.",
+      "grid": null,
+      "box": {
+        "x": 0.7255,
+        "y": 0.0181,
+        "w": 0.2673,
+        "h": 0.0446
+      },
+      "px": {
+        "x": 1213,
+        "y": 17,
+        "w": 447,
+        "h": 42
+      },
+      "aspect": 10.6429,
+      "palette": [
+        {
+          "hex": "#e7f5f5",
+          "coverage": 0.87
+        },
+        {
+          "hex": "#098b65",
+          "coverage": 0.0781
+        },
+        {
+          "hex": "#b3c5c2",
+          "coverage": 0.0186
+        },
+        {
+          "hex": "#0a110f",
+          "coverage": 0.0186
+        },
+        {
+          "hex": "#54ac96",
+          "coverage": 0.0146
+        }
+      ],
+      "detail": {
+        "energy": 34.4862
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "emerald-field",
+      "kind": "chrome",
+      "note": "Plain emerald title panel with a straight diagonal edge; a flat CSS surface, not painted artwork.",
+      "grid": null,
+      "codeDrawn": true,
+      "box": {
+        "x": 0,
+        "y": 0.1445,
+        "w": 0.5353,
+        "h": 0.4389
+      },
+      "px": {
+        "x": 0,
+        "y": 136,
+        "w": 895,
+        "h": 413
+      },
+      "aspect": 2.1671,
+      "palette": [
+        {
+          "hex": "#39b896",
+          "coverage": 0.8197
+        },
+        {
+          "hex": "#082414",
+          "coverage": 0.1148
+        },
+        {
+          "hex": "#0a1614",
+          "coverage": 0.0286
+        },
+        {
+          "hex": "#3c3712",
+          "coverage": 0.0248
+        },
+        {
+          "hex": "#1b7050",
+          "coverage": 0.0121
+        }
+      ],
+      "detail": {
+        "energy": 29.9168
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "headline",
+      "kind": "text",
+      "note": "Aprender. Crear. Conectar. in three large bold sans lines.",
+      "grid": null,
+      "box": {
+        "x": 0.0478,
+        "y": 0.1849,
+        "w": 0.3971,
+        "h": 0.3007
+      },
+      "px": {
+        "x": 80,
+        "y": 174,
+        "w": 664,
+        "h": 283
+      },
+      "aspect": 2.3463,
+      "palette": [
+        {
+          "hex": "#39b896",
+          "coverage": 0.7492
+        },
+        {
+          "hex": "#082514",
+          "coverage": 0.1924
+        },
+        {
+          "hex": "#081717",
+          "coverage": 0.0393
+        },
+        {
+          "hex": "#0c4a2f",
+          "coverage": 0.0098
+        },
+        {
+          "hex": "#217a5b",
+          "coverage": 0.0094
+        }
+      ],
+      "detail": {
+        "energy": 28.0353
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "intro",
+      "kind": "text",
+      "note": "Two-line introductory technological education copy.",
+      "grid": null,
+      "box": {
+        "x": 0.0484,
+        "y": 0.4984,
+        "w": 0.3816,
+        "h": 0.0542
+      },
+      "px": {
+        "x": 81,
+        "y": 469,
+        "w": 638,
+        "h": 51
+      },
+      "aspect": 12.5098,
+      "palette": [
+        {
+          "hex": "#39b895",
+          "coverage": 0.8157
+        },
+        {
+          "hex": "#081209",
+          "coverage": 0.0686
+        },
+        {
+          "hex": "#1f7355",
+          "coverage": 0.0544
+        },
+        {
+          "hex": "#082f1b",
+          "coverage": 0.0357
+        },
+        {
+          "hex": "#104f39",
+          "coverage": 0.0257
+        }
+      ],
+      "detail": {
+        "energy": 49.3895
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "offer-ground",
+      "kind": "chrome",
+      "note": "Flat mint trapezoid program explorer ground.",
+      "grid": null,
+      "box": {
+        "x": 0,
+        "y": 0.661,
+        "w": 0.8254,
+        "h": 0.1403
+      },
+      "px": {
+        "x": 0,
+        "y": 622,
+        "w": 1380,
+        "h": 132
+      },
+      "aspect": 10.4545,
+      "palette": [
+        {
+          "hex": "#e5f6ec",
+          "coverage": 0.8637
+        },
+        {
+          "hex": "#0a8a66",
+          "coverage": 0.0508
+        },
+        {
+          "hex": "#667177",
+          "coverage": 0.0363
+        },
+        {
+          "hex": "#0a1111",
+          "coverage": 0.0354
+        },
+        {
+          "hex": "#a2b0b2",
+          "coverage": 0.0138
+        }
+      ],
+      "detail": {
+        "energy": 44.6549
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "offer-title",
+      "kind": "text",
+      "note": "Nuestros programas heading.",
+      "grid": null,
+      "box": {
+        "x": 0.0437,
+        "y": 0.6971,
+        "w": 0.0903,
+        "h": 0.0638
+      },
+      "px": {
+        "x": 73,
+        "y": 656,
+        "w": 151,
+        "h": 60
+      },
+      "aspect": 2.5167,
+      "palette": [
+        {
+          "hex": "#e5f5ec",
+          "coverage": 0.7309
+        },
+        {
+          "hex": "#0b2515",
+          "coverage": 0.1376
+        },
+        {
+          "hex": "#36574a",
+          "coverage": 0.053
+        },
+        {
+          "hex": "#9ebab1",
+          "coverage": 0.0449
+        },
+        {
+          "hex": "#090e0e",
+          "coverage": 0.0336
+        }
+      ],
+      "detail": {
+        "energy": 42.3735
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "program-selector",
+      "kind": "control",
+      "note": "Two selectable program labels with active state.",
+      "grid": null,
+      "box": {
+        "x": 0.1597,
+        "y": 0.6865,
+        "w": 0.1693,
+        "h": 0.0871
+      },
+      "px": {
+        "x": 267,
+        "y": 646,
+        "w": 283,
+        "h": 82
+      },
+      "aspect": 3.4512,
+      "palette": [
+        {
+          "hex": "#d3f0e4",
+          "coverage": 0.8987
+        },
+        {
+          "hex": "#0a120e",
+          "coverage": 0.039
+        },
+        {
+          "hex": "#1f3f34",
+          "coverage": 0.0257
+        },
+        {
+          "hex": "#bdd2d1",
+          "coverage": 0.021
+        },
+        {
+          "hex": "#628c7c",
+          "coverage": 0.0156
+        }
+      ],
+      "detail": {
+        "energy": 44.159
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "program-title",
+      "kind": "text",
+      "note": "Desarrollo de Software selected program heading.",
+      "grid": null,
+      "box": {
+        "x": 0.3648,
+        "y": 0.6812,
+        "w": 0.2584,
+        "h": 0.0404
+      },
+      "px": {
+        "x": 610,
+        "y": 641,
+        "w": 432,
+        "h": 38
+      },
+      "aspect": 11.3684,
+      "palette": [
+        {
+          "hex": "#e7f6ee",
+          "coverage": 0.7547
+        },
+        {
+          "hex": "#0a1517",
+          "coverage": 0.179
+        },
+        {
+          "hex": "#a8bcbc",
+          "coverage": 0.0307
+        },
+        {
+          "hex": "#4e6262",
+          "coverage": 0.0226
+        },
+        {
+          "hex": "#7b9494",
+          "coverage": 0.0129
+        }
+      ],
+      "detail": {
+        "energy": 84.7664
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "program-copy",
+      "kind": "text",
+      "note": "Selected program short description.",
+      "grid": null,
+      "box": {
+        "x": 0.3642,
+        "y": 0.7258,
+        "w": 0.2584,
+        "h": 0.0468
+      },
+      "px": {
+        "x": 609,
+        "y": 683,
+        "w": 432,
+        "h": 44
+      },
+      "aspect": 9.8182,
+      "palette": [
+        {
+          "hex": "#e7f6ee",
+          "coverage": 0.8531
+        },
+        {
+          "hex": "#0c1127",
+          "coverage": 0.0429
+        },
+        {
+          "hex": "#273042",
+          "coverage": 0.0425
+        },
+        {
+          "hex": "#55616f",
+          "coverage": 0.0371
+        },
+        {
+          "hex": "#949eac",
+          "coverage": 0.0244
+        }
+      ],
+      "detail": {
+        "energy": 77.6381
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "explore",
+      "kind": "control",
+      "note": "Explorar programa button.",
+      "grid": null,
+      "box": {
+        "x": 0.6447,
+        "y": 0.7035,
+        "w": 0.134,
+        "h": 0.0574
+      },
+      "px": {
+        "x": 1078,
+        "y": 662,
+        "w": 224,
+        "h": 54
+      },
+      "aspect": 4.1481,
+      "palette": [
+        {
+          "hex": "#098965",
+          "coverage": 0.6635
+        },
+        {
+          "hex": "#e7f7f0",
+          "coverage": 0.2394
+        },
+        {
+          "hex": "#4aaa93",
+          "coverage": 0.0675
+        },
+        {
+          "hex": "#9ccfc1",
+          "coverage": 0.0289
+        },
+        {
+          "hex": "#089858",
+          "coverage": 0.0007
+        }
+      ],
+      "detail": {
+        "energy": 26.7294
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "about-ground",
+      "kind": "chrome",
+      "note": "Plain mint about section ground.",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0.8544,
+        "w": 1,
+        "h": 0.1456
+      },
+      "px": {
+        "x": 0,
+        "y": 804,
+        "w": 1672,
+        "h": 137
+      },
+      "aspect": 12.2044,
+      "palette": [
+        {
+          "hex": "#e8f7f0",
+          "coverage": 0.9247
+        },
+        {
+          "hex": "#081f13",
+          "coverage": 0.0245
+        },
+        {
+          "hex": "#acb6b9",
+          "coverage": 0.0234
+        },
+        {
+          "hex": "#0b0d17",
+          "coverage": 0.0157
+        },
+        {
+          "hex": "#515d6a",
+          "coverage": 0.0117
+        }
+      ],
+      "detail": {
+        "energy": 36.3408
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": true
+      }
+    },
+    {
+      "id": "about-title",
+      "kind": "text",
+      "note": "Sobre nosotros heading.",
+      "grid": null,
+      "box": {
+        "x": 0.0311,
+        "y": 0.8778,
+        "w": 0.1758,
+        "h": 0.102
+      },
+      "px": {
+        "x": 52,
+        "y": 826,
+        "w": 294,
+        "h": 96
+      },
+      "aspect": 3.0625,
+      "palette": [
+        {
+          "hex": "#e7f7ef",
+          "coverage": 0.7251
+        },
+        {
+          "hex": "#092013",
+          "coverage": 0.202
+        },
+        {
+          "hex": "#4f6f62",
+          "coverage": 0.0264
+        },
+        {
+          "hex": "#94aea5",
+          "coverage": 0.0264
+        },
+        {
+          "hex": "#080808",
+          "coverage": 0.0202
+        }
+      ],
+      "detail": {
+        "energy": 44.5126
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "about-copy",
+      "kind": "text",
+      "note": "Institutional introduction in a readable sans paragraph.",
+      "grid": null,
+      "box": {
+        "x": 0.2745,
+        "y": 0.9001,
+        "w": 0.6962,
+        "h": 0.0563
+      },
+      "px": {
+        "x": 459,
+        "y": 847,
+        "w": 1164,
+        "h": 53
+      },
+      "aspect": 21.9623,
+      "palette": [
+        {
+          "hex": "#e8f6f2",
+          "coverage": 0.8219
+        },
+        {
+          "hex": "#0c111e",
+          "coverage": 0.067
+        },
+        {
+          "hex": "#b4bfc8",
+          "coverage": 0.0528
+        },
+        {
+          "hex": "#4d5765",
+          "coverage": 0.032
+        },
+        {
+          "hex": "#7e8a95",
+          "coverage": 0.0263
+        }
+      ],
+      "detail": {
+        "energy": 73.4693
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    }
+  ],
+  "compSha256": "ab5ad8c45eed357910f86f5112e5b95ffbc29abe3b16bdd467266fa31e13339c",
+  "regionsSource": {
+    "path": ".impeccable/build/regions.json",
+    "sha256": "efa9d0041e72912fb2fe901c14bd16b0347018c50cb4013afbee3aacf5be22a7"
+  }
+}

@@ -13,6 +13,7 @@ export default defineConfig([
   ]),
   js.configs.recommended,
   ...typescript.configs.recommended,
+  { files: ["public/sw.js"], languageOptions: { globals: { self: "readonly", caches: "readonly", URL: "readonly" } } },
   {
     ...nextPlugin.configs["core-web-vitals"],
     files: ["src/**/*.{ts,tsx}"],

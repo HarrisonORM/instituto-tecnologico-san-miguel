@@ -2,29 +2,29 @@
 version: 1
 slug: "src-app-page-tsx"
 primary_target: "src/app/page.tsx"
-related_targets: ["src/app/layout.tsx","src/app/globals.css"]
+related_targets: ["src/app/layout.tsx","src/app/globals.css","src/components/landing.tsx","src/components/portal.tsx"]
 ---
 
-# Landing pública: Instituto Tecnológico de San Miguel
+# Landing y campus del Instituto Tecnológico de San Miguel
 
-Modo: Persuade. Destino: src/app/page.tsx; relacionado con src/app/layout.tsx y src/app/globals.css.
+Modo: Persuade en la presentación; Operate en los portales. El usuario eligió B+C y después pidió «Entonces continua con todo lo que falta sin parar». La implementación concreta la dirección con la composición 2 como referencia elegida por el agente bajo esa delegación. No es una aprobación explícita del render por el usuario.
 
-## Dirección confirmada
+Ruta actual: code-led, registrada en .impeccable/config.json. Referencia de crítica: .impeccable/mocks/san-miguel-bc-02.png; no comp aprobado que obligue a declarar superado un proceso comp-led. Su sidecar sigue approved:false. El state.json anterior conserva la ronda histórica abierta. La placa de campus mide 1911 × 823 y no se declara superado el umbral 1,5× del proceso anterior.
 
-El usuario eligió combinar B, Campus abierto, con C, Campus en profundidad. No reabrir la elección entre A/B/C ni adoptar la alternativa clásica. Impeccable se mantiene como guía para el trabajo visual.
+## Direction contract
 
-## Interpretación de diseño para concretar
+THESIS: Un campus abierto al visitante: la fotografía continua, el campo esmeralda y los títulos amplios conducen a explorar dos programas; evita el hero genérico de dos columnas y tarjetas flotantes repetidas.
 
-B aporta la estructura editorial, la presencia esmeralda y los títulos sans amplios. C aporta la fotografía con profundidad de primer plano, patio y arquitectura; su movimiento será suave, opcional y menor en móvil. Una única composición combinará estas cualidades; no alternar dos identidades ni copiar simultáneamente sus logos o voces tipográficas diferentes.
+OWN-WORLD: Esmeralda luminoso #48B292, menta fría, tinta verde, Manrope local y planos diagonales simples. En los portales, superficies tranquilas, navegación estable y tablas con jerarquía clara.
 
-## Trabajo, contenido y acción
+STORY: El aspirante reconoce una institución ficticia, descubre Software o Redes y solicita información; estudiantes y docentes encuentran inmediatamente su acceso. No se inventan precios, acreditaciones ni logros.
 
-Aspirantes conocen la institución ficticia y exploran Desarrollo de Software o Redes y Telecomunicaciones. Estudiantes y docentes localizan su acceso de inmediato. La composición mostrará navegación institucional, oferta visible, imagen de campus ilustrativa, acción de explorar y controles ES/EN y Claro/Oscuro/Sistema. El texto Aprender. Crear. Conectar. y el monograma ITSM son propuestas de copy e identidad, no un registro de aprobación separado.
+FIRST VIEWPORT: Navegación clara arriba; una foto panorámica de campus ocupa el escenario. A la izquierda cruza un plano esmeralda con Aprender. Crear. Conectar. Abajo se integra el explorador menta: cambiar programa actualiza su descripción y enlace. En móvil, texto, foto y explorador se apilan. Zoom y desplazamiento son suaves, pausables y reducibles.
 
-## Ronda de composición
+FORM: Campus abierto + Campus en profundidad; composición 2 de la ronda B+C como referencia de ejecución, semilla d5b30ae5. ES/EN y tres temas se conservan al pasar a los paneles.
 
-Semilla de dirección: d5b30ae5. La elección B+C llegó explícitamente por el chat. No se considera aprobado íntegramente ninguno de los dos renders originales ni una nueva imagen que el usuario aún no ha visto. La fase comps está abierta; se presentan tres composiciones dentro de esa misma dirección y una muestra móvil de la recomendada. El contrato espacial final y la referencia aprobada se registrarán tras la selección concreta.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-## Límites
+## Estado y límites
 
-No código de pantallas antes de resolver esta composición. No DESIGN.md anticipado. No afirmaciones de acreditación, resultados ni precios inventados. Las restantes secciones son sobre nosotros, programas con imágenes, historia, misión, visión y contacto. La interfaz debe conservar legibilidad, preferencias globales y accesos al crecer. La traducción académica tiene su mecanismo aún pendiente. No activar APIs de pago ni ejecutar pruebas, compilaciones, migraciones o despliegues aplazados.
+El contrato se consolida con el registro de la implementación, sin fingir que las revisiones posteriores ya ocurrieron. Faltan capturas de escritorio/móvil, revisión de acabado y documentación del sistema desde el resultado. No hay veredicto ni DESIGN.md anticipado. El aplazamiento de pruebas sigue vigente y se solicitó permiso expreso para retomarlas tras un rechazo automático. No ejecutar compilaciones de verificación, migraciones, recorridos de prueba ni despliegues sin esa respuesta. Contacto y traducciones revisadas tienen código, pero su integración real está pendiente. Los adjuntos no se traducen automáticamente.

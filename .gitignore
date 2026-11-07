@@ -32,6 +32,7 @@ work/
 .impeccable/questions/*.render-check
 .impeccable/questions/roll.json
 .impeccable/mocks/worlds/
+.impeccable/build/map-inspections/
 
 # Archivos del sistema
 .DS_Store

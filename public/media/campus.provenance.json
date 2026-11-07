@@ -1,0 +1,18 @@
+{
+  "regionId": "campus",
+  "origin": "AI-generated illustrative photograph",
+  "generator": "integrated image_gen",
+  "institution": "Instituto Tecnológico de San Miguel (fictitious)",
+  "documentaryClaim": false,
+  "reference": ".impeccable/mocks/san-miguel-bc-02.png",
+  "spec": ".impeccable/build/spec.json",
+  "plate": "assets/plates/campus.png",
+  "promptFile": "assets/plates/campus.prompt.txt",
+  "webAsset": "public/media/campus.webp",
+  "width": 1911,
+  "height": 823,
+  "webpBytes": 470096,
+  "conversion": "sharp WebP quality 84 effort 6, no resizing or visual edits",
+  "visualInspection": "Matches courtyard perspective, sunlit concrete architecture, greenery and student placement. UI masks and building logo removed; obscured photography reconstructed.",
+  "limitations": "Built-in imagegen returned 1911x823 despite request for 2560x1104. Meets 1.5x display density only at display widths up to 1274px; below 1.5x full 1672px comp region. Gate unscored."
+}

@@ -1,0 +1,22 @@
+{"regions":[
+{"id":"campus","kind":"image","pixelBox":{"x":0,"y":84,"w":1672,"h":720},"bleed":true,"note":"Sunlit photographic contemporary university courtyard: foreground plants, concrete paths, distant modern building. Clean photo only, no UI, lettering, signs or logos; generate the obscured areas behind text as continuous campus photography."},
+{"id":"header","kind":"chrome","container":true,"pixelBox":{"x":0,"y":0,"w":1672,"h":84},"note":"Plain cool white navigation background."},
+{"id":"mark","kind":"text","pixelBox":{"x":86,"y":15,"w":126,"h":49},"note":"ITSM bold geometric sans wordmark."},
+{"id":"name","kind":"text","pixelBox":{"x":253,"y":12,"w":244,"h":43},"note":"Instituto Tecnológico de San Miguel name in two lines."},
+{"id":"fiction","kind":"text","pixelBox":{"x":254,"y":57,"w":238,"h":16},"note":"Institution ficticia portfolio disclosure."},
+{"id":"nav","kind":"control","pixelBox":{"x":515,"y":23,"w":384,"h":31},"note":"Four institutional navigation links."},
+{"id":"access","kind":"control","pixelBox":{"x":940,"y":18,"w":258,"h":42},"note":"Student and teacher access buttons."},
+{"id":"preferences","kind":"control","pixelBox":{"x":1213,"y":17,"w":447,"h":42},"note":"Language, three themes and movement controls."},
+{"id":"emerald-field","kind":"chrome","codeDrawn":true,"pixelBox":{"x":0,"y":136,"w":895,"h":413},"note":"Plain emerald title panel with a straight diagonal edge; a flat CSS surface, not painted artwork."},
+{"id":"headline","kind":"text","pixelBox":{"x":80,"y":174,"w":664,"h":283},"note":"Aprender. Crear. Conectar. in three large bold sans lines."},
+{"id":"intro","kind":"text","pixelBox":{"x":81,"y":469,"w":638,"h":51},"note":"Two-line introductory technological education copy."},
+{"id":"offer-ground","kind":"chrome","pixelBox":{"x":0,"y":622,"w":1380,"h":132},"note":"Flat mint trapezoid program explorer ground."},
+{"id":"offer-title","kind":"text","pixelBox":{"x":73,"y":656,"w":151,"h":60},"note":"Nuestros programas heading."},
+{"id":"program-selector","kind":"control","pixelBox":{"x":267,"y":646,"w":283,"h":82},"note":"Two selectable program labels with active state."},
+{"id":"program-title","kind":"text","pixelBox":{"x":610,"y":641,"w":432,"h":38},"note":"Desarrollo de Software selected program heading."},
+{"id":"program-copy","kind":"text","pixelBox":{"x":609,"y":683,"w":432,"h":44},"note":"Selected program short description."},
+{"id":"explore","kind":"control","pixelBox":{"x":1078,"y":662,"w":224,"h":54},"note":"Explorar programa button."},
+{"id":"about-ground","kind":"chrome","container":true,"pixelBox":{"x":0,"y":804,"w":1672,"h":137},"note":"Plain mint about section ground."},
+{"id":"about-title","kind":"text","pixelBox":{"x":52,"y":826,"w":294,"h":96},"note":"Sobre nosotros heading."},
+{"id":"about-copy","kind":"text","pixelBox":{"x":459,"y":847,"w":1164,"h":53},"note":"Institutional introduction in a readable sans paragraph."}
+]}
