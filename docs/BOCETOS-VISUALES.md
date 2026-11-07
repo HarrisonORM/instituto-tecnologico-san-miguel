@@ -1,6 +1,6 @@
 # Exploración visual: ronda inicial
 
-Estado: propuestas sin aprobación. No se han programado pantallas ni activado servicios.
+Estado actualizado: el usuario eligió combinar B con C. Los bocetos iniciales se conservan como referencias de esa decisión; no se aprueban individualmente como composición final. No se han programado pantallas ni activado servicios externos.
 
 ## Escena y objetivo
 
@@ -39,6 +39,10 @@ Se revisaron los archivos de las cuatro propuestas y se corrigió un rótulo de 
 
 ## Cómo decidir y continuar
 
-La comparación permite elegir una dirección, pedir una combinación o solicitar alternativas. La elección se registrará de forma explícita. Después se desarrollará la composición elegida para celular y computador y se propondrá un panel de trabajo tranquilo con la misma identidad, antes de escribir las pantallas del producto.
+La elección explícita del usuario es B+C. No se reabre A/B/C. Se concreta la mezcla usando B como base de estructura editorial, cabecera esmeralda y títulos sans amplios, y C como referencia de profundidad fotográfica. Esta distribución de elementos es la interpretación presentada por el agente, no una aprobación implícita de cada logo, lema o detalle de los renders.
+
+La fase de composición compara tres maneras de organizar esa misma mezcla y prepara una muestra móvil. La elección de dirección no marca por anticipado como aprobada una imagen nueva. La guía de la landing está en .impeccable/surfaces/src-app-page-tsx.md; las composiciones se guardan en .impeccable/mocks/san-miguel-bc-*.png, con metadatos de aprobación separados. Los paneles conservarán su organización de trabajo sencilla y adaptarán la identidad definitiva elegida.
+
+Las composiciones son 1, Cabecera y campus; 2, Ventana al campus; y 3, Programas en primer plano. Se recomienda la 2 por su campo esmeralda luminoso con texto oscuro y la oferta integrada en una banda sencilla, sin convertir esa recomendación en aprobación. La muestra móvil corresponde a esa composición y no demuestra todavía adaptación de código. Familias tipográficas exactas y monograma siguen pendientes; las formas generadas en los bocetos son referencias que deberán concretarse.
 
 Estas imágenes son propuestas estáticas: no demuestran movimiento, accesibilidad, traducciones, recepción del formulario ni conexión con el backend. Pruebas funcionales, compilaciones, migraciones y despliegue permanecen aplazados.

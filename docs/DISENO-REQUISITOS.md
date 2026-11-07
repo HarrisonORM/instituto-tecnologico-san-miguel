@@ -2,6 +2,8 @@
 
 Documento de planificación. No es DESIGN.md ni aprobación de una composición final. No se implementan pantallas en este bloque ni se ejecutan las pruebas o despliegues aplazados.
 
+Actualización confirmada: el usuario eligió combinar B (Campus abierto) con C (Campus en profundidad) y seguir con Impeccable para todo el diseño. La mezcla se concreta en una ronda de composición, conservando el esmeralda y la fotografía con movimiento suave. PRODUCT.md contiene el acuerdo vigente; los bocetos iniciales no se consideran aprobados individualmente.
+
 ## Confirmado por el usuario
 
 - Color base: verde esmeralda luminoso, tomando como referencia la muestra #48B292. Evitar que la identidad se perciba como un verde excesivamente oscuro.

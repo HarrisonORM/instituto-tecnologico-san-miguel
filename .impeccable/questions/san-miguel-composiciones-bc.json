@@ -1,0 +1,11 @@
+{
+  "title": "B + C · Una misma dirección, tres composiciones",
+  "question": "La combinación B+C ya está elegida. Estas propuestas concretan cómo unir la cabecera esmeralda y la profundidad fotográfica. Elige la composición que llevaremos a código o indica qué ajustar.",
+  "options": [
+    {"id":"bc-01","label":"1 · Cabecera y campus","kicker":"B + C","thesis":"El carácter de B abre la página y la fotografía de C conecta la portada con los programas.","palette":["#48B292","#F6FAF8","#17352D","#18785D"],"materials":["títulos sans amplios","fotografía con profundidad","ritmo editorial"],"viewport":"Campo esmeralda y tipografía protagonista, campus continuo con planos y un selector claro de programas.","risk":"La franja de imagen debe conservar protagonismo y legibilidad al pasar a móvil.","comp":".impeccable/mocks/san-miguel-bc-01.png"},
+    {"id":"bc-02","label":"2 · Ventana al campus","kicker":"B + C","thesis":"La profundidad del campus ocupa más espacio y la tipografía esmeralda organiza la lectura.","palette":["#48B292","#F6FAF8","#17352D","#18785D"],"materials":["títulos sans amplios","fotografía con profundidad","ritmo editorial"],"viewport":"Una gran escena fotográfica convive con el título y una banda de exploración integrada.","risk":"El contraste sobre la fotografía requiere una separación muy clara del texto.","comp":".impeccable/mocks/san-miguel-bc-02.png"},
+    {"id":"bc-03","label":"3 · Programas en primer plano","kicker":"B + C","thesis":"Elegir Software o Redes conduce la portada; la fotografía mantiene continuidad con la historia del instituto.","palette":["#48B292","#F6FAF8","#17352D","#18785D"],"materials":["títulos sans amplios","fotografía con profundidad","ritmo editorial"],"viewport":"Oferta explorable y tipografía de gran escala forman la apertura dentro de una única escena de campus.","risk":"La selección de programa no debe competir con el nombre y la presentación institucional.","comp":".impeccable/mocks/san-miguel-bc-03.png"}
+  ],
+  "steer": true,
+  "reroll": false
+}

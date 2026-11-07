@@ -58,7 +58,7 @@ El estado de las comprobaciones realmente ejecutadas está en docs/ESTADO.md. No
 
 Para cambios solo de documentación basta revisar consistencia y referencias. No crear pruebas que repitan el texto o una respuesta constante. Al trabajar con Next.js, consultar la documentación de la versión instalada cuando esté disponible en node_modules/next/dist/docs.
 
-La identidad visual sigue pendiente de elección del usuario. El layout raíz técnico y la configuración de Tailwind no autorizan a construir una landing o paneles sin esa elección.
+El usuario eligió la dirección combinada B+C (Campus abierto y Campus en profundidad) y seguir utilizando Impeccable para todo el diseño. Falta concretar la composición de la mezcla; consultar PRODUCT.md y la guía de la landing en .impeccable/surfaces/src-app-page-tsx.md. No reabrir la elección de dirección ni atribuir aprobación íntegra a un render B o C por separado. El layout técnico y Tailwind no sustituyen la composición elegida.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

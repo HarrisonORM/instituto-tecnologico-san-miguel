@@ -1,12 +1,16 @@
 # Estado y siguiente paso
 
-## Bloque actual: planificación visual con referencias del usuario
+## Bloque actual: composición de la dirección B+C elegida
 
-Ronda visual preparada: se abrió una comparación local de Atlas de posibilidades, Campus abierto y Campus en profundidad, junto con una alternativa institucional clásica. También se creó una muestra de panel docente tranquilo con grupos y revisión pendiente. Contexto, argumentos y límites en docs/BOCETOS-VISUALES.md; imágenes e instrucciones de generación conservadas en .impeccable/mocks/decision/. Son propuestas sin aprobación; las imágenes no constituyen pantallas implementadas ni evidencia de funcionamiento. No registrar una selección hasta recibir la respuesta explícita del usuario.
+El usuario eligió explícitamente combinar B, Campus abierto, con C, Campus en profundidad, y pidió seguir usando Impeccable para todo el diseño. La dirección está confirmada. Se interpreta como estructura editorial y títulos sans de B con profundidad fotográfica y movimiento suave de C. Falta elegir su composición exacta; no se marca como aprobado íntegramente ninguno de los renders originales por separado.
+
+Se abrió la fase de composición y se actualizó la comparación local con tres variantes de la misma dirección B+C. Se generaron las tres imágenes y una muestra móvil de la composición 2, recomendada por claridad pero aún no elegida por el usuario. Cada imagen conserva su prompt y aprobación en false. La guía de la landing está en .impeccable/surfaces/src-app-page-tsx.md. Contexto, argumentos y límites en docs/BOCETOS-VISUALES.md; los bocetos iniciales permanecen como historial en .impeccable/mocks/decision/. Se conserva también la muestra del panel docente sencillo. No se han implementado pantallas ni se ha comprobado comportamiento del producto.
+
+Revisión de este bloque: se inspeccionaron las composiciones y la muestra móvil, se observaron las tres imágenes cargadas en la comparación local y se recuperó el prompt exacto incorporado en cada uno de los cuatro PNG nuevos. El barrido general también señaló doce referencias del catálogo local sin metadatos de origen; pertenecen a la caché ignorada .impeccable/mocks/worlds/, no se versionan ni se usan como imágenes de la aplicación, y no se modificaron. No presentar ese barrido general como una comprobación íntegramente superada. La revisión de archivos no equivale a una validación de interfaz implementada.
 
 El usuario aportó dos referencias de landing y una muestra esmeralda #48B292. Confirmó landing con movimiento y secciones institucionales, programas con imágenes, contacto y accesos de estudiante/docente; paneles sencillos y esmeralda; ES/EN y temas claro/oscuro/sistema en todas las vistas. Se registró en PRODUCT.md y docs/DISENO-REQUISITOS.md. No se implementaron pantallas ni se eligió unilateralmente una composición final.
 
-Se propusieron secuencia, efectos, muestras de contraste y mejoras de experiencia. El usuario confirmó fotografía con movimiento suave y traducción también del contenido académico. Se preguntó cómo obtener esa traducción; falta resolver versiones revisadas frente a generación automática y alcance de adjuntos. La referencia base está decidida, pero faltan bocetos y elección de composición final. Las pruebas de backend y el despliegue continúan aplazados.
+Se propusieron secuencia, efectos, muestras de contraste y mejoras de experiencia. El usuario confirmó fotografía con movimiento suave y traducción también del contenido académico. Se preguntó cómo obtener esa traducción; falta resolver versiones revisadas frente a generación automática y alcance de adjuntos. La dirección B+C está decidida y se concreta mediante bocetos; la composición final aún no se ha aprobado. Las pruebas de backend y el despliegue continúan aplazados.
 
 ## Backend ampliado y capa de cliente: historial conservado
 
@@ -14,7 +18,7 @@ El usuario pidió priorizar código y dejar las pruebas y el despliegue para des
 
 Contrato y límites en docs/BACKEND.md y docs/BACKEND-OPERACIONES.md. Se prepararon un cargador de datos ficticios, consulta privada de credenciales y copia de base y archivos, sin ejecutarlos. Las opciones sensibles siguen deshabilitadas por defecto. La capa de cliente sin vistas está en src/client y src/contracts; los recorridos y diagramas están en docs/RECORRIDOS.md. La fórmula provisional y otras políticas académicas siguen pendientes de acuerdo. Todo el código nuevo requiere validación.
 
-Se consultó mediante pregunta estructurada la acción principal de la landing; falta la respuesta y la selección visual. No se han implementado pantallas ni elegido una identidad de forma unilateral. El siguiente avance en interfaz depende de esa selección; la comprobación operativa y las herramientas de restauración siguen aplazadas.
+La elección de dirección visual ya se resolvió con la combinación B+C. La exploración de programas sigue como acción propuesta y falta concretar la composición combinada. No se han implementado pantallas ni elegido una identidad de forma unilateral; la comprobación operativa y las herramientas de restauración siguen aplazadas.
 
 La sección de etapa 3 y sus resultados siguientes es histórica y conserva las comprobaciones realizadas ANTES de esta petición. No acredita el código nuevo. Continuar con backend según docs/BACKEND.md; no pedir de nuevo crear el proyecto ni bloquear la escritura local por falta de claves.
 
@@ -123,4 +127,4 @@ Completar la clave Publishable en .env.local desde Connect o Settings > API Keys
 
 Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. El proyecto de Supabase fue creado por el usuario; este bloque no ha modificado recursos externos ni enviado correos.
 
-La etapa 4 presentará bocetos a partir de las referencias y del esmeralda #48B292 confirmados. El usuario elegirá la composición antes de implementar pantallas; la paleta complementaria, tipografía y logo siguen pendientes. Consultar el bloque actual al inicio de este documento y docs/DISENO-REQUISITOS.md.
+La etapa 4 concreta la dirección B+C y el esmeralda #48B292 confirmados. El usuario elegirá la composición combinada antes de implementar pantallas; la paleta complementaria, familias tipográficas y logo siguen en elaboración. Consultar el bloque actual al inicio de este documento y docs/DISENO-REQUISITOS.md.

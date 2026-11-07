@@ -63,4 +63,4 @@ La respuesta de la renovación o de una lectura anterior no debe restaurar una s
 
 ## Selección pendiente
 
-El usuario aportó referencias de landing, confirmó la base esmeralda #48B292 y pidió movimiento, ES/EN y tres temas en todas las vistas. La acción principal y la composición final siguen pendientes; las tipografías, logo y paleta complementaria no están aprobados. Consultar docs/DISENO-REQUISITOS.md antes de preparar bocetos.
+El usuario aportó referencias de landing, confirmó la base esmeralda #48B292 y eligió combinar B, Campus abierto, con C, Campus en profundidad. Se concreta esa dirección mediante composiciones, sin reabrir la elección inicial. La composición exacta, familias tipográficas, logo y paleta complementaria siguen en elaboración. Se mantienen movimiento suave, ES/EN y tres temas en todas las vistas. Consultar docs/DISENO-REQUISITOS.md y la guía de la landing antes de implementar.

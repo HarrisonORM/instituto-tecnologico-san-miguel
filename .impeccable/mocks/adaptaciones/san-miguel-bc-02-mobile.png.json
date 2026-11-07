@@ -1,0 +1,8 @@
+{
+  "prompt": "Create a mobile landing-page UI comp for Instituto Tecnológico de San Miguel, at a realistic 390 by 844 mobile viewport in tall portrait aspect, edge to edge, no phone device or browser frame. Adapt the attached desktop composition 2 to a readable single-column mobile interface, preserving its B+C identity: luminous emerald #48B292 with dark green geometric sans text, ITSM wordmark, strong 'Aprender. Crear. Conectar.' typography and a sunlit campus photograph with foreground, courtyard and distant architecture. The reference is the visual authority for brand and material, not a layout to shrink. In reading order show compact institution name and menu, ES/EN and Claro / Oscuro / Sistema utilities, clearly available Estudiantes and Docentes links, headline and concise proposed educational text, a meaningful photographic campus crop with Pausar movimiento, then an accessible program selector for Desarrollo de Software and Redes y Telecomunicaciones, selected-program description and one Explorar programa action. Long program names wrap naturally; controls are comfortable touch targets, never squeezed into a desktop table or tiny horizontal cards. The beginning of Sobre nosotros may appear below the opening viewport to establish scroll continuity. Include the discreet label Institución ficticia · Proyecto de portafolio. Keep typography sans throughout and contrast clear on the luminous emerald. No invented statistics, degree levels, prices, credentials or testimonials. This is a static mobile design proposal, not proof of implemented behavior.",
+  "tool": "image_gen",
+  "role": "mobile-companion-proposal",
+  "direction": "B+C",
+  "reference": ".impeccable/mocks/san-miguel-bc-02.png",
+  "approved": false
+}

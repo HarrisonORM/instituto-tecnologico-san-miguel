@@ -28,7 +28,11 @@ Actualización expresa del usuario: se adelantan las etapas de backend (datos, a
 
 La preparación técnica no autoriza a inventar identidad visual, crear pantallas de producto o activar servicios externos antes de su etapa. El acceso a cuentas y la selección visual se resolverán con el usuario cuando correspondan.
 
-## Bloque actual: etapa 3 en curso
+## Bloque actual: diseño de la dirección B+C
+
+El usuario eligió combinar B (Campus abierto) con C (Campus en profundidad). La dirección queda confirmada y se concreta mediante tres composiciones y una muestra móvil. La elección visual no cierra las verificaciones técnicas aplazadas. Estado actual y referencia de continuación en docs/ESTADO.md.
+
+## Preparación histórica de etapa 3: validación pendiente
 
 1. Revisar las condiciones gratuitas vigentes de Supabase, Vercel y la alternativa de correo, con límites y comportamiento al agotar cuotas.
 2. Comprobar el acceso del usuario a las cuentas necesarias mediante los flujos de inicio de sesión correspondientes, sin introducir secretos en el chat.
