@@ -29,6 +29,7 @@ work/
 # Sesiones locales de elección visual y referencias de catálogo descargadas
 .impeccable/questions/*.state.json
 .impeccable/questions/*.hand.json
+.impeccable/questions/*.render-check
 .impeccable/questions/roll.json
 .impeccable/mocks/worlds/
 
