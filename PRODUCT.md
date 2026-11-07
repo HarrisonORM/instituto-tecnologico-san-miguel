@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación de la demostración personal en Vercel Hobby, sujeta a las condiciones gratuitas vigentes. Existe una base técnica local; los módulos académicos y las integraciones todavía están pendientes.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend y una capa de cliente sin vistas; migraciones, integraciones y comportamiento siguen pendientes de ejecución y validación.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -111,7 +111,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 
 - Encargo completo del usuario leído íntegramente al iniciar el bloque, junto con sus requisitos y decisiones previamente documentados.
 - Los roles de una imagen confirmada por el usuario están transcritos en este documento. No se necesita la imagen temporal para comprender los permisos.
-- La carpeta empezó vacía. Ahora existe una base técnica local con dependencias fijadas y una ruta de comprobación del servidor. No hay módulos académicos, servicios externos conectados, secretos ni una identidad visual elegida. Las herramientas verificadas y sus límites de comprobación están en docs/ENTORNO.md.
+- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento y cliente técnico sin pantallas. El proyecto de Supabase fue creado por el usuario; las migraciones nuevas no se han aplicado ni probado. No hay identidad visual elegida. Los resultados anteriores de entorno no acreditan este código nuevo; consultar docs/ESTADO.md.
 - El prompt original y los archivos exportados de la conversación sirven de referencia histórica. Este PRODUCT.md es la fuente de requisitos mantenida para continuar el desarrollo.
 
 ## Product Principles

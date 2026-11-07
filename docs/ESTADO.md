@@ -1,10 +1,12 @@
 # Estado y siguiente paso
 
-## Bloque actual: implementación del backend; pruebas aplazadas
+## Bloque actual: backend ampliado y capa de cliente; pruebas aplazadas
 
-El usuario pidió priorizar código y dejar las pruebas y el despliegue para después. Este bloque añadió cinco migraciones locales, funciones PostgreSQL y RLS, rutas HTTP, autenticación con TOTP, tareas y entregas versionadas, notas y cierre, administración, archivos privados y datos ficticios de 47 cuentas. No se ejecutaron pruebas, lint, typecheck, compilación, migraciones ni solicitudes externas de estas nuevas funciones. No se desplegó.
+El usuario pidió priorizar código y dejar las pruebas y el despliegue para después, y después solicitó continuar sin pausas. El núcleo inicial añadió cinco migraciones; la ampliación eleva el conjunto a dieciséis. Se escribieron eliminación coordinada, conciliación, estructura editable, inspección, presupuestos, idempotencia, oferta pública, lecturas paginadas y notificaciones. No se ejecutaron pruebas, lint, typecheck, compilación, migraciones ni solicitudes externas de estas funciones. No se desplegó.
 
-El contrato y los pendientes concretos están en docs/BACKEND.md. Siguen sin implementar el ejecutor de eliminación física, conciliación completa de invitaciones, fórmula provisional pendiente de acuerdo, CRUD completo de estructura, análisis de archivos y controles de consumo adicionales. La primera versión necesita validación antes de considerarse operativa.
+Contrato y límites en docs/BACKEND.md y docs/BACKEND-OPERACIONES.md. Se prepararon un cargador de datos ficticios, consulta privada de credenciales y copia de base y archivos, sin ejecutarlos. Las opciones sensibles siguen deshabilitadas por defecto. La capa de cliente sin vistas está en src/client y src/contracts; los recorridos y diagramas están en docs/RECORRIDOS.md. La fórmula provisional y otras políticas académicas siguen pendientes de acuerdo. Todo el código nuevo requiere validación.
+
+Se consultó mediante pregunta estructurada la acción principal de la landing; falta la respuesta y la selección visual. No se han implementado pantallas ni elegido una identidad de forma unilateral. El siguiente avance en interfaz depende de esa selección; la comprobación operativa y las herramientas de restauración siguen aplazadas.
 
 La sección de etapa 3 y sus resultados siguientes es histórica y conserva las comprobaciones realizadas ANTES de esta petición. No acredita el código nuevo. Continuar con backend según docs/BACKEND.md; no pedir de nuevo crear el proyecto ni bloquear la escritura local por falta de claves.
 

@@ -2,6 +2,8 @@
 
 Por decisión del usuario se adelanta el backend y se aplaza la ejecución de pruebas y el despliegue. Este bloque escribe código; no aplica SQL a Supabase, no envía invitaciones ni ejecuta comprobaciones de conexión, lint, tipos o compilación. No se declara el backend completo ni listo para producción.
 
+La ampliación actual comprende migraciones 006 a 016, ejecución coordinada de eliminación, conciliación, inspección de archivos, idempotencia, modelos de lectura y herramientas operativas. El contrato adicional y sus límites están en [Backend y operaciones](BACKEND-OPERACIONES.md). Los [recorridos](RECORRIDOS.md) preparan el frontend sin elegir una dirección visual.
+
 ## Estructura
 
 - `supabase/migrations/202611070001_backend.sql`: estructura académica, RLS, funciones transaccionales y almacenamiento.
@@ -91,21 +93,21 @@ El cierre bloquea entregas sin revisar, asigna cero a las no entregadas y calcul
 
 JSON: email, full_name, role. Encabezado obligatorio Idempotency-Key: UUID por intención de invitación. Requiere administrador activo con MFA y dominio institucional configurado. El servidor usa SUPABASE_SECRET_KEY para Auth y el JWT del administrador para aprovisionar el perfil. Esa clave no se expone al navegador.
 
-El alta en Auth y en PostgreSQL no es atómica. Antes de enviar se registra invitation_jobs. Si la invitación se envía pero falla el perfil, se devuelve 409 y el usuario sin perfil no obtiene datos. Una clave ya registrada no provoca un segundo envío; un resultado ambiguo queda pendiente de conciliación y no se reintenta automáticamente. El mecanismo de conciliación y devolución idempotente del resultado completo aún debe implementarse. Ninguna invitación se envió durante este desarrollo.
+El alta en Auth y en PostgreSQL no es atómica. Antes de enviar se registra invitation_jobs. Si la invitación se envía pero falla el perfil, se devuelve 409 y el usuario sin perfil no obtiene datos. Una clave ya registrada no provoca un segundo envío; un resultado ambiguo queda pendiente de conciliación y no se reintenta automáticamente. La migración 008 y la ruta administrativa de conciliación preparan ese procedimiento y la devolución del resultado completado. Ninguna invitación se envió durante este desarrollo.
 
 ### Archivos
 
 reserve_upload prepara un identificador y ruta propios. La carga se realizaría directamente mediante la API de Storage con clave publicable y JWT; el bucket privado limita formatos y tamaño. No admite sobrescritura. submit_work vincula archivos existentes al autor y a una versión y comprueba sus metadatos.
 
-GET /api/files/{id} vuelve a comprobar sesión y RLS y transmite el archivo como descarga, sin URL pública duradera. DELETE libera una reserva solo después de retirar por Storage un borrador sin vínculos. Las versiones entregadas y los avatares referenciados quedan protegidos frente a ese borrado.
+GET /api/files/{id} vuelve a comprobar sesión y RLS y transmite un archivo verificado como descarga, sin URL pública duradera. DELETE coordina el descarte, la retirada de un borrador sin vínculos y la liberación de la reserva. Las versiones entregadas y los avatares referenciados quedan protegidos frente a ese borrado.
 
-Los valores iniciales de capacidad son configurables en private.storage_budget: 250 MB totales, 2 MB por archivo y tres adjuntos. Son parámetros técnicos provisionales tomados de las propuestas, no nuevos acuerdos académicos. Se reserva el máximo del archivo para impedir subdeclaraciones de tamaño; esto reduce la capacidad práctica, especialmente con fotos pequeñas. Falta reconciliación de huérfanos y análisis real del contenido del archivo: MIME y metadatos no bastan para detectar malware o contenido suplantado.
+Los valores iniciales de capacidad son configurables en private.storage_budget: 250 MB totales, 2 MB por archivo y tres adjuntos. Son parámetros técnicos provisionales tomados de las propuestas, no nuevos acuerdos académicos. Se reserva el máximo del archivo para impedir subdeclaraciones de tamaño; esto reduce la capacidad práctica, especialmente con fotos pequeñas. Se añadieron conciliación del presupuesto y firmas básicas de contenido; todavía falta análisis completo o antivirus. Estos controles no se han validado contra Storage.
 
 ## Administración y permisos
 
 Roles: student, teacher, academic_admin, system_admin. Permisos específicos: structure.manage, enrollment.manage, evaluation.manage, identity.manage y period.close. Requieren el rol académico y MFA. Los cambios de roles y estados protegen el último administrador y evitan que el actor modifique su propio rol o estado.
 
-Las solicitudes de eliminación requieren dos administradores distintos con MFA. **El ejecutor de eliminación física sigue deshabilitado y no está implementado**: falta revalidar todo el historial, bloquear nuevas relaciones, auditar el resultado y conciliar la eliminación en Auth y Storage. Las operaciones ordinarias disponibles son suspender, reactivar y archivar.
+Las solicitudes de eliminación requieren dos administradores distintos con MFA. El ejecutor está escrito en la migración 007 y su ruta administrativa, pero permanece deshabilitado con BACKEND_ENABLE_HARD_DELETE=false hasta validar su procedimiento. Revalida historial, congela relaciones y coordina Auth y limpieza local conservando la auditoría. Las operaciones ordinarias siguen siendo suspender, reactivar y archivar.
 
 ## Configuración para la fase posterior
 
@@ -115,10 +117,10 @@ La plantilla .env.example añade SUPABASE_SECRET_KEY, INSTITUTION_EMAIL_DOMAIN y
 
 - Aplicación y revisión de las migraciones, SQL y relaciones; pruebas de permisos positivos y negativos, concurrencia, suspensión y cierre.
 - Fórmula aprobada del promedio provisional; reglas de modificaciones y reaperturas; caducidad de reemplazos y matrícula tardía.
-- Ejecutor de eliminación con doble autorización, conciliación de cuentas y resultados ambiguos de invitaciones, devolución idempotente y publicación de tareas idempotente.
-- Bootstrap operativo con MFA, carga de las 47 identidades preparadas en Auth y estructura académica ficticia completa, y recuperación administrativa.
-- Validación del contenido de archivos, reconciliación del presupuesto, límites persistentes de solicitudes y envío, copias y restauración.
-- CRUD de modificación y retiro de estructura con historial; el bloque actual prioriza creación y recorridos académicos.
+- Validar eliminación con doble autorización, conciliación e idempotencia implementadas; completar herramientas visuales de gestión de incidencias.
+- Ejecutar posteriormente bootstrap o semilla de 47 identidades, revisar sus datos propuestos, inscribir MFA y preparar recuperación administrativa.
+- Validar inspección y presupuesto implementados, límites persistentes y herramientas de copia; añadir análisis completo, protección ante abuso directo y restauración revisada.
+- Concretar los retiros con historial, cambios de fechas con actividad y reasignaciones que requieren política académica. Edición nominal y archivado básico ya tienen código.
 - Correo real, integración del cliente, despliegue y validación funcional. El código escrito todavía no se ha ejecutado.
 
 Referencias consultadas para la implementación: [RLS](https://supabase.com/docs/guides/database/postgres/row-level-security), [funciones PostgreSQL](https://supabase.com/docs/guides/database/functions), [Storage](https://supabase.com/docs/guides/storage/security/access-control) y [contrato de Auth](https://github.com/supabase/auth/blob/master/openapi.yaml). Son referencias técnicas, no resultados de pruebas de este proyecto.

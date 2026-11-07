@@ -14,6 +14,8 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Entorno](docs/ENTORNO.md) | Herramientas instaladas y verificaciones todavía pendientes. |
 | [Base técnica](docs/BASE-TECNICA.md) | Estructura, comandos, compatibilidad y decisiones de dependencias. |
 | [Backend](docs/BACKEND.md) | Código preparado, contrato HTTP, reglas y pendientes de implementación y validación. |
+| [Operaciones del backend](docs/BACKEND-OPERACIONES.md) | Eliminación, conciliación, inspección, límites, semilla y copias preparadas. |
+| [Recorridos](docs/RECORRIDOS.md) | Navegación y diagramas funcionales antes de elegir las pantallas. |
 | [Servicios gratuitos](docs/SERVICIOS-GRATUITOS.md) | Cuotas verificadas en documentación oficial, pausas y presupuesto interno propuesto. |
 | [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
