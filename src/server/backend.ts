@@ -42,7 +42,16 @@ export async function supabase(path: string, token?: string, body?: unknown, met
     throw new ApiError(status, status === 429 ? "Demasiados intentos; espera antes de repetir" : error.code === "P0001" && error.message ? error.message : "La operación no pudo completarse");
   }
   if (response.status === 204) return null;
-  return response.json();
+  const data = await response.json();
+  const singleRow = ["/rest/v1/rpc/reserve_upload", "/rest/v1/rpc/begin_inspection", "/rest/v1/rpc/prepare_invitation"];
+  if (singleRow.includes(path)) {
+    if (Array.isArray(data)) {
+      if(data.length!==1 || !data[0] || typeof data[0]!=="object")throw new ApiError(503,"Respuesta de operación no disponible");
+      return data[0];
+    }
+    if(!data || typeof data!=="object")throw new ApiError(503,"Respuesta de operación no disponible");
+  }
+  return data;
 }
 
 export async function bodyOf(request: Request): Promise<Record<string, unknown>> {
