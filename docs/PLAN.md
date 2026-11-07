@@ -26,7 +26,7 @@ Este plan conserva el orden del encargo. PRODUCT.md contiene los requisitos y do
 
 La preparación técnica no autoriza a inventar identidad visual, crear pantallas de producto o activar servicios externos antes de su etapa. El acceso a cuentas y la selección visual se resolverán con el usuario cuando correspondan.
 
-## Siguiente bloque propuesto: etapa 3
+## Bloque actual: etapa 3 en curso
 
 1. Revisar las condiciones gratuitas vigentes de Supabase, Vercel y la alternativa de correo, con límites y comportamiento al agotar cuotas.
 2. Comprobar el acceso del usuario a las cuentas necesarias mediante los flujos de inicio de sesión correspondientes, sin introducir secretos en el chat.
@@ -34,7 +34,7 @@ La preparación técnica no autoriza a inventar identidad visual, crear pantalla
 4. Comprobar una consulta, un archivo privado y un envío real a un destinatario controlado. Identificar como pendiente lo que todavía no se haya probado.
 5. Documentar consumo, reactivación, copias y criterios antes de preparar la publicación técnica mínima.
 
-Esta etapa empieza cuando se continúe con el siguiente bloque; la creación de la base local no activa automáticamente esos servicios.
+La revisión pública está documentada en docs/SERVICIOS-GRATUITOS.md. docs/CONFIGURACION-SERVICIOS.md contiene los pasos y el registro de pruebas. La etapa sigue abierta: el acceso a las cuentas y las pruebas reales todavía están pendientes. El siguiente paso concreto es confirmar el acceso a Supabase Free; después se preparará el recurso de prueba.
 
 ## Decisiones que se concretarán antes de implementar su función
 

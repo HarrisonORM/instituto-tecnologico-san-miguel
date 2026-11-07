@@ -18,6 +18,7 @@ next-env.d.ts
 *.key
 
 # Estado local de herramientas y copias privadas
+.vercel/
 supabase/.temp/
 supabase/.branches/
 backups/

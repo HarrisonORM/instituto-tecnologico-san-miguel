@@ -39,12 +39,14 @@ La instalación reproducible, lint, comprobación de tipos, compilación y respu
 ## Pendientes de otras etapas
 
 - Acceso a GitHub, Supabase y Vercel: no se ha comprobado inicio de sesión, creado proyectos ni publicado.
-- Condiciones gratuitas vigentes, comportamiento al agotar cuotas, inactividad y reactivación de cada proveedor.
+- Las condiciones gratuitas, cuotas y comportamiento publicado ante inactividad y exceso se revisaron el 7 de noviembre de 2026: docs/SERVICIOS-GRATUITOS.md. Comprobarlos en la cuenta real y probar la reactivación sigue pendiente.
 - Conexión real a PostgreSQL/Supabase, autenticación, almacenamiento privado, invitaciones y recuperación.
 - Envío real de correo a un destinatario controlado; todavía no está validado.
 - Reglas académicas, seguridad por recurso y recorridos completos. La ruta /api/health solo comprueba el servidor local.
 - Elección visual del usuario antes de implementar landing, acceso y paneles.
 
 No se han configurado claves, cuentas de pago ni servicios externos. No se ha instalado software global durante este bloque.
+
+La etapa 3 añade una plantilla .env.example vacía. Al revisar el acceso inicial no existían .env.local ni .env en el proyecto; no se leyeron credenciales privadas. Las conexiones de Supabase y Vercel se ofrecieron como vía de acceso, pero todavía no se ha confirmado su conexión. El registro vigente está en docs/CONFIGURACION-SERVICIOS.md.
 
 Referencias: [instalación de Next.js](https://nextjs.org/docs/app/getting-started/installation), [versiones de Node.js](https://nodejs.org/en/about/previous-releases) y [metadatos oficiales de Next.js 16.4.5](https://registry.npmjs.org/next/16.4.5).

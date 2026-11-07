@@ -8,6 +8,7 @@ Proyecto: Instituto Tecnológico de San Miguel, demostración universitaria full
 2. docs/ESTADO.md: bloque actual, verificaciones y siguiente paso.
 3. docs/PLAN.md: orden de las etapas y sus criterios de finalización.
 4. docs/ENTORNO.md: herramientas detectadas y qué no se ha comprobado todavía.
+5. Antes de configurar servicios: docs/SERVICIOS-GRATUITOS.md y docs/CONFIGURACION-SERVICIOS.md, con cuotas, pasos y pruebas observadas o pendientes.
 
 Mantén una única fuente de requisitos en PRODUCT.md. Actualiza el estado al cerrar cada bloque. Si recibes una corrección explícita del usuario, incorpora el acuerdo sin reabrir decisiones ya confirmadas.
 

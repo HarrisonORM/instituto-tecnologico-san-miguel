@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** base técnica local preparada y comprobada con Next.js, TypeScript, Tailwind CSS y ESLint. La comprobación inicial del servidor es `/api/health`; las pantallas de producto esperarán a la elección visual. El siguiente bloque revisará la viabilidad gratuita de los servicios.
+**Estado:** base técnica local preparada y comprobada. Etapa 3 en curso: condiciones gratuitas revisadas, acceso a cuentas y pruebas reales pendientes. La comprobación local del servidor sigue siendo `/api/health`; las pantallas de producto esperarán a la elección visual.
 
 ## Documentos del proyecto
 
@@ -13,6 +13,8 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Estado](docs/ESTADO.md) | Avance actual, comprobaciones y siguiente bloque. |
 | [Entorno](docs/ENTORNO.md) | Herramientas instaladas y verificaciones todavía pendientes. |
 | [Base técnica](docs/BASE-TECNICA.md) | Estructura, comandos, compatibilidad y decisiones de dependencias. |
+| [Servicios gratuitos](docs/SERVICIOS-GRATUITOS.md) | Cuotas verificadas en documentación oficial, pausas y presupuesto interno propuesto. |
+| [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
 
 ## Base acordada
@@ -26,6 +28,8 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 ## Cómo continuar
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
+
+El siguiente paso de la etapa 3 es confirmar el acceso a Supabase en su plan gratuito. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica cómo hacerlo y cuándo completar `.env.local` a partir de la plantilla vacía `.env.example`. Esa plantilla todavía no conecta la aplicación con ningún servicio.
 
 ## Arranque local
 

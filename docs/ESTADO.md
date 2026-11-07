@@ -1,12 +1,36 @@
 # Estado y siguiente paso
 
-## Bloque actual: etapa 2 completada
+## Bloque actual: etapa 3 en curso
 
 Proyecto: Instituto Tecnológico de San Miguel, institución ficticia de portafolio.
 
 Carpeta de trabajo: `C:\Programacion\instituto_tecnologico_san_miguel`.
 
 La etapa 1 consolidó el encargo y los acuerdos en PRODUCT.md, organizó el plan y comprobó las herramientas. La etapa 2 prepara y verifica la base técnica local. Los requisitos académicos y de acceso se conservan en PRODUCT.md, que sigue siendo la fuente actual.
+
+## Avance de la etapa 3
+
+- Revisión pública realizada el 7 de noviembre de 2026: cuotas de Supabase Free, Vercel Hobby, pausas, restricciones, copias y viabilidad de correo gratuito. Fuentes y alcance en docs/SERVICIOS-GRATUITOS.md.
+- Guía de acceso, configuración local y registro de pruebas en docs/CONFIGURACION-SERVICIOS.md.
+- Plantilla .env.example vacía, con URL y clave publicable; no conecta la aplicación por sí misma. No se han creado archivos locales con valores reales en este bloque.
+- Límites internos de consumo conservados como propuestas. No se han activado controles de almacenamiento, transferencia o correo.
+- Preferencia sobre commits detallados registrada en AGENTS.md y guardada en 492d130. Los commits siguientes describen cambios y verificaciones en su cuerpo.
+- Acceso a cuentas, consulta real, archivo privado, invitación, recuperación y publicación técnica: pendientes. Las conexiones de Supabase y Vercel se ofrecieron; falta confirmación de acceso o configuración manual por el usuario.
+
+La etapa 3 no está completada. El siguiente paso concreto es acceder a Supabase Free. Las pantallas siguen esperando la elección visual de la etapa 4.
+
+## Comprobaciones de este avance documental
+
+- Trece enlaces locales de README y docs comprobados: ninguno roto.
+- Plantilla .env.example analizada: dos variables esperadas, ambas vacías, sin credenciales.
+- .env.local, .env y .vercel/project.json excluidos de Git; .env.example disponible para versionar.
+- git diff --check sin errores de espacios.
+- La consulta de herramientas disponibles no confirmó una conexión utilizable de Supabase o Vercel. No se ejecutaron consultas, cargas ni envíos externos.
+- No se modificó código de ejecución, dependencias ni configuración del compilador; se conservan los resultados técnicos de la etapa 2 sin declararlos repetidos en este bloque.
+
+El guardado de este avance se identifica por el mensaje `docs: preparar la viabilidad gratuita y la configuracion de servicios`. Su cuerpo detalla cambios, comprobaciones y pruebas pendientes. El historial se consulta con `git log -2 --format=fuller`.
+
+## Base técnica conservada: etapa 2 completada
 
 ## Cambios realizados
 
@@ -51,21 +75,21 @@ Vitest y Playwright siguen previstos para las etapas de reglas y recorridos. No 
 
 Si el puerto 3000 está ocupado, leer la dirección que indique Next.js y conservar /api/health al final. No cerrar procesos ajenos para liberar un puerto.
 
-## Punto de guardado local
+## Punto de guardado de la etapa 2
 
-Rama main. El punto de guardado de este bloque se identifica por el mensaje `chore: preparar base tecnica local del instituto`. Se puede comprobar con:
+Rama main. La base técnica quedó guardada en 9b2a581, con el mensaje `chore: preparar base tecnica local del instituto`. Para ver ese punto histórico y el estado actual:
 
 ```powershell
-git log -1 --oneline
+git show --stat --oneline 9b2a581
 git status --short
 ```
 
 El segundo comando debe quedar sin salida después de guardar el bloque. No se ha configurado un remoto, subido a GitHub ni publicado la aplicación.
 
-## Siguiente bloque: etapa 3
+## Cómo continuar la etapa 3
 
-Comprobar la viabilidad gratuita de base de datos, autenticación, almacenamiento, correo real y alojamiento, con condiciones oficiales, cuotas y reactivación documentadas. El alcance está en docs/PLAN.md.
+Confirmar el acceso a Supabase Free siguiendo el primer paso de docs/CONFIGURACION-SERVICIOS.md. Después se creará o seleccionará el proyecto de prueba y se comprobarán base de datos, archivo privado y correo real. La revisión pública de condiciones ya está documentada; faltan las pruebas observadas.
 
-La revisión pública puede adelantarse sin credenciales. Los pasos que necesiten una cuenta se realizarán mediante el acceso del usuario, sin pegar secretos en el chat. No se ha activado ningún servicio en esta etapa.
+Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. No se ha activado ningún servicio en esta etapa.
 
 La etapa 4 presentará propuestas visuales. El usuario elegirá antes de implementar pantallas; no se ha decidido paleta, tipografía ni logo.
