@@ -2,7 +2,7 @@
 
 Este plan conserva el orden del encargo. PRODUCT.md contiene los requisitos y docs/ESTADO.md registra el avance; esta página no redefine reglas académicas.
 
-Actualización expresa del usuario: se adelantan las etapas de backend (datos, acceso y operaciones académicas) y se aplazan las pruebas y el despliegue. Los criterios de validación del plan siguen pendientes; escribir código no los da por superados. Las pantallas continúan sujetas a elección visual. Alcance implementado y faltante en docs/BACKEND.md.
+Orden actual: el usuario autorizó retomar la validación local después de adelantar backend y frontend. Hay resultados locales de código, compilación, SQL y recorridos; la integración real, restauración, publicación y PWA completa siguen abiertas. Las etapas no se dan por terminadas solo por tener código. Dirección B+C elegida y conservada.
 
 | Etapa | Trabajo principal | Evidencia necesaria para terminar |
 |---|---|---|
@@ -30,7 +30,7 @@ La preparación técnica no autoriza a inventar identidad visual, crear pantalla
 
 ## Bloque actual: implementación de B+C y validación pendiente
 
-El usuario eligió B+C y después delegó continuar todo lo pendiente. Se implementaron landing, acceso, paneles, vista previa y conexión por código, tomando la composición 2 como referencia. La ejecución visual final y las etapas 5 a 11 no se dan por terminadas: faltan comprobaciones e integración. La restricción de pruebas no quedó revocada y se pidió autorización expresa. Estado en docs/ESTADO.md y orden de comprobación en docs/VALIDACION-PENDIENTE.md.
+El usuario eligió B+C y después delegó continuar todo lo pendiente. Se implementaron landing, acceso, paneles, vista previa y conexión por código, tomando la composición 2 como referencia. La ejecución visual final y las etapas 5 a 11 no se dan por terminadas: faltan comprobaciones e integración. La autorización expresa posterior permitió ejecutar las comprobaciones locales, sin escribir en Supabase ni enviar correos. Estado en docs/ESTADO.md y orden de comprobación en docs/VALIDACION-PENDIENTE.md.
 
 ## Preparación histórica de etapa 3: validación pendiente
 

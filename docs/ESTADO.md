@@ -1,44 +1,38 @@
 # Estado y siguiente paso
 
-## Bloque actual: landing, paneles y vista previa implementados
+## Bloque actual: validación local y correcciones completadas
 
-Fecha: 7 de noviembre de 2026. Se continuó dentro de B+C tras la petición «Entonces continua con todo lo que falta sin parar». La composición 2 se tomó como referencia de ejecución delegada. No se atribuye al usuario una selección explícita de ese render. El estado comp-led previo permanece histórico, sin falsear fases ni aprobaciones; la implementación actual sigue una ruta guiada por código.
+7 de noviembre de 2026. El usuario respondió «si» a retomar las pruebas locales y después pidió continuar. No autoriza escrituras en Supabase, envíos de correo ni despliegue en este bloque.
 
-### Qué se añadió
+### Resultado observado
 
-- Landing esmeralda con fotografía y movimiento suave reducible, programas con imágenes, comunidad, historia ilustrativa, misión/visión, preguntas y contacto.
-- Acceso, recuperación y activación; cuatro portales con navegación, carga/error/vacíos y preferencias ES/EN y claro/oscuro/sistema.
-- Vista previa de 47 personas ficticias, con cambios compartidos en memoria al alternar roles; recargar los reinicia. No consulta información institucional.
-- Flujos por código de grupos, publicación, entregas/versiones, comentarios, notas/historial, rúbricas, calendarios, notificaciones, perfiles, MFA, estructura, porcentajes, cuentas, bajas y auditoría.
-- Contacto privado y traducciones revisadas mediante las migraciones 017 a 019. Total: 19, ninguna aplicada en este bloque.
-- Manifiesto y fallback sin conexión que solo almacena recursos públicos. Instalación/actualización PWA no comprobadas.
-- Escenarios SQL de permisos y script PostgreSQL local preparados, sin ejecutarse.
+- Lint y tipos: código 0. La compilación final también completó TypeScript.
+- Build: código 0 con Webpack, opción incluida en Next.js. Turbopack falló al iniciar el proceso auxiliar de CSS; se ajustó el comando, sin omitir verificaciones ni cambiar dependencias.
+- Pruebas de configuración: 9 casos Node aprobados, sin red.
+- Base aislada PostgreSQL: 19 migraciones aplicadas localmente y dos suites SQL aprobadas. RLS, metadatos de evidencias, suspensión, MFA, doble autorización, reemplazos y cierre.
+- Reglas de nota comprobadas: categorías 60/40 con pesos iguales internos dan 3.4 en el ejemplo; 2.95 redondea a 3.0 y aprueba, 2.94 a 2.9 y no aprueba. Las no entregadas reciben cero con historial; pendientes de revisión bloquean el cierre.
+- Compilación ejecutada en 127.0.0.1:3001: cinco pruebas HTTP aprobadas sobre páginas y rechazos sin sesión. No usaron credenciales ni escribieron en la base externa.
+- Navegador: publicación en dos grupos, entrega tardía, comentario, nota 4.3 consultada por el estudiante, reemplazo autorizado y dos versiones conservadas, con datos ficticios en memoria. ES/EN, temas y muestras de escritorio/móvil observados.
 
-### Qué se observó y qué no
+### Correcciones guardadas
 
-Se abrió el servidor de desarrollo y se observó la landing real cargada en el navegador. La URL habitual es http://127.0.0.1:3000 y la entrada de paneles es /vista-previa. No se comprobó todavía el recorrido completo ni el acabado en móvil.
+La migración 010 dejó de usar window como variable reservada. El controlador PostgreSQL local ya no espera indefinidamente al servidor descendiente. Las suites corrigen sus propios escenarios de contacto y resultados por grupo sin relajar permisos de producción.
 
-Una comprobación de tipos terminó correctamente en una versión intermedia. Lint señaló cinco errores no-undef; se corrigieron los puntos señalados sin volver a ejecutarlo. Después hubo nuevos cambios. No declarar la versión final aprobada por esas comprobaciones.
+El portal muestra grupo junto a materia, informa cuando no hay traducción revisada y permite saltar al contenido. La reducción de movimiento actúa sobre los efectos concretos. Se corrigieron el global fetch del service worker y el comando reproducible de compilación.
 
-La revisión automática rechazó ejecutar pruebas locales de migraciones y permisos porque el usuario había aplazado las pruebas. Se pidió permiso expreso para retomarlas y su respuesta sigue pendiente. No reintentar ni sustituirlas por otra vía. La lectura de archivos y los commits siguen permitidos. El script no inició una base y no modificó Supabase.
+La revisión visual independiente señaló dos hallazgos: aviso de institución ficticia en la apertura/acceso móvil y contraste de misión/visión. Se corrigieron y ambos se puntuaron Resolved; el veredicto ship se limita a esas dos correcciones, no a toda la superficie ni a las integraciones. Evidencia y límites en .impeccable/review/finish-review.md. El detector estático informó cero hallazgos primarios y la procedencia de cinco rasters de producto/fuente no tiene faltantes. Capturas parciales, no certificación global de accesibilidad ni prueba física de celular.
 
-Faltan claves de servicio y configuración privada. No se enviaron correos, no se aplicaron migraciones, no se cargó la semilla remota y no se publicó en Vercel. No se activaron servicios de pago.
+### Cómo verlo
 
-### Puntos de guardado
+La compilación comprobada está disponible en http://127.0.0.1:3001. Los cuatro paneles ficticios se abren en /vista-previa, sin contraseña. Para iniciarla de nuevo: npm.cmd run build y después npm.cmd run start -- --port 3001. Para editar en desarrollo: npm.cmd run dev, normalmente en el puerto 3000. El servidor solo escucha en este computador; 127.0.0.1 no abre la web desde un celular externo.
 
-- e9b9722: contacto privado, traducciones revisadas, autenticación y escenarios SQL preparados.
-- a621e0e: landing, portales, medios y vista previa.
-- La documentación de este bloque se guarda en un commit posterior con título y cuerpo detallados.
+### Límites y continuación
 
-### Continuación
+Los esquemas locales mínimos de Auth/Storage no sustituyen Supabase. No se aplicó ninguna migración remota, no se cargó la semilla remota, no se enviaron correos y no se publicó. No se activaron servicios de pago.
 
-1. El usuario puede abrir la landing y la vista previa siguiendo docs/VER-LA-APLICACION.md.
-2. Cuando autorice la validación, completar el orden de docs/VALIDACION-PENDIENTE.md y corregir los resultados observados.
-3. Resolver políticas académicas pendientes y confirmar el alcance de traducciones; el promedio real provisional no se inventó y sigue marcado como política pendiente.
-4. Configurar y validar integración real, correo controlado, copia/restauración y consumo antes del despliegue.
-5. Completar revisión de acabado y documentación visual de Impeccable desde el resultado. DESIGN.md y un veredicto final todavía no existen; el frontend no se declara terminado.
+Faltan integración real y comprobación de credenciales/tokens/archivos, correo controlado, políticas de promedio provisional y categorías vacías, paginación completa, fallos/concurrencia, restauración y PWA. PRODUCT.md conserva las decisiones abiertas. El detalle y los comandos están en docs/VALIDACION-PENDIENTE.md y docs/VER-LA-APLICACION.md.
 
-Alcance de los componentes y medios: docs/FRONTEND-IMPLEMENTADO.md. Las secciones siguientes son historia de los bloques anteriores; sus referencias a pantallas inexistentes o a 16 migraciones no describen el estado actual.
+Puntos de guardado: 0aeda23 para migraciones/suites y 7ac0328 para interfaz, compilación y HTTP. DESIGN.md y .impeccable/design.json documentan el sistema extraído del resultado; no son una certificación de toda la aplicación. Los documentos y evidencias se guardan en un commit posterior con cuerpo detallado en español.
 
 ---
 

@@ -1,45 +1,47 @@
-# Validación pendiente y límites del avance
+# Validación local y pendientes
 
-Fecha: 7 de noviembre de 2026. Este documento describe trabajo pendiente; no es un certificado de pruebas superadas.
+Fecha: 7 de noviembre de 2026. El usuario autorizó expresamente retomar pruebas locales, sin modificar Supabase ni enviar correos. El aplazamiento y el rechazo por esa restricción son históricos. Un bloqueo temporal de la revisión automática por límite de uso se resolvió después de la hora de reintento indicada; no se eludió.
 
-## Autorización vigente
+## Resultados observados
 
-El usuario había aplazado pruebas, compilaciones de verificación y despliegue. La petición posterior «Entonces continua con todo lo que falta sin parar» permite avanzar con implementación, pero no revoca de forma inequívoca ese aplazamiento.
+| Comprobación | Resultado y alcance |
+|---|---|
+| npm.cmd run lint | Código 0 tras corregir fetch en los globals del service worker. |
+| npm.cmd run typecheck | Código 0. La compilación final también ejecutó TypeScript correctamente. |
+| npm.cmd run build | Código 0 con Webpack, opción oficial incluida en Next.js. Turbopack falló al iniciar un proceso de CSS, incluso fuera de la ejecución restringida; se cambió el comando de build, sin cambiar dependencias ni omitir verificaciones. |
+| npm.cmd run test:services | 9 pruebas Node aprobadas, con respuestas controladas y sin red. |
+| scripts/test-database.ps1 | Las 19 migraciones y security.sql / academic.sql terminaron con código 0 en un clúster nuevo. Se detuvo su propio servidor en finally. |
+| Prueba HTTP local | 5 pruebas Node aprobadas contra la compilación en 127.0.0.1:3001: páginas, cuatro muestras, rechazo de lecturas/escrituras sin sesión, contacto inválido y cabeceras/métodos. No usó credenciales. |
+| Recorrido de navegador | Publicar tarea en dos grupos, entrega tardía, comentario, nota 4.3 visible al estudiante, reemplazo autorizado y dos versiones conservadas. Solo datos ficticios en memoria. |
+| Interfaz | Capturas de escritorio y móvil, cambio de ES/EN, temas, selector de programas, etiquetas de grupo y acceso privado. No equivale a una auditoría completa de accesibilidad. |
 
-En este bloque se ejecutó una comprobación de tipos que terminó correctamente en una versión intermedia. También se ejecutó lint: señaló cinco errores no-undef. Se corrigieron los imports de URL y process y los globals del service worker señalados, pero no se repitió la comprobación. Esos resultados no acreditan la versión final, que cambió después.
+## Qué cubrieron las suites SQL
 
-La revisión automática rechazó ejecutar el script de migraciones y permisos en PostgreSQL local por el aplazamiento anterior. El script no llegó a ejecutarse. Se pidió autorización expresa para retomar pruebas locales, sin aplicar nada a Supabase ni enviar correos; su respuesta está pendiente. No volver a ejecutar verificaciones hasta recibirla. La lectura del código y el guardado Git continúan permitidos.
+- Estudiante: perfil, tareas, notas, traducciones y metadatos de archivos propios; denegación de datos ajenos.
+- Docente: grupo asignado, calificación, reemplazo autorizado y evidencias vinculadas. Administrar cuentas no da acceso académico.
+- Suspensión de una identidad ya abierta; MFA para acciones administrativas y doble autorización de baja.
+- Entrega única, marca tardía, versiones y bloqueo de cierre con entregas pendientes de revisión.
+- Cierre con ceros no entregados y trazabilidad; 2.95 → 3.0 aprueba y 2.94 → 2.9 no aprueba.
+- Categorías 60/40 y actividades con igual peso dentro de su categoría: ((4+2)/2)×0.6 + 4×0.4 = 3.4.
+- Resultado final propio y rechazo de modificaciones después del cierre.
+- Contacto: anónimo no puede saltarse el canal y el intento 61 del día se rechaza con P0429.
 
-El servidor de desarrollo se abrió para mostrar el trabajo al usuario. Se observó la landing real cargada en el navegador. No se ha realizado un recorrido funcional completo ni una revisión visual de todos los estados y tamaños.
+Auth y Storage se sustituyen por un esquema local mínimo para probar SQL/RLS. No son el servicio real. Las evidencias del escenario son metadatos; no se ha comprobado carga, inspección o descarga HTTP contra Supabase.
 
-## Orden propuesto cuando se autoricen pruebas locales
+## Correcciones encontradas
 
-1. Ejecutar lint y typecheck; corregir problemas reales de la versión actual.
-2. Compilar y ejecutar la versión optimizada. No confundir que el servidor de desarrollo arranque con una compilación de producción aprobada.
-3. Ejecutar scripts/test-database.ps1, con PostgreSQL local en PATH. Crea un clúster nuevo bajo work, escucha únicamente en loopback y detiene su propio proceso al terminar. No usa DATABASE_URL ni conecta con Supabase.
-4. Las pruebas SQL preparadas en supabase/tests crean un sustituto mínimo de Auth y Storage. Comprueban aislamiento entre estudiantes, grupos docentes, reemplazos, notas, MFA, suspensión, doble autorización, cierre pendiente y contacto. Aunque pasaran, no probarían el servicio real de Auth, subida de archivos o entrega de correo.
-5. Recorrer la interfaz en escritorio y móvil: publicación a varios grupos/personas, entrega tardía, autorización de reemplazo, calificación, comentarios, historial, preferencias y formularios con errores.
-6. Revisar teclado, foco, lectores de pantalla, contraste, temas, movimiento reducido y estados de red lenta/fallo. Completar la revisión de acabado de Impeccable sobre capturas reales; documentar el sistema visual desde el resultado, sin atribuir aprobaciones inexistentes.
+La migración 010 usaba window, palabra reservada, como variable SQL; se cambió a window_start. El script esperaba todos los descendientes de pg_ctl mediante Start-Process -Wait; ahora espera solo al controlador, con límite de 45 segundos. Se corrigieron dos aserciones de la propia suite: presupuesto de contacto con P0429 y selección de grupo cuando un estudiante tiene dos resultados. No se relajaron permisos de producción para hacer pasar las pruebas.
 
-## Integración y publicación: una fase posterior
+La interfaz distingue originales de traducciones disponibles, muestra grupo junto a materia, añade salto al contenido en portales y limita la reducción de movimiento a efectos concretos. La revisión visual pidió aviso de institución ficticia en la apertura/acceso móvil y quitar opacidad a misión/visión; ambos cambios se comprobaron sobre la compilación. Su veredicto se registra en ESTADO.md y en .impeccable/review.
 
-- Faltan claves y configuración local: Publishable, clave secreta de servidor, dominio institucional de demostración, retorno de recuperación y secreto de contacto. No pegar sus valores en el chat ni versionarlos.
-- Hay 19 migraciones escritas, ninguna aplicada en esta fase. Revisarlas y probarlas en orden antes de tocar el proyecto dedicado.
-- Las migraciones originales crean tablas y bucket nuevos. No ejecutarlas sobre un proyecto con datos ajenos ni repetir manualmente un archivo ya aplicado.
-- La semilla remota de 47 cuentas es distinta de la vista previa en memoria. Permanece deshabilitada; solo admite el proyecto explícito y correos .invalid, sin enviar invitaciones. Sus materias y pesos son ejemplos, no políticas aprobadas.
-- Las invitaciones y recuperación se comprobarán únicamente con destinatarios reales controlados y autorización de envío. Que la API responda no acredita que el correo haya llegado.
-- Comprobar denegaciones de API y Storage con tokens reales y sesiones suspendidas. No basta ocultar elementos en pantalla.
-- Preparar una copia privada y observar una restauración de base y archivos.
-- Revisar condiciones gratuitas vigentes y consumo en las cuentas antes de publicar. Las cuotas internas limitan uso de la aplicación, pero no garantizan disponibilidad ni evitan por sí solas consumo en el proveedor.
-- La PWA solo tiene manifiesto y un fallback público. Instalación, actualización y ausencia de datos privados en cachés aún necesitan revisión.
+## Pendientes reales
 
-## Decisiones y límites funcionales pendientes
+- Configurar y probar la integración con Supabase. Ninguna migración se aplicó al proyecto externo en este bloque y no se ejecutó la semilla remota.
+- Comprobar activación, sesión, recuperación, MFA, archivos y permisos con identidades/tokens reales en el proyecto dedicado. Invitaciones/recuperación requieren destinatarios reales controlados y autorización de envío.
+- Concretar la fórmula del promedio provisional, categorías vacías, cambios de esquema, reapertura y vigencia detallada de reemplazos. El promedio de la muestra no fija una política institucional.
+- Confirmar el alcance de traducciones revisadas frente a generación automática. No hay traducción del interior de PDFs/fotos ni una API externa elegida.
+- Completar paginación del portal, que actualmente carga hasta 100 registros por recurso; recorridos de fallos de archivos, concurrencia y conciliación.
+- Revisar sistemáticamente teclado/lector de pantalla, todos los estados/temas y rendimiento; las capturas son vistas parciales, no pruebas físicas en un celular.
+- Observar copia/restauración de base y archivos, revisar cuotas en las cuentas antes de publicar y validar instalación/actualización/offline de PWA.
 
-- Fórmula exacta del promedio provisional y manejo de categorías vacías. El panel real conserva la respuesta de política pendiente del backend; la vista previa identifica su promedio ilustrativo. No afirmar que el promedio ponderado final de esta función esté resuelto.
-- Reglas de cambios de evaluación, reapertura y correcciones de períodos cerrados; vigencia detallada del permiso de reemplazo.
-- Confirmar si las traducciones revisadas por el autor satisfacen el alcance deseado. No existe traducción automática ni traducción del interior de PDFs/fotos.
-- Las pantallas conectadas cargan hasta 100 registros por recurso y avisan del límite. Falta integrar la paginación completa y los modelos de lectura del backend para escalar más allá de la muestra.
-- Reintentos de carga parcialmente completada y conciliación de reservas necesitan recorridos de fallo. Una reserva sin confirmación no equivale a una entrega.
-- Probar simultaneidad y doble clic antes de dar por cerrados recibos, borrados y periodos. La simulación en memoria no demuestra estas garantías.
-
-Estos pendientes impiden declarar el sistema completo, listo para producción o desplegado.
+La validación local no convierte el proyecto en un sistema completo ni listo para producción.

@@ -29,6 +29,6 @@ Migración 017 y POST /api/contact preparan recepción privada con consentimient
 
 Migración 018 añade versiones ES/EN revisadas de tareas, comentarios, programas, materias y categorías. Cada traducción se vincula a la huella del original: si cambia, deja de mostrarse hasta revisión. Los permisos siguen el recurso original. No traduce adjuntos ni usa servicios externos. Migración 019 registra la revisión de consultas de contacto.
 
-## Próximo acabado
+## Revisión y sistema documentado
 
-No se ha emitido aprobación final de Impeccable ni creado DESIGN.md como si el resultado estuviera terminado. Faltan capturas de escritorio/móvil, revisión visual, contraste y recorridos. VALIDACION-PENDIENTE.md conserva las restricciones de pruebas y los demás límites abiertos.
+Se tomaron capturas de escritorio/móvil y se revisaron de forma independiente. Dos hallazgos materiales (aviso de ficción y contraste de misión/visión) se corrigieron y se puntuaron Resolved. El veredicto ship se limita a esa lista, sin convertirlo en aprobación global o de Supabase. DESIGN.md y .impeccable/design.json recogen los tokens y reglas extraídos del código. No canonizan como mínimos los auxiliares densos de 9–11 px. VALIDACION-PENDIENTE.md conserva resultados y límites abiertos.

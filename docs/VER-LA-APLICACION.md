@@ -1,6 +1,6 @@
 # Ver el avance local
 
-La aplicación tiene una landing y paneles implementados. Todavía no está publicada ni validada como un sistema completo. La vista previa funciona con datos ficticios en memoria y no necesita una cuenta de Supabase.
+La aplicación tiene una landing y paneles implementados. Ya pasó comprobaciones locales, pero todavía no está publicada ni validada contra los servicios reales. La vista previa funciona con datos ficticios en memoria y no necesita una cuenta de Supabase.
 
 ## Paso 1: abrir el proyecto
 
@@ -11,6 +11,10 @@ npm.cmd run dev
 ```
 
 Mantén la terminal abierta. Si ya hay un servidor de este proyecto funcionando, utiliza su dirección; no cierres otros procesos para liberar un puerto. La dirección habitual es http://127.0.0.1:3000.
+
+## Ver la compilación comprobada
+
+En este bloque quedó ejecutándose en http://127.0.0.1:3001. Si está detenida, en otra terminal del proyecto ejecuta npm.cmd run build y, cuando termine correctamente, npm.cmd run start -- --port 3001. Para pruebas HTTP utiliza npm.cmd run test:local-http con ese servidor abierto. El puerto 3000 se conserva para desarrollo; no es necesario cerrar procesos ajenos.
 
 ## Paso 2: elegir qué ver
 
@@ -44,4 +48,4 @@ El servidor está restringido a este computador. `127.0.0.1` en el celular apunt
 
 ## Qué falta para la versión conectada
 
-Completar la configuración privada, validar y aplicar las migraciones al proyecto dedicado, preparar las cuentas ficticias y comprobar acceso, archivos, invitación y recuperación con destinatarios controlados. Después corresponde revisión visual, pruebas de seguridad, copia/restauración y despliegue. El detalle está en ESTADO.md y VALIDACION-PENDIENTE.md.
+Completar la configuración privada, validar y aplicar las migraciones al proyecto dedicado, preparar las cuentas ficticias y comprobar acceso, archivos, invitación y recuperación con destinatarios controlados. La revisión visual y las pruebas locales ya tienen resultados; aún faltan integración real, cobertura adicional, copia/restauración y despliegue. El detalle está en ESTADO.md y VALIDACION-PENDIENTE.md.

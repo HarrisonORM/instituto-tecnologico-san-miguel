@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Hay 19 migraciones y conexión de frontend/backend por código, pendientes de integración y validación. Las pruebas y el despliegue siguen aplazados. Ver [estado actual](docs/ESTADO.md).
+**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Las 19 migraciones pasaron en PostgreSQL local; la conexión de frontend/backend todavía requiere integración real con Supabase. La validación local ya se ejecutó; la integración real y el despliegue siguen pendientes. Ver [estado actual](docs/ESTADO.md).
 
 ## Documentos del proyecto
 
@@ -20,6 +20,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
 | [Ver la aplicación](docs/VER-LA-APLICACION.md) | Direcciones locales, paneles y diferencias entre vista previa y acceso real. |
+| [Sistema visual](DESIGN.md) | Paleta, tipografía y componentes extraídos de la implementación. |
 | [Frontend implementado](docs/FRONTEND-IMPLEMENTADO.md) | Pantallas, fotografías, traducciones y contacto preparados. |
 | [Validación pendiente](docs/VALIDACION-PENDIENTE.md) | Restricción actual de pruebas, resultados parciales y trabajo restante. |
 
@@ -35,7 +36,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-Para recorrer el avance no necesitas credenciales: abre la landing y la vista previa. El acceso institucional requiere configuración privada y migraciones que aún no se aplicaron. No ejecutar pruebas ni migraciones hasta retomar expresamente la validación; la solicitud de autorización está pendiente.
+Para recorrer el avance no necesitas credenciales: abre la landing y la vista previa. El acceso institucional requiere configuración privada y migraciones que aún no se aplicaron. El usuario autorizó las pruebas locales. Las migraciones remotas, los envíos y el despliegue siguen fuera del alcance actual.
 
 ## Arranque local
 
@@ -67,9 +68,10 @@ En una copia nueva del repositorio, instala las dependencias fijadas con `npm.cm
 | `npm.cmd run dev` | Servidor de desarrollo local. |
 | `npm.cmd run lint` | Comprobar reglas de código con ESLint. |
 | `npm.cmd run typecheck` | Generar tipos de rutas y comprobar TypeScript. |
-| `npm.cmd run build` | Crear la versión optimizada. |
+| `npm.cmd run build` | Crear la versión optimizada con Webpack; Turbopack falló al iniciar el proceso de CSS en este entorno. |
 | `npm.cmd run start` | Ejecutar localmente una compilación creada con build. |
 | `npm.cmd run check:supabase` | Consultar la configuración de Auth con la clave local y comprobar que el registro público está desactivado. |
 | `npm.cmd run test:services` | Probar localmente la comprobación de conexión, sin servicios externos. |
+| `npm.cmd run test:local-http` | Probar páginas y rechazos sin sesión; requiere la compilación ejecutándose en 127.0.0.1:3001. |
 
-Vitest y Playwright se añadirán cuando existan reglas y recorridos que probar. Las cuentas, integraciones y condiciones gratuitas se comprobarán en su etapa, sin introducir secretos en los documentos.
+Las reglas académicas y los permisos tienen suites SQL locales; Vitest y Playwright como dependencias siguen previstos para ampliar la automatización. Las cuentas, integraciones y condiciones gratuitas se comprobarán en su etapa, sin introducir secretos en los documentos.

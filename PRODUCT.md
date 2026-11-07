@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; migraciones, integraciones y recorridos completos siguen pendientes de ejecución y validación.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 19 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -33,7 +33,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - El usuario ha usado React o desarrollado un backend, pero necesita explicaciones detalladas y pasos pequeños para seguir el proyecto.
 - Cada bloque de trabajo debe indicar objetivo, explicación, pasos concretos, resultado esperado, comprobación y punto de guardado.
 - Preferencia confirmada para el historial: commits con título claro y descripción detallada de cambios y comprobaciones, conforme a AGENTS.md.
-- Orden actualizado por el usuario: priorizar código del backend, adelantar su implementación y aplazar las pruebas y el despliegue. Las pruebas pendientes de viabilidad siguen abiertas; no bloquean escribir código local. El diseño visual sigue sujeto a elección antes de programar pantallas. Los resultados y el siguiente paso están en docs/ESTADO.md.
+- Orden actualizado: después de adelantar backend y frontend, el usuario autorizó expresamente retomar la validación local. No incluye escrituras en Supabase, correo ni despliegue. La dirección B+C ya está elegida; los resultados y el siguiente paso están en docs/ESTADO.md.
 - Este archivo es la fuente actual de requisitos. docs/PLAN.md contiene las etapas; docs/ESTADO.md registra el avance y docs/ENTORNO.md contiene las comprobaciones del entorno. No crear copias alternativas de los requisitos.
 - El estudiante entrega evidencias y consulta resultados; el docente trabaja con varios grupos y necesita revisar tanto por tarea como por estudiante.
 - El sistema administra identidades y estados de cuenta; el personal académico administra la estructura institucional según permisos explícitos.

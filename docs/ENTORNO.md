@@ -38,7 +38,7 @@ La instalación reproducible, lint, comprobación de tipos, compilación y respu
 
 ## Actualización de implementación
 
-El código actual ya tiene landing y paneles. Las comprobaciones de la base técnica descritas arriba son históricas. En este bloque se observó el arranque de desarrollo y la landing en el navegador; una comprobación de tipos pasó antes de cambios posteriores y lint señaló cinco errores corregidos sin repetición. La versión final no está validada. También se localizaron binarios PostgreSQL 18, pero no se inició una base: la ejecución de pruebas locales fue rechazada por el aplazamiento vigente.
+El código actual ya tiene landing y paneles. Las comprobaciones de la base técnica descritas arriba son históricas. En este bloque se observó el arranque de desarrollo y la landing en el navegador; una comprobación de tipos pasó antes de cambios posteriores y lint señaló cinco errores corregidos sin repetición. La validación posterior completó lint, tipos, build con Webpack, nueve pruebas de configuración y cinco HTTP locales; ver ESTADO.md para su alcance. Después de la autorización expresa se inició PostgreSQL 18 en clústeres nuevos bajo work: las 19 migraciones y las suites de permisos/cierre terminaron correctamente. El servidor propio se detuvo al finalizar; no se tocó el servicio PostgreSQL ajeno al proyecto.
 
 ## Pendientes de otras etapas
 

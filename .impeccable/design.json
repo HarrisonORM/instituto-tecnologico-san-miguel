@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T21:14:28.781Z",
+  "title": "Design System: Instituto Tecnológico de San Miguel",
+  "extensions": {
+    "colorMeta": {
+      "brand": {
+        "role": "primary",
+        "displayName": "brand",
+        "tonalRamp": [
+          "oklch(15% 0.10914 170.11)",
+          "oklch(26.43% 0.10914 170.11)",
+          "oklch(37.86% 0.10914 170.11)",
+          "oklch(49.29% 0.10914 170.11)",
+          "oklch(60.71% 0.10914 170.11)",
+          "oklch(72.14% 0.10914 170.11)",
+          "oklch(83.57% 0.10914 170.11)",
+          "oklch(95% 0.10914 170.11)"
+        ]
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "action",
+        "tonalRamp": [
+          "oklch(15% 0.08909 168.50)",
+          "oklch(26.43% 0.08909 168.50)",
+          "oklch(37.86% 0.08909 168.50)",
+          "oklch(49.29% 0.08909 168.50)",
+          "oklch(60.71% 0.08909 168.50)",
+          "oklch(72.14% 0.08909 168.50)",
+          "oklch(83.57% 0.08909 168.50)",
+          "oklch(95% 0.08909 168.50)"
+        ]
+      },
+      "action-ink": {
+        "role": "neutral",
+        "displayName": "action ink",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "tonalRamp": [
+          "oklch(15% 0.03990 171.03)",
+          "oklch(26.43% 0.03990 171.03)",
+          "oklch(37.86% 0.03990 171.03)",
+          "oklch(49.29% 0.03990 171.03)",
+          "oklch(60.71% 0.03990 171.03)",
+          "oklch(72.14% 0.03990 171.03)",
+          "oklch(83.57% 0.03990 171.03)",
+          "oklch(95% 0.03990 171.03)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "muted",
+        "tonalRamp": [
+          "oklch(15% 0.03924 170.05)",
+          "oklch(26.43% 0.03924 170.05)",
+          "oklch(37.86% 0.03924 170.05)",
+          "oklch(49.29% 0.03924 170.05)",
+          "oklch(60.71% 0.03924 170.05)",
+          "oklch(72.14% 0.03924 170.05)",
+          "oklch(83.57% 0.03924 170.05)",
+          "oklch(95% 0.03924 170.05)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "ground",
+        "tonalRamp": [
+          "oklch(15% 0.00497 165.01)",
+          "oklch(26.43% 0.00497 165.01)",
+          "oklch(37.86% 0.00497 165.01)",
+          "oklch(49.29% 0.00497 165.01)",
+          "oklch(60.71% 0.00497 165.01)",
+          "oklch(72.14% 0.00497 165.01)",
+          "oklch(83.57% 0.00497 165.01)",
+          "oklch(95% 0.00497 165.01)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "surface",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ]
+      },
+      "mint": {
+        "role": "neutral",
+        "displayName": "mint",
+        "tonalRamp": [
+          "oklch(15% 0.01834 166.37)",
+          "oklch(26.43% 0.01834 166.37)",
+          "oklch(37.86% 0.01834 166.37)",
+          "oklch(49.29% 0.01834 166.37)",
+          "oklch(60.71% 0.01834 166.37)",
+          "oklch(72.14% 0.01834 166.37)",
+          "oklch(83.57% 0.01834 166.37)",
+          "oklch(95% 0.01834 166.37)"
+        ]
+      },
+      "mint-strong": {
+        "role": "neutral",
+        "displayName": "mint strong",
+        "tonalRamp": [
+          "oklch(15% 0.04701 169.03)",
+          "oklch(26.43% 0.04701 169.03)",
+          "oklch(37.86% 0.04701 169.03)",
+          "oklch(49.29% 0.04701 169.03)",
+          "oklch(60.71% 0.04701 169.03)",
+          "oklch(72.14% 0.04701 169.03)",
+          "oklch(83.57% 0.04701 169.03)",
+          "oklch(95% 0.04701 169.03)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "line",
+        "tonalRamp": [
+          "oklch(15% 0.02189 163.00)",
+          "oklch(26.43% 0.02189 163.00)",
+          "oklch(37.86% 0.02189 163.00)",
+          "oklch(49.29% 0.02189 163.00)",
+          "oklch(60.71% 0.02189 163.00)",
+          "oklch(72.14% 0.02189 163.00)",
+          "oklch(83.57% 0.02189 163.00)",
+          "oklch(95% 0.02189 163.00)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "danger",
+        "tonalRamp": [
+          "oklch(15% 0.15762 21.23)",
+          "oklch(26.43% 0.15762 21.23)",
+          "oklch(37.86% 0.15762 21.23)",
+          "oklch(49.29% 0.15762 21.23)",
+          "oklch(60.71% 0.15762 21.23)",
+          "oklch(72.14% 0.15762 21.23)",
+          "oklch(83.57% 0.15762 21.23)",
+          "oklch(95% 0.15762 21.23)"
+        ]
+      },
+      "danger-bg": {
+        "role": "neutral",
+        "displayName": "danger bg",
+        "tonalRamp": [
+          "oklch(15% 0.01627 12.78)",
+          "oklch(26.43% 0.01627 12.78)",
+          "oklch(37.86% 0.01627 12.78)",
+          "oklch(49.29% 0.01627 12.78)",
+          "oklch(60.71% 0.01627 12.78)",
+          "oklch(72.14% 0.01627 12.78)",
+          "oklch(83.57% 0.01627 12.78)",
+          "oklch(95% 0.01627 12.78)"
+        ]
+      },
+      "amber": {
+        "role": "neutral",
+        "displayName": "amber",
+        "tonalRamp": [
+          "oklch(15% 0.09291 75.68)",
+          "oklch(26.43% 0.09291 75.68)",
+          "oklch(37.86% 0.09291 75.68)",
+          "oklch(49.29% 0.09291 75.68)",
+          "oklch(60.71% 0.09291 75.68)",
+          "oklch(72.14% 0.09291 75.68)",
+          "oklch(83.57% 0.09291 75.68)",
+          "oklch(95% 0.09291 75.68)"
+        ]
+      },
+      "amber-bg": {
+        "role": "neutral",
+        "displayName": "amber bg",
+        "tonalRamp": [
+          "oklch(15% 0.03564 89.44)",
+          "oklch(26.43% 0.03564 89.44)",
+          "oklch(37.86% 0.03564 89.44)",
+          "oklch(49.29% 0.03564 89.44)",
+          "oklch(60.71% 0.03564 89.44)",
+          "oklch(72.14% 0.03564 89.44)",
+          "oklch(83.57% 0.03564 89.44)",
+          "oklch(95% 0.03564 89.44)"
+        ]
+      },
+      "dark-action": {
+        "role": "primary",
+        "displayName": "dark action",
+        "tonalRamp": [
+          "oklch(15% 0.09212 169.44)",
+          "oklch(26.43% 0.09212 169.44)",
+          "oklch(37.86% 0.09212 169.44)",
+          "oklch(49.29% 0.09212 169.44)",
+          "oklch(60.71% 0.09212 169.44)",
+          "oklch(72.14% 0.09212 169.44)",
+          "oklch(83.57% 0.09212 169.44)",
+          "oklch(95% 0.09212 169.44)"
+        ]
+      },
+      "dark-action-ink": {
+        "role": "neutral",
+        "displayName": "dark action ink",
+        "tonalRamp": [
+          "oklch(15% 0.03990 171.03)",
+          "oklch(26.43% 0.03990 171.03)",
+          "oklch(37.86% 0.03990 171.03)",
+          "oklch(49.29% 0.03990 171.03)",
+          "oklch(60.71% 0.03990 171.03)",
+          "oklch(72.14% 0.03990 171.03)",
+          "oklch(83.57% 0.03990 171.03)",
+          "oklch(95% 0.03990 171.03)"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "dark ink",
+        "tonalRamp": [
+          "oklch(15% 0.01928 167.92)",
+          "oklch(26.43% 0.01928 167.92)",
+          "oklch(37.86% 0.01928 167.92)",
+          "oklch(49.29% 0.01928 167.92)",
+          "oklch(60.71% 0.01928 167.92)",
+          "oklch(72.14% 0.01928 167.92)",
+          "oklch(83.57% 0.01928 167.92)",
+          "oklch(95% 0.01928 167.92)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "dark muted",
+        "tonalRamp": [
+          "oklch(15% 0.03445 164.90)",
+          "oklch(26.43% 0.03445 164.90)",
+          "oklch(37.86% 0.03445 164.90)",
+          "oklch(49.29% 0.03445 164.90)",
+          "oklch(60.71% 0.03445 164.90)",
+          "oklch(72.14% 0.03445 164.90)",
+          "oklch(83.57% 0.03445 164.90)",
+          "oklch(95% 0.03445 164.90)"
+        ]
+      },
+      "dark-ground": {
+        "role": "neutral",
+        "displayName": "dark ground",
+        "tonalRamp": [
+          "oklch(15% 0.01997 173.11)",
+          "oklch(26.43% 0.01997 173.11)",
+          "oklch(37.86% 0.01997 173.11)",
+          "oklch(49.29% 0.01997 173.11)",
+          "oklch(60.71% 0.01997 173.11)",
+          "oklch(72.14% 0.01997 173.11)",
+          "oklch(83.57% 0.01997 173.11)",
+          "oklch(95% 0.01997 173.11)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "dark surface",
+        "tonalRamp": [
+          "oklch(15% 0.02738 167.77)",
+          "oklch(26.43% 0.02738 167.77)",
+          "oklch(37.86% 0.02738 167.77)",
+          "oklch(49.29% 0.02738 167.77)",
+          "oklch(60.71% 0.02738 167.77)",
+          "oklch(72.14% 0.02738 167.77)",
+          "oklch(83.57% 0.02738 167.77)",
+          "oklch(95% 0.02738 167.77)"
+        ]
+      },
+      "dark-mint": {
+        "role": "neutral",
+        "displayName": "dark mint",
+        "tonalRamp": [
+          "oklch(15% 0.03804 165.23)",
+          "oklch(26.43% 0.03804 165.23)",
+          "oklch(37.86% 0.03804 165.23)",
+          "oklch(49.29% 0.03804 165.23)",
+          "oklch(60.71% 0.03804 165.23)",
+          "oklch(72.14% 0.03804 165.23)",
+          "oklch(83.57% 0.03804 165.23)",
+          "oklch(95% 0.03804 165.23)"
+        ]
+      },
+      "dark-mint-strong": {
+        "role": "neutral",
+        "displayName": "dark mint strong",
+        "tonalRamp": [
+          "oklch(15% 0.05748 163.01)",
+          "oklch(26.43% 0.05748 163.01)",
+          "oklch(37.86% 0.05748 163.01)",
+          "oklch(49.29% 0.05748 163.01)",
+          "oklch(60.71% 0.05748 163.01)",
+          "oklch(72.14% 0.05748 163.01)",
+          "oklch(83.57% 0.05748 163.01)",
+          "oklch(95% 0.05748 163.01)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "dark line",
+        "tonalRamp": [
+          "oklch(15% 0.03929 163.26)",
+          "oklch(26.43% 0.03929 163.26)",
+          "oklch(37.86% 0.03929 163.26)",
+          "oklch(49.29% 0.03929 163.26)",
+          "oklch(60.71% 0.03929 163.26)",
+          "oklch(72.14% 0.03929 163.26)",
+          "oklch(83.57% 0.03929 163.26)",
+          "oklch(95% 0.03929 163.26)"
+        ]
+      },
+      "dark-danger": {
+        "role": "neutral",
+        "displayName": "dark danger",
+        "tonalRamp": [
+          "oklch(15% 0.09156 14.15)",
+          "oklch(26.43% 0.09156 14.15)",
+          "oklch(37.86% 0.09156 14.15)",
+          "oklch(49.29% 0.09156 14.15)",
+          "oklch(60.71% 0.09156 14.15)",
+          "oklch(72.14% 0.09156 14.15)",
+          "oklch(83.57% 0.09156 14.15)",
+          "oklch(95% 0.09156 14.15)"
+        ]
+      },
+      "dark-danger-bg": {
+        "role": "neutral",
+        "displayName": "dark danger bg",
+        "tonalRamp": [
+          "oklch(15% 0.04811 12.03)",
+          "oklch(26.43% 0.04811 12.03)",
+          "oklch(37.86% 0.04811 12.03)",
+          "oklch(49.29% 0.04811 12.03)",
+          "oklch(60.71% 0.04811 12.03)",
+          "oklch(72.14% 0.04811 12.03)",
+          "oklch(83.57% 0.04811 12.03)",
+          "oklch(95% 0.04811 12.03)"
+        ]
+      },
+      "dark-amber": {
+        "role": "neutral",
+        "displayName": "dark amber",
+        "tonalRamp": [
+          "oklch(15% 0.10228 86.21)",
+          "oklch(26.43% 0.10228 86.21)",
+          "oklch(37.86% 0.10228 86.21)",
+          "oklch(49.29% 0.10228 86.21)",
+          "oklch(60.71% 0.10228 86.21)",
+          "oklch(72.14% 0.10228 86.21)",
+          "oklch(83.57% 0.10228 86.21)",
+          "oklch(95% 0.10228 86.21)"
+        ]
+      },
+      "dark-amber-bg": {
+        "role": "neutral",
+        "displayName": "dark amber bg",
+        "tonalRamp": [
+          "oklch(15% 0.03623 87.17)",
+          "oklch(26.43% 0.03623 87.17)",
+          "oklch(37.86% 0.03623 87.17)",
+          "oklch(49.29% 0.03623 87.17)",
+          "oklch(60.71% 0.03623 87.17)",
+          "oklch(72.14% 0.03623 87.17)",
+          "oklch(83.57% 0.03623 87.17)",
+          "oklch(95% 0.03623 87.17)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Apertura pública",
+        "purpose": "Titular de presentación, con adaptación móvil propia."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-control-light",
+        "value": "0 12px 35px #103c2620",
+        "purpose": "Control de movimiento en claro."
+      },
+      {
+        "name": "floating-control-dark",
+        "value": "0 12px 35px #0004",
+        "purpose": "Control de movimiento en oscuro."
+      }
+    ],
+    "motion": [
+      {
+        "name": "color-state",
+        "value": "background .2s,color .2s",
+        "purpose": "Estados generales."
+      },
+      {
+        "name": "move-state",
+        "value": "transform .3s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Desplazamiento de interacción."
+      },
+      {
+        "name": "campus-breathe",
+        "value": "22s ease-in-out infinite alternate; scale(1.025) to scale(1.075)",
+        "purpose": "Fotografía pausable y reducible."
+      },
+      {
+        "name": "campus-scroll",
+        "value": "min(scrollY * .1,45)px",
+        "purpose": "Desplazamiento del fondo anulable."
+      },
+      {
+        "name": "program-hover",
+        "value": "transform .7s cubic-bezier(.16,1,.3,1); scale(1.035)",
+        "purpose": "Acercamiento fotográfico."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "min-width:1800px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "max-width:1250px"
+      },
+      {
+        "name": "tablet",
+        "value": "max-width:950px"
+      },
+      {
+        "name": "mobile",
+        "value": "max-width:760px"
+      }
+    ],
+    "tonalRampNote": "Rampas OKLCH sintetizadas solo para el panel; no son tokens de producción. Los valores normativos están en el frontmatter y globals.css."
+  },
+  "components": [
+    {
+      "name": "Botón primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción compartida con colores del tema activo.",
+      "html": "<button class=\"ds-primary\">Continuar</button>",
+      "css": ".ds-primary{font-family:var(--font-manrope),sans-serif;font-size:15px;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:13px 22px;border-radius:7px;text-decoration:none;font-weight:700;min-height:46px;line-height:1.35;border:1px solid transparent;white-space:normalbackground:var(--action);color:var(--action-ink)}.ds-primary:hover{filter:brightness(.93);transform:translateY(-1px)}.ds-primary:focus-visible{outline:3px solid var(--action);outline-offset:4px;}.ds-primary:disabled{opacity:.55;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none;}}"
+    },
+    {
+      "name": "Botón secondary",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción compartida con colores del tema activo.",
+      "html": "<button class=\"ds-secondary\">Ver detalle</button>",
+      "css": ".ds-secondary{font-family:var(--font-manrope),sans-serif;font-size:15px;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:13px 22px;border-radius:7px;text-decoration:none;font-weight:700;min-height:46px;line-height:1.35;border:1px solid transparent;white-space:normalborder-color:var(--line);background:var(--surface)}.ds-secondary:hover{background:var(--mint)}.ds-secondary:focus-visible{outline:3px solid var(--action);outline-offset:4px;}.ds-secondary:disabled{opacity:.55;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none;}}"
+    },
+    {
+      "name": "Botón danger",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Acción compartida con colores del tema activo.",
+      "html": "<button class=\"ds-danger\">Eliminar</button>",
+      "css": ".ds-danger{font-family:var(--font-manrope),sans-serif;font-size:15px;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:13px 22px;border-radius:7px;text-decoration:none;font-weight:700;min-height:46px;line-height:1.35;border:1px solid transparent;white-space:normalbackground:var(--danger-bg);color:var(--danger);border-color:var(--danger)}.ds-danger:hover{}.ds-danger:focus-visible{outline:3px solid var(--action);outline-offset:4px;}.ds-danger:disabled{opacity:.55;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-danger{transition:none;}}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Etiqueta superior y campo de superficie.",
+      "html": "<label class=\"ds-field\">Correo institucional<input type=\"email\" placeholder=\"nombre@example.com\"></label>",
+      "css": ".ds-field{font-family:var(--font-manrope),sans-serif;display:grid;gap:7px;font-size:14px;font-weight:650color:var(--ink);}.ds-field input{font-family:var(--font-manrope),sans-serif;font-size:15px;width:100%;min-width:0;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:12px 14px;caret-color:var(--action)}.ds-field input::placeholder{color:var(--muted);opacity:1;}.ds-field input:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:760px){.ds-field input{font-size:16px;}}"
+    },
+    {
+      "name": "Etiqueta de estado",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Estado textual con variantes semánticas.",
+      "html": "<span class=\"ds-badge\">Entregada</span> <span class=\"ds-badge ds-warning\">Pendiente</span>",
+      "css": ".ds-badge{font-family:var(--font-manrope),sans-serif;display:inline-flex;align-items:center;padding:4px 9px;background:var(--mint);color:var(--ink);font-size:10px;font-weight:750;border-radius:4px;white-space:nowrap}.ds-warning{background:var(--amber-bg);color:var(--amber)}"
+    },
+    {
+      "name": "Panel de detalle",
+      "kind": "card",
+      "refersTo": "detail-panel",
+      "description": "Contenedor plano del portal.",
+      "html": "<section class=\"ds-panel\"><h2>Detalle de la actividad</h2><p>Consulta las instrucciones y la fecha de entrega.</p></section>",
+      "css": ".ds-panel{font-family:var(--font-manrope),sans-serif;color:var(--ink);padding:28px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}.ds-panel h2{margin:0;line-height:1.15;letter-spacing:-.035em;font-weight:750;font-size:24px;margin-bottom:20px}.ds-panel p{margin:0;line-height:1.65;color:var(--muted);font-size:13px;white-space:pre-wrap}@media(max-width:760px){.ds-panel{padding:22px 18px;}.ds-panel h2{font-size:23px;}}"
+    },
+    {
+      "name": "Navegación de portal",
+      "kind": "nav",
+      "description": "Barra esmeralda con selección explícita y fila móvil.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Campus\"><button aria-current=\"page\">Resumen</button><button>Mis materias</button></nav>",
+      "css": ".ds-nav{font-family:var(--font-manrope),sans-serif;background:var(--brand);color:#102e25;padding:27px 13px;display:flex;flex-direction:column;gap:5px}.ds-nav>button{font-family:var(--font-manrope),sans-serif;background:none;border:0;color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:flex;gap:13px;align-items:center;text-align:left;font-size:13px;font-weight:700;padding:13px 17px;border-radius:7px;min-height:46px}.ds-nav>button[aria-current=page]{background:#e9f7f1}.ds-nav>button:hover{background:#e9f7f17a}.ds-nav>button:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:760px){.ds-nav{flex-direction:row;overflow-x:auto;padding:8px;}.ds-nav>button{white-space:nowrap;flex-shrink:0;padding:10px 12px;min-height:40px;font-size:12px;}}@media(prefers-reduced-motion:reduce){.ds-nav>button{transition:none;}}"
+    },
+    {
+      "name": "Selección de programa",
+      "kind": "custom",
+      "description": "Botones del explorador público.",
+      "html": "<div class=\"ds-picks\" role=\"group\" aria-label=\"Elegir programa\"><button aria-pressed=\"true\">Desarrollo de Software</button><button aria-pressed=\"false\">Redes y Telecomunicaciones</button></div>",
+      "css": ".ds-picks{font-family:var(--font-manrope),sans-serif;background:var(--mint);color:var(--ink);display:grid;gap:4px;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 20px}.ds-picks button{font-family:var(--font-manrope),sans-serif;background:none;border:0;color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;font-size:12px;font-weight:650;padding:8px 10px;border-radius:4px;line-height:1.4}.ds-picks button[aria-pressed=true]{background:var(--mint-strong)}.ds-picks button:hover{background:var(--mint-strong)}.ds-picks button:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:760px){.ds-picks{border:0;padding:0;}.ds-picks button{padding:10px 12px;font-size:13px;min-height:42px;}}@media(prefers-reduced-motion:reduce){.ds-picks button{transition:none;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Campus abierto + Campus en profundidad",
+    "overview": "El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía es ilustrativa: la institución se identifica como ficticia y como proyecto de portafolio.\n\nLos portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La revisión de acabado posterior resolvió únicamente la divulgación de ficción y el contraste de misión/visión en el alcance de dos correcciones.",
+    "keyCharacteristics": [
+      "Identidad esmeralda con acciones en verde de contraste.",
+      "Fotografía ilustrativa y diagonales en la presentación pública.",
+      "Portales planos, tablas legibles y controles discretamente redondeados.",
+      "Preferencias persistentes y movimiento fotográfico reducible."
+    ],
+    "rules": [
+      {
+        "name": "The Identity and Action Rule",
+        "body": "El campo de identidad usa brand; las acciones usan action y action-ink como pareja del tema activo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Numeric Alignment Rule",
+        "body": "Tablas y calificaciones usan cifras tabulares para comparar valores sin saltos de anchura.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Portal Rule",
+        "body": "La jerarquía del trabajo académico se construye con tipografía, separación, menta y líneas, conservando los paneles planos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do conservar la pareja de color de acción del tema activo.",
+      "Do mantener Manrope local y cifras tabulares en datos comparables.",
+      "Do usar bordes y menta para ordenar los portales planos.",
+      "Do conservar ES/EN, tema y preferencia de movimiento al cambiar de superficie.",
+      "Do identificar como ficticia la institución y como ilustrativas sus fotografías."
+    ],
+    "donts": [
+      "Don't trasladar automáticamente las diagonales de presentación a cada panel de trabajo.",
+      "Don't comunicar errores, advertencias o selección únicamente mediante color.",
+      "Don't presentar una fotografía ilustrativa como evidencia de un campus real.",
+      "Don't convertir tamaños incidentales de texto auxiliar o un defecto observado en una regla para nuevas superficies."
+    ]
+  }
+}

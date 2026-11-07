@@ -1,12 +1,12 @@
 # Backend: implementación local pendiente de validar
 
-Por decisión del usuario se adelanta el backend y se aplaza la ejecución de pruebas y el despliegue. El bloque original escribió código sin aplicar SQL a Supabase ni enviar invitaciones. Los resultados parciales del avance de frontend posterior están registrados en docs/ESTADO.md; no acreditan el conjunto. No se declara el backend completo ni listo para producción.
+El usuario adelantó backend y después autorizó retomar pruebas locales; el despliegue y las escrituras en Supabase siguen pendientes. El bloque original escribió código sin aplicar SQL a Supabase ni enviar invitaciones. Los resultados parciales del avance de frontend posterior están registrados en docs/ESTADO.md; no acreditan el conjunto. No se declara el backend completo ni listo para producción.
 
 La ampliación original comprende migraciones 006 a 016, ejecución coordinada de eliminación, conciliación, inspección de archivos, idempotencia, modelos de lectura y herramientas operativas. El contrato adicional y sus límites están en [Backend y operaciones](BACKEND-OPERACIONES.md). Los [recorridos](RECORRIDOS.md) preparan el frontend sin elegir una dirección visual.
 
 ## Ampliación de frontend y servicios privados
 
-El conjunto actual tiene 19 migraciones, sin aplicar. Las 017 a 019 preparan contacto privado, traducciones revisadas y marcado auditado de contactos. Se añadieron mfa-list, validación de contraseña de 12 a 128 caracteres y consumo de presupuesto de lectura para RPC de consulta. El frontend institucional utiliza tokens Bearer solo en memoria, enlaces de activación/recuperación y los contratos existentes. Ver docs/FRONTEND-IMPLEMENTADO.md y docs/VALIDACION-PENDIENTE.md para resultados parciales y límites actuales; el aplazamiento de pruebas continúa.
+El conjunto actual tiene 19 migraciones, aplicadas con éxito solo en clústeres locales aislados, no en el proyecto externo. Las 017 a 019 preparan contacto privado, traducciones revisadas y marcado auditado de contactos. Se añadieron mfa-list, validación de contraseña de 12 a 128 caracteres y consumo de presupuesto de lectura para RPC de consulta. El frontend institucional utiliza tokens Bearer solo en memoria, enlaces de activación/recuperación y los contratos existentes. Ver docs/FRONTEND-IMPLEMENTADO.md y docs/VALIDACION-PENDIENTE.md para resultados parciales y límites actuales; la validación local ya se ejecutó y la integración real sigue pendiente.
 
 ## Estructura
 
