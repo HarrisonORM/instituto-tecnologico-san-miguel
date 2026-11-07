@@ -30,7 +30,14 @@ Mantén una única fuente de requisitos en PRODUCT.md. Actualiza el estado al ce
 - Conservar la entrega única con reemplazo autorizado incluso antes de calificar, el redondeo aprobado y los ceros automáticos al cierre. No sustituir estas reglas por recomendaciones anteriores.
 - No afirmar que una integración o comprobación funcionó sin ejecutarla y observar su resultado.
 
-## Verificación
+## Mensajes de commit
+
+- Preferencia confirmada del usuario: cada commit debe tener un título claro y un cuerpo detallado en español.
+- Describir los cambios concretos de ese commit, su finalidad y las comprobaciones realmente ejecutadas, con sus resultados y límites relevantes.
+- Agrupar cambios relacionados en commits comprensibles; un mensaje genérico como «cambios» o «actualización» no es suficiente.
+- Conservar el historial existente. Esta preferencia se aplica a los commits siguientes, salvo que el usuario pida reescribir los anteriores.
+
+## Comprobaciones del proyecto
 
 La base técnica define estos comandos, ejecutados desde la raíz del proyecto:
 
