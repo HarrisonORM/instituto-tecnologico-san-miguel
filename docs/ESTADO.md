@@ -10,6 +10,8 @@ La etapa 1 consolidó el encargo y los acuerdos en PRODUCT.md, organizó el plan
 
 ## Avance de la etapa 3
 
+- Nombre confirmado para el proyecto de Supabase: `instituto-tecnologico-san-miguel`. Sustituye el nombre de ejemplo anterior; el recurso todavía no se ha creado desde este trabajo.
+
 - Revisión pública realizada el 7 de noviembre de 2026: cuotas de Supabase Free, Vercel Hobby, pausas, restricciones, copias y viabilidad de correo gratuito. Fuentes y alcance en docs/SERVICIOS-GRATUITOS.md.
 - Guía de acceso, configuración local y registro de pruebas en docs/CONFIGURACION-SERVICIOS.md.
 - Plantilla .env.example vacía, con URL y clave publicable; no conecta la aplicación por sí misma. No se han creado archivos locales con valores reales en este bloque.

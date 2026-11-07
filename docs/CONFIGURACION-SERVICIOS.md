@@ -18,7 +18,7 @@ El resultado esperado es un proyecto nuevo y operativo para el instituto en Free
 
 ## Crear o seleccionar el proyecto de prueba
 
-Después del acceso se creará o seleccionará un proyecto dedicado a la demo, por ejemplo `instituto-san-miguel-demo`, dentro de Free. Se comprobarán los proyectos existentes antes de crear recursos, conservando sus datos y configuración.
+Se creará el proyecto dedicado al instituto con el nombre confirmado por el usuario: `instituto-tecnologico-san-miguel`, dentro de Free. Se comprobarán los proyectos existentes antes de crear recursos, conservando sus datos y configuración. El nombre está confirmado; la creación y conexión todavía están pendientes.
 
 Para una creación manual:
 
