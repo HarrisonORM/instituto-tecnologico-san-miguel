@@ -2,6 +2,8 @@
 
 ## Bloque actual: planificación visual con referencias del usuario
 
+Ronda visual preparada: se abrió una comparación local de Atlas de posibilidades, Campus abierto y Campus en profundidad, junto con una alternativa institucional clásica. También se creó una muestra de panel docente tranquilo con grupos y revisión pendiente. Contexto, argumentos y límites en docs/BOCETOS-VISUALES.md; imágenes e instrucciones de generación conservadas en .impeccable/mocks/decision/. Son propuestas sin aprobación; las imágenes no constituyen pantallas implementadas ni evidencia de funcionamiento. No registrar una selección hasta recibir la respuesta explícita del usuario.
+
 El usuario aportó dos referencias de landing y una muestra esmeralda #48B292. Confirmó landing con movimiento y secciones institucionales, programas con imágenes, contacto y accesos de estudiante/docente; paneles sencillos y esmeralda; ES/EN y temas claro/oscuro/sistema en todas las vistas. Se registró en PRODUCT.md y docs/DISENO-REQUISITOS.md. No se implementaron pantallas ni se eligió unilateralmente una composición final.
 
 Se propusieron secuencia, efectos, muestras de contraste y mejoras de experiencia. El usuario confirmó fotografía con movimiento suave y traducción también del contenido académico. Se preguntó cómo obtener esa traducción; falta resolver versiones revisadas frente a generación automática y alcance de adjuntos. La referencia base está decidida, pero faltan bocetos y elección de composición final. Las pruebas de backend y el despliegue continúan aplazados.

@@ -26,6 +26,12 @@ work/
 *.dump
 *.log
 
+# Sesiones locales de elección visual y referencias de catálogo descargadas
+.impeccable/questions/*.state.json
+.impeccable/questions/*.hand.json
+.impeccable/questions/roll.json
+.impeccable/mocks/worlds/
+
 # Archivos del sistema
 .DS_Store
 Thumbs.db
