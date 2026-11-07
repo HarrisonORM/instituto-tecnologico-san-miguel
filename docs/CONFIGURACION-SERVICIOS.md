@@ -2,13 +2,19 @@
 
 Etapa 3 en curso. La revisión pública de [servicios gratuitos](SERVICIOS-GRATUITOS.md) se realizó el **7 de noviembre de 2026**. Esta guía prepara los pasos siguientes; no declara que ya exista una integración funcionando.
 
-## Primer paso del usuario: acceso a Supabase
+## Cuenta y capacidad confirmadas por el usuario
 
-1. Abrir [Supabase](https://supabase.com/dashboard) e iniciar sesión o crear la cuenta gratuita.
-2. Verificar que se va a trabajar en una organización **Free**. Si ya existen proyectos, comprobar la capacidad gratuita disponible antes de crear otro.
-3. Habilitar la conexión de Supabase en Codex para revisar el proyecto juntos, o indicar que se prefiere hacerlo manualmente con esta guía. No compartir contraseñas ni claves en el chat.
+El usuario confirmó que ya tiene cuenta de Supabase y dos proyectos gratuitos, uno de ellos pausado. Es información proporcionada por el usuario; el agente todavía no ha inspeccionado su panel.
 
-El resultado esperado de este paso es tener acceso confirmado al panel y saber si hay un proyecto disponible. La cuenta del proveedor es distinta de las cuentas de estudiantes que tendrá nuestra aplicación.
+Los proyectos pausados no cuentan para el límite de dos proyectos gratuitos activos. Si no hay otras restricciones de la organización, debería haber capacidad para crear el del instituto. El límite considera las organizaciones donde se es propietario o administrador y puede verse afectado por otros miembros con esos roles. La disponibilidad concreta se confirma en el formulario de creación. [Facturación y proyectos gratuitos](https://supabase.com/docs/guides/platform/billing-on-supabase) y [preguntas de facturación](https://supabase.com/docs/guides/platform/billing-faq).
+
+## Siguiente paso del usuario: crear el proyecto del instituto
+
+1. Abrir [Supabase](https://supabase.com/dashboard) con la cuenta existente y elegir la organización **Free** adecuada.
+2. Abrir la opción de nuevo proyecto y comprobar que permite crearlo en el nivel gratuito. La cuenta existente y el estado pausado ya están confirmados por el usuario; no hace falta volver a preguntarlos.
+3. Seguir los campos indicados en la sección siguiente para un proyecto dedicado a la demo. Si el panel indica falta de capacidad o exige cambiar de plan, registrar el aviso y resolver esa condición antes de continuar.
+
+El resultado esperado es un proyecto nuevo y operativo para el instituto en Free. Este paso conserva los proyectos existentes. La cuenta del proveedor es distinta de las cuentas de estudiantes que tendrá nuestra aplicación. No compartir contraseñas ni claves en el chat.
 
 ## Crear o seleccionar el proyecto de prueba
 
@@ -79,7 +85,8 @@ La prueba de alojamiento debe distinguir disponibilidad del servidor y disponibi
 | Comprobación | Estado al 7 de noviembre de 2026 |
 |---|---|
 | Documentación oficial, cuotas, pausas y correo | Revisada; referencias en SERVICIOS-GRATUITOS.md. |
-| Acceso a cuenta y plan de Supabase | Pendiente de conexión o confirmación del usuario. |
+| Cuenta y proyectos existentes de Supabase | Usuario confirma cuenta y dos proyectos gratuitos, uno pausado. Panel y capacidad de creación todavía no inspeccionados por el agente. |
+| Capacidad para el proyecto del instituto | Un espacio previsiblemente disponible por la exclusión del pausado; comprobarlo en el formulario de creación y la organización elegida. |
 | Acceso a cuenta y plan de Vercel | Pendiente de conexión o confirmación del usuario. |
 | Configuración local real | No hay .env.local ni .env en la carpeta al revisar este bloque; se añadió solo una plantilla vacía. |
 | Proyecto externo creado por este bloque | Ninguno. |

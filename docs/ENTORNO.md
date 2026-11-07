@@ -38,7 +38,7 @@ La instalación reproducible, lint, comprobación de tipos, compilación y respu
 
 ## Pendientes de otras etapas
 
-- Acceso a GitHub, Supabase y Vercel: no se ha comprobado inicio de sesión, creado proyectos ni publicado.
+- El usuario confirmó cuenta de Supabase y dos proyectos gratuitos, uno pausado. El agente todavía no tiene acceso confirmado al panel ni ha inspeccionado la capacidad para crear otro. No se han creado proyectos ni publicado desde este trabajo; GitHub y Vercel siguen pendientes de acceso.
 - Las condiciones gratuitas, cuotas y comportamiento publicado ante inactividad y exceso se revisaron el 7 de noviembre de 2026: docs/SERVICIOS-GRATUITOS.md. Comprobarlos en la cuenta real y probar la reactivación sigue pendiente.
 - Conexión real a PostgreSQL/Supabase, autenticación, almacenamiento privado, invitaciones y recuperación.
 - Envío real de correo a un destinatario controlado; todavía no está validado.

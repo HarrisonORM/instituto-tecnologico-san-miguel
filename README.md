@@ -29,7 +29,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-El siguiente paso de la etapa 3 es confirmar el acceso a Supabase en su plan gratuito. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica cómo hacerlo y cuándo completar `.env.local` a partir de la plantilla vacía `.env.example`. Esa plantilla todavía no conecta la aplicación con ningún servicio.
+El siguiente paso de la etapa 3 es crear el proyecto del instituto en Supabase Free. El usuario ya tiene cuenta y confirmó que uno de sus dos proyectos está pausado, por lo que se prevé espacio sujeto a la comprobación del panel. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica cómo avanzar y cuándo completar `.env.local` a partir de la plantilla vacía `.env.example`. Esa plantilla todavía no conecta la aplicación con ningún servicio.
 
 ## Arranque local
 

@@ -15,9 +15,10 @@ La etapa 1 consolidó el encargo y los acuerdos en PRODUCT.md, organizó el plan
 - Plantilla .env.example vacía, con URL y clave publicable; no conecta la aplicación por sí misma. No se han creado archivos locales con valores reales en este bloque.
 - Límites internos de consumo conservados como propuestas. No se han activado controles de almacenamiento, transferencia o correo.
 - Preferencia sobre commits detallados registrada en AGENTS.md y guardada en 492d130. Los commits siguientes describen cambios y verificaciones en su cuerpo.
-- Acceso a cuentas, consulta real, archivo privado, invitación, recuperación y publicación técnica: pendientes. Las conexiones de Supabase y Vercel se ofrecieron; falta confirmación de acceso o configuración manual por el usuario.
+- El usuario confirmó cuenta de Supabase y dos proyectos gratuitos, uno pausado. Los pausados no cuentan para el límite de activos: se prevé espacio para el instituto, sujeto a lo que permita el panel y la organización elegida. No se han inspeccionado sus cuentas desde el agente ni creado un proyecto nuevo.
+- Conexión del agente, acceso a Vercel, consulta real, archivo privado, invitación, recuperación y publicación técnica: pendientes. El siguiente paso manual está descrito en docs/CONFIGURACION-SERVICIOS.md.
 
-La etapa 3 no está completada. El siguiente paso concreto es acceder a Supabase Free. Las pantallas siguen esperando la elección visual de la etapa 4.
+La etapa 3 no está completada. El siguiente paso concreto es abrir el formulario de nuevo proyecto, confirmar Free y crear el proyecto dedicado al instituto si el panel ofrece capacidad. Las pantallas siguen esperando la elección visual de la etapa 4.
 
 ## Comprobaciones de este avance documental
 
@@ -88,7 +89,7 @@ El segundo comando debe quedar sin salida después de guardar el bloque. No se h
 
 ## Cómo continuar la etapa 3
 
-Confirmar el acceso a Supabase Free siguiendo el primer paso de docs/CONFIGURACION-SERVICIOS.md. Después se creará o seleccionará el proyecto de prueba y se comprobarán base de datos, archivo privado y correo real. La revisión pública de condiciones ya está documentada; faltan las pruebas observadas.
+Crear el proyecto dedicado al instituto en Supabase Free siguiendo docs/CONFIGURACION-SERVICIOS.md y comprobar el estado operativo. La existencia de la cuenta y de un proyecto pausado ya fue confirmada por el usuario; queda observar la capacidad del formulario. Después se comprobarán base de datos, archivo privado y correo real. La revisión pública de condiciones ya está documentada; faltan las pruebas observadas.
 
 Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. No se ha activado ningún servicio en esta etapa.
 

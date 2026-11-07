@@ -34,7 +34,7 @@ La preparación técnica no autoriza a inventar identidad visual, crear pantalla
 4. Comprobar una consulta, un archivo privado y un envío real a un destinatario controlado. Identificar como pendiente lo que todavía no se haya probado.
 5. Documentar consumo, reactivación, copias y criterios antes de preparar la publicación técnica mínima.
 
-La revisión pública está documentada en docs/SERVICIOS-GRATUITOS.md. docs/CONFIGURACION-SERVICIOS.md contiene los pasos y el registro de pruebas. La etapa sigue abierta: el acceso a las cuentas y las pruebas reales todavía están pendientes. El siguiente paso concreto es confirmar el acceso a Supabase Free; después se preparará el recurso de prueba.
+La revisión pública está documentada en docs/SERVICIOS-GRATUITOS.md. docs/CONFIGURACION-SERVICIOS.md contiene los pasos y el registro de pruebas. El usuario confirmó cuenta de Supabase y dos proyectos gratuitos, uno pausado; se prevé capacidad para el instituto, pendiente de comprobar en el panel. El siguiente paso es crear el recurso de prueba en Free. La conexión del agente y las pruebas reales todavía están pendientes, por lo que la etapa sigue abierta.
 
 ## Decisiones que se concretarán antes de implementar su función
 
