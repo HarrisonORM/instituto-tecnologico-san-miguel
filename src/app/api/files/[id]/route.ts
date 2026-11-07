@@ -3,10 +3,10 @@ import { ApiError, handle, session, supabase, config, json } from "@/server/back
 export const dynamic = "force-dynamic";
 export async function GET(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
-    const { token } = await session(request);
+    const { token } = await session(request, "file");
     const { id } = await context.params;
     if (!/^[0-9a-f-]{36}$/i.test(id)) throw new ApiError(400, "Archivo no válido");
-    const uploads = await supabase(`/rest/v1/uploads?id=eq.${id}&select=path,mime_type&limit=1`, token) as { path: string; mime_type: string }[];
+    const uploads = await supabase(`/rest/v1/uploads?id=eq.${id}&inspection_state=eq.verified&select=path,mime_type&limit=1`, token) as { path: string; mime_type: string }[];
     const file = uploads[0];
     if (!file) throw new ApiError(404, "Archivo no disponible");
     const { url, key } = config();
@@ -25,9 +25,13 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
 
 export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
   return handle(async () => {
-    const { token } = await session(request); const { id } = await context.params;
+    const { token, userId } = await session(request, "file"); const { id } = await context.params;
     if (!/^[0-9a-f-]{36}$/i.test(id)) throw new ApiError(400, "Archivo no válido");
-    // Solo libera una reserva cuyo objeto ya se haya retirado mediante las políticas de Storage.
+    const files=await supabase(`/rest/v1/uploads?id=eq.${id}&owner_id=eq.${userId}&select=path&limit=1`,token) as {path:string}[];
+    if(!files[0])throw new ApiError(404,"Reserva no disponible");
+    await supabase("/rest/v1/rpc/discard_upload",token,{p_upload:id},"POST");
+    try {await supabase("/storage/v1/object/evidence",token,{prefixes:[files[0].path]},"DELETE");}
+    catch(error){if(!(error instanceof ApiError && error.status===404))throw new ApiError(409,"Retirada pendiente; conservar la reserva para conciliar");}
     return supabase("/rest/v1/rpc/release_upload", token, { p_upload: id }, "POST");
   });
 }

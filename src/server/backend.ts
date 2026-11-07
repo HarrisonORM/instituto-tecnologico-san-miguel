@@ -37,7 +37,7 @@ export async function supabase(path: string, token?: string, body?: unknown, met
   if (!response.ok) {
     // No reenviar mensajes de Auth, SQL, nombres de restricciones ni cuerpos privados.
     const error = await response.json().catch(() => ({})) as { code?: string; message?: string };
-    const status = response.status === 429 ? 429 : response.status === 401 ? 401 :
+    const status = response.status === 404 ? 404 : response.status === 429 || error.code === "P0429" ? 429 : response.status === 401 ? 401 :
       response.status === 403 || error.code === "42501" ? 403 : response.status >= 500 ? 503 : 400;
     throw new ApiError(status, status === 429 ? "Demasiados intentos; espera antes de repetir" : error.code === "P0001" && error.message ? error.message : "La operación no pudo completarse");
   }
@@ -73,7 +73,7 @@ export function text(value: unknown, max = 500): string {
   return value;
 }
 
-export async function session(request: Request) {
+export async function session(request: Request, action: "read" | "write" | "file" | "admin" = "read") {
   const authorization = request.headers.get("authorization");
   if (!authorization?.startsWith("Bearer ")) throw new ApiError(401, "Sesión requerida");
   const token = authorization.slice(7);
@@ -81,6 +81,7 @@ export async function session(request: Request) {
   const user = await supabase("/auth/v1/user", token) as { id: string };
   const profiles = await supabase(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}&select=id,state&limit=1`, token) as { id: string; state: string }[];
   if (!profiles[0] || profiles[0].state !== "active") throw new ApiError(403, "Cuenta no habilitada");
+  await supabase("/rest/v1/rpc/consume_api_budget", token, { p_action: action }, "POST");
   return { token, userId: user.id };
 }
 
@@ -107,6 +108,15 @@ export const operations: Record<string, readonly string[]> = {
   request_identity_change: ["p_proposed", "p_reason"], resolve_identity_request: ["p_request", "p_accept"],
   assign_program: ["p_user", "p_program"], set_role: ["p_user", "p_role", "p_enabled"],
   add_calendar_event: ["p_period", "p_title", "p_start", "p_end"], set_rubric: ["p_task", "p_criteria"],
+  edit_structure: ["p_kind", "p_id", "p_data"], retire_structure: ["p_kind", "p_id"],
+  remove_assignment: ["p_group", "p_user", "p_kind"], cancel_deletion: ["p_request"], notification_count: [],
+  discard_upload: ["p_upload"],
+  set_public_offer: ["p_program", "p_description", "p_price_label", "p_published"],
+  dashboard_counts: ["p_mode"], my_subject_result: ["p_group"],
+  reconcile_storage_budget: [], operational_snapshot: [],
+  search_roster: ["p_group", "p_search", "p_limit", "p_offset"],
+  teacher_work_queue: ["p_group", "p_state", "p_search", "p_limit", "p_offset"],
+  student_task_feed: ["p_period", "p_limit", "p_offset"], mark_all_notifications: [],
 };
 export const resources = ["profiles", "programs", "periods", "subjects", "groups", "teacher_groups", "enrollments", "categories", "tasks", "submissions", "submission_versions", "comments", "grade_history", "final_results", "notifications", "audit_events", "deletion_requests", "uploads", "identity_requests", "calendar_events", "rubrics"];
 resources.push("invitation_jobs");

@@ -3,7 +3,7 @@ import { ApiError, bodyOf, handle, session, supabase, text } from "@/server/back
 
 export async function POST(request: Request) {
   return handle(async () => {
-    const { token } = await session(request);
+    const { token } = await session(request, "admin");
     // RPC valida administrador activo y MFA antes de usar una clave privilegiada.
     await supabase("/rest/v1/rpc/require_account_admin", token, {}, "POST");
     const body = await bodyOf(request);
@@ -16,7 +16,8 @@ export async function POST(request: Request) {
     const key = text(request.headers.get("idempotency-key"), 36);
     if (!/^[0-9a-f-]{36}$/i.test(key)) throw new ApiError(400, "Idempotency-Key debe ser un UUID");
     if (!process.env.SUPABASE_SECRET_KEY) throw new ApiError(503, "Administración de Auth pendiente de configurar");
-    await supabase("/rest/v1/rpc/prepare_invitation", token, { p_key: key, p_email: email, p_name: name, p_role: role }, "POST");
+    const job = await supabase("/rest/v1/rpc/prepare_invitation", token, { p_key: key, p_email: email, p_name: name, p_role: role }, "POST") as { status: string; auth_user_id: string | null };
+    if (job.status === "complete") return { id: job.auth_user_id, state: "invited" };
     const invited = await supabase("/auth/v1/invite", undefined, { email, data: { full_name: name } }, "POST", true) as { id: string };
     try {
       await supabase("/rest/v1/rpc/finish_invitation", token, { p_key: key, p_auth_user: invited.id }, "POST");
