@@ -1,5 +1,49 @@
 # Estado y siguiente paso
 
+## Bloque actual: landing, paneles y vista previa implementados
+
+Fecha: 7 de noviembre de 2026. Se continuó dentro de B+C tras la petición «Entonces continua con todo lo que falta sin parar». La composición 2 se tomó como referencia de ejecución delegada. No se atribuye al usuario una selección explícita de ese render. El estado comp-led previo permanece histórico, sin falsear fases ni aprobaciones; la implementación actual sigue una ruta guiada por código.
+
+### Qué se añadió
+
+- Landing esmeralda con fotografía y movimiento suave reducible, programas con imágenes, comunidad, historia ilustrativa, misión/visión, preguntas y contacto.
+- Acceso, recuperación y activación; cuatro portales con navegación, carga/error/vacíos y preferencias ES/EN y claro/oscuro/sistema.
+- Vista previa de 47 personas ficticias, con cambios compartidos en memoria al alternar roles; recargar los reinicia. No consulta información institucional.
+- Flujos por código de grupos, publicación, entregas/versiones, comentarios, notas/historial, rúbricas, calendarios, notificaciones, perfiles, MFA, estructura, porcentajes, cuentas, bajas y auditoría.
+- Contacto privado y traducciones revisadas mediante las migraciones 017 a 019. Total: 19, ninguna aplicada en este bloque.
+- Manifiesto y fallback sin conexión que solo almacena recursos públicos. Instalación/actualización PWA no comprobadas.
+- Escenarios SQL de permisos y script PostgreSQL local preparados, sin ejecutarse.
+
+### Qué se observó y qué no
+
+Se abrió el servidor de desarrollo y se observó la landing real cargada en el navegador. La URL habitual es http://127.0.0.1:3000 y la entrada de paneles es /vista-previa. No se comprobó todavía el recorrido completo ni el acabado en móvil.
+
+Una comprobación de tipos terminó correctamente en una versión intermedia. Lint señaló cinco errores no-undef; se corrigieron los puntos señalados sin volver a ejecutarlo. Después hubo nuevos cambios. No declarar la versión final aprobada por esas comprobaciones.
+
+La revisión automática rechazó ejecutar pruebas locales de migraciones y permisos porque el usuario había aplazado las pruebas. Se pidió permiso expreso para retomarlas y su respuesta sigue pendiente. No reintentar ni sustituirlas por otra vía. La lectura de archivos y los commits siguen permitidos. El script no inició una base y no modificó Supabase.
+
+Faltan claves de servicio y configuración privada. No se enviaron correos, no se aplicaron migraciones, no se cargó la semilla remota y no se publicó en Vercel. No se activaron servicios de pago.
+
+### Puntos de guardado
+
+- e9b9722: contacto privado, traducciones revisadas, autenticación y escenarios SQL preparados.
+- a621e0e: landing, portales, medios y vista previa.
+- La documentación de este bloque se guarda en un commit posterior con título y cuerpo detallados.
+
+### Continuación
+
+1. El usuario puede abrir la landing y la vista previa siguiendo docs/VER-LA-APLICACION.md.
+2. Cuando autorice la validación, completar el orden de docs/VALIDACION-PENDIENTE.md y corregir los resultados observados.
+3. Resolver políticas académicas pendientes y confirmar el alcance de traducciones; el promedio real provisional no se inventó y sigue marcado como política pendiente.
+4. Configurar y validar integración real, correo controlado, copia/restauración y consumo antes del despliegue.
+5. Completar revisión de acabado y documentación visual de Impeccable desde el resultado. DESIGN.md y un veredicto final todavía no existen; el frontend no se declara terminado.
+
+Alcance de los componentes y medios: docs/FRONTEND-IMPLEMENTADO.md. Las secciones siguientes son historia de los bloques anteriores; sus referencias a pantallas inexistentes o a 16 migraciones no describen el estado actual.
+
+---
+
+## Historial hasta el bloque de composiciones
+
 ## Bloque actual: composición de la dirección B+C elegida
 
 El usuario eligió explícitamente combinar B, Campus abierto, con C, Campus en profundidad, y pidió seguir usando Impeccable para todo el diseño. La dirección está confirmada. Se interpreta como estructura editorial y títulos sans de B con profundidad fotográfica y movimiento suave de C. Falta elegir su composición exacta; no se marca como aprobado íntegramente ninguno de los renders originales por separado.

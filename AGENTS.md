@@ -58,7 +58,7 @@ El estado de las comprobaciones realmente ejecutadas está en docs/ESTADO.md. No
 
 Para cambios solo de documentación basta revisar consistencia y referencias. No crear pruebas que repitan el texto o una respuesta constante. Al trabajar con Next.js, consultar la documentación de la versión instalada cuando esté disponible en node_modules/next/dist/docs.
 
-El usuario eligió la dirección combinada B+C (Campus abierto y Campus en profundidad) y seguir utilizando Impeccable para todo el diseño. Falta concretar la composición de la mezcla; consultar PRODUCT.md y la guía de la landing en .impeccable/surfaces/src-app-page-tsx.md. No reabrir la elección de dirección ni atribuir aprobación íntegra a un render B o C por separado. El layout técnico y Tailwind no sustituyen la composición elegida.
+El usuario eligió la dirección combinada B+C (Campus abierto y Campus en profundidad) y seguir utilizando Impeccable para todo el diseño. Después pidió «Entonces continua con todo lo que falta sin parar». Se implementó una concreción de esa dirección tomando la composición 2 como referencia, decisión delegada de ejecución, no aprobación explícita adicional del render. Consultar PRODUCT.md, docs/FRONTEND-IMPLEMENTADO.md y .impeccable/surfaces/src-app-page-tsx.md. La ruta actual está guiada por código; el antiguo estado comp-led es histórico y sus fases no se declaran superadas. Revisión visual y DESIGN.md siguen pendientes. No reabrir B/C ni sustituir la identidad. El aplazamiento de pruebas sigue vigente: una ejecución local de migraciones y permisos fue rechazada por revisión automática y se pidió autorización expresa para retomarlas. Ver docs/VALIDACION-PENDIENTE.md.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

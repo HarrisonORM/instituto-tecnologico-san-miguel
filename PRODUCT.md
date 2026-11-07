@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend y una capa de cliente sin vistas; migraciones, integraciones y comportamiento siguen pendientes de ejecución y validación.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; migraciones, integraciones y recorridos completos siguen pendientes de ejecución y validación.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -98,8 +98,9 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - Detalles de las autorizaciones de reemplazo de entregas: alcance y caducidad del permiso, revisión de una nota previa y comportamiento al cerrar un período.
 - Nombres y contenidos concretos de las cuatro materias y los seis grupos, fechas del período de prueba y contenido institucional ficticio. Las dos carreras y las 47 cuentas ya están aprobadas.
 - Límites internos y compatibilidad del servicio gratuito de correo, que solo pueden considerarse verificados después de una prueba real.
+- Implementación provisional de traducciones: versiones ES/EN revisadas por autores o personal autorizado, con huella del original y permisos del recurso. No usa API externa ni traduce adjuntos; su suficiencia frente al alcance deseado necesita confirmación.
 - Traducción del contenido académico confirmada como requisito: falta elegir versiones ES/EN redactadas o revisadas por el autor frente a generación automática, y definir por separado el interior de documentos e imágenes adjuntos. No hay servicio de traducción elegido ni autorización para generar costes.
-- El usuario eligió combinar B (Campus abierto) con C (Campus en profundidad). Falta concretar la composición combinada y su adaptación móvil; no reabrir la elección de dirección ni tratar un boceto aislado B o C como composición final aprobada.
+- La dirección B+C está confirmada. Ante la delegación «Entonces continua con todo lo que falta sin parar», el agente concretó la implementación tomando la composición 2 como referencia. Falta la revisión del resultado real en escritorio y móvil; no atribuir al usuario aprobación explícita de ese render.
 
 ## Brand Commitments
 
@@ -112,13 +113,13 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - Medio de portada confirmado: fotografía con movimiento suave, en lugar de video de fondo.
 - Dirección elegida por el usuario: combinar B (Campus abierto) con C (Campus en profundidad). Se desarrollará una propuesta que una la estructura y presencia esmeralda de B con la profundidad fotográfica de C; esa distribución concreta de elementos es la interpretación de diseño que se pondrá ante el usuario.
 - Preferencia confirmada: seguir utilizando Impeccable para todo el trabajo de diseño del proyecto.
-- La paleta complementaria, familias tipográficas exactas, logo, composición combinada y animaciones concretas siguen en elaboración. Requisitos y lectura de referencias en docs/DISENO-REQUISITOS.md; no marcar como aprobado íntegramente un boceto B o C por separado.
+- La implementación usa Manrope local con licencia OFL, monograma ITSM, esmeralda #48B292, superficies de menta y fotografía ilustrativa con movimiento reducible. Son decisiones de ejecución dentro de B+C; falta revisión de acabado, no se convierten en preferencias expresas adicionales del usuario. Requisitos en docs/DISENO-REQUISITOS.md y alcance en docs/FRONTEND-IMPLEMENTADO.md.
 
 ## Evidence on Hand
 
 - Encargo completo del usuario leído íntegramente al iniciar el bloque, junto con sus requisitos y decisiones previamente documentados.
 - Los roles de una imagen confirmada por el usuario están transcritos en este documento. No se necesita la imagen temporal para comprender los permisos.
-- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento y cliente técnico sin pantallas. El proyecto de Supabase fue creado por el usuario; las migraciones nuevas no se han aplicado ni probado. La base esmeralda y la dirección combinada B+C están confirmadas; su composición concreta y la identidad completa siguen en elaboración. Los resultados anteriores de entorno no acreditan este código nuevo; consultar docs/ESTADO.md.
+- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento, cliente, landing y paneles, con vista previa ficticia independiente. El proyecto de Supabase fue creado por el usuario; las 19 migraciones no se han aplicado a ese servicio. La dirección B+C está confirmada y se concretó en código bajo la delegación posterior. Los resultados parciales no acreditan el conjunto actual; consultar docs/ESTADO.md.
 - El prompt original y los archivos exportados de la conversación sirven de referencia histórica. Este PRODUCT.md es la fuente de requisitos mantenida para continuar el desarrollo.
 
 ## Product Principles

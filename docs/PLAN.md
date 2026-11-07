@@ -28,9 +28,9 @@ Actualización expresa del usuario: se adelantan las etapas de backend (datos, a
 
 La preparación técnica no autoriza a inventar identidad visual, crear pantallas de producto o activar servicios externos antes de su etapa. El acceso a cuentas y la selección visual se resolverán con el usuario cuando correspondan.
 
-## Bloque actual: diseño de la dirección B+C
+## Bloque actual: implementación de B+C y validación pendiente
 
-El usuario eligió combinar B (Campus abierto) con C (Campus en profundidad). La dirección queda confirmada y se concreta mediante tres composiciones y una muestra móvil. La elección visual no cierra las verificaciones técnicas aplazadas. Estado actual y referencia de continuación en docs/ESTADO.md.
+El usuario eligió B+C y después delegó continuar todo lo pendiente. Se implementaron landing, acceso, paneles, vista previa y conexión por código, tomando la composición 2 como referencia. La ejecución visual final y las etapas 5 a 11 no se dan por terminadas: faltan comprobaciones e integración. La restricción de pruebas no quedó revocada y se pidió autorización expresa. Estado en docs/ESTADO.md y orden de comprobación en docs/VALIDACION-PENDIENTE.md.
 
 ## Preparación histórica de etapa 3: validación pendiente
 

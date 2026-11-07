@@ -1,8 +1,12 @@
 # Backend: implementación local pendiente de validar
 
-Por decisión del usuario se adelanta el backend y se aplaza la ejecución de pruebas y el despliegue. Este bloque escribe código; no aplica SQL a Supabase, no envía invitaciones ni ejecuta comprobaciones de conexión, lint, tipos o compilación. No se declara el backend completo ni listo para producción.
+Por decisión del usuario se adelanta el backend y se aplaza la ejecución de pruebas y el despliegue. El bloque original escribió código sin aplicar SQL a Supabase ni enviar invitaciones. Los resultados parciales del avance de frontend posterior están registrados en docs/ESTADO.md; no acreditan el conjunto. No se declara el backend completo ni listo para producción.
 
-La ampliación actual comprende migraciones 006 a 016, ejecución coordinada de eliminación, conciliación, inspección de archivos, idempotencia, modelos de lectura y herramientas operativas. El contrato adicional y sus límites están en [Backend y operaciones](BACKEND-OPERACIONES.md). Los [recorridos](RECORRIDOS.md) preparan el frontend sin elegir una dirección visual.
+La ampliación original comprende migraciones 006 a 016, ejecución coordinada de eliminación, conciliación, inspección de archivos, idempotencia, modelos de lectura y herramientas operativas. El contrato adicional y sus límites están en [Backend y operaciones](BACKEND-OPERACIONES.md). Los [recorridos](RECORRIDOS.md) preparan el frontend sin elegir una dirección visual.
+
+## Ampliación de frontend y servicios privados
+
+El conjunto actual tiene 19 migraciones, sin aplicar. Las 017 a 019 preparan contacto privado, traducciones revisadas y marcado auditado de contactos. Se añadieron mfa-list, validación de contraseña de 12 a 128 caracteres y consumo de presupuesto de lectura para RPC de consulta. El frontend institucional utiliza tokens Bearer solo en memoria, enlaces de activación/recuperación y los contratos existentes. Ver docs/FRONTEND-IMPLEMENTADO.md y docs/VALIDACION-PENDIENTE.md para resultados parciales y límites actuales; el aplazamiento de pruebas continúa.
 
 ## Estructura
 
@@ -36,11 +40,12 @@ GET /api/me devuelve el perfil propio y sus roles y permisos actuales, usando RL
 | verify | token_hash, type | Canjear verificación de invite, recovery o email. |
 | password | password | Cambiar contraseña de una sesión activa. |
 | logout | objeto vacío | Cerrar la sesión en Auth. |
+| mfa-list | objeto vacío | Enumerar factores propios sin revelar secretos. |
 | mfa-enroll | objeto vacío | Inscribir factor TOTP. |
 | mfa-challenge | factor_id | Pedir desafío TOTP. |
 | mfa-verify | factor_id, challenge_id, code | Verificarlo y obtener los nuevos tokens que debe conservar el cliente. |
 
-No existe endpoint de registro público. Desactivar también Allow new users to sign up en Supabase al configurar el entorno. MFA se exige en las funciones administrativas mediante aal2. La integración de cookies y navegación de activación/recuperación corresponde al frontend futuro; por ahora el contrato es por Bearer.
+No existe endpoint de registro público. Desactivar también Allow new users to sign up en Supabase al configurar el entorno. MFA se exige en las funciones administrativas mediante aal2. El frontend implementado conserva los tokens Bearer en memoria y procesa enlaces de activación/recuperación. No hay sesión persistida en cookies ni localStorage; recargar requiere iniciar sesión de nuevo. La integración real del correo no está validada.
 
 ### Lectura: GET /api/backend/{resource}
 

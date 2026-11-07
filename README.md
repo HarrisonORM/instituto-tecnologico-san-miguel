@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** implementación del backend adelantada por decisión del usuario. Migraciones, funciones académicas, RLS y rutas HTTP escritas localmente, todavía sin aplicar ni validar. Las pruebas y el despliegue quedan aplazados; las pantallas esperan la elección visual.
+**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Hay 19 migraciones y conexión de frontend/backend por código, pendientes de integración y validación. Las pruebas y el despliegue siguen aplazados. Ver [estado actual](docs/ESTADO.md).
 
 ## Documentos del proyecto
 
@@ -19,6 +19,9 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Servicios gratuitos](docs/SERVICIOS-GRATUITOS.md) | Cuotas verificadas en documentación oficial, pausas y presupuesto interno propuesto. |
 | [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
+| [Ver la aplicación](docs/VER-LA-APLICACION.md) | Direcciones locales, paneles y diferencias entre vista previa y acceso real. |
+| [Frontend implementado](docs/FRONTEND-IMPLEMENTADO.md) | Pantallas, fotografías, traducciones y contacto preparados. |
+| [Validación pendiente](docs/VALIDACION-PENDIENTE.md) | Restricción actual de pruebas, resultados parciales y trabajo restante. |
 
 ## Base acordada
 
@@ -32,7 +35,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-El trabajo actual continúa con el código del [backend](docs/BACKEND.md). La configuración y las comprobaciones de servicios quedan pendientes hasta retomar la validación; no ejecutar todavía las migraciones ni los comandos de prueba como parte de este bloque.
+Para recorrer el avance no necesitas credenciales: abre la landing y la vista previa. El acceso institucional requiere configuración privada y migraciones que aún no se aplicaron. No ejecutar pruebas ni migraciones hasta retomar expresamente la validación; la solicitud de autorización está pendiente.
 
 ## Arranque local
 
@@ -43,13 +46,15 @@ Set-Location -LiteralPath 'C:\Programacion\instituto_tecnologico_san_miguel'
 npm.cmd run dev
 ```
 
-Abre `http://127.0.0.1:3000/api/health`. La respuesta prevista es:
+Abre http://127.0.0.1:3000 para la landing o http://127.0.0.1:3000/vista-previa para los paneles ficticios.
+
+La ruta técnica http://127.0.0.1:3000/api/health conserva la respuesta prevista:
 
 ```json
 {"status":"ok","service":"instituto-san-miguel"}
 ```
 
-Esta ruta solo comprueba el servidor de la aplicación. No comprueba Supabase, usuarios, correo ni servicios que todavía no se han conectado. La dirección principal `/` todavía no tiene una pantalla de producto; la comprobación de este bloque utiliza expresamente `/api/health`.
+Esta ruta solo comprueba el servidor de la aplicación. No comprueba Supabase, usuarios, correo ni servicios que todavía no se han conectado. La vista previa no consulta Supabase y sus cambios se reinician al recargar. Ningún recorrido de muestra acredita por sí mismo la seguridad del backend real.
 
 Detén el servidor con Ctrl+C en la terminal que lo ejecuta. Los comandos están limitados a la dirección local del computador.
 

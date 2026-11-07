@@ -36,6 +36,10 @@ package.json contiene todas las dependencias directas, incluidos los tipos. pack
 
 La instalación reproducible, lint, comprobación de tipos, compilación y respuesta HTTP local se han ejecutado; los resultados y sus límites están en docs/ESTADO.md. Next.js exige Node.js 20.9 como mínimo; la rama 22 instalada satisface ese requisito. La compatibilidad se contrastó con la documentación oficial y los metadatos de las versiones concretas en npm.
 
+## Actualización de implementación
+
+El código actual ya tiene landing y paneles. Las comprobaciones de la base técnica descritas arriba son históricas. En este bloque se observó el arranque de desarrollo y la landing en el navegador; una comprobación de tipos pasó antes de cambios posteriores y lint señaló cinco errores corregidos sin repetición. La versión final no está validada. También se localizaron binarios PostgreSQL 18, pero no se inició una base: la ejecución de pruebas locales fue rechazada por el aplazamiento vigente.
+
 ## Pendientes de otras etapas
 
 - El usuario confirmó cuentas de Supabase y Vercel y aportó captura del proyecto instituto-tecnologico-san-miguel creado en Free, Healthy, Nano, us-east-2. La evidencia procede de su captura; el agente todavía no tiene una conexión autenticada al panel ni ha probado la aplicación contra Supabase. Plan de Vercel y acceso a GitHub siguen pendientes.
@@ -43,7 +47,7 @@ La instalación reproducible, lint, comprobación de tipos, compilación y respu
 - Conexión real a PostgreSQL/Supabase, autenticación, almacenamiento privado, invitaciones y recuperación.
 - Envío real de correo a un destinatario controlado; todavía no está validado.
 - Reglas académicas, seguridad por recurso y recorridos completos. La ruta /api/health solo comprueba el servidor local.
-- Elección visual del usuario antes de implementar landing, acceso y paneles.
+- Revisión de la implementación B+C elegida, en tamaños y estados reales, después de retomar la validación.
 
 El usuario creó el proyecto externo de Supabase. Este bloque preparó su configuración local con URL y clave pendiente, sin activar servicios de pago ni instalar software global.
 
