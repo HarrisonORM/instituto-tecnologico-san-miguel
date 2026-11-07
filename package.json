@@ -14,7 +14,10 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "next typegen && tsc --noEmit",
     "check:supabase": "node --env-file-if-exists=.env.local scripts/check-supabase.mjs",
-    "test:services": "node --test scripts/supabase-probe.test.mjs"
+    "test:services": "node --test scripts/supabase-probe.test.mjs",
+    "seed:demo": "node --env-file-if-exists=.env.local scripts/seed-demo.mjs",
+    "demo:credential": "node --env-file-if-exists=.env.local scripts/show-demo-credential.mjs",
+    "backup:project": "node --env-file-if-exists=.env.local scripts/backup-project.mjs"
   },
   "dependencies": {
     "next": "16.4.5",
