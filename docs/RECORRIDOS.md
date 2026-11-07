@@ -63,4 +63,4 @@ La respuesta de la renovación o de una lectura anterior no debe restaurar una s
 
 ## Selección pendiente
 
-Se consultó al usuario la acción principal de la landing: explorar carreras, solicitar información o conocer la institución. Su respuesta y la selección visual siguen pendientes. No se registra una paleta, tipografía o composición como aprobada.
+El usuario aportó referencias de landing, confirmó la base esmeralda #48B292 y pidió movimiento, ES/EN y tres temas en todas las vistas. La acción principal y la composición final siguen pendientes; las tipografías, logo y paleta complementaria no están aprobados. Consultar docs/DISENO-REQUISITOS.md antes de preparar bocetos.

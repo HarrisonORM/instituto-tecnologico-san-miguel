@@ -74,6 +74,8 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 ### Funciones incluidas y organización
 
 - Landing pública con historia, oferta académica, precios ilustrativos y contacto de una institución ficticia. No incluir acreditaciones, testimonios, cobros ni resultados reales inventados.
+- Requisito confirmado de frontend: todas las vistas tendrán selector español/inglés y tema Claro, Oscuro o Sistema. El usuario confirmó que también quiere traducir contenido académico. El mecanismo de traducción y el alcance del interior de adjuntos quedan por concretar dentro del presupuesto de cero.
+- Landing con sobre nosotros, programas e imágenes por programa, historia, misión, visión, contacto o captura de interesados y acceso directo de estudiantes y docentes. Debe tener movimiento y efectos; los paneles deben ser sencillos y reducir distracciones.
 - Distinguir carrera, período, materia del catálogo y grupo/oferta de una materia en un período. Matrículas y asignaciones docentes determinan el alcance académico.
 - Estudiante: navegación por materia, tareas pendientes y realizadas, evidencias y conversación privada de cada entrega. No exponer listados de notas o entregas de compañeros.
 - Docente: revisar por tarea o por estudiante de una materia, con grupos ordenados, búsqueda, filtros y paginación. Selección múltiple de grupos o estudiantes y resumen de destinatarios antes de publicar.
@@ -96,6 +98,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - Detalles de las autorizaciones de reemplazo de entregas: alcance y caducidad del permiso, revisión de una nota previa y comportamiento al cerrar un período.
 - Nombres y contenidos concretos de las cuatro materias y los seis grupos, fechas del período de prueba y contenido institucional ficticio. Las dos carreras y las 47 cuentas ya están aprobadas.
 - Límites internos y compatibilidad del servicio gratuito de correo, que solo pueden considerarse verificados después de una prueba real.
+- Traducción del contenido académico confirmada como requisito: falta elegir versiones ES/EN redactadas o revisadas por el autor frente a generación automática, y definir por separado el interior de documentos e imágenes adjuntos. No hay servicio de traducción elegido ni autorización para generar costes.
 - Proceso visual delegado por el usuario: Codex presentará alternativas y el usuario elegirá antes de programar las pantallas. Esta elección futura es intencional y no debe convertirse en una decisión unilateral del agente.
 
 ## Brand Commitments
@@ -105,13 +108,15 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - El nombre se ha decidido; la identidad visual se creará durante el proyecto.
 - El usuario ha elegido que Codex presente propuestas visuales y espere su elección antes de programar las pantallas.
 - El frontend debe ser personalizado y coherente entre landing y paneles, con especial atención a celular y computador.
-- No se ha elegido una paleta, tipografía, logo ni dirección visual.
+- Referencia cromática confirmada: esmeralda luminoso #48B292. El usuario aportó dos referencias de landing institucional y quiere movimiento en la imagen protagonista. Los paneles conservarán el esmeralda con menor intensidad visual.
+- Medio de portada confirmado: fotografía con movimiento suave, en lugar de video de fondo.
+- La paleta complementaria, tipografías, logo, composición y animaciones concretas siguen como propuestas. Requisitos y lectura de referencias en docs/DISENO-REQUISITOS.md; todavía no hay aprobación de pantallas.
 
 ## Evidence on Hand
 
 - Encargo completo del usuario leído íntegramente al iniciar el bloque, junto con sus requisitos y decisiones previamente documentados.
 - Los roles de una imagen confirmada por el usuario están transcritos en este documento. No se necesita la imagen temporal para comprender los permisos.
-- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento y cliente técnico sin pantallas. El proyecto de Supabase fue creado por el usuario; las migraciones nuevas no se han aplicado ni probado. No hay identidad visual elegida. Los resultados anteriores de entorno no acreditan este código nuevo; consultar docs/ESTADO.md.
+- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento y cliente técnico sin pantallas. El proyecto de Supabase fue creado por el usuario; las migraciones nuevas no se han aplicado ni probado. La base esmeralda y las referencias están confirmadas; la composición e identidad visual completas siguen pendientes de elección. Los resultados anteriores de entorno no acreditan este código nuevo; consultar docs/ESTADO.md.
 - El prompt original y los archivos exportados de la conversación sirven de referencia histórica. Este PRODUCT.md es la fuente de requisitos mantenida para continuar el desarrollo.
 
 ## Product Principles

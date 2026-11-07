@@ -1,6 +1,12 @@
 # Estado y siguiente paso
 
-## Bloque actual: backend ampliado y capa de cliente; pruebas aplazadas
+## Bloque actual: planificación visual con referencias del usuario
+
+El usuario aportó dos referencias de landing y una muestra esmeralda #48B292. Confirmó landing con movimiento y secciones institucionales, programas con imágenes, contacto y accesos de estudiante/docente; paneles sencillos y esmeralda; ES/EN y temas claro/oscuro/sistema en todas las vistas. Se registró en PRODUCT.md y docs/DISENO-REQUISITOS.md. No se implementaron pantallas ni se eligió unilateralmente una composición final.
+
+Se propusieron secuencia, efectos, muestras de contraste y mejoras de experiencia. El usuario confirmó fotografía con movimiento suave y traducción también del contenido académico. Se preguntó cómo obtener esa traducción; falta resolver versiones revisadas frente a generación automática y alcance de adjuntos. La referencia base está decidida, pero faltan bocetos y elección de composición final. Las pruebas de backend y el despliegue continúan aplazados.
+
+## Backend ampliado y capa de cliente: historial conservado
 
 El usuario pidió priorizar código y dejar las pruebas y el despliegue para después, y después solicitó continuar sin pausas. El núcleo inicial añadió cinco migraciones; la ampliación eleva el conjunto a dieciséis. Se escribieron eliminación coordinada, conciliación, estructura editable, inspección, presupuestos, idempotencia, oferta pública, lecturas paginadas y notificaciones. No se ejecutaron pruebas, lint, typecheck, compilación, migraciones ni solicitudes externas de estas funciones. No se desplegó.
 
@@ -115,4 +121,4 @@ Completar la clave Publishable en .env.local desde Connect o Settings > API Keys
 
 Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. El proyecto de Supabase fue creado por el usuario; este bloque no ha modificado recursos externos ni enviado correos.
 
-La etapa 4 presentará propuestas visuales. El usuario elegirá antes de implementar pantallas; no se ha decidido paleta, tipografía ni logo.
+La etapa 4 presentará bocetos a partir de las referencias y del esmeralda #48B292 confirmados. El usuario elegirá la composición antes de implementar pantallas; la paleta complementaria, tipografía y logo siguen pendientes. Consultar el bloque actual al inicio de este documento y docs/DISENO-REQUISITOS.md.
