@@ -14,14 +14,14 @@ create trigger avatar_inspection before insert or update of avatar_path on publi
 
 create table private.api_limits(user_id uuid not null, action text not null, window_at timestamptz not null, used integer not null, primary key(user_id,action,window_at));
 create function public.consume_api_budget(p_action text) returns void language plpgsql security definer set search_path='' as $$
-declare maximum integer; amount integer; window timestamptz:=date_trunc('minute',clock_timestamp());
+declare maximum integer; amount integer; window_start timestamptz:=date_trunc('minute',clock_timestamp());
 begin
  perform private.require(private.active());
  maximum:=case p_action when 'read' then 120 when 'write' then 30 when 'file' then 15 when 'admin' then 10 else 0 end;
  if maximum=0 then raise exception 'Límite no definido'; end if;
- insert into private.api_limits values(auth.uid(),p_action,window,1) on conflict(user_id,action,window_at) do update set used=private.api_limits.used+1 returning used into amount;
+ insert into private.api_limits values(auth.uid(),p_action,window_start,1) on conflict(user_id,action,window_at) do update set used=private.api_limits.used+1 returning used into amount;
  if amount>maximum then raise exception 'Demasiadas solicitudes' using errcode='P0429'; end if;
- delete from private.api_limits where user_id=auth.uid() and window_at<window-interval '1 hour';
+ delete from private.api_limits where user_id=auth.uid() and window_at<window_start-interval '1 hour';
 end $$;
 
 create function public.set_public_offer(p_program uuid,p_description text,p_price_label text,p_published boolean) returns void language plpgsql security definer set search_path='' as $$

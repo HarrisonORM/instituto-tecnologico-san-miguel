@@ -38,9 +38,23 @@ do $$ begin
  perform private.expect_rejection($q$select public.submit_work('70000000-0000-0000-0000-000000000001','Reemplazo sin permiso',array[]::uuid[])$q$);
 end $$;
 
+-- Metadatos de un archivo ya inspeccionado, vinculado a la primera versión.
+-- Esto prueba RLS de objetos; no sustituye una carga o descarga HTTP real.
+reset role;
+insert into public.uploads(id,owner_id,path,mime_type,bytes,version_id,inspection_state,inspected_at)
+select '80000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001/prueba.pdf','application/pdf',100,id,'verified',now()
+from public.submission_versions where submission_id='70000000-0000-0000-0000-000000000001' and version=1;
+insert into storage.objects(bucket_id,name,owner,metadata) values('evidence','00000000-0000-0000-0000-000000000001/prueba.pdf','00000000-0000-0000-0000-000000000001','{"size":100,"mimetype":"application/pdf"}');
+set local role authenticated;
+do $$ begin
+ assert (select count(*) from public.uploads)=1,'student sees own upload';
+ assert (select count(*) from storage.objects)=1,'student sees own evidence object';
+end $$;
+
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000003","aal":"aal1"}',true) \gset
 do $$ begin
  assert (select count(*) from public.submissions)=1,'assigned group only';
+ assert (select count(*) from storage.objects)=1,'assigned teacher sees linked evidence';
  perform public.review_work('70000000-0000-0000-0000-000000000001','grade',4.2,'Buen trabajo');
  perform private.expect_rejection($q$select public.review_work('70000000-0000-0000-0000-000000000002','grade',5,'Ajena')$q$);
  perform public.review_work('70000000-0000-0000-0000-000000000001','authorize_replacement',null,null);
@@ -58,13 +72,18 @@ do $$ begin
 end $$;
 
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000002","aal":"aal1"}',true) \gset
-do $$ begin assert (select count(*) from public.content_translations)=0,'translation must not expose another student task'; end $$;
+do $$ begin
+ assert (select count(*) from public.content_translations)=0,'translation must not expose another student task';
+ assert (select count(*) from public.uploads)=0,'student cannot list another student upload';
+ assert (select count(*) from storage.objects)=0,'student cannot read another student evidence object';
+end $$;
 
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal1"}',true) \gset
 do $$ begin perform private.expect_rejection($q$select public.manage_account('00000000-0000-0000-0000-000000000001','suspended')$q$); end $$;
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal2"}',true) \gset
 do $$ begin
  assert (select count(*) from public.submissions)=0,'account admin has no grades';
+ assert (select count(*) from storage.objects)=0,'account admin has no academic evidence access';
  assert (select count(*) from public.content_translations)=0,'account admin has no task translations';
  perform public.manage_account('00000000-0000-0000-0000-000000000001','suspended');
  perform private.expect_rejection($q$select public.request_deletion('00000000-0000-0000-0000-000000000003')$q$);
@@ -79,6 +98,7 @@ end $$;
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000001","aal":"aal1"}',true) \gset
 do $$ begin
  assert (select count(*) from public.submissions)=0,'suspension blocks an existing identity';
+ assert (select count(*) from storage.objects)=0,'suspension blocks evidence objects';
  perform private.expect_rejection($q$select public.add_comment('70000000-0000-0000-0000-000000000001','No permitido')$q$);
 end $$;
 
@@ -88,10 +108,14 @@ do $$ begin perform private.expect_rejection($q$select public.close_period('2000
 reset role;
 do $$ begin assert not has_function_privilege('anon','public.submit_contact(text,text,text,text,text)','EXECUTE'),'anonymous cannot bypass contact gateway'; end $$;
 set local role service_role;
-do $$ begin
+do $$ declare limited boolean:=false; begin
  for i in 1..60 loop perform public.submit_contact('Ejemplo','test'||i||'@example.invalid','software','Mensaje ficticio de prueba',lpad(to_hex(i),64,'0')); end loop;
- perform private.expect_rejection($q$select public.submit_contact('Ejemplo','overflow@example.invalid','software','Mensaje ficticio de prueba',repeat('f',64))$q$);
+ begin
+  perform public.submit_contact('Ejemplo','overflow@example.invalid','software','Mensaje ficticio de prueba',repeat('f',64));
+ exception when sqlstate 'P0429' then limited:=true;
+ end;
+ assert limited,'contact budget must reject the 61st request with P0429';
 end $$;
 reset role;
-select 'OK: migrations, RLS, grading, replacement, translation, suspension, MFA, dual approval, close blocking and contact budget' as result;
+select 'OK: RLS, evidence metadata, grading, replacement, translation, suspension, MFA, dual approval, close blocking and contact budget' as result;
 rollback;
