@@ -1,0 +1,374 @@
+{
+  "notice": "Datos ficticios para carga posterior. No enviar correo ni crear contraseñas desde este archivo.",
+  "accounts": [
+    {
+      "fixture_id": "persona-01",
+      "email": "student.1@instituto-san-miguel.invalid",
+      "full_name": "Valentina Rojas Ramírez",
+      "document_number": "FICT-00001",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-02",
+      "email": "student.2@instituto-san-miguel.invalid",
+      "full_name": "Santiago Rojas Torres",
+      "document_number": "FICT-00002",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-03",
+      "email": "student.3@instituto-san-miguel.invalid",
+      "full_name": "Mariana Rojas Vargas",
+      "document_number": "FICT-00003",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-04",
+      "email": "student.4@instituto-san-miguel.invalid",
+      "full_name": "Mateo Rojas Moreno",
+      "document_number": "FICT-00004",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-05",
+      "email": "student.5@instituto-san-miguel.invalid",
+      "full_name": "Camila Rojas Herrera",
+      "document_number": "FICT-00005",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-06",
+      "email": "student.6@instituto-san-miguel.invalid",
+      "full_name": "Sebastián Rojas Rojas",
+      "document_number": "FICT-00006",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-07",
+      "email": "student.7@instituto-san-miguel.invalid",
+      "full_name": "Daniela Rojas Martínez",
+      "document_number": "FICT-00007",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-08",
+      "email": "student.8@instituto-san-miguel.invalid",
+      "full_name": "Nicolás Rojas Castro",
+      "document_number": "FICT-00008",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-09",
+      "email": "student.9@instituto-san-miguel.invalid",
+      "full_name": "Luciana Rojas Ramírez",
+      "document_number": "FICT-00009",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-10",
+      "email": "student.10@instituto-san-miguel.invalid",
+      "full_name": "Andrés Rojas Torres",
+      "document_number": "FICT-00010",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-11",
+      "email": "student.11@instituto-san-miguel.invalid",
+      "full_name": "Valentina Martínez Vargas",
+      "document_number": "FICT-00011",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-12",
+      "email": "student.12@instituto-san-miguel.invalid",
+      "full_name": "Santiago Martínez Moreno",
+      "document_number": "FICT-00012",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-13",
+      "email": "student.13@instituto-san-miguel.invalid",
+      "full_name": "Mariana Martínez Herrera",
+      "document_number": "FICT-00013",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-14",
+      "email": "student.14@instituto-san-miguel.invalid",
+      "full_name": "Mateo Martínez Rojas",
+      "document_number": "FICT-00014",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-15",
+      "email": "student.15@instituto-san-miguel.invalid",
+      "full_name": "Camila Martínez Martínez",
+      "document_number": "FICT-00015",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-16",
+      "email": "student.16@instituto-san-miguel.invalid",
+      "full_name": "Sebastián Martínez Castro",
+      "document_number": "FICT-00016",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-17",
+      "email": "student.17@instituto-san-miguel.invalid",
+      "full_name": "Daniela Martínez Ramírez",
+      "document_number": "FICT-00017",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-18",
+      "email": "student.18@instituto-san-miguel.invalid",
+      "full_name": "Nicolás Martínez Torres",
+      "document_number": "FICT-00018",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-19",
+      "email": "student.19@instituto-san-miguel.invalid",
+      "full_name": "Luciana Martínez Vargas",
+      "document_number": "FICT-00019",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-20",
+      "email": "student.20@instituto-san-miguel.invalid",
+      "full_name": "Andrés Martínez Moreno",
+      "document_number": "FICT-00020",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-21",
+      "email": "student.21@instituto-san-miguel.invalid",
+      "full_name": "Valentina Castro Herrera",
+      "document_number": "FICT-00021",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-22",
+      "email": "student.22@instituto-san-miguel.invalid",
+      "full_name": "Santiago Castro Rojas",
+      "document_number": "FICT-00022",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-23",
+      "email": "student.23@instituto-san-miguel.invalid",
+      "full_name": "Mariana Castro Martínez",
+      "document_number": "FICT-00023",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-24",
+      "email": "student.24@instituto-san-miguel.invalid",
+      "full_name": "Mateo Castro Castro",
+      "document_number": "FICT-00024",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-25",
+      "email": "student.25@instituto-san-miguel.invalid",
+      "full_name": "Camila Castro Ramírez",
+      "document_number": "FICT-00025",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-26",
+      "email": "student.26@instituto-san-miguel.invalid",
+      "full_name": "Sebastián Castro Torres",
+      "document_number": "FICT-00026",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-27",
+      "email": "student.27@instituto-san-miguel.invalid",
+      "full_name": "Daniela Castro Vargas",
+      "document_number": "FICT-00027",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-28",
+      "email": "student.28@instituto-san-miguel.invalid",
+      "full_name": "Nicolás Castro Moreno",
+      "document_number": "FICT-00028",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-29",
+      "email": "student.29@instituto-san-miguel.invalid",
+      "full_name": "Luciana Castro Herrera",
+      "document_number": "FICT-00029",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-30",
+      "email": "student.30@instituto-san-miguel.invalid",
+      "full_name": "Andrés Castro Rojas",
+      "document_number": "FICT-00030",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-31",
+      "email": "student.31@instituto-san-miguel.invalid",
+      "full_name": "Valentina Ramírez Martínez",
+      "document_number": "FICT-00031",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-32",
+      "email": "student.32@instituto-san-miguel.invalid",
+      "full_name": "Santiago Ramírez Castro",
+      "document_number": "FICT-00032",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-33",
+      "email": "student.33@instituto-san-miguel.invalid",
+      "full_name": "Mariana Ramírez Ramírez",
+      "document_number": "FICT-00033",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-34",
+      "email": "student.34@instituto-san-miguel.invalid",
+      "full_name": "Mateo Ramírez Torres",
+      "document_number": "FICT-00034",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-35",
+      "email": "student.35@instituto-san-miguel.invalid",
+      "full_name": "Camila Ramírez Vargas",
+      "document_number": "FICT-00035",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-36",
+      "email": "student.36@instituto-san-miguel.invalid",
+      "full_name": "Sebastián Ramírez Moreno",
+      "document_number": "FICT-00036",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-37",
+      "email": "student.37@instituto-san-miguel.invalid",
+      "full_name": "Daniela Ramírez Herrera",
+      "document_number": "FICT-00037",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-38",
+      "email": "student.38@instituto-san-miguel.invalid",
+      "full_name": "Nicolás Ramírez Rojas",
+      "document_number": "FICT-00038",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-39",
+      "email": "student.39@instituto-san-miguel.invalid",
+      "full_name": "Luciana Ramírez Martínez",
+      "document_number": "FICT-00039",
+      "role": "student",
+      "program": "Desarrollo de Software"
+    },
+    {
+      "fixture_id": "persona-40",
+      "email": "student.40@instituto-san-miguel.invalid",
+      "full_name": "Andrés Ramírez Castro",
+      "document_number": "FICT-00040",
+      "role": "student",
+      "program": "Redes y Telecomunicaciones"
+    },
+    {
+      "fixture_id": "persona-41",
+      "email": "teacher.41@instituto-san-miguel.invalid",
+      "full_name": "Valentina Torres Ramírez",
+      "document_number": "FICT-00041",
+      "role": "teacher"
+    },
+    {
+      "fixture_id": "persona-42",
+      "email": "teacher.42@instituto-san-miguel.invalid",
+      "full_name": "Santiago Torres Torres",
+      "document_number": "FICT-00042",
+      "role": "teacher"
+    },
+    {
+      "fixture_id": "persona-43",
+      "email": "teacher.43@instituto-san-miguel.invalid",
+      "full_name": "Mariana Torres Vargas",
+      "document_number": "FICT-00043",
+      "role": "teacher"
+    },
+    {
+      "fixture_id": "persona-44",
+      "email": "teacher.44@instituto-san-miguel.invalid",
+      "full_name": "Mateo Torres Moreno",
+      "document_number": "FICT-00044",
+      "role": "teacher"
+    },
+    {
+      "fixture_id": "persona-45",
+      "email": "academic_admin.45@instituto-san-miguel.invalid",
+      "full_name": "Camila Torres Herrera",
+      "document_number": "FICT-00045",
+      "role": "academic_admin"
+    },
+    {
+      "fixture_id": "persona-46",
+      "email": "system_admin.46@instituto-san-miguel.invalid",
+      "full_name": "Sebastián Torres Rojas",
+      "document_number": "FICT-00046",
+      "role": "system_admin"
+    },
+    {
+      "fixture_id": "persona-47",
+      "email": "system_admin.47@instituto-san-miguel.invalid",
+      "full_name": "Daniela Torres Martínez",
+      "document_number": "FICT-00047",
+      "role": "system_admin"
+    }
+  ]
+}

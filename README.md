@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** etapa 3 en curso. Proyecto de Supabase creado en Free según captura del usuario, región us-east-2. Configuración local preparada con clave publicable pendiente y comando de comprobación disponible. La ruta `/api/health` sigue comprobando solo el servidor local; las pantallas esperan la elección visual.
+**Estado:** implementación del backend adelantada por decisión del usuario. Migraciones, funciones académicas, RLS y rutas HTTP escritas localmente, todavía sin aplicar ni validar. Las pruebas y el despliegue quedan aplazados; las pantallas esperan la elección visual.
 
 ## Documentos del proyecto
 
@@ -13,6 +13,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Estado](docs/ESTADO.md) | Avance actual, comprobaciones y siguiente bloque. |
 | [Entorno](docs/ENTORNO.md) | Herramientas instaladas y verificaciones todavía pendientes. |
 | [Base técnica](docs/BASE-TECNICA.md) | Estructura, comandos, compatibilidad y decisiones de dependencias. |
+| [Backend](docs/BACKEND.md) | Código preparado, contrato HTTP, reglas y pendientes de implementación y validación. |
 | [Servicios gratuitos](docs/SERVICIOS-GRATUITOS.md) | Cuotas verificadas en documentación oficial, pausas y presupuesto interno propuesto. |
 | [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
@@ -29,7 +30,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-El siguiente paso es completar la clave Publishable en `.env.local` y ejecutar `npm.cmd run check:supabase`. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica dónde encontrarla y cómo interpretar el resultado. El proyecto del instituto ya está creado; no hace falta repetir ese paso. PostgreSQL, archivos y correo todavía requieren sus pruebas reales.
+El trabajo actual continúa con el código del [backend](docs/BACKEND.md). La configuración y las comprobaciones de servicios quedan pendientes hasta retomar la validación; no ejecutar todavía las migraciones ni los comandos de prueba como parte de este bloque.
 
 ## Arranque local
 

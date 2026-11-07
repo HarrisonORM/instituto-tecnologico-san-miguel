@@ -2,6 +2,8 @@
 
 Este plan conserva el orden del encargo. PRODUCT.md contiene los requisitos y docs/ESTADO.md registra el avance; esta página no redefine reglas académicas.
 
+Actualización expresa del usuario: se adelantan las etapas de backend (datos, acceso y operaciones académicas) y se aplazan las pruebas y el despliegue. Los criterios de validación del plan siguen pendientes; escribir código no los da por superados. Las pantallas continúan sujetas a elección visual. Alcance implementado y faltante en docs/BACKEND.md.
+
 | Etapa | Trabajo principal | Evidencia necesaria para terminar |
 |---|---|---|
 | 1. Punto de partida | Leer el encargo, inspeccionar la carpeta, consolidar requisitos y revisar herramientas. | Documentación coherente, estado inicial registrado y herramientas comprobadas. |

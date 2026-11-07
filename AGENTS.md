@@ -14,6 +14,8 @@ Mantén una única fuente de requisitos en PRODUCT.md. Actualiza el estado al ce
 
 ## Cómo colaborar
 
+- Cambio de orden confirmado por el usuario: priorizar implementación del backend. Aplazar pruebas, compilaciones de verificación y despliegue hasta retomar expresamente la validación. No ejecutar migraciones remotas ni afirmar que el código está validado. La revisión de archivos y el guardado Git continúan permitidos.
+
 - Responde en español, explica conceptos cuando aparezcan y trabaja en bloques pequeños.
 - Indica objetivo, cambios, pasos que debe realizar el usuario, resultado esperado y cómo comprobarlo.
 - Realiza directamente los cambios rutinarios autorizados y conserva archivos y ediciones de otros.

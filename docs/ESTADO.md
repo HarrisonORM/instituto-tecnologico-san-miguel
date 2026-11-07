@@ -1,6 +1,12 @@
 # Estado y siguiente paso
 
-## Bloque actual: etapa 3 en curso
+## Bloque actual: implementación del backend; pruebas aplazadas
+
+El usuario pidió priorizar código y dejar las pruebas y el despliegue para después. Este bloque añadió cinco migraciones locales, funciones PostgreSQL y RLS, rutas HTTP, autenticación con TOTP, tareas y entregas versionadas, notas y cierre, administración, archivos privados y datos ficticios de 47 cuentas. No se ejecutaron pruebas, lint, typecheck, compilación, migraciones ni solicitudes externas de estas nuevas funciones. No se desplegó.
+
+El contrato y los pendientes concretos están en docs/BACKEND.md. Siguen sin implementar el ejecutor de eliminación física, conciliación completa de invitaciones, fórmula provisional pendiente de acuerdo, CRUD completo de estructura, análisis de archivos y controles de consumo adicionales. La primera versión necesita validación antes de considerarse operativa.
+
+La sección de etapa 3 y sus resultados siguientes es histórica y conserva las comprobaciones realizadas ANTES de esta petición. No acredita el código nuevo. Continuar con backend según docs/BACKEND.md; no pedir de nuevo crear el proyecto ni bloquear la escritura local por falta de claves.
 
 Proyecto: Instituto Tecnológico de San Miguel, institución ficticia de portafolio.
 
