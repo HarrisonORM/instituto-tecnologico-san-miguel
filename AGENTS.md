@@ -48,6 +48,8 @@ La base técnica define estos comandos, ejecutados desde la raíz del proyecto:
 - `npm.cmd run typecheck`: generación de tipos de Next.js y TypeScript.
 - `npm.cmd run build`: compilación optimizada.
 - `npm.cmd run start`: ejecución local de una compilación existente.
+- `npm.cmd run check:supabase`: comprobación local y de solo lectura de Auth con .env.local; no imprime valores de configuración. No sustituye pruebas de datos, archivos o correo.
+- `npm.cmd run test:services`: pruebas con node:test de la comprobación de servicios, usando respuestas controladas sin red.
 
 El estado de las comprobaciones realmente ejecutadas está en docs/ESTADO.md. No confundir comandos configurados con resultados observados. Vitest y Playwright siguen previstos para sus etapas; todavía no hay una suite de reglas académicas.
 

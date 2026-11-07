@@ -29,7 +29,7 @@ Esta combinación es una opción viable sobre el papel para una demostración pe
 
 Fuentes: [planes de Supabase](https://supabase.com/pricing), [almacenamiento](https://supabase.com/docs/guides/platform/manage-your-usage/storage-size) y [transferencia](https://supabase.com/docs/guides/platform/manage-your-usage/egress).
 
-El usuario confirmó dos proyectos gratuitos existentes, uno pausado. Esto permite prever un espacio para el instituto, sujeto a la comprobación del panel y las restricciones de los propietarios o administradores de la organización. [Alcance del límite de proyectos](https://supabase.com/docs/guides/platform/billing-on-supabase) y [capacidad de la organización](https://supabase.com/docs/guides/platform/billing-faq).
+El usuario confirmó que uno de sus dos proyectos anteriores estaba pausado y después aportó una captura del proyecto del instituto creado en Free. Los pausados quedan fuera del límite de activos; la creación observada no cambia las cuotas compartidas de almacenamiento y transferencia. [Alcance del límite de proyectos](https://supabase.com/docs/guides/platform/billing-on-supabase) y [capacidad de la organización](https://supabase.com/docs/guides/platform/billing-faq).
 
 La cuota de transferencia ya consumida no disminuye al borrar archivos. Se revisa el total de la organización, incluidos sus otros proyectos. Para esta demo se presupuestarán las descargas privadas con margen en la cuota sin caché. [Medición de transferencia](https://supabase.com/docs/guides/platform/manage-your-usage/egress).
 

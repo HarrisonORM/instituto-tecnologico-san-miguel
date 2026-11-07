@@ -10,26 +10,38 @@ La etapa 1 consolidó el encargo y los acuerdos en PRODUCT.md, organizó el plan
 
 ## Avance de la etapa 3
 
-- Nombre confirmado para el proyecto de Supabase: `instituto-tecnologico-san-miguel`. Sustituye el nombre de ejemplo anterior; el recurso todavía no se ha creado desde este trabajo.
+- Proyecto de Supabase `instituto-tecnologico-san-miguel` creado por el usuario. La captura aportada muestra Free, Healthy, Nano y región East US (Ohio), us-east-2. Es evidencia visual, no una consulta autenticada del agente.
 
 - Revisión pública realizada el 7 de noviembre de 2026: cuotas de Supabase Free, Vercel Hobby, pausas, restricciones, copias y viabilidad de correo gratuito. Fuentes y alcance en docs/SERVICIOS-GRATUITOS.md.
 - Guía de acceso, configuración local y registro de pruebas en docs/CONFIGURACION-SERVICIOS.md.
-- Plantilla .env.example vacía, con URL y clave publicable; no conecta la aplicación por sí misma. No se han creado archivos locales con valores reales en este bloque.
+- Plantilla .env.example conservada vacía. Se creó .env.local con la URL observada, sin sobrescribir archivos existentes; la clave publicable estaba vacía al ejecutar la comprobación. El archivo local está ignorado por Git.
 - Límites internos de consumo conservados como propuestas. No se han activado controles de almacenamiento, transferencia o correo.
 - Preferencia sobre commits detallados registrada en AGENTS.md y guardada en 492d130. Los commits siguientes describen cambios y verificaciones en su cuerpo.
-- El usuario confirmó cuenta de Supabase y dos proyectos gratuitos, uno pausado. Los pausados no cuentan para el límite de activos: se prevé espacio para el instituto, sujeto a lo que permita el panel y la organización elegida. No se han inspeccionado sus cuentas desde el agente ni creado un proyecto nuevo.
-- Conexión del agente, acceso a Vercel, consulta real, archivo privado, invitación, recuperación y publicación técnica: pendientes. El siguiente paso manual está descrito en docs/CONFIGURACION-SERVICIOS.md.
+- El usuario confirmó cuentas de Supabase y Vercel. La existencia del proyecto del instituto y su plan se observan en su captura; el acceso del agente a las cuentas y el plan de Vercel siguen pendientes de verificar.
+- Se añadió check:supabase, una consulta GET de solo lectura a la configuración de Auth. Comprueba el registro público desactivado, evita redirecciones y no imprime claves. No añade dependencias ni conecta los módulos académicos.
+- Consulta real de datos, archivo privado, invitación, recuperación y publicación técnica: pendientes. El siguiente paso manual está descrito en docs/CONFIGURACION-SERVICIOS.md.
 
-La etapa 3 no está completada. El siguiente paso concreto es abrir el formulario de nuevo proyecto, confirmar Free y crear el proyecto dedicado al instituto si el panel ofrece capacidad. Las pantallas siguen esperando la elección visual de la etapa 4.
+La etapa 3 no está completada. El siguiente paso concreto es completar la clave Publishable en .env.local y ejecutar npm.cmd run check:supabase. La creación del proyecto ya está confirmada; las pantallas siguen esperando la elección visual de la etapa 4.
 
-## Comprobaciones de este avance documental
+## Comprobaciones del avance de conexión
+
+| Comprobación | Resultado observado |
+|---|---|
+| npm.cmd run lint | Código 0, sin avisos. |
+| npm.cmd run test:services | Nueve pruebas aprobadas con respuestas controladas en memoria; ninguna consulta a Supabase. |
+| npm.cmd run check:supabase | Código 1 esperado por clave publicable pendiente. Se detuvo antes de consultar la red. |
+| Exclusión de .env.local | git check-ignore lo reconoce; el archivo no se incorpora al commit. |
+
+Las pruebas locales cubren configuración incompleta, destinos y claves incorrectos, redirecciones, registro público habilitado y respuestas o errores sin filtrar la clave. No acreditan todavía el funcionamiento del servicio externo. No se modificaron los módulos web ni se repitió su compilación; el nuevo código es una herramienta local de comprobación.
+
+## Comprobaciones del avance documental anterior
 
 - Trece enlaces locales de README y docs comprobados: ninguno roto.
 - Plantilla .env.example analizada: dos variables esperadas, ambas vacías, sin credenciales.
 - .env.local, .env y .vercel/project.json excluidos de Git; .env.example disponible para versionar.
 - git diff --check sin errores de espacios.
 - La consulta de herramientas disponibles no confirmó una conexión utilizable de Supabase o Vercel. No se ejecutaron consultas, cargas ni envíos externos.
-- No se modificó código de ejecución, dependencias ni configuración del compilador; se conservan los resultados técnicos de la etapa 2 sin declararlos repetidos en este bloque.
+- Ese avance documental conservó la base técnica. El bloque de conexión posterior añade scripts locales y sus pruebas, con resultados en la sección anterior; no añade dependencias ni modifica el compilador.
 
 El guardado de este avance se identifica por el mensaje `docs: preparar la viabilidad gratuita y la configuracion de servicios`. Su cuerpo detalla cambios, comprobaciones y pruebas pendientes. El historial se consulta con `git log -2 --format=fuller`.
 
@@ -91,8 +103,8 @@ El segundo comando debe quedar sin salida después de guardar el bloque. No se h
 
 ## Cómo continuar la etapa 3
 
-Crear el proyecto dedicado al instituto en Supabase Free siguiendo docs/CONFIGURACION-SERVICIOS.md y comprobar el estado operativo. La existencia de la cuenta y de un proyecto pausado ya fue confirmada por el usuario; queda observar la capacidad del formulario. Después se comprobarán base de datos, archivo privado y correo real. La revisión pública de condiciones ya está documentada; faltan las pruebas observadas.
+Completar la clave Publishable en .env.local desde Connect o Settings > API Keys del proyecto creado y ejecutar npm.cmd run check:supabase. Si indica registro público habilitado, desactivar Allow new users to sign up en Authentication y volver a comprobar. Después se prepararán las pruebas reales de datos, archivo privado y correo. No solicitar de nuevo el nombre, plan o región ya observados en la captura.
 
-Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. No se ha activado ningún servicio en esta etapa.
+Los pasos que necesitan una cuenta se realizarán mediante la conexión correspondiente o con el usuario en su panel, sin pegar secretos en el chat. El proyecto de Supabase fue creado por el usuario; este bloque no ha modificado recursos externos ni enviado correos.
 
 La etapa 4 presentará propuestas visuales. El usuario elegirá antes de implementar pantallas; no se ha decidido paleta, tipografía ni logo.

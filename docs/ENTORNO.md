@@ -38,15 +38,15 @@ La instalación reproducible, lint, comprobación de tipos, compilación y respu
 
 ## Pendientes de otras etapas
 
-- El usuario confirmó cuenta de Supabase y dos proyectos gratuitos, uno pausado. El agente todavía no tiene acceso confirmado al panel ni ha inspeccionado la capacidad para crear otro. No se han creado proyectos ni publicado desde este trabajo; GitHub y Vercel siguen pendientes de acceso.
+- El usuario confirmó cuentas de Supabase y Vercel y aportó captura del proyecto instituto-tecnologico-san-miguel creado en Free, Healthy, Nano, us-east-2. La evidencia procede de su captura; el agente todavía no tiene una conexión autenticada al panel ni ha probado la aplicación contra Supabase. Plan de Vercel y acceso a GitHub siguen pendientes.
 - Las condiciones gratuitas, cuotas y comportamiento publicado ante inactividad y exceso se revisaron el 7 de noviembre de 2026: docs/SERVICIOS-GRATUITOS.md. Comprobarlos en la cuenta real y probar la reactivación sigue pendiente.
 - Conexión real a PostgreSQL/Supabase, autenticación, almacenamiento privado, invitaciones y recuperación.
 - Envío real de correo a un destinatario controlado; todavía no está validado.
 - Reglas académicas, seguridad por recurso y recorridos completos. La ruta /api/health solo comprueba el servidor local.
 - Elección visual del usuario antes de implementar landing, acceso y paneles.
 
-No se han configurado claves, cuentas de pago ni servicios externos. No se ha instalado software global durante este bloque.
+El usuario creó el proyecto externo de Supabase. Este bloque preparó su configuración local con URL y clave pendiente, sin activar servicios de pago ni instalar software global.
 
-La etapa 3 añade una plantilla .env.example vacía. Al revisar el acceso inicial no existían .env.local ni .env en el proyecto; no se leyeron credenciales privadas. Las conexiones de Supabase y Vercel se ofrecieron como vía de acceso, pero todavía no se ha confirmado su conexión. El registro vigente está en docs/CONFIGURACION-SERVICIOS.md.
+La etapa 3 conserva la plantilla .env.example vacía. Después de recibir la captura se creó .env.local con la URL observada y la clave vacía; Git lo ignora. check:supabase se detuvo por configuración incompleta, antes de acceder a la red. Node.js 22.18.0 admite --env-file-if-exists y el ejecutor node:test, utilizados para cargar la configuración y ejecutar nueve pruebas locales. El registro vigente está en docs/CONFIGURACION-SERVICIOS.md.
 
 Referencias: [instalación de Next.js](https://nextjs.org/docs/app/getting-started/installation), [versiones de Node.js](https://nodejs.org/en/about/previous-releases) y [metadatos oficiales de Next.js 16.4.5](https://registry.npmjs.org/next/16.4.5).

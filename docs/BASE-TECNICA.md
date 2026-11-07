@@ -16,6 +16,9 @@ Esta etapa prepara un único proyecto Next.js. La identidad visual y las pantall
 | src/app/layout.tsx | Estructura HTML técnica y metadatos del proyecto. |
 | src/app/globals.css | Entrada de Tailwind; la identidad visual sigue pendiente. |
 | src/app/api/health/route.ts | Comprobación pública y mínima del proceso de la aplicación. |
+| scripts/check-supabase.mjs | Comprobación local de Auth con la configuración de .env.local; no expone una ruta web. |
+| scripts/lib/supabase-probe.mjs | Validación y consulta de solo lectura, sin mostrar claves ni seguir redirecciones. |
+| scripts/supabase-probe.test.mjs | Pruebas locales del comprobador con node:test y respuestas controladas. |
 | docs/ | Plan, requisitos operativos y resultados observados. |
 
 Los módulos académicos, de autorización e integración se crearán conforme se implementen sus funciones. La preparación técnica no añade permisos de usuario ni simula una conexión a Supabase.
@@ -39,6 +42,8 @@ La raíz `/` todavía no tiene una página de producto. No se debe usar esa dire
 - `npm.cmd run typecheck`: genera los tipos de rutas y comprueba TypeScript.
 - `npm.cmd run build`: compila una versión optimizada.
 - `npm.cmd run start`: inicia esa versión después de compilar.
+- `npm.cmd run check:supabase`: carga .env.local y comprueba Auth y registro público desactivado; no valida PostgreSQL, archivos ni correo.
+- `npm.cmd run test:services`: ejecuta las pruebas locales del comprobador sin servicios externos ni dependencias nuevas.
 
 La lista describe comandos existentes. docs/ESTADO.md indica cuáles se ejecutaron y su resultado real.
 

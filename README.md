@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** base técnica local preparada y comprobada. Etapa 3 en curso: condiciones gratuitas revisadas, acceso a cuentas y pruebas reales pendientes. La comprobación local del servidor sigue siendo `/api/health`; las pantallas de producto esperarán a la elección visual.
+**Estado:** etapa 3 en curso. Proyecto de Supabase creado en Free según captura del usuario, región us-east-2. Configuración local preparada con clave publicable pendiente y comando de comprobación disponible. La ruta `/api/health` sigue comprobando solo el servidor local; las pantallas esperan la elección visual.
 
 ## Documentos del proyecto
 
@@ -29,7 +29,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-El siguiente paso de la etapa 3 es crear el proyecto del instituto en Supabase Free. El usuario ya tiene cuenta y confirmó que uno de sus dos proyectos está pausado, por lo que se prevé espacio sujeto a la comprobación del panel. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica cómo avanzar y cuándo completar `.env.local` a partir de la plantilla vacía `.env.example`. Esa plantilla todavía no conecta la aplicación con ningún servicio.
+El siguiente paso es completar la clave Publishable en `.env.local` y ejecutar `npm.cmd run check:supabase`. La [guía de configuración](docs/CONFIGURACION-SERVICIOS.md) explica dónde encontrarla y cómo interpretar el resultado. El proyecto del instituto ya está creado; no hace falta repetir ese paso. PostgreSQL, archivos y correo todavía requieren sus pruebas reales.
 
 ## Arranque local
 
@@ -61,5 +61,7 @@ En una copia nueva del repositorio, instala las dependencias fijadas con `npm.cm
 | `npm.cmd run typecheck` | Generar tipos de rutas y comprobar TypeScript. |
 | `npm.cmd run build` | Crear la versión optimizada. |
 | `npm.cmd run start` | Ejecutar localmente una compilación creada con build. |
+| `npm.cmd run check:supabase` | Consultar la configuración de Auth con la clave local y comprobar que el registro público está desactivado. |
+| `npm.cmd run test:services` | Probar localmente la comprobación de conexión, sin servicios externos. |
 
 Vitest y Playwright se añadirán cuando existan reglas y recorridos que probar. Las cuentas, integraciones y condiciones gratuitas se comprobarán en su etapa, sin introducir secretos en los documentos.

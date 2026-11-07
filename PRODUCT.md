@@ -12,7 +12,7 @@ Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL med
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
-Nombre confirmado por el usuario para el proyecto de Supabase: `instituto-tecnologico-san-miguel`. La confirmación del nombre no acredita que el recurso externo ya esté creado o conectado.
+Proyecto de Supabase: `instituto-tecnologico-san-miguel`, nombre confirmado por el usuario. Su captura muestra el recurso creado en Free, Healthy, región East US (Ohio), us-east-2. La conexión desde la aplicación todavía está pendiente de comprobación; el estado operativo se registra en docs/ESTADO.md.
 
 ## Users
 
@@ -33,7 +33,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - El usuario ha usado React o desarrollado un backend, pero necesita explicaciones detalladas y pasos pequeños para seguir el proyecto.
 - Cada bloque de trabajo debe indicar objetivo, explicación, pasos concretos, resultado esperado, comprobación y punto de guardado.
 - Preferencia confirmada para el historial: commits con título claro y descripción detallada de cambios y comprobaciones, conforme a AGENTS.md.
-- Fase actual: etapa 3 en curso, viabilidad gratuita. La base técnica local está comprobada y la revisión pública de servicios está documentada; faltan acceso a cuentas y pruebas reales. Los resultados y el siguiente paso están en docs/ESTADO.md.
+- Fase actual: etapa 3 en curso, viabilidad gratuita. La base técnica local está comprobada, los servicios están documentados y la creación de Supabase está acreditada por captura del usuario. Faltan completar la clave local y observar las pruebas reales. Los resultados y el siguiente paso están en docs/ESTADO.md.
 - Este archivo es la fuente actual de requisitos. docs/PLAN.md contiene las etapas; docs/ESTADO.md registra el avance y docs/ENTORNO.md contiene las comprobaciones del entorno. No crear copias alternativas de los requisitos.
 - El estudiante entrega evidencias y consulta resultados; el docente trabaja con varios grupos y necesita revisar tanto por tarea como por estudiante.
 - El sistema administra identidades y estados de cuenta; el personal académico administra la estructura institucional según permisos explícitos.

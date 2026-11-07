@@ -1,37 +1,48 @@
 # Configuración y pruebas de los servicios
 
-Etapa 3 en curso. La revisión pública de [servicios gratuitos](SERVICIOS-GRATUITOS.md) se realizó el **7 de noviembre de 2026**. Esta guía prepara los pasos siguientes; no declara que ya exista una integración funcionando.
+Etapa 3 en curso. La revisión pública de [servicios gratuitos](SERVICIOS-GRATUITOS.md) se realizó el **7 de noviembre de 2026**. El proyecto externo ya aparece creado en la captura aportada por el usuario; falta comprobar la conexión desde el entorno local.
 
-## Cuenta y capacidad confirmadas por el usuario
+## Evidencia del proyecto creado
 
-El usuario confirmó que ya tiene cuenta de Supabase y dos proyectos gratuitos, uno de ellos pausado. Es información proporcionada por el usuario; el agente todavía no ha inspeccionado su panel.
+El usuario confirmó que tiene cuentas en Supabase y Vercel y que uno de sus dos proyectos anteriores de Supabase estaba pausado. Posteriormente aportó una captura del proyecto nuevo con los siguientes datos:
 
-Los proyectos pausados no cuentan para el límite de dos proyectos gratuitos activos. Si no hay otras restricciones de la organización, debería haber capacidad para crear el del instituto. El límite considera las organizaciones donde se es propietario o administrador y puede verse afectado por otros miembros con esos roles. La disponibilidad concreta se confirma en el formulario de creación. [Facturación y proyectos gratuitos](https://supabase.com/docs/guides/platform/billing-on-supabase) y [preguntas de facturación](https://supabase.com/docs/guides/platform/billing-faq).
+| Dato | Observado en la captura |
+|---|---|
+| Nombre | instituto-tecnologico-san-miguel. |
+| Plan de la organización | Free. |
+| Estado | Healthy. |
+| Región | East US (Ohio), us-east-2. |
+| Tamaño de cómputo | Nano. |
+| URL del proyecto | `https://smbtvfevndmpxpxxiorj.supabase.co` |
 
-## Siguiente paso del usuario: crear el proyecto del instituto
+Esta es evidencia visual del panel en ese momento, no una consulta de la aplicación ni acceso autenticado del agente a la cuenta. No se necesita repetir la creación del proyecto. Las consultas, políticas, archivos y correo siguen pendientes de prueba real.
 
-1. Abrir [Supabase](https://supabase.com/dashboard) con la cuenta existente y elegir la organización **Free** adecuada.
-2. Abrir la opción de nuevo proyecto y comprobar que permite crearlo en el nivel gratuito. La cuenta existente y el estado pausado ya están confirmados por el usuario; no hace falta volver a preguntarlos.
-3. Seguir los campos indicados en la sección siguiente para un proyecto dedicado a la demo. Si el panel indica falta de capacidad o exige cambiar de plan, registrar el aviso y resolver esa condición antes de continuar.
+Los proyectos pausados no cuentan para el límite de dos activos; el alcance y las condiciones entre organizaciones están documentados en [facturación](https://supabase.com/docs/guides/platform/billing-on-supabase) y [preguntas de facturación](https://supabase.com/docs/guides/platform/billing-faq).
 
-El resultado esperado es un proyecto nuevo y operativo para el instituto en Free. Este paso conserva los proyectos existentes. La cuenta del proveedor es distinta de las cuentas de estudiantes que tendrá nuestra aplicación. No compartir contraseñas ni claves en el chat.
+## Siguiente paso del usuario: completar la clave publicable
 
-## Crear o seleccionar el proyecto de prueba
+Se preparó `.env.local` en la raíz del proyecto con la URL observada y la clave vacía. El archivo está excluido de Git y se creó conservando cualquier archivo que ya existiera.
 
-Se creará el proyecto dedicado al instituto con el nombre confirmado por el usuario: `instituto-tecnologico-san-miguel`, dentro de Free. Se comprobarán los proyectos existentes antes de crear recursos, conservando sus datos y configuración. El nombre está confirmado; la creación y conexión todavía están pendientes.
+1. En VS Code, abrir `.env.local`, junto a package.json en la raíz del proyecto.
+2. En el proyecto de Supabase, abrir **Connect** o **Settings > API Keys** y copiar la clave **Publishable**, que empieza por `sb_publishable_`.
+3. Pegar solo su valor después de `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=` y guardar con Ctrl+S. Conservar la URL ya preparada.
+4. En la terminal de la carpeta del proyecto, ejecutar `npm.cmd run check:supabase`.
 
-Para una creación manual:
+La clave se completa en el archivo local, no en el chat. [Dónde encontrar y cómo utilizar las claves](https://supabase.com/docs/guides/getting-started/api-keys).
 
-1. Elegir la organización gratuita, pulsar la opción de nuevo proyecto y asignar el nombre.
-2. Generar una contraseña de base de datos y guardarla en el gestor de contraseñas del usuario.
-3. Elegir una región disponible adecuada para la audiencia de la demo y comprobar que la configuración conserva el plan gratuito.
-4. Esperar a que el panel muestre el proyecto operativo. Registrar plan, región y estado observado sin guardar credenciales en Git.
+## Qué comprueba el nuevo comando
 
-Solo se seleccionará el nivel gratuito; no se activarán pruebas de planes de pago ni complementos facturables. Si la cuenta no ofrece capacidad gratuita, se resolverá esa limitación antes de crear recursos.
+`npm.cmd run check:supabase` carga la configuración local y hace una sola consulta GET a la configuración pública de Auth. Usa la clave en el encabezado apikey, limita el tiempo de espera a diez segundos y evita redirecciones a otros destinos. No imprime la clave ni crea usuarios, modifica datos o envía correos.
+
+El resultado es correcto únicamente si Auth responde con su configuración y `disable_signup` es true. Si el comando indica que el registro público está habilitado, abrir Authentication, buscar **Allow new users to sign up**, desactivarlo, guardar y volver a ejecutar la comprobación. Esto conserva el requisito acordado de altas por personal autorizado. [Configuración de Auth](https://supabase.com/docs/guides/auth/general-configuration) y [contrato oficial del endpoint settings](https://github.com/supabase/auth/blob/master/openapi.yaml).
+
+Una comprobación correcta de Auth no acredita todavía consultas a PostgreSQL, aislamiento académico, archivos privados, invitaciones ni recuperación. Tampoco conecta por sí sola los futuros módulos de la aplicación.
+
+`npm.cmd run test:services` ejecuta nueve pruebas locales del comando, sin cuentas ni solicitudes reales. Son pruebas del manejo de configuración, destinos, claves, respuestas y errores; no sustituyen la comprobación externa.
 
 ## Preparar la configuración local
 
-La raíz del proyecto contiene `.env.example`, una plantilla sin valores. Si todavía no existe `.env.local`, se puede crear la copia desde la terminal del proyecto:
+La raíz del proyecto conserva `.env.example`, una plantilla sin valores. Para una copia nueva del repositorio que todavía no tenga `.env.local`, se puede crear la copia desde la terminal del proyecto:
 
 ```powershell
 if (-not (Test-Path -LiteralPath '.env.local')) {
@@ -76,7 +87,7 @@ El destinatario de prueba deberá estar identificado y controlado por el usuario
 
 ## Preparar el alojamiento
 
-Se accederá a [Vercel](https://vercel.com/login) y se comprobará **Hobby** antes de crear el proyecto. La publicación se preparará con la base existente y su ruta /api/health; las pantallas de producto esperan a la elección visual.
+El usuario confirmó que ya tiene cuenta en [Vercel](https://vercel.com/login). Se comprobará **Hobby** antes de crear el proyecto. La publicación se preparará con la base existente y su ruta /api/health; las pantallas de producto esperan a la elección visual.
 
 La prueba de alojamiento debe distinguir disponibilidad del servidor y disponibilidad de Supabase. Se anotarán dirección HTTPS, plan y respuesta observada, sin incluir secretos ni activar complementos de pago. El repositorio remoto y su acceso se resolverán en ese paso; el proyecto local todavía no tiene un remoto configurado.
 
@@ -85,11 +96,12 @@ La prueba de alojamiento debe distinguir disponibilidad del servidor y disponibi
 | Comprobación | Estado al 7 de noviembre de 2026 |
 |---|---|
 | Documentación oficial, cuotas, pausas y correo | Revisada; referencias en SERVICIOS-GRATUITOS.md. |
-| Cuenta y proyectos existentes de Supabase | Usuario confirma cuenta y dos proyectos gratuitos, uno pausado. Panel y capacidad de creación todavía no inspeccionados por el agente. |
-| Capacidad para el proyecto del instituto | Un espacio previsiblemente disponible por la exclusión del pausado; comprobarlo en el formulario de creación y la organización elegida. |
-| Acceso a cuenta y plan de Vercel | Pendiente de conexión o confirmación del usuario. |
-| Configuración local real | No hay .env.local ni .env en la carpeta al revisar este bloque; se añadió solo una plantilla vacía. |
-| Proyecto externo creado por este bloque | Ninguno. |
+| Proyecto de Supabase | Captura del usuario confirma nombre, Free, Healthy, Nano y región us-east-2. |
+| Cuenta de Vercel | Existencia confirmada por el usuario. Plan Hobby y acceso del agente pendientes de comprobar. |
+| Configuración local | .env.local creado con URL; clave publicable vacía al ejecutar la comprobación. Archivo ignorado por Git. |
+| Comando check:supabase | Código 1 esperado: falta la clave publicable. Se detuvo antes de consultar la red. |
+| Pruebas locales del comando | Nueve aprobadas; respuestas controladas en memoria, sin probar servicios externos. |
+| Consulta autenticada a configuración de Auth | Pendiente de completar la clave y ejecutar el comando. |
 | Consulta real y comprobación de privacidad | Pendientes. |
 | Carga y descarga privada, con acceso anónimo denegado | Pendientes. |
 | Remitente SMTP y destinatario controlado | Pendientes de configuración y confirmación. |
