@@ -1,0 +1,30 @@
+# Dependencias y resultados generados
+node_modules/
+.next/
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secretos: solo se permiten plantillas sin credenciales reales
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Estado local de herramientas y copias privadas
+supabase/.temp/
+supabase/.branches/
+backups/
+work/
+*.dump
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
