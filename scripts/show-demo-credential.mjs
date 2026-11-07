@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import process from "node:process";
 import console from "node:console";
+import { URL } from "node:url";
 import { demoPassword } from "./lib/demo-password.mjs";
 try {
   if(process.env.DEMO_CREDENTIAL_ACCESS!=="true") throw new Error();

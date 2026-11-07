@@ -126,6 +126,9 @@ export const operations: Record<string, readonly string[]> = {
   search_roster: ["p_group", "p_search", "p_limit", "p_offset"],
   teacher_work_queue: ["p_group", "p_state", "p_search", "p_limit", "p_offset"],
   student_task_feed: ["p_period", "p_limit", "p_offset"], mark_all_notifications: [],
+  set_translation: ["p_kind", "p_id", "p_locale", "p_fields"],
+  mark_contact: ["p_contact"],
 };
 export const resources = ["profiles", "programs", "periods", "subjects", "groups", "teacher_groups", "enrollments", "categories", "tasks", "submissions", "submission_versions", "comments", "grade_history", "final_results", "notifications", "audit_events", "deletion_requests", "uploads", "identity_requests", "calendar_events", "rubrics"];
 resources.push("invitation_jobs");
+resources.push("content_translations", "contact_inquiries");

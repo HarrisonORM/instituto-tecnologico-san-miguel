@@ -61,6 +61,12 @@ export class InstituteClient {
     await pending.catch(()=>undefined);
   }
   me() {return this.send<CurrentUser>("/api/me","GET");}
+  async acceptSession(accessToken: string, refreshToken: string) {
+    if (!accessToken || accessToken.length > 8192 || !refreshToken || refreshToken.length > 8192) throw new ClientApiError(400, "Sesión no válida");
+    const generation = ++this.generation;
+    this.tokens = { access_token: accessToken, refresh_token: refreshToken, expires_in: 3600, token_type: "bearer" };
+    try { return await this.me(); } catch (error) { if (generation === this.generation) { this.tokens = null; this.generation++; } throw error; }
+  }
   catalog() {return this.send<{fictional_institution: boolean;programs:PublicProgram[]}>("/api/public/catalog","GET",undefined,false);}
   list<T>(resource: string,query: PaginatedQuery = {}) {
     if(!/^[a-z_]+$/.test(resource)) throw new ClientApiError(400,"Recurso no válido");
@@ -81,6 +87,7 @@ export class InstituteClient {
   }
   changePassword(password: string) {return this.send("/api/auth/password","POST",{password});}
   enrollMfa() {return this.send<{id:string;totp:{qr_code:string;secret:string;uri:string}}>("/api/auth/mfa-enroll","POST",{});}
+  listMfa() {return this.send<{id:string;friendly_name?:string;status:string}[]>("/api/auth/mfa-list","POST",{});}
   challengeMfa(factor: string) {return this.send<{id:string}>("/api/auth/mfa-challenge","POST",{factor_id:factor});}
   async verifyMfa(factor: string,challenge: string,code: string) {
     const generation=this.generation;

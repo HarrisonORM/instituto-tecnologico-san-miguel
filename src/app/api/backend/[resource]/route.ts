@@ -31,9 +31,10 @@ export async function GET(request: Request, context: Context) {
 
 export async function POST(request: Request, context: Context) {
   return handle(async () => {
-    const { token } = await session(request, "write");
     const { resource: operation } = await context.params;
     if (!Object.hasOwn(operations, operation)) throw new ApiError(404, "Operación no disponible");
+    const reads = ["group_roster", "search_roster", "teacher_work_queue", "student_task_feed", "notification_count", "dashboard_counts", "my_subject_result", "operational_snapshot"];
+    const { token } = await session(request, reads.includes(operation) ? "read" : "write");
     const body = await bodyOf(request);
     if (Object.keys(body).some(key => !operations[operation].includes(key))) throw new ApiError(400, "Campo no admitido");
     const key=request.headers.get("idempotency-key");

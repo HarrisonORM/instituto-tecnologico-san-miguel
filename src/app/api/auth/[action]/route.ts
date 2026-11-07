@@ -30,6 +30,10 @@ export async function POST(request: Request, context: Context) {
       return { message: "Si la cuenta permite recuperación, recibirás las instrucciones" };
     }
     const { token } = await session(request);
+    if (action === "mfa-list") {
+      const user = await supabase("/auth/v1/user", token) as { factors?: { id: string; friendly_name?: string; status: string }[] };
+      return (user.factors ?? []).map(({ id, friendly_name, status }) => ({ id, friendly_name, status }));
+    }
     if (action === "mfa-enroll") return supabase("/auth/v1/factors", token, { factor_type: "totp", friendly_name: "Instituto San Miguel" }, "POST");
     if (action === "mfa-challenge" || action === "mfa-verify") {
       const factor = text(body.factor_id, 36);
@@ -38,7 +42,11 @@ export async function POST(request: Request, context: Context) {
       return supabase(`/auth/v1/factors/${factor}/${verify ? "verify" : "challenge"}`, token,
         verify ? { challenge_id: text(body.challenge_id, 36), code: text(body.code, 20) } : {}, "POST");
     }
-    if (action === "password") return supabase("/auth/v1/user", token, { password: text(body.password, 1024) }, "PUT");
+    if (action === "password") {
+      const password = text(body.password, 128);
+      if (password.length < 12) throw new ApiError(400, "La contraseña debe tener al menos 12 caracteres");
+      return supabase("/auth/v1/user", token, { password }, "PUT");
+    }
     if (action === "logout") return supabase("/auth/v1/logout", token, {}, "POST");
     throw new ApiError(404, "Acción no disponible");
   });

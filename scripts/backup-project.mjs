@@ -6,6 +6,7 @@ import console from "node:console";
 import { spawn } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
 import { Buffer } from "node:buffer";
+import { URL } from "node:url";
 
 let destination;
 async function run() {

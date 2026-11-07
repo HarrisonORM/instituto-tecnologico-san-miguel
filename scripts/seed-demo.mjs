@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import process from "node:process";
 import console from "node:console";
+import { URL } from "node:url";
 import { createHash } from "node:crypto";
 import { demoPassword } from "./lib/demo-password.mjs";
 
