@@ -1,5 +1,17 @@
 # Estado y siguiente paso
 
+## Movimiento de portada corregido localmente
+
+El usuario informó que la imagen principal no se movía. Se hizo más perceptible el acercamiento de la fotografía: ciclo alterno de 18 segundos, escala 1.03–1.12 y desplazamiento horizontal de ±0.7 %. Se conserva la composición B+C y la misma fotografía; no se agregan vídeo, dependencias ni servicios.
+
+La preferencia del dispositivo determina el comportamiento inicial. «Activar movimiento» y «Pausar movimiento» guardan una elección explícita que sobrevive a la recarga. Una pausa antigua se conserva; el antiguo valor false sigue la preferencia del dispositivo. El efecto se pausa fuera de pantalla y cuando se oculta la pestaña. Esta última ruta está implementada, pero no se simuló una ocultación real durante la comprobación.
+
+Verificado localmente: 13 pruebas de preferencias y arranque previo a React, lint y compilación de producción con código 0. En navegador se observó cambio de transformación al reproducir, transformación estable al pausar, persistencia tras recargar y pausa al salir del hero. Capturas de escritorio 990×720 y móvil 390×844; sin desbordamiento horizontal también a 1440 px. Evidencia en `.impeccable/review/motion-*`. La comprobación corresponde al equipo local; no se hizo push ni despliegue.
+
+Revisión independiente completada: conservó la composición y señaló dos ajustes documentales. Ambos se puntuaron resolved con disposition: ship al alcance de esas correcciones; no equivale a aprobación global de seguridad o integración. DESIGN.md y su sidecar reflejan el comportamiento actual.
+
+Siguiente bloque de integración: confirmar URL pública final y sustitución/revocación de la Secret expuesta anteriormente, configurar retornos de autenticación y preparar las primeras cuentas administrativas con MFA. Después comprobar docente → tarea → entrega privada del estudiante → calificación. Las cuentas y cambios remotos requieren ejecución controlada; no se crean desde esta corrección visual.
+
 ## GitHub preparado y guía de primera publicación
 
 El usuario informó que la instalación SQL terminó bien, que completó Secret y que creó/subió el repositorio GitHub. No aportó la fila final de instalación; queda como confirmación del usuario, sin una lectura remota adicional del agente.

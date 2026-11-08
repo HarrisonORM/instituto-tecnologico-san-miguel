@@ -20,6 +20,17 @@ export function Landing() {
   const [selected, setSelected] = useState(0); const [purpose, setPurpose] = useState<"mission" | "vision">("mission");
   const hero = useRef<HTMLElement>(null); const program = programs[selected];
   useEffect(() => {
+    const element = hero.current;
+    if (!element) return;
+    let inView = true;
+    const sync = () => { element.dataset.photoPlaying = String(!reduced && inView && document.visibilityState !== "hidden"); };
+    const observer = typeof IntersectionObserver === "undefined" ? null : new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); });
+    observer?.observe(element);
+    document.addEventListener("visibilitychange", sync);
+    sync();
+    return () => { observer?.disconnect(); document.removeEventListener("visibilitychange", sync); };
+  }, [reduced]);
+  useEffect(() => {
     if (reduced) return;
     let frame = 0;
     const move = () => { if (frame) return; frame = requestAnimationFrame(() => { hero.current?.style.setProperty("--photo-offset", `${Math.min(window.scrollY * .1, 45)}px`); frame = 0; }); };

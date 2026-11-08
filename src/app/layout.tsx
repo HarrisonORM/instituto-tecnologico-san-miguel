@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Providers } from "@/components/ui";
 import { PublicOfflineSupport } from "@/components/service-worker";
+import { appearanceScript } from "@/lib/motion";
 
 const manrope = localFont({ src: "../../public/fonts/manrope.ttf", display: "swap", variable: "--font-manrope" });
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <head><script id="itsm-appearance" dangerouslySetInnerHTML={{ __html: "try{var p=JSON.parse(localStorage.getItem('itsm.preferences')||'{}');var d=p.theme==='dark'||((!p.theme||p.theme==='system')&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';if(p.reduced||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.motion='reduced'}catch(e){}" }} /></head>
+      <head><script id="itsm-appearance" dangerouslySetInnerHTML={{ __html: appearanceScript }} /></head>
       <body className={manrope.variable}><Providers><PublicOfflineSupport />{children}</Providers></body>
     </html>
   );

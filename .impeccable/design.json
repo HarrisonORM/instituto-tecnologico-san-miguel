@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-08T01:53:23.156Z",
+  "generatedAt": "2026-11-08T03:22:20.000Z",
   "title": "Design System: Instituto Tecnológico de San Miguel",
   "extensions": {
     "colorMeta": {
@@ -414,13 +414,18 @@
       },
       {
         "name": "campus-breathe",
-        "value": "22s ease-in-out infinite alternate; scale(1.025) to scale(1.075)",
-        "purpose": "Fotografía pausable y reducible."
+        "value": "18s ease-in-out infinite alternate; scale(1.03) translateX(-.7%) to scale(1.12) translateX(.7%)",
+        "purpose": "Fotografía pausable que conserva su posición y se suspende fuera del viewport o con pestaña oculta. Pausa fuera del viewport observada; ocultación de pestaña implementada, sin comprobación mediante cambio real."
       },
       {
         "name": "campus-scroll",
         "value": "min(scrollY * .1,45)px",
-        "purpose": "Desplazamiento del fondo anulable."
+        "purpose": "Desplazamiento del fondo anulado en estado reducido."
+      },
+      {
+        "name": "motion-preference",
+        "value": "system | full | reduced",
+        "purpose": "Sin elección explícita sigue prefers-reduced-motion y sus cambios. El control persiste full o reduced, que prevalecen sobre el sistema. Preferencias antiguas: reduced:true conserva la pausa; reduced:false sigue el sistema. La resolución se aplica antes de pintar y en React; reduced pausa la fotografía y anula desplazamiento del fondo, scroll suave y transiciones generales."
       },
       {
         "name": "program-hover",

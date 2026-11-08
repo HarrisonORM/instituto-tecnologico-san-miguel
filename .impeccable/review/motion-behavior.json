@@ -1,0 +1,46 @@
+[
+  {
+    "motion": "full",
+    "overflow": false,
+    "playState": "running",
+    "playing": "true",
+    "systemReduced": false,
+    "transform": "matrix(1.05109, 0, 0, 1.05109, -5.67302, 0)",
+    "width": 1440
+  },
+  {
+    "phase": "running-second",
+    "transform": "matrix(1.10568, 0, 0, 1.10568, 7.65677, 0)"
+  },
+  {
+    "phase": "paused-first",
+    "playState": "paused",
+    "transform": "matrix(1.10907, 0, 0, 1.10907, 8.53041, 0)"
+  },
+  {
+    "phase": "paused-second",
+    "playState": "paused",
+    "transform": "matrix(1.10924, 0, 0, 1.10924, 8.57458, 0)"
+  },
+  {
+    "heroBottom": -3664.39990234375,
+    "phase": "offscreen-settled",
+    "playState": "paused",
+    "playing": "false"
+  },
+  {
+    "phase": "mobile-running",
+    "playState": "running",
+    "transform": "matrix(1.11662, 0, 0, 1.11662, 2.7587, 0)"
+  },
+  {
+    "phase": "mobile-paused-settled-1",
+    "playState": "paused",
+    "transform": "matrix(1.11922, 0, 0, 1.11922, 2.93799, 0)"
+  },
+  {
+    "phase": "mobile-paused-settled-2",
+    "playState": "paused",
+    "transform": "matrix(1.11922, 0, 0, 1.11922, 2.93799, 0)"
+  }
+]

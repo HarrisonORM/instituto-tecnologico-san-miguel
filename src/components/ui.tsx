@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { InstituteClient } from "@/client/api";
 import type { CurrentUser } from "@/contracts/academic";
 import { createPreview, type Dataset } from "@/lib/preview-data";
+import { resolveMotionPreference, type MotionPreference } from "@/lib/motion";
 
 type Language = "es" | "en";
 type Theme = "light" | "dark" | "system";
@@ -25,34 +26,44 @@ const UIContext = createContext<UIContextValue | null>(null);
 export function Providers({ children }: { children: ReactNode }) {
   const [lang, updateLang] = useState<Language>("es");
   const [theme, updateTheme] = useState<Theme>("system");
-  const [reduced, updateReduced] = useState(false);
+  const [motionPreference, updateMotionPreference] = useState<MotionPreference>("system");
+  const [systemReduced, updateSystemReduced] = useState(false);
+  const [preferencesReady, setPreferencesReady] = useState(false);
+  const reduced = motionPreference === "reduced" || (motionPreference === "system" && systemReduced);
   const [api] = useState(() => new InstituteClient());
   const [user, setUser] = useState<CurrentUser | null>(null);
   const [previewStore, setPreviewStore] = useState(() => createPreview("teacher", true));
   const previewRef = useRef(previewStore); const [previewFiles] = useState<Record<string, File>>({});
   const changePreview = (reduce: (current: Dataset) => Dataset) => { const next = reduce(previewRef.current); previewRef.current = next; setPreviewStore(next); return next; };
   useEffect(() => {
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateSystem = () => updateSystemReduced(motionMedia.matches);
+    updateSystem();
     try {
-      const saved = JSON.parse(localStorage.getItem("itsm.preferences") || "{}");
+      const saved = JSON.parse(localStorage.getItem("itsm.preferences") || "{}") || {};
       if (saved.lang === "es" || saved.lang === "en") updateLang(saved.lang);
       if (["light", "dark", "system"].includes(saved.theme)) updateTheme(saved.theme);
-      updateReduced(saved.reduced === true || window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+      updateMotionPreference(resolveMotionPreference(saved, motionMedia.matches).preference);
     } catch { /* Las preferencias no son necesarias para utilizar la aplicación. */ }
+    setPreferencesReady(true);
+    motionMedia.addEventListener("change", updateSystem);
+    return () => motionMedia.removeEventListener("change", updateSystem);
   }, []);
   useEffect(() => {
+    if (!preferencesReady) return;
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const apply = () => { document.documentElement.dataset.theme = theme === "system" ? (media.matches ? "dark" : "light") : theme; };
     apply(); media.addEventListener("change", apply);
     document.documentElement.lang = lang;
     document.documentElement.dataset.motion = reduced ? "reduced" : "full";
     return () => media.removeEventListener("change", apply);
-  }, [lang, theme, reduced]);
-  const persist = (next: { lang: Language; theme: Theme; reduced: boolean }) => {
+  }, [lang, theme, reduced, preferencesReady]);
+  const persist = (next: { lang: Language; theme: Theme; reduced: boolean; motion: MotionPreference }) => {
     try { localStorage.setItem("itsm.preferences", JSON.stringify(next)); } catch { /* Preferencia solo en memoria. */ }
   };
-  const setLang = (next: Language) => { updateLang(next); persist({ lang: next, theme, reduced }); };
-  const setTheme = (next: Theme) => { updateTheme(next); persist({ lang, theme: next, reduced }); };
-  const setReduced = (next: boolean) => { updateReduced(next); persist({ lang, theme, reduced: next }); };
+  const setLang = (next: Language) => { updateLang(next); persist({ lang: next, theme, reduced, motion: motionPreference }); };
+  const setTheme = (next: Theme) => { updateTheme(next); persist({ lang, theme: next, reduced, motion: motionPreference }); };
+  const setReduced = (next: boolean) => { const motion = next ? "reduced" : "full"; updateMotionPreference(motion); persist({ lang, theme, reduced: next, motion }); };
   const login = async (email: string, password: string) => { setUser(null); const me = await api.login(email, password); setUser(me); return me; };
   const logout = async () => { setUser(null); await api.logout(); };
   const refreshUser = async () => { const me = await api.me(); setUser(me); return me; };

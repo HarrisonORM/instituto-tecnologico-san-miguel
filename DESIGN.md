@@ -214,7 +214,11 @@ El selector de tema integra icono, texto y flecha en un solo contorno de esquina
 
 ### Photographic program explorer
 
-La selección pública combina un select nativo de cinco programas, etiqueta visible, descripción viva y enlace actualizado. El campo usa surface, borde line y mínimo de 44px; su texto de 12px pasa a 16px en móvil. El catálogo comprende Desarrollo de Software, Redes y Telecomunicaciones, Auxiliar Contable, Auxiliar Administrativo y Mantenimiento y Reparación de Equipos Biomédicos. Su adaptación móvil se apila. La fotografía de campus respira entre escalas 1.025 y 1.075 durante 22s y admite desplazamiento suave ligado al scroll, limitado a 45px. El control permite pausarla. La preferencia reducida y `prefers-reduced-motion` eliminan animación de campus, desplazamiento del fondo y transiciones generales; no se infiere de ello una auditoría completa de todo movimiento.
+La selección pública combina un select nativo de cinco programas, etiqueta visible, descripción viva y enlace actualizado. El campo usa surface, borde line y mínimo de 44px; su texto de 12px pasa a 16px en móvil. El catálogo comprende Desarrollo de Software, Redes y Telecomunicaciones, Auxiliar Contable, Auxiliar Administrativo y Mantenimiento y Reparación de Equipos Biomédicos. Su adaptación móvil se apila.
+
+La fotografía de campus combina zoom y desplazamiento lateral (`18s ease-in-out infinite alternate`, de `scale(1.03) translateX(-.7%)` a `scale(1.12) translateX(.7%)`). El fondo admite además desplazamiento ligado al scroll (`min(scrollY * .1,45)px`). El control pausa o reactiva la fotografía; la animación conserva su posición al pausar y se suspende cuando el hero queda fuera del viewport o la pestaña está oculta. La pausa fuera del viewport está observada; la ocultación de pestaña está implementada, sin comprobación mediante un cambio real de pestaña.
+
+Sin elección explícita, el movimiento sigue `prefers-reduced-motion`, también cuando cambia el sistema. El control guarda una elección explícita `full` o `reduced` que prevalece sobre el sistema y persiste entre superficies y recargas. En preferencias antiguas, `reduced:true` conserva la pausa y `reduced:false` vuelve a seguir el sistema. La resolución se aplica antes de pintar y en React. El estado reducido pausa la animación de campus y anula el desplazamiento del fondo, el scroll suave y las transiciones generales; no se infiere de ello una auditoría completa de todo movimiento.
 
 ## Do's and Don'ts
 
@@ -232,4 +236,4 @@ La selección pública combina un select nativo de cinco programas, etiqueta vis
 - **Don't** presentar una fotografía ilustrativa como evidencia de un campus real.
 - **Don't** convertir tamaños incidentales de texto auxiliar o un defecto observado en una regla para nuevas superficies.
 
-No canonizado ni reparado en esta pasada: los textos auxiliares de 9–11px presentes en algunas vistas son excepciones de densidad del código, no un mínimo recomendado de legibilidad. La extensión actual no recibe aquí un veredicto de entrega ni validación de integraciones reales.
+No canonizado ni reparado en esta pasada: los textos auxiliares de 9–11px presentes en algunas vistas son excepciones de densidad del código, no un mínimo recomendado de legibilidad. El detector de movimiento registra deriva previa (45 avisos de tamaños, 4 de colores y 2 de radios); este refinamiento conserva la paleta, la rampa tipográfica y las formas existentes sin ampliar tokens para absorber esos avisos. La extensión actual no recibe aquí un veredicto de entrega ni validación de integraciones reales.
