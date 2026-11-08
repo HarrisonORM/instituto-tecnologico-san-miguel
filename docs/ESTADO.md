@@ -1,5 +1,14 @@
 # Estado y siguiente paso
 
+## Confirmación MFA conservada durante la recarga
+
+El usuario confirmó el alta del primer administrador y después informó que no apareció el mensaje de verificación. Se encontró un defecto local: refreshUser cambiaba el usuario y la carga sustituía SecurityPanel por skeletons, desmontándolo y perdiendo el estado del mensaje. Se corrigió su montaje para que permanezca en la vista Seguridad; el éxito se muestra al aceptar el código y una recarga posterior fallida se distingue de un código rechazado. El QR/clave manual se retiran al aceptar el código. No se alteran RLS, roles, MFA ni endpoints de autenticación.
+
+Lint y build de producción terminaron con código 0; nueve pruebas de privacidad aprobaron. Los componentes reales se probaron en un servidor HTTP local con respuestas sintéticas (sin .env.local ni Supabase): aceptación y persistencia después de Actualizar; rechazo sin éxito; aceptación seguida de fallo de consulta con aviso específico. En escritorio DOM990×720 y móvil390×844 se observó la confirmación; en móvil su posición fue713–766px, dentro de844px, sin desbordamiento. No se lograron capturas automáticas: la evidencia es accesible/DOM y no una aprobación visual por imágenes. El detector manual del único TSX modificado no produjo hallazgos. Las pruebas de navegador son escenarios observados, no una suite E2E automatizada. Reproducción controlada: npm.cmd run qa:mfa; es exclusivamente un servidor local de datos simulados.
+
+El cambio está en el equipo, sin push ni despliegue. El estado remoto de MFA sigue pendiente: se preparó una consulta de solo lectura limitada al UID propio del usuario, que devuelve únicamente tipo/estado y nunca QR, secretos, códigos o tokens. Un factor verified no demuestra aal2 de la sesión de navegador actual. Pasos en MFA-COMPROBACION.md. No se deben reenrolar ni eliminar factores solo por ausencia del mensaje.
+
+
 ## Publicación observada y primera cuenta Auth creada
 
 La dirección pública es https://instituto-tecnologico-san-miguel.vercel.app. El agente observó la landing y la respuesta `{"status":"ok","service":"instituto-san-miguel"}` en `/api/health`; eso no acredita todavía acceso a datos, cuentas o archivos. En esa observación la portada conservaba la animación anterior de 22 segundos. Un Redeploy de un commit anterior no incorpora el commit local de movimiento por sí solo.
