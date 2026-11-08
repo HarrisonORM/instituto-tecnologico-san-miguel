@@ -1,5 +1,19 @@
 # Estado y siguiente paso
 
+## GitHub preparado y guía de primera publicación
+
+El usuario informó que la instalación SQL terminó bien, que completó Secret y que creó/subió el repositorio GitHub. No aportó la fila final de instalación; queda como confirmación del usuario, sin una lectura remota adicional del agente.
+
+Se comprobó el remoto local `https://github.com/HarrisonORM/instituto-tecnologico-san-miguel.git`, repositorio sin cambios pendientes al iniciar este bloque, y `.env.local` ignorado/no versionado actualmente. La revisión de variables solo informó presencia: URL, Publishable y Secret configurados; dominio institucional, retorno de recuperación y secreto de contacto pendientes. No se imprimieron valores ni se autenticó la clave Secret contra Supabase.
+
+Guía lista: [Publicar en Vercel](PUBLICAR-VERCEL.md). Configuración propuesta: Hobby personal, Next.js, raíz del repositorio, rama main, Node 22.x, npm run build y variables para Production. Sin Vercel conectado al agente, no se configuraron permisos de GitHub, variables remotas ni despliegue. Falta observar una URL pública en Ready y comprobarla.
+
+El usuario pidió conocer lo que falta del plan inicial. Inventario en [Pendientes hasta la entrega](PENDIENTES-HASTA-ENTREGA.md). Sigue pendiente completar el promedio provisional ponderado del servidor: la migración 011 devuelve `pending_academic_policy`; el promedio de muestra no lo sustituye. También falta confirmar el mecanismo suficiente de traducción académica y el alcance de adjuntos, además de cuentas reales controladas, MFA, correo, archivos, copias/restauración y PWA comprobados.
+
+Comprobación del bloque: revisión de configuración, código relevante, enlaces oficiales y coherencia documental; sin cambios de aplicación ni nuevas pruebas de compilación necesarias. No se hizo push ni despliegue desde el agente.
+
+---
+
 ## Auth confirmado por el usuario e instalador preparado
 
 El usuario compartió una comprobación correcta de Auth con el registro público desactivado y una captura sin tablas en public. Es evidencia aportada por el usuario; no se leyeron claves ni se hizo una consulta remota adicional.

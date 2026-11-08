@@ -1,5 +1,7 @@
 # Plan de principio a fin
 
+Prioridad posterior del usuario: conectar el repositorio de GitHub con Vercel para una primera publicación revisable desde el celular. Pasos en PUBLICAR-VERCEL.md y pendientes concretos en PENDIENTES-HASTA-ENTREGA.md. Esa publicación inicial no declara terminadas la integración, la seguridad, el correo, la restauración ni la PWA.
+
 Este plan conserva el orden del encargo. PRODUCT.md contiene los requisitos y docs/ESTADO.md registra el avance; esta página no redefine reglas académicas.
 
 Orden actual: el usuario autorizó retomar la validación local después de adelantar backend y frontend. Hay resultados locales de código, compilación, SQL y recorridos; la integración real, restauración, publicación y PWA completa siguen abiertas. Las etapas no se dan por terminadas solo por tener código. Dirección B+C elegida y conservada.

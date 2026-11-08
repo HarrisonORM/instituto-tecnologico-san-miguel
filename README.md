@@ -20,6 +20,8 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [Configuración de servicios](docs/CONFIGURACION-SERVICIOS.md) | Pasos pequeños para las cuentas, plantilla local y registro de pruebas pendientes. |
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
 | [Ver la aplicación](docs/VER-LA-APLICACION.md) | Direcciones locales, paneles y diferencias entre vista previa y acceso real. |
+| [Publicar en Vercel](docs/PUBLICAR-VERCEL.md) | Importar GitHub, configurar variables y comprobar la primera publicación en Hobby. |
+| [Qué falta para la entrega](docs/PENDIENTES-HASTA-ENTREGA.md) | Funciones pendientes, integración y comprobaciones que faltan del plan original. |
 | [Sistema visual](DESIGN.md) | Paleta, tipografía y componentes extraídos de la implementación. |
 | [Frontend implementado](docs/FRONTEND-IMPLEMENTADO.md) | Pantallas, fotografías, traducciones y contacto preparados. |
 | [Validación pendiente](docs/VALIDACION-PENDIENTE.md) | Restricción actual de pruebas, resultados parciales y trabajo restante. |
