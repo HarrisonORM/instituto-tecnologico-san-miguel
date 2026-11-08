@@ -1,5 +1,7 @@
 # Configuración y pruebas de los servicios
 
+Actualización del 8 de noviembre: no se requiere dominio de correo propio. La aplicación permite invitaciones administrativas a direcciones personales válidas; INSTITUTION_EMAIL_DOMAIN ya no se utiliza. Esa validación es independiente del remitente SMTP de Supabase. El mensaje «Correo institucional no permitido» se producía antes de registrar/enviar la invitación; corregirlo no demuestra recepción de correo. Se conserva desactivado el registro público. El SMTP y el ciclo real de invitación siguen pendientes de confirmación.
+
 ## Avance comunicado por el usuario
 
 El usuario compartió la salida `Correcto: Auth responde y el registro público está desactivado` y una captura con cero tablas en `public`. Se registra como evidencia aportada por el usuario, sin volver a consultar ni mostrar claves. La conexión de Auth ya tiene ese resultado; datos, archivos y correo siguen pendientes de comprobación real. Se preparó y probó localmente el [instalador de las veinte migraciones](INSTALAR-BASE.md), todavía sin ejecutarlo en Supabase. Los apartados siguientes que dicen «clave pendiente» son históricos.

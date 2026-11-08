@@ -1,5 +1,16 @@
 # Estado y siguiente paso
 
+## Correos personales en invitaciones (8 de noviembre de 2026)
+
+El usuario obtuvo «Correo institucional no permitido» e informó que no tiene dominio propio. El bloqueo estaba en la ruta de la aplicación: exigía INSTITUTION_EMAIL_DOMAIN y la coincidencia del destinatario, antes de preparar el trabajo o solicitar el envío a Auth. Se eliminó esa exigencia, se normaliza la dirección y se valida su formato. La variable se retira de .env.example; si quedó en Vercel, el nuevo código la ignora. No se requieren dominio comprado, migración SQL ni cambios de claves.
+
+Acceso, recuperación e invitación dicen «Correo electrónico / Email address». Se mantiene la comprobación de sesión activa, administrador y MFA, roles admitidos, idempotencia y registro público deshabilitado. Ocho pruebas locales ejecutan la ruta y el transporte reales con fetch simulado: Gmail con variable antigua, Outlook sin variable, direcciones mal formadas, falta de sesión, permiso/MFA denegado, cuenta suspendida, rol inválido y recibo completo sin reenvío. Pasaron sin red ni lectura de .env.local. El detector único de los dos TSX modificados no produjo hallazgos; es un cambio de copy sin modificación de composición, no una nueva revisión visual.
+
+La compilación de producción, tipos y lint terminaron con código 0. El primer lint detectó referencias Request/Response sin calificar dentro de la prueba; se corrigieron a globalThis sin cambiar configuración global. Las ocho pruebas volvieron a pasar. No se ejecutaron suites SQL porque este cambio no modifica la base.
+
+Las dos direcciones probadas por el usuario no acreditan entrega: el error informado bloquea antes del envío. La configuración SMTP no está confirmada; sigue pendiente distinguir remitente predeterminado restringido, SMTP personalizado y resultado de una invitación completa. No se envió correo ni se cambiaron Supabase/Vercel desde el agente. Siguiente paso: publicar el commit nuevo y revisar SMTP antes de repetir las invitaciones.
+
+
 ## Verificación contextual preparada (8 de noviembre de 2026)
 
 El usuario confirmó factor verified y el mensaje de verificación completada en su sesión. Después solicitó retirar el formulario permanente de Seguridad. Se implementó un diálogo compartido que identifica acción/destino, explica consecuencias, admite Cancelar/Escape y retiene el formulario. Seguridad conserva estado/configuración inicial. Cambio y recuperación de contraseña piden autenticador si existe un factor verificado. Las lecturas privilegiadas se separan de las escrituras protegidas, sin ampliar roles ni acceso a notas. Se conserva por ahora la cobertura administrativa anterior; no se recibió respuesta a la pregunta opcional sobre limitarla.

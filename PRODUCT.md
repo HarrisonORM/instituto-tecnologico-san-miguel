@@ -60,6 +60,8 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 
 ### Plan de seguridad y presupuesto
 
+El usuario confirmó que no tiene dominio de correo propio. El acceso y las invitaciones aceptan direcciones personales válidas, incluidas Gmail y Outlook, sin exigir ni comprar un dominio institucional. Se retira la restricción INSTITUTION_EMAIL_DOMAIN; el alta sigue reservada al administrador activo con verificación y sin registro público. La aceptación de la dirección no acredita entrega: el transporte SMTP se configura y comprueba por separado.
+
 Actualización confirmada el 8 de noviembre: retirar el formulario permanente de verificación de Seguridad y pedir el código en el contexto de una acción protegida, mediante ventana adaptable. Seguridad conserva el estado y la configuración inicial del autenticador. Cambiar o recuperar una contraseña de una cuenta con factor verificado solicita ese factor antes de guardar; perder el autenticador requiere recuperación asistida, sin desactivarlo automáticamente.
 
 La implementación conserva las operaciones privilegiadas ya protegidas (cuentas, roles, permisos, correcciones y cierre, entre otras); no interpreta los ejemplos de bajas y contraseña como autorización para quitar la protección restante. La consulta del panel sigue limitada por rol/recurso sin pedir código. La pregunta opcional sobre limitar el alcance exclusivamente a bajas y contraseña sigue sin respuesta: conservar la cobertura anterior es una decisión técnica provisional, no una nueva aprobación del usuario. La frescura del código de 90 segundos en servidor es una propuesta implementada localmente; no es una autorización vinculada a una sola operación.

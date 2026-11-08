@@ -7,9 +7,8 @@ export async function POST(request: Request) {
     // RPC valida administrador activo y MFA antes de usar una clave privilegiada.
     await supabase("/rest/v1/rpc/require_account_admin", token, {}, "POST");
     const body = await bodyOf(request);
-    const email = text(body.email, 254).toLowerCase();
-    const domain = process.env.INSTITUTION_EMAIL_DOMAIN?.toLowerCase();
-    if (!domain || !email.endsWith(`@${domain}`) || !/^[^\s@]+@[^\s@]+$/.test(email)) throw new ApiError(400, "Correo institucional no permitido");
+    const email = text(body.email, 254).trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new ApiError(400, "Introduce un correo electrónico válido");
     const role = text(body.role, 40);
     if (!["student", "teacher", "academic_admin", "system_admin"].includes(role)) throw new ApiError(400, "Rol no válido");
     const name = text(body.full_name, 200);
