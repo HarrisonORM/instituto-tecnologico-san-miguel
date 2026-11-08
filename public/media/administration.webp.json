@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic editorial photograph for the fictional Instituto Tecnológico de San Miguel educational website. Three adult Latin American university students in an administrative-assistant training office collaborating to sort and organize paper documents into simple folders and desk trays on a light wood worktable. One student arranges folders, another checks a softly focused laptop, the third discusses a document with a natural gesture. Documents have subtle abstract lines only, no readable text. Natural candid anatomy and hands. Bright contemporary university room with large windows and a leafy green campus courtyard beyond, pale concrete and neutral materials, subtle deep emerald and mint clothing accents. Landscape 3:2 environmental photograph, believable practical education, natural sunlight, coherent with refined campus editorial photography. No logos, no readable text, no signs, no watermark, no UI or collage. Illustrative generated image for a fictitious institution, no documentary claims.\n",
+  "createdAt": "2026-11-07T21:33:29.221Z",
+  "origin": "AI-generated illustrative photograph for a fictitious institute; no documentary claim",
+  "generator": "integrated image_gen",
+  "inventory": ".impeccable/build/program-assets.json",
+  "conversion": "ffmpeg libwebp quality 85 compression 6; resized 1536x1024 to 1200x800",
+  "source": "C:\\Users\\harry\\.codex\\generated_images\\01a1b6e4-a3cf-7421-966c-db91d62ac01c\\exec-e1b56505-f94a-4ffc-b4fa-18ee31f1d54d.png"
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "undefined\n",
+  "createdAt": "2026-11-07T21:33:30.27Z",
+  "origin": "AI-generated illustrative photograph for a fictitious institute; no documentary claim",
+  "generator": "integrated image_gen",
+  "inventory": ".impeccable/build/program-assets.json",
+  "conversion": "ffmpeg libwebp quality 85 compression 6; resized 1536x1024 to 1200x800",
+  "source": "C:\\Users\\harry\\.codex\\generated_images\\01a1b6e4-a3cf-7421-966c-db91d62ac01c\\exec-d05e4af6-7007-4e69-8f1d-3c3f456ebe30.png"
+}

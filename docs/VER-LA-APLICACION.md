@@ -30,7 +30,9 @@ En este bloque quedó ejecutándose en http://127.0.0.1:3001. Si está detenida,
 | `/vista-previa?rol=system_admin` | Cuentas, permisos, estados y auditoría. |
 | `/privacidad` | Tratamiento de preferencias, sesión y datos de ejemplo. |
 
-Los enlaces de las tarjetas de programas son la referencia para su dirección exacta. El selector superior del panel permite cambiar de rol y de persona ficticia entre las 47 identidades preparadas. Estos selectores no alteran permisos de ninguna cuenta institucional.
+Los enlaces de las tarjetas de programas son la referencia para su dirección exacta. Por petición del usuario, ya no hay selectores de persona ni de rol dentro de los paneles. Cada espacio utiliza una cuenta de ejemplo fija. Para explorar otro espacio, vuelve a /vista-previa; eso no inicia una sesión institucional ni cambia sus permisos.
+
+Los nuevos programas también tienen rutas propias: /programas/auxiliar-contable, /programas/auxiliar-administrativo y /programas/equipos-biomedicos.
 
 ## Paso 3: entender lo que estás viendo
 

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic editorial photograph for the fictional Instituto Tecnológico de San Miguel educational website. An adult Latin American university student practicing accounting at a light wood desk in a bright contemporary university training office, concentrating on a laptop displaying a spreadsheet whose cells are too small and soft to read, using a realistic desktop calculator beside neatly arranged ledger sheets. Natural candid posture and hands, pale neutral shirt with subtle deep emerald clothing accents. Sunlight through large windows, green university courtyard in the background, contemporary concrete architecture. Landscape 3:2 composition, medium-wide environmental educational photography with realistic materials, consistent with natural campus editorial photography. No readable text or numbers anywhere, no logos, no signage, no watermark, no UI framing, no collage. Illustrative generated photography for a fictitious institution, not a real institution or documentary claim.\n",
+  "createdAt": "2026-11-07T21:33:27.319Z",
+  "origin": "AI-generated illustrative photograph for a fictitious institute; no documentary claim",
+  "generator": "integrated image_gen",
+  "inventory": ".impeccable/build/program-assets.json",
+  "conversion": "ffmpeg libwebp quality 85 compression 6; resized 1536x1024 to 1200x800",
+  "source": "C:\\Users\\harry\\.codex\\generated_images\\01a1b6e4-a3cf-7421-966c-db91d62ac01c\\exec-eb4d0d17-c573-4422-b63b-dd531fa88b48.png"
+}

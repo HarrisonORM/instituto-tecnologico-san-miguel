@@ -54,10 +54,10 @@ async function run() {
     await rows("profiles",[{id:user.id,full_name:item.full_name,document_number:item.document_number,seed_tag:tag}]);
     await api("/rest/v1/user_roles?on_conflict=user_id,role",[{user_id:user.id,role:item.role}],"POST","resolution=ignore-duplicates,return=minimal");
   }
-  const programs=[{id:uuid("program-0"),name:"Desarrollo de Software"},{id:uuid("program-1"),name:"Redes y Telecomunicaciones"}];
+  const programs=[{id:uuid("program-0"),name:"Desarrollo de Software"},{id:uuid("program-1"),name:"Redes y Telecomunicaciones"},{id:uuid("program-2"),name:"Auxiliar Contable"},{id:uuid("program-3"),name:"Auxiliar Administrativo"},{id:uuid("program-4"),name:"Mantenimiento y Reparación de Equipos Biomédicos"}];
   await rows("programs",programs);
   const start=new Date(); const end=new Date(start.getTime()+180*86400000);
-  const period={id:uuid("period"),name:"Período ficticio de portafolio",starts_on:start.toISOString().slice(0,10),ends_on:end.toISOString().slice(0,10)};
+  const period={id:uuid("period"),name:"Período académico de prueba",starts_on:start.toISOString().slice(0,10),ends_on:end.toISOString().slice(0,10)};
   await rows("periods",[period]);
   const subjects=["Fundamentos de Programación","Bases de Datos","Fundamentos de Redes","Servicios de Telecomunicaciones"].map((name,i)=>({id:uuid(`subject-${i}`),program_id:programs[Math.floor(i/2)].id,name}));
   await rows("subjects",subjects);

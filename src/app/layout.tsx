@@ -9,7 +9,7 @@ const manrope = localFont({ src: "../../public/fonts/manrope.ttf", display: "swa
 
 export const metadata: Metadata = {
   title: "Instituto Tecnológico de San Miguel",
-  description: "Proyecto académico ficticio de portafolio.",
+  description: "Programas de formación y campus académico del Instituto Tecnológico de San Miguel.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

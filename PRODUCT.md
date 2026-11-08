@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 19 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 20 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -68,8 +68,22 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - No garantizar disponibilidad permanente con servicios gratuitos. Documentar inactividad, reactivación, cuotas y restauración de copias.
 - Validar temprano un envío real de invitación y recuperación sin comprar un dominio; no dar esta integración por resuelta hasta comprobarla. Las pruebas locales podrán capturar correos sin enviarlos.
 - No enviar mensajes a direcciones ficticias. Usar destinatarios reales controlados para probar correo.
-- La demostración aprobada tiene 40 estudiantes, 4 docentes, 1 administrativo académico y 2 administradores del sistema (47 cuentas), dos carreras ficticias —Desarrollo de Software y Redes y Telecomunicaciones—, cuatro materias, seis grupos y un período de prueba.
+- La demostración aprobada tiene 40 estudiantes, 4 docentes, 1 administrativo académico y 2 administradores del sistema (47 cuentas), usuarios matriculados inicialmente en Desarrollo de Software y Redes y Telecomunicaciones, cuatro materias, seis grupos y un período de prueba.
 - Los límites internos concretos de archivos y consumo siguen siendo propuestas técnicas de planificación; deben distinguirse de las cuotas del proveedor y verificarse antes del despliegue.
+
+### Ampliación de catálogo y presentación confirmada (7 de noviembre de 2026)
+
+- Cinco programas públicos: Desarrollo de Software, Redes y Telecomunicaciones, Auxiliar Contable, Auxiliar Administrativo y Mantenimiento y Reparación de Equipos Biomédicos. Cada uno tendrá descripción, áreas de aprendizaje e imagen propia en ES/EN.
+- Las tres carreras nuevas se incluyen en contacto y en el catálogo académico preparado. Se mantienen 47 cuentas, cuatro materias y seis grupos; las carreras nuevas aún no tienen grupos ni matrículas de ejemplo.
+- Corregir el selector de tema como un único control: icono, texto, flecha y contorno sobre la misma superficie, conservando Claro/Oscuro/Sistema.
+- El usuario retiró los avisos persistentes de institución ficticia en la presentación. Esta decisión sustituye la recomendación anterior del revisor; no ocultar qué operaciones son de vista previa ni afirmar integraciones sin comprobar.
+
+### Individualización confirmada de los paneles (7 de noviembre de 2026)
+
+- Retirar de toda la interfaz los avisos que llamen ficticia a la institución. No alterar la naturaleza sintética de los datos de desarrollo ni inventar hechos institucionales.
+- Retirar los selectores globales de rol y persona del interior de los paneles. Cada vista previa usa una cuenta de ejemplo fija para su rol; la URL `persona` ya no elige otro estudiante.
+- El estudiante no tiene directorio ni selector de compañeros, ni sus perfiles, matrículas, entregas, notas, comentarios o archivos. El docente conserva únicamente el listado necesario de sus grupos asignados.
+- Pestañas distintas por rol y acciones académicas visibles según permisos específicos. Las comprobaciones de servidor/base siguen siendo obligatorias; una vista previa pública no crea sesión institucional ni concede privilegios.
 
 ### Funciones incluidas y organización
 
@@ -96,7 +110,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 
 - Porcentajes concretos por materia y reglas de cambio del esquema de evaluación; precisión de notas individuales y fórmula detallada del promedio provisional, con su cobertura y manejo de categorías aún vacías. Las reglas de redondeo final y conversión de no entregadas a cero al cierre ya están confirmadas.
 - Detalles de las autorizaciones de reemplazo de entregas: alcance y caducidad del permiso, revisión de una nota previa y comportamiento al cerrar un período.
-- Nombres y contenidos concretos de las cuatro materias y los seis grupos, fechas del período de prueba y contenido institucional ficticio. Las dos carreras y las 47 cuentas ya están aprobadas.
+- Nombres y contenidos concretos de las cuatro materias y los seis grupos, fechas del período de prueba y contenido institucional ficticio. Las 47 cuentas y sus asignaciones iniciales se conservan. El catálogo se amplió a cinco programas por petición posterior.
 - Límites internos y compatibilidad del servicio gratuito de correo, que solo pueden considerarse verificados después de una prueba real.
 - Implementación provisional de traducciones: versiones ES/EN revisadas por autores o personal autorizado, con huella del original y permisos del recurso. No usa API externa ni traduce adjuntos; su suficiencia frente al alcance deseado necesita confirmación.
 - Traducción del contenido académico confirmada como requisito: falta elegir versiones ES/EN redactadas o revisadas por el autor frente a generación automática, y definir por separado el interior de documentos e imágenes adjuntos. No hay servicio de traducción elegido ni autorización para generar costes.
@@ -105,7 +119,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 ## Brand Commitments
 
 - Nombre confirmado: Instituto Tecnológico de San Miguel.
-- La universidad es ficticia y el contenido debe presentarse como demostración, sin afirmar acreditaciones, testimonios o resultados reales.
+- El proyecto utiliza una institución y datos ficticios. Por petición expresa del usuario del 7 de noviembre de 2026, la presentación pública y el acceso no llevan avisos de «institución ficticia» o «proyecto de portafolio». La privacidad distingue las cuentas de ejemplo del acceso institucional, sin llamar ficticia a la institución. La vista previa sigue identificada como tal. No inventar acreditaciones, testimonios, fechas, precios o resultados reales.
 - El nombre se ha decidido; la identidad visual se creará durante el proyecto.
 - El usuario ha elegido que Codex presente propuestas visuales y espere su elección antes de programar las pantallas.
 - El frontend debe ser personalizado y coherente entre landing y paneles, con especial atención a celular y computador.
@@ -119,7 +133,7 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 
 - Encargo completo del usuario leído íntegramente al iniciar el bloque, junto con sus requisitos y decisiones previamente documentados.
 - Los roles de una imagen confirmada por el usuario están transcritos en este documento. No se necesita la imagen temporal para comprender los permisos.
-- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento, cliente, landing y paneles, con vista previa ficticia independiente. El proyecto de Supabase fue creado por el usuario; las 19 migraciones no se han aplicado a ese servicio. La dirección B+C está confirmada y se concretó en código bajo la delegación posterior. Los resultados parciales no acreditan el conjunto actual; consultar docs/ESTADO.md.
+- La carpeta empezó vacía. Ahora contiene backend académico, administración, almacenamiento, cliente, landing y paneles, con vista previa ficticia independiente. El proyecto de Supabase fue creado por el usuario; las 20 migraciones no se han aplicado a ese servicio. La dirección B+C está confirmada y se concretó en código bajo la delegación posterior. Los resultados parciales no acreditan el conjunto actual; consultar docs/ESTADO.md.
 - El prompt original y los archivos exportados de la conversación sirven de referencia histórica. Este PRODUCT.md es la fuente de requisitos mantenida para continuar el desarrollo.
 
 ## Product Principles

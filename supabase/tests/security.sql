@@ -25,10 +25,14 @@ insert into public.categories(id,subject_id,period_id,name,weight) values('50000
 insert into public.tasks(id,group_id,category_id,author_id,title,description,due_at) values('60000000-0000-0000-0000-000000000001','40000000-0000-0000-0000-000000000001','50000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000003','Actividad A','Original','2020-01-02'),('60000000-0000-0000-0000-000000000002','40000000-0000-0000-0000-000000000002','50000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','Actividad B','Original privado','2020-01-02');
 insert into public.submissions(id,task_id,student_id) values('70000000-0000-0000-0000-000000000001','60000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001'),('70000000-0000-0000-0000-000000000002','60000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000002');
 
+-- El segundo estudiante comparte también el grupo A: ni ser compañero da acceso al directorio.
+insert into public.enrollments values('00000000-0000-0000-0000-000000000002','40000000-0000-0000-0000-000000000001');
 set local role authenticated;
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000001","aal":"aal1","user_metadata":{"role":"system_admin"}}',true) \gset
 do $$ begin
  assert (select count(*) from public.profiles)=1,'student profile isolation';
+ perform private.expect_rejection($q$select public.group_roster('40000000-0000-0000-0000-000000000001')$q$);
+ perform private.expect_rejection($q$select public.search_roster('40000000-0000-0000-0000-000000000001','',25,0)$q$);
  assert (select count(*) from public.submissions)=1,'student grade isolation';
  assert (select count(*) from public.tasks)=1,'task recipient isolation';
  assert not private.system_admin(),'editable metadata must not grant roles';
@@ -54,6 +58,9 @@ end $$;
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000003","aal":"aal1"}',true) \gset
 do $$ begin
  assert (select count(*) from public.submissions)=1,'assigned group only';
+ assert (select count(*) from public.group_roster('40000000-0000-0000-0000-000000000001'))=2,'teacher sees only assigned roster';
+ perform private.expect_rejection($q$select public.group_roster('40000000-0000-0000-0000-000000000002')$q$);
+ perform private.expect_rejection($q$select public.search_roster('40000000-0000-0000-0000-000000000002','',25,0)$q$);
  assert (select count(*) from storage.objects)=1,'assigned teacher sees linked evidence';
  perform public.review_work('70000000-0000-0000-0000-000000000001','grade',4.2,'Buen trabajo');
  perform private.expect_rejection($q$select public.review_work('70000000-0000-0000-0000-000000000002','grade',5,'Ajena')$q$);
@@ -109,7 +116,10 @@ reset role;
 do $$ begin assert not has_function_privilege('anon','public.submit_contact(text,text,text,text,text)','EXECUTE'),'anonymous cannot bypass contact gateway'; end $$;
 set local role service_role;
 do $$ declare limited boolean:=false; begin
- for i in 1..60 loop perform public.submit_contact('Ejemplo','test'||i||'@example.invalid','software','Mensaje ficticio de prueba',lpad(to_hex(i),64,'0')); end loop;
+ perform public.submit_contact('Ejemplo','contable@example.invalid','auxiliar-contable','Consulta del programa contable',repeat('a',64));
+ perform public.submit_contact('Ejemplo','administrativo@example.invalid','auxiliar-administrativo','Consulta del programa administrativo',repeat('b',64));
+ perform public.submit_contact('Ejemplo','biomedico@example.invalid','equipos-biomedicos','Consulta del programa biomédico',repeat('c',64));
+ for i in 1..57 loop perform public.submit_contact('Ejemplo','test'||i||'@example.invalid','software','Mensaje ficticio de prueba',lpad(to_hex(i),64,'0')); end loop;
  begin
   perform public.submit_contact('Ejemplo','overflow@example.invalid','software','Mensaje ficticio de prueba',repeat('f',64));
  exception when sqlstate 'P0429' then limited:=true;
@@ -117,5 +127,6 @@ do $$ declare limited boolean:=false; begin
  assert limited,'contact budget must reject the 61st request with P0429';
 end $$;
 reset role;
+do $$ begin assert (select count(*) from public.contact_inquiries where program in ('auxiliar-contable','auxiliar-administrativo','equipos-biomedicos'))=3,'new programs accepted'; end $$;
 select 'OK: RLS, evidence metadata, grading, replacement, translation, suspension, MFA, dual approval, close blocking and contact budget' as result;
 rollback;

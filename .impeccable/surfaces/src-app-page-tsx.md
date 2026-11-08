@@ -13,17 +13,21 @@ Ruta actual: code-led, registrada en .impeccable/config.json. Referencia de crí
 
 ## Direction contract
 
-THESIS: Un campus abierto al visitante: la fotografía continua, el campo esmeralda y los títulos amplios conducen a explorar dos programas; evita el hero genérico de dos columnas y tarjetas flotantes repetidas.
+THESIS: Un campus abierto al visitante: la fotografía continua, el campo esmeralda y los títulos amplios conducen a explorar cinco programas; evita el hero genérico de dos columnas y tarjetas flotantes repetidas.
 
 OWN-WORLD: Esmeralda luminoso #48B292, menta fría, tinta verde, Manrope local y planos diagonales simples. En los portales, superficies tranquilas, navegación estable y tablas con jerarquía clara.
 
-STORY: El aspirante reconoce una institución ficticia, descubre Software o Redes y solicita información; estudiantes y docentes encuentran inmediatamente su acceso. No se inventan precios, acreditaciones ni logros.
+STORY: El aspirante descubre los cinco programas y solicita información; estudiantes y docentes encuentran inmediatamente su acceso. No se inventan precios, acreditaciones ni logros.
 
 FIRST VIEWPORT: Navegación clara arriba; una foto panorámica de campus ocupa el escenario. A la izquierda cruza un plano esmeralda con Aprender. Crear. Conectar. Abajo se integra el explorador menta: cambiar programa actualiza su descripción y enlace. En móvil, texto, foto y explorador se apilan. Zoom y desplazamiento son suaves, pausables y reducibles.
 
 FORM: Campus abierto + Campus en profundidad; composición 2 de la ronda B+C como referencia de ejecución, semilla d5b30ae5. ES/EN y tres temas se conservan al pasar a los paneles.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Ajustes solicitados por el usuario
+
+El 7 de noviembre de 2026 pidió retirar el aviso de institución ficticia de la presentación y corregir el contorno del selector de tema. Esta instrucción sustituye el hallazgo previo del revisor sobre ese aviso. La petición posterior retiró también los avisos de ficción de privacidad y acceso. Se habla de cuentas de ejemplo, sin afirmar acceso institucional. Los paneles ya no contienen selectores globales de rol/persona; el estudiante no recibe directorio de compañeros. Solicitó además Auxiliar Contable, Auxiliar Administrativo y Mantenimiento y Reparación de Equipos Biomédicos. El explorador usa selección nativa compacta para los cinco programas; cada uno tiene su ficha fotográfica y página. No se abre otra dirección visual.
 
 ## Estado y límites
 

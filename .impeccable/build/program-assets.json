@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "mode": "code-led-extension",
+  "authority": "Petición del usuario del 7 de noviembre de 2026: añadir tres programas al catálogo B+C existente. No es una nueva composición aprobada.",
+  "regions": [
+    {"id":"accounting","medium":"raster","plate":"public/media/accounting.webp","aspect":1.5,"note":"Fotografía editorial de práctica de auxiliar contable. Hojas de cálculo, calculadora, estudiante; sin texto legible. Coherente con software.webp y networks.webp."},
+    {"id":"administration","medium":"raster","plate":"public/media/administration.webp","aspect":1.5,"note":"Fotografía editorial de práctica de auxiliar administrativo. Organización colaborativa de documentos, oficina formativa, sin texto legible."},
+    {"id":"biomedical","medium":"raster","plate":"public/media/biomedical.webp","aspect":1.5,"note":"Fotografía editorial de mantenimiento y reparación de equipos biomédicos. Técnicos aprendiendo con docente, monitor desconectado e instrumental. Sin pacientes ni procedimientos clínicos."}
+  ]
+}

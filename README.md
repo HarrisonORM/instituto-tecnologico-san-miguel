@@ -29,7 +29,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 - Next.js, React, TypeScript y Tailwind CSS, con interfaz y operaciones del servidor separadas por responsabilidades.
 - PostgreSQL, autenticación y almacenamiento privado mediante Supabase.
 - Un solo repositorio y presupuesto adicional de cero.
-- Datos ficticios: 47 cuentas, dos carreras, cuatro materias, seis grupos y un período de prueba.
+- Datos de ejemplo: 47 cuentas matriculadas inicialmente en dos carreras, cuatro materias, seis grupos y un período de prueba. El catálogo incluye ahora cinco programas; los tres nuevos aún no tienen grupos asignados.
 - Diseño visual elegido con el usuario antes de programar las pantallas.
 
 ## Cómo continuar

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-07T21:14:28.781Z",
+  "generatedAt": "2026-11-08T01:53:23.156Z",
   "title": "Design System: Instituto Tecnológico de San Miguel",
   "extensions": {
     "colorMeta": {
@@ -507,14 +507,21 @@
     {
       "name": "Selección de programa",
       "kind": "custom",
-      "description": "Botones del explorador público.",
-      "html": "<div class=\"ds-picks\" role=\"group\" aria-label=\"Elegir programa\"><button aria-pressed=\"true\">Desarrollo de Software</button><button aria-pressed=\"false\">Redes y Telecomunicaciones</button></div>",
-      "css": ".ds-picks{font-family:var(--font-manrope),sans-serif;background:var(--mint);color:var(--ink);display:grid;gap:4px;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 20px}.ds-picks button{font-family:var(--font-manrope),sans-serif;background:none;border:0;color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;font-size:12px;font-weight:650;padding:8px 10px;border-radius:4px;line-height:1.4}.ds-picks button[aria-pressed=true]{background:var(--mint-strong)}.ds-picks button:hover{background:var(--mint-strong)}.ds-picks button:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:760px){.ds-picks{border:0;padding:0;}.ds-picks button{padding:10px 12px;font-size:13px;min-height:42px;}}@media(prefers-reduced-motion:reduce){.ds-picks button{transition:none;}}"
+      "description": "Selector nativo del explorador público para cinco programas.",
+      "html": "<label class=\"ds-program\"><span>¿Qué quieres estudiar?</span><select aria-label=\"Elegir programa\"><option value=\"software\">Desarrollo de Software</option><option value=\"redes\">Redes y Telecomunicaciones</option><option value=\"auxiliar-contable\">Auxiliar Contable</option><option value=\"auxiliar-administrativo\">Auxiliar Administrativo</option><option value=\"equipos-biomedicos\">Mantenimiento y Reparación de Equipos Biomédicos</option></select></label>",
+      "css": ".ds-program{font-family:var(--font-manrope),sans-serif;display:grid;gap:7px;min-width:0;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 20px;color:var(--ink);background:var(--mint);}.ds-program>span{font-size:11px;font-weight:700;}.ds-program select{font-family:var(--font-manrope),sans-serif;width:100%;min-width:0;min-height:44px;padding:10px 24px 10px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);font-size:12px;font-weight:650;text-overflow:ellipsis;}.ds-program select:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:1250px){.ds-program{padding:0 12px;}}@media(max-width:760px){.ds-program{border:0;padding:0;gap:4px;}.ds-program select{font-size:16px;}}"
+    },
+    {
+      "name": "Selector de tema",
+      "kind": "custom",
+      "description": "Control único con select nativo, icono y flecha incluidos en el contorno de foco.",
+      "html": "<label class=\"ds-theme\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M12 16v5m-5 0h10\"/></svg><select aria-label=\"Tema\"><option>Claro</option><option>Oscuro</option><option selected>Sistema</option></select><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 5 7 7-7 7\"/></svg></label>",
+      "css": ".ds-theme{font-family:var(--font-manrope),sans-serif;display:block;position:relative;background:var(--mint);color:var(--ink);border-radius:7px;flex-shrink:0;}.ds-theme>svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);pointer-events:none;}.ds-theme>svg:last-child{left:auto;right:11px;transform:translateY(-50%) rotate(90deg);}.ds-theme select{font-family:var(--font-manrope),sans-serif;display:block;appearance:none;width:132px;min-height:44px;margin:0;border:1px solid transparent;border-radius:inherit;background:transparent;color:var(--ink);font-size:13px;font-weight:700;padding:10px 30px 10px 35px;cursor:pointer;}.ds-theme select option{background:var(--surface);color:var(--ink);}.ds-theme select:focus-visible{outline:3px solid var(--action);outline-offset:4px;}@media(max-width:760px){.ds-theme select{width:127px;font-size:13px;}}"
     }
   ],
   "narrative": {
     "northStar": "Campus abierto + Campus en profundidad",
-    "overview": "El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía es ilustrativa: la institución se identifica como ficticia y como proyecto de portafolio.\n\nLos portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La revisión de acabado posterior resolvió únicamente la divulgación de ficción y el contraste de misión/visión en el alcance de dos correcciones.",
+    "overview": "El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía acompaña el catálogo público de cinco programas; por decisión expresa del usuario, la interfaz no lleva avisos que llamen ficticia a la institución, incluida la privacidad. Las cuentas de ejemplo y las operaciones de vista previa conservan su identificación.\n\nLos portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La extensión actual conserva B+C y se documenta después de la corrección de alineación superior; no hereda un veredicto de entrega de revisiones anteriores.",
     "keyCharacteristics": [
       "Identidad esmeralda con acciones en verde de contraste.",
       "Fotografía ilustrativa y diagonales en la presentación pública.",
@@ -543,7 +550,8 @@
       "Do mantener Manrope local y cifras tabulares en datos comparables.",
       "Do usar bordes y menta para ordenar los portales planos.",
       "Do conservar ES/EN, tema y preferencia de movimiento al cambiar de superficie.",
-      "Do identificar como ficticia la institución y como ilustrativas sus fotografías."
+      "Do conservar la identificación de cuentas de ejemplo y operaciones de vista previa, sin reintroducir avisos de institución ficticia retirados por el usuario.",
+      "Do ajustar pestañas y acciones al rol y sus permisos, manteniendo la experiencia del estudiante centrada en sus propios datos."
     ],
     "donts": [
       "Don't trasladar automáticamente las diagonales de presentación a cada panel de trabajo.",

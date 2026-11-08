@@ -4,7 +4,7 @@ Se implementó la dirección B+C elegida por el usuario: composición editorial 
 
 ## Pantallas y componentes
 
-- Landing con navegación, portada fotográfica animada, explorador de los dos programas, comunidad, historia ilustrativa, misión/visión, preguntas frecuentes y contacto con consentimiento.
+- Landing con navegación, portada fotográfica animada, explorador de cinco programas, comunidad, historia, misión/visión, preguntas frecuentes y contacto con consentimiento. Cada programa tiene página e imagen propias en ES/EN.
 - Páginas de programas, acceso institucional, recuperación y confirmación de contraseña. Sin registro público.
 - Portal de estudiantes, docentes, administración académica y administración del sistema. Una sesión real usa sus roles devueltos por el servidor; cambiar una URL no concede roles.
 - Vista previa independiente con 47 identidades ficticias. Comparte el estado durante la navegación del cliente y reinicia al recargar. Las operaciones sensibles no se ejecutan en el servidor desde esa vista.

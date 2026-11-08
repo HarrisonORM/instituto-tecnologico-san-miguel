@@ -67,7 +67,7 @@ export class InstituteClient {
     this.tokens = { access_token: accessToken, refresh_token: refreshToken, expires_in: 3600, token_type: "bearer" };
     try { return await this.me(); } catch (error) { if (generation === this.generation) { this.tokens = null; this.generation++; } throw error; }
   }
-  catalog() {return this.send<{fictional_institution: boolean;programs:PublicProgram[]}>("/api/public/catalog","GET",undefined,false);}
+  catalog() {return this.send<{programs:PublicProgram[]}>("/api/public/catalog","GET",undefined,false);}
   list<T>(resource: string,query: PaginatedQuery = {}) {
     if(!/^[a-z_]+$/.test(resource)) throw new ClientApiError(400,"Recurso no válido");
     const params=new URLSearchParams();

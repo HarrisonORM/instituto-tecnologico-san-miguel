@@ -81,7 +81,7 @@ export function Preferences({ compact = false }: { compact?: boolean }) {
   const { lang, setLang, theme, setTheme, t } = useUI();
   return <div className={`preferences ${compact ? "preferences-compact" : ""}`}>
     <div className="language-switch" role="group" aria-label={t("Idioma", "Language")}><button aria-pressed={lang === "es"} onClick={() => setLang("es")}>ES</button><span>/</span><button aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button></div>
-    <label className="theme-select"><Icon name={theme === "dark" ? "moon" : theme === "light" ? "sun" : "monitor"} size={16} /><span className="sr-only">{t("Tema", "Theme")}</span><select value={theme} onChange={e => setTheme(e.target.value as Theme)}><option value="light">{t("Claro", "Light")}</option><option value="dark">{t("Oscuro", "Dark")}</option><option value="system">{t("Sistema", "System")}</option></select></label>
+    <label className="theme-select"><Icon name={theme === "dark" ? "moon" : theme === "light" ? "sun" : "monitor"} size={16} /><span className="sr-only">{t("Tema", "Theme")}</span><select value={theme} onChange={e => setTheme(e.target.value as Theme)}><option value="light">{t("Claro", "Light")}</option><option value="dark">{t("Oscuro", "Dark")}</option><option value="system">{t("Sistema", "System")}</option></select><Icon name="chevron" size={14} /></label>
   </div>;
 }
 export function Message({ children, error = false }: { children: ReactNode; error?: boolean }) { return <div className={`message ${error ? "message-error" : ""}`} role={error ? "alert" : "status"}>{children}</div>; }

@@ -20,7 +20,7 @@ test("el proceso local responde con estado propio y sin caché", async () => {
 });
 
 test("las páginas públicas y las cuatro muestras se renderizan", async () => {
-  for (const path of ["/", "/programas/software", "/programas/redes", "/acceso", "/olvide-contrasena", "/auth/confirmar", "/privacidad", "/campus", ...["student", "teacher", "academic_admin", "system_admin"].map(role => `/vista-previa?rol=${role}`)]) {
+  for (const path of ["/", "/programas/software", "/programas/redes", "/programas/auxiliar-contable", "/programas/auxiliar-administrativo", "/programas/equipos-biomedicos", "/acceso", "/olvide-contrasena", "/auth/confirmar", "/privacidad", "/campus", ...["student", "teacher", "academic_admin", "system_admin"].map(role => `/vista-previa?rol=${role}`)]) {
     const response = await request(path);
     assert.equal(response.status, 200, path);
     assert.match(response.headers.get("content-type"), /text\/html/);
@@ -41,6 +41,16 @@ test("las consultas y escrituras privadas rechazan una sesión ausente", async (
     const payload = await response.json();
     assert.equal(typeof payload.error, "string");
     assert.equal(payload.data, undefined);
+  }
+});
+
+test("la URL no permite asumir un rol ni abrir un panel administrativo sin sesión", async () => {
+  for (const query of ["?rol=system_admin", "?rol=teacher&persona=persona-47"]) {
+    const response = await request(`/campus${query}`);
+    const html = await response.text();
+    assert.equal(response.status, 200);
+    assert.match(html, /Tu espacio es privado/);
+    assert.doesNotMatch(html, /Cuentas visibles|Solicitar eliminación excepcional/);
   }
 });
 

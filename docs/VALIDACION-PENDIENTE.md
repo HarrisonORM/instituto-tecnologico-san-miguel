@@ -10,7 +10,7 @@ Fecha: 7 de noviembre de 2026. El usuario autorizó expresamente retomar pruebas
 | npm.cmd run typecheck | Código 0. La compilación final también ejecutó TypeScript correctamente. |
 | npm.cmd run build | Código 0 con Webpack, opción oficial incluida en Next.js. Turbopack falló al iniciar un proceso de CSS, incluso fuera de la ejecución restringida; se cambió el comando de build, sin cambiar dependencias ni omitir verificaciones. |
 | npm.cmd run test:services | 9 pruebas Node aprobadas, con respuestas controladas y sin red. |
-| scripts/test-database.ps1 | Las 19 migraciones y security.sql / academic.sql terminaron con código 0 en un clúster nuevo. Se detuvo su propio servidor en finally. |
+| scripts/test-database.ps1 | Las 20 migraciones y security.sql / academic.sql terminaron con código 0 en un clúster nuevo. Se detuvo su propio servidor en finally. |
 | Prueba HTTP local | 5 pruebas Node aprobadas contra la compilación en 127.0.0.1:3001: páginas, cuatro muestras, rechazo de lecturas/escrituras sin sesión, contacto inválido y cabeceras/métodos. No usó credenciales. |
 | Recorrido de navegador | Publicar tarea en dos grupos, entrega tardía, comentario, nota 4.3 visible al estudiante, reemplazo autorizado y dos versiones conservadas. Solo datos ficticios en memoria. |
 | Interfaz | Capturas de escritorio y móvil, cambio de ES/EN, temas, selector de programas, etiquetas de grupo y acceso privado. No equivale a una auditoría completa de accesibilidad. |
@@ -45,3 +45,6 @@ La interfaz distingue originales de traducciones disponibles, muestra grupo junt
 - Observar copia/restauración de base y archivos, revisar cuotas en las cuentas antes de publicar y validar instalación/actualización/offline de PWA.
 
 La validación local no convierte el proyecto en un sistema completo ni listo para producción.
+
+
+Actualización posterior de presentación y permisos: el usuario retiró los avisos de institución ficticia; esa decisión sustituye la recomendación visual anterior. Los paneles no tienen selectores globales de rol/persona y el estudiante no recibe directorio de compañeros. Nueve pruebas de proyección/permisos y seis HTTP pasan, además de ambas suites SQL locales. Resultados y límites actuales en ESTADO.md y .impeccable/review/roles-and-catalog-review.md.

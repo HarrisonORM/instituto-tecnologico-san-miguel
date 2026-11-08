@@ -1,5 +1,25 @@
 # Estado y siguiente paso
 
+## Ajustes de catálogo, presentación y privacidad por rol
+
+7 de noviembre de 2026. Selector de tema unificado, cabecera móvil compacta y cinco programas con fotografía y páginas ES/EN. Contacto acepta los cinco programas en servidor y migración 020; semilla preparada para cinco carreras, sin añadir personas, materias ni grupos. No se ejecutó remotamente.
+
+Se retiraron de toda la interfaz los avisos que llamaban ficticia a la institución y los selectores globales de rol/persona. La vista previa conserva una cuenta de ejemplo fija por rol. El estudiante no recibe directorio ni asignaciones de docentes y solo ve sus materias, entregas y resultados. Docentes tienen sus grupos; la navegación y formularios administrativos se restringen por permisos. La sesión institucional sigue usando el rol devuelto por el servidor, sin confiar en parámetros de URL.
+
+Comprobado sobre este bloque: lint y tipos código 0, compilación Webpack código 0, nueve pruebas locales de proyección/permisos y seis pruebas HTTP aprobadas. Las 20 migraciones y ambas suites SQL pasan en base local aislada. La suite de seguridad ahora prueba el rechazo de listados a estudiantes que comparten grupo y de grupos ajenos a un docente. Recorridos visuales en 390, 1040, 1440 y 1896 píxeles, ES/EN, Claro/Oscuro/Sistema y persistencia al recargar. Capturas reales de viewport, no páginas completas ni prueba física de teléfono.
+
+La compilación con permisos normales falló al crear archivos locales. Una revisión automática se detuvo temporalmente por su límite de uso; después se completó la compilación autorizada con código 0. No queda ese bloqueo activo.
+
+La revisión fresca pidió corregir la alineación vertical del panel de sistema. Se aplicó margin:0 auto, se recompiló y se recapturaron sistema/estudiante. El revisor puntuó Resolved ese único hallazgo y retornó ship limitado a esa corrección. DESIGN.md y su sidecar se actualizaron conservando el mundo B+C; detalle en .impeccable/review/roles-and-catalog-review.md. No es una aprobación de integraciones ni de seguridad exhaustiva.
+
+**Siguiente paso del usuario:** completar Publishable en `.env.local` y ejecutar `npm.cmd run check:supabase`. La URL está configurada, las demás variables siguen pendientes. Guía: [Conectar Supabase](CONECTAR-SUPABASE.md). No se migró Supabase, no se enviaron correos y no se desplegó. `supabase/tests/bootstrap.sql` es exclusivamente local.
+
+El servidor final está en http://127.0.0.1:3001. Abre `/vista-previa?rol=student` para revisar el panel estudiantil sin lista de personas.
+
+---
+
+## Registro anterior
+
 ## Bloque actual: validación local y correcciones completadas
 
 7 de noviembre de 2026. El usuario respondió «si» a retomar las pruebas locales y después pidió continuar. No autoriza escrituras en Supabase, envíos de correo ni despliegue en este bloque.

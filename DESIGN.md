@@ -116,9 +116,9 @@ components:
 
 **Creative North Star: "Campus abierto + Campus en profundidad"**
 
-El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía es ilustrativa: la institución se identifica como ficticia y como proyecto de portafolio.
+El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía acompaña el catálogo público de cinco programas; por decisión expresa del usuario, la interfaz no lleva avisos que llamen ficticia a la institución, incluida la privacidad. Las cuentas de ejemplo y las operaciones de vista previa conservan su identificación.
 
-Los portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La revisión de acabado posterior resolvió únicamente la divulgación de ficción y el contraste de misión/visión en el alcance de dos correcciones.
+Los portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La extensión actual conserva B+C y se documenta después de la corrección de alineación superior; no hereda un veredicto de entrega de revisiones anteriores.
 
 **Key Characteristics:**
 - Identidad esmeralda con acciones en verde de contraste.
@@ -165,9 +165,9 @@ La fuente variable se aloja en `public/fonts/manrope.ttf`, con licencia OFL; `ne
 
 ## Layout
 
-La presentación alterna secciones amplias y columnas, con contenedor de sección de hasta 1800px y relleno de 110px / 7%. A 950px baja a 80px / 6%; a 760px, a 65px / 25px. Los programas se muestran en dos columnas y pasan a una en móvil. Las diagonales pertenecen a planos de presentación y al monograma; no se imponen a los formularios o tablas.
+La presentación alterna secciones amplias y columnas, con contenedor de sección de hasta 1800px y relleno de 110px / 7%. A 950px baja a 80px / 6%; a 760px, a 65px / 25px. Los cinco programas se muestran en dos columnas; la última ficha impar ocupa ambas columnas y todas pasan a una en móvil. Las diagonales pertenecen a planos de presentación y al monograma; no se imponen a los formularios o tablas.
 
-El acceso usa dos columnas con bloque menta lateral y formulario de hasta 430px; a 760px se apila, conserva la identificación ficticia y oculta la ilustración. El portal combina barra lateral de 225px y contenido de hasta 1600px; a 1250px la barra baja a 205px y a 950px a 185px. A 760px la navegación se convierte en fila horizontal desplazable y el contenido usa márgenes de 18px. Las tablas mantienen desplazamiento horizontal dentro de su contenedor. Los formularios usan un espacio vertical de 20px; sus pares de campos se apilan en móvil.
+El acceso usa dos columnas con bloque menta lateral y formulario de hasta 430px; a 760px se apila y oculta la ilustración. El portal combina barra lateral de 225px y contenido de hasta 1600px, centrado horizontalmente y alineado arriba mediante `margin:0 auto`; a 1250px la barra baja a 205px y a 950px a 185px. A 760px la navegación se convierte en fila horizontal desplazable y el contenido usa márgenes de 18px. Las tablas mantienen desplazamiento horizontal dentro de su contenedor. Los formularios usan un espacio vertical de 20px; sus pares de campos se apilan en móvil.
 
 Los puntos de adaptación observados son 1250px, 950px y 760px, más un ajuste de presentación desde 1800px. La navegación pública se despliega mediante botón desde 950px. Los formularios generales elevan los campos a 16px en móvil; controles compactos tienen ajustes propios.
 
@@ -208,9 +208,13 @@ Campos de superficie con borde line, relleno de 12px / 14px y etiquetas encima s
 
 La navegación pública es textual, con hover de acción, accesos por perfil, ES/EN y selector de tema. La barra lateral de portal usa brand y tinta oscura; la página actual lleva fondo claro y `aria-current="page"`. El móvil conserva los destinos en una fila desplazable. La selección ES/EN se comunica con `aria-pressed`; claro, oscuro y sistema comparten selector.
 
+Las pestañas y acciones del portal se ajustan al rol y los permisos específicos. Dentro del portal no hay selectores globales de rol o persona; la vista previa usa una cuenta de ejemplo fija por rol. El estudiante navega sus materias, entregas y notas, sin directorio ni selector de compañeros. Esta presentación no sustituye los controles de autorización del servidor.
+
+El selector de tema integra icono, texto y flecha en un solo contorno de esquina control y superficie menta. El select nativo llena el control, con mínimo de 44px, ancho general de 132px y relleno de 10px / 30px / 10px / 35px. Icono y flecha se sitúan sobre él sin interceptar el puntero; el foco del select rodea el conjunto. En móvil usa 127px; la cabecera pública lo compacta a 110px.
+
 ### Photographic program explorer
 
-La selección pública combina botones de programa, descripción viva y enlace actualizado. La selección usa mint-strong y `aria-pressed`. Su adaptación móvil se apila. La fotografía de campus respira entre escalas 1.025 y 1.075 durante 22s y admite desplazamiento suave ligado al scroll, limitado a 45px. El control permite pausarla. La preferencia reducida y `prefers-reduced-motion` eliminan animación de campus, desplazamiento del fondo y transiciones generales; no se infiere de ello una auditoría completa de todo movimiento.
+La selección pública combina un select nativo de cinco programas, etiqueta visible, descripción viva y enlace actualizado. El campo usa surface, borde line y mínimo de 44px; su texto de 12px pasa a 16px en móvil. El catálogo comprende Desarrollo de Software, Redes y Telecomunicaciones, Auxiliar Contable, Auxiliar Administrativo y Mantenimiento y Reparación de Equipos Biomédicos. Su adaptación móvil se apila. La fotografía de campus respira entre escalas 1.025 y 1.075 durante 22s y admite desplazamiento suave ligado al scroll, limitado a 45px. El control permite pausarla. La preferencia reducida y `prefers-reduced-motion` eliminan animación de campus, desplazamiento del fondo y transiciones generales; no se infiere de ello una auditoría completa de todo movimiento.
 
 ## Do's and Don'ts
 
@@ -219,7 +223,8 @@ La selección pública combina botones de programa, descripción viva y enlace a
 - **Do** mantener Manrope local y cifras tabulares en datos comparables.
 - **Do** usar bordes y menta para ordenar los portales planos.
 - **Do** conservar ES/EN, tema y preferencia de movimiento al cambiar de superficie.
-- **Do** identificar como ficticia la institución y como ilustrativas sus fotografías.
+- **Do** conservar la identificación de cuentas de ejemplo y operaciones de vista previa, sin reintroducir avisos de institución ficticia retirados por el usuario.
+- **Do** ajustar pestañas y acciones al rol y sus permisos, manteniendo la experiencia del estudiante centrada en sus propios datos.
 
 ### Don't:
 - **Don't** trasladar automáticamente las diagonales de presentación a cada panel de trabajo.
@@ -227,4 +232,4 @@ La selección pública combina botones de programa, descripción viva y enlace a
 - **Don't** presentar una fotografía ilustrativa como evidencia de un campus real.
 - **Don't** convertir tamaños incidentales de texto auxiliar o un defecto observado en una regla para nuevas superficies.
 
-No canonizado ni reparado en esta pasada: los textos auxiliares de 9–11px presentes en algunas vistas son excepciones de densidad del código, no un mínimo recomendado de legibilidad. Esta documentación no amplía el veredicto limitado a dos correcciones ni valida integraciones reales.
+No canonizado ni reparado en esta pasada: los textos auxiliares de 9–11px presentes en algunas vistas son excepciones de densidad del código, no un mínimo recomendado de legibilidad. La extensión actual no recibe aquí un veredicto de entrega ni validación de integraciones reales.

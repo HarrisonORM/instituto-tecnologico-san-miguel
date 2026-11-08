@@ -36,7 +36,7 @@ export function createPreview(role: Role, full = false): Dataset {
     profiles: (full || role === "system_admin" || role === "academic_admin" ? fixtures.accounts : [viewer]).map(a => ({ id: a.fixture_id, full_name: a.full_name, email: a.email, document_number: a.document_number, birth_date: "2001-05-18", address: "Calle de ejemplo 12, San Miguel", state: "active", program_id: a.program === "Redes y Telecomunicaciones" ? "p2" : "p1", role: a.role })),
     roster: students.map(a => ({ id: a.fixture_id, student_id: a.fixture_id, full_name: a.full_name })),
     groups: groups.filter(g => visibleGroupIds.includes(g.id)), subjects,
-    programs: [{ id: "p1", name: "Desarrollo de Software", name_en: "Software Development" }, { id: "p2", name: "Redes y Telecomunicaciones", name_en: "Networks and Telecommunications" }],
+    programs: [{ id: "p1", name: "Desarrollo de Software", name_en: "Software Development" }, { id: "p2", name: "Redes y Telecomunicaciones", name_en: "Networks and Telecommunications" }, { id: "p3", name: "Auxiliar Contable", name_en: "Accounting Assistant" }, { id: "p4", name: "Auxiliar Administrativo", name_en: "Administrative Assistant" }, { id: "p5", name: "Mantenimiento y Reparación de Equipos Biomédicos", name_en: "Biomedical Equipment Maintenance and Repair" }],
     periods: [{ id: "period1", name: "Período de ejemplo", name_en: "Example term", starts_on: "2026-08-01", ends_on: "2026-12-15", closed_at: null }],
     categories: subjects.flatMap(s => [1, 2].map(n => ({ id: `c-${s.id}-${n}`, subject_id: s.id, period_id: "period1", name: n === 1 ? "Tareas" : "Proyecto", name_en: n === 1 ? "Assignments" : "Project", weight: 50 }))),
     enrollments: enrollments.filter(e => visibleGroupIds.includes(e.group_id)), tasks: academic ? visibleTasks : [], submissions: academic ? visibleSubmissions : [], submission_versions: academic ? versions.filter(v => visibleSubmissions.some(s => s.id === v.submission_id)) : [],
@@ -59,10 +59,18 @@ export function selectPreview(master: Dataset, role: Role, actor?: string): Data
   const submissions = row("submissions").filter(s => tasks.some(task => task.id === s.task_id) && (role !== "student" || s.student_id === uid));
   const versions = row("submission_versions").filter(v => submissions.some(s => s.id === v.submission_id));
   const enrollments = row("enrollments").filter(e => groupIds.includes(String(e.group_id)) && (role !== "student" || e.student_id === uid));
-  return { ...master, groups, enrollments, tasks, submissions, submission_versions: versions,
+  const subjects = row("subjects").filter(subject => !academic || groups.some(group => group.subject_id === subject.id));
+  const comments = row("comments").filter(comment => submissions.some(submission => submission.id === comment.submission_id));
+  return { groups, enrollments, tasks, submissions, submission_versions: versions,
+    subjects,
+    programs: row("programs").filter(program => !academic || subjects.some(subject => subject.program_id === program.id)),
+    periods: row("periods").filter(period => !academic || groups.some(group => group.period_id === period.id)),
+    categories: role === "system_admin" ? [] : row("categories").filter(category => !academic || groups.some(group => group.subject_id === category.subject_id && group.period_id === category.period_id)),
+    teacher_groups: role === "student" || role === "system_admin" ? [] : row("teacher_groups").filter(assignment => role === "academic_admin" || assignment.teacher_id === uid),
+    calendar_events: role === "system_admin" ? [] : row("calendar_events").filter(event => !event.group_id || groupIds.includes(String(event.group_id))),
     profiles: row("profiles").filter(p => role === "academic_admin" || role === "system_admin" || p.id === uid),
-    roster: row("roster").filter(p => enrollments.some(e => e.student_id === p.student_id)),
-    comments: row("comments").filter(c => submissions.some(s => s.id === c.submission_id)),
+    roster: role === "teacher" ? row("roster").filter(p => enrollments.some(e => e.student_id === p.student_id)) : [],
+    comments,
     uploads: row("uploads").filter(file => file.owner_id === uid || versions.some(v => v.id === file.version_id || (Array.isArray(v.upload_ids) && v.upload_ids.includes(file.id)))),
     notifications: row("notifications").filter(n => !n.user_id || n.user_id === uid),
     final_results: row("final_results").filter(r => groupIds.includes(String(r.group_id)) && (role === "teacher" || r.student_id === uid)),
@@ -71,6 +79,11 @@ export function selectPreview(master: Dataset, role: Role, actor?: string): Data
     invitation_jobs: role === "system_admin" ? row("invitation_jobs") : [], contact_inquiries: role === "academic_admin" ? row("contact_inquiries") : [],
     grade_history: row("grade_history").filter(r => submissions.some(s => s.id === r.submission_id)),
     rubrics: row("rubrics").filter(r => tasks.some(task => task.id === r.task_id)),
-    content_translations: row("content_translations").filter(r => ["program", "subject", "category"].includes(String(r.resource_type)) || tasks.some(task => task.id === r.resource_id) || row("comments").some(c => c.id === r.resource_id && submissions.some(s => s.id === c.submission_id))),
+    content_translations: row("content_translations").filter(r =>
+      r.resource_type === "program" ? row("programs").some(p => p.id === r.resource_id && (!academic || subjects.some(s => s.program_id === p.id))) :
+      r.resource_type === "subject" ? subjects.some(s => s.id === r.resource_id) :
+      r.resource_type === "category" ? role !== "system_admin" && row("categories").some(c => c.id === r.resource_id && (!academic || groups.some(g => g.subject_id === c.subject_id && g.period_id === c.period_id))) :
+      r.resource_type === "task" ? tasks.some(task => task.id === r.resource_id) :
+      r.resource_type === "comment" && comments.some(comment => comment.id === r.resource_id)),
   };
 }

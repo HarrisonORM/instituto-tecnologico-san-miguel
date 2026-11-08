@@ -1,5 +1,7 @@
 # Configuración y pruebas de los servicios
 
+Guía vigente para conectar el código ya implementado: [Conectar Supabase paso a paso](CONECTAR-SUPABASE.md). La revisión local del 7 de noviembre encontró URL configurada y clave publicable aún pendiente, sin mostrar valores. Ya hay pantallas y 20 migraciones; no se han aplicado a la base externa. Los apartados históricos siguientes no acreditan integración real.
+
 Etapa 3 en curso. La revisión pública de [servicios gratuitos](SERVICIOS-GRATUITOS.md) se realizó el **7 de noviembre de 2026**. El proyecto externo ya aparece creado en la captura aportada por el usuario; falta comprobar la conexión desde el entorno local.
 
 ## Evidencia del proyecto creado
