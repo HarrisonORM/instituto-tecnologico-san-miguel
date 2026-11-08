@@ -1,3 +1,4 @@
+param([switch]$InstallBundle)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $cluster = Join-Path $root ('work/db-test-' + [guid]::NewGuid().ToString('N'))
@@ -30,10 +31,25 @@ try {
   $env:PGDATABASE = 'itsm_test'
   & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f (Join-Path $root 'supabase/tests/bootstrap.sql')
   if ($LASTEXITCODE -ne 0) { throw 'Fallo en el entorno local de pruebas.' }
-  foreach ($migration in (Get-ChildItem -LiteralPath (Join-Path $root 'supabase/migrations') -Filter '*.sql' | Sort-Object Name)) {
-    Write-Output ('Migración local: ' + $migration.Name)
-    & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $migration.FullName
-    if ($LASTEXITCODE -ne 0) { throw ('Fallo en ' + $migration.Name) }
+  if ($InstallBundle) {
+    & node (Join-Path $root 'scripts/prepare-database.mjs')
+    if ($LASTEXITCODE -ne 0) { throw 'No se pudo preparar el instalador local.' }
+    $bundlePath = Join-Path $root 'work/database-install/instalar-base.sql'
+    Write-Output 'Instalador completo en base local aislada'
+    & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $bundlePath
+    if ($LASTEXITCODE -ne 0) { throw 'Fallo en el instalador completo.' }
+    $reapplyLog = Join-Path $cluster 'reapply-denied.log'
+    & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $bundlePath *> $reapplyLog
+    if ($LASTEXITCODE -eq 0 -or -not ([IO.File]::ReadAllText($reapplyLog).Contains('public ya contiene tablas'))) {
+      throw 'El instalador no rechazó la repetición como se esperaba.'
+    }
+    Write-Output 'Correcto: el instalador rechaza una segunda ejecución sin borrar tablas.'
+  } else {
+    foreach ($migration in (Get-ChildItem -LiteralPath (Join-Path $root 'supabase/migrations') -Filter '*.sql' | Sort-Object Name)) {
+      Write-Output ('Migración local: ' + $migration.Name)
+      & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $migration.FullName
+      if ($LASTEXITCODE -ne 0) { throw ('Fallo en ' + $migration.Name) }
+    }
   }
   foreach ($suite in @('security.sql','academic.sql')) {
     Write-Output ('Escenarios locales: ' + $suite)

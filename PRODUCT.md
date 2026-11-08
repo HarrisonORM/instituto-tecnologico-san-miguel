@@ -12,7 +12,7 @@ Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL med
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
-Proyecto de Supabase: `instituto-tecnologico-san-miguel`, nombre confirmado por el usuario. Su captura muestra el recurso creado en Free, Healthy, región East US (Ohio), us-east-2. La conexión desde la aplicación todavía está pendiente de comprobación; el estado operativo se registra en docs/ESTADO.md.
+Proyecto de Supabase: `instituto-tecnologico-san-miguel`, nombre confirmado por el usuario. Su captura muestra el recurso creado en Free, Healthy, región East US (Ohio), us-east-2. El usuario compartió la comprobación correcta de Auth con registro público desactivado; datos, archivos y correo siguen pendientes; el estado operativo se registra en docs/ESTADO.md.
 
 ## Users
 

@@ -1,5 +1,17 @@
 # Estado y siguiente paso
 
+## Auth confirmado por el usuario e instalador preparado
+
+El usuario compartió una comprobación correcta de Auth con el registro público desactivado y una captura sin tablas en public. Es evidencia aportada por el usuario; no se leyeron claves ni se hizo una consulta remota adicional.
+
+Se preparó scripts/prepare-database.mjs: concatena las veinte migraciones en una sola transacción, conserva sus bloques internos y sus hashes, y excluye bootstrap, pruebas, cuentas y secretos. La instalación se detiene si ya encuentra objetos de la aplicación.
+
+Verificación local ejecutada: scripts/test-database.ps1 -InstallBundle terminó con código 0, creó 26 tablas públicas con RLS y un depósito privado, rechazó repetir la instalación y aprobó ambas suites SQL. Lint código 0. No se ha instalado en Supabase ni se han enviado correos.
+
+Siguiente paso: el usuario puede revisar y ejecutar el archivo completo en SQL Editor del proyecto dedicado; guía en [Instalar la base](INSTALAR-BASE.md). Esperar su resultado antes de afirmar que existen tablas remotas.
+
+---
+
 ## Ajustes de catálogo, presentación y privacidad por rol
 
 7 de noviembre de 2026. Selector de tema unificado, cabecera móvil compacta y cinco programas con fotografía y páginas ES/EN. Contacto acepta los cinco programas en servidor y migración 020; semilla preparada para cinco carreras, sin añadir personas, materias ni grupos. No se ejecutó remotamente.
