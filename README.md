@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Las 19 migraciones pasaron en PostgreSQL local; la conexión de frontend/backend todavía requiere integración real con Supabase. La validación local ya se ejecutó; la integración real y el despliegue siguen pendientes. Ver [estado actual](docs/ESTADO.md).
+**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Las 20 migraciones pasaron en PostgreSQL local; la landing y `/api/health` se observaron publicados. El usuario creó su cuenta Auth propia; vincular su perfil/rol, configurar MFA y comprobar la integración académica real sigue pendiente. Ver [estado actual](docs/ESTADO.md).
 
 ## Documentos del proyecto
 
@@ -21,6 +21,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 | [AGENTS.md](AGENTS.md) | Guía breve para continuar con un agente sin perder el contexto. |
 | [Ver la aplicación](docs/VER-LA-APLICACION.md) | Direcciones locales, paneles y diferencias entre vista previa y acceso real. |
 | [Publicar en Vercel](docs/PUBLICAR-VERCEL.md) | Importar GitHub, configurar variables y comprobar la primera publicación en Hobby. |
+| [Primer administrador](docs/PRIMER-ADMINISTRADOR.md) | Vincular la cuenta Auth propia al primer perfil/rol, sin registro público ni desactivar MFA. |
 | [Qué falta para la entrega](docs/PENDIENTES-HASTA-ENTREGA.md) | Funciones pendientes, integración y comprobaciones que faltan del plan original. |
 | [Sistema visual](DESIGN.md) | Paleta, tipografía y componentes extraídos de la implementación. |
 | [Frontend implementado](docs/FRONTEND-IMPLEMENTADO.md) | Pantallas, fotografías, traducciones y contacto preparados. |

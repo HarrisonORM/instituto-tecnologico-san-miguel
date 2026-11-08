@@ -1,5 +1,17 @@
 # Estado y siguiente paso
 
+## Publicación observada y primera cuenta Auth creada
+
+La dirección pública es https://instituto-tecnologico-san-miguel.vercel.app. El agente observó la landing y la respuesta `{"status":"ok","service":"instituto-san-miguel"}` en `/api/health`; eso no acredita todavía acceso a datos, cuentas o archivos. En esa observación la portada conservaba la animación anterior de 22 segundos. Un Redeploy de un commit anterior no incorpora el commit local de movimiento por sí solo.
+
+El usuario informó que añadió las URL de autenticación en Supabase y cambió las claves. Se le indicó configurar `AUTH_RECOVERY_REDIRECT_URL` para Production en Vercel y ejecutar Redeploy; no se inspeccionaron variables ni credenciales remotas. Posteriormente confirmó que creó su cuenta Auth propia. Esto es confirmación del usuario, no una lectura autenticada del directorio por el agente.
+
+Se preparó `supabase/bootstrap-admin-dashboard.sql` y la guía `docs/PRIMER-ADMINISTRADOR.md`. La plantilla permite al propietario vincular únicamente el primer perfil/rol de sistema con comprobaciones y auditoría. La ejecución remota y MFA siguen pendientes. No se ha creado un administrador desde el agente ni se envió correo.
+
+Validación de la plantilla en una base local nueva con las 20 migraciones: marcadores y cuenta inexistente rechazados; perfil previo no elevado; primer perfil/rol/enlace Auth y auditoría creados; repetición rechazada; 26 tablas con RLS y helper administrativo falso para `aal1`/verdadero para `aal2`. El primer intento local encontró una restricción de conexión del entorno de ejecución; se detuvo su proceso propio y la ejecución permitida posterior terminó con código 0. No se conectó al servicio remoto ni se inspeccionaron claves. Prueba reproducible en `scripts/test-first-admin.ps1`; la inscripción real del autenticador sigue pendiente.
+
+Antes de cargar la semilla debe adaptarse su rechazo actual de cuentas ajenas a la etiqueta sintética: las cuentas administrativas propias deben conservarse. No ejecutar la carga existente tras crear estos perfiles sin resolver primero esa compatibilidad.
+
 ## Movimiento de portada corregido localmente
 
 El usuario informó que la imagen principal no se movía. Se hizo más perceptible el acercamiento de la fotografía: ciclo alterno de 18 segundos, escala 1.03–1.12 y desplazamiento horizontal de ±0.7 %. Se conserva la composición B+C y la misma fotografía; no se agregan vídeo, dependencias ni servicios.
