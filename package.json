@@ -14,6 +14,7 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "next typegen && tsc --noEmit",
     "check:supabase": "node --env-file-if-exists=.env.local scripts/check-supabase.mjs",
+    "test:contextual-mfa": "node --test scripts/contextual-mfa.test.mjs",
     "test:privacy": "node --test scripts/portal-privacy.test.mjs",
     "qa:mfa": "node scripts/qa-mfa-feedback.mjs",
     "test:motion": "node --test scripts/motion-preferences.test.mjs",

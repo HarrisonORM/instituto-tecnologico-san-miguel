@@ -2,7 +2,7 @@
 
 Aplicación universitaria ficticia de portafolio, prevista para celular y computador, con una landing pública y áreas protegidas para estudiantes, docentes y personal autorizado.
 
-**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. Las 20 migraciones pasaron en PostgreSQL local; la landing y `/api/health` se observaron publicados. El usuario creó su cuenta Auth propia; vincular su perfil/rol, configurar MFA y comprobar la integración académica real sigue pendiente. Ver [estado actual](docs/ESTADO.md).
+**Estado:** landing B+C, acceso, cuatro portales y vista previa con 47 identidades ficticias implementados. El usuario confirmó su primer administrador y MFA. La verificación contextual está implementada localmente, con 21 migraciones y tres suites SQL comprobadas. Para publicarla hay que aplicar únicamente la migración 021 antes del nuevo frontend: [pasos de activación](docs/VERIFICACION-CONTEXTUAL.md). La integración académica real sigue pendiente. Ver [estado actual](docs/ESTADO.md).
 
 ## Documentos del proyecto
 

@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { InstituteClient } from "@/client/api";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { ClientApiError, InstituteClient, type VerificationRequest } from "@/client/api";
 import type { CurrentUser } from "@/contracts/academic";
 import { createPreview, type Dataset } from "@/lib/preview-data";
 import { resolveMotionPreference, type MotionPreference } from "@/lib/motion";
+
+import { VerificationDialog } from "./verification-dialog";
+import type { VerificationIntent } from "@/lib/sensitive-actions";
 
 type Language = "es" | "en";
 type Theme = "light" | "dark" | "system";
@@ -18,6 +21,7 @@ type UIContextValue = {
   login: (email: string, password: string) => Promise<CurrentUser>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<CurrentUser>;
+  requestVerification: (intent: VerificationRequest) => Promise<void>;
   previewStore: Dataset; changePreview: (reduce: (current: Dataset) => Dataset) => Dataset;
   previewFiles: Record<string, File>;
 };
@@ -32,6 +36,41 @@ export function Providers({ children }: { children: ReactNode }) {
   const reduced = motionPreference === "reduced" || (motionPreference === "system" && systemReduced);
   const [api] = useState(() => new InstituteClient());
   const [user, setUser] = useState<CurrentUser | null>(null);
+  const lastFocusedControl = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const remember = (event: FocusEvent) => {
+      if (event.target instanceof HTMLElement && event.target.matches("button, input, select, textarea, a[href]")) lastFocusedControl.current = event.target;
+    };
+    const rememberSubmit = (event: SubmitEvent) => {
+      if (event.submitter instanceof HTMLElement) lastFocusedControl.current = event.submitter;
+    };
+    document.addEventListener("focusin", remember);
+    document.addEventListener("submit", rememberSubmit, true);
+    return () => { document.removeEventListener("focusin", remember); document.removeEventListener("submit", rememberSubmit, true); };
+  }, []);
+  const [verification, setVerification] = useState<(VerificationIntent & { opener: HTMLElement | null }) | null>(null);
+  const pendingVerification = useRef<{ intent: VerificationIntent; resolve: () => void; reject: (error: Error) => void } | null>(null);
+  const cancelVerification = useCallback(() => {
+    const pending = pendingVerification.current; pendingVerification.current = null; setVerification(null);
+    pending?.reject(new ClientApiError(499, "Verificación cancelada"));
+  }, []);
+  const requestVerification = useCallback((request: VerificationRequest) => new Promise<void>((resolve, reject) => {
+    if (pendingVerification.current) { reject(new ClientApiError(409, "Ya hay una verificación pendiente")); return; }
+    const intent = { ...request, id: crypto.randomUUID(), generation: api.sessionVersion() };
+    const focused = document.activeElement;
+    const opener = focused instanceof HTMLElement && focused !== document.body ? focused : lastFocusedControl.current;
+    pendingVerification.current = { intent, resolve, reject }; setVerification({ ...intent, opener });
+  }), [api]);
+  const completeVerification = useCallback((id: string) => {
+    const pending = pendingVerification.current;
+    if (!pending || pending.intent.id !== id) return;
+    if (pending.intent.generation !== api.sessionVersion()) { cancelVerification(); return; }
+    pendingVerification.current = null; setVerification(null); pending.resolve();
+  }, [api, cancelVerification]);
+  useEffect(() => {
+    api.setVerifier(requestVerification);
+    return () => { api.setVerifier(null); const pending = pendingVerification.current; pendingVerification.current = null; pending?.reject(new ClientApiError(499, "Verificación cancelada")); };
+  }, [api, requestVerification]);
   const [previewStore, setPreviewStore] = useState(() => createPreview("teacher", true));
   const previewRef = useRef(previewStore); const [previewFiles] = useState<Record<string, File>>({});
   const changePreview = (reduce: (current: Dataset) => Dataset) => { const next = reduce(previewRef.current); previewRef.current = next; setPreviewStore(next); return next; };
@@ -64,10 +103,10 @@ export function Providers({ children }: { children: ReactNode }) {
   const setLang = (next: Language) => { updateLang(next); persist({ lang: next, theme, reduced, motion: motionPreference }); };
   const setTheme = (next: Theme) => { updateTheme(next); persist({ lang, theme: next, reduced, motion: motionPreference }); };
   const setReduced = (next: boolean) => { const motion = next ? "reduced" : "full"; updateMotionPreference(motion); persist({ lang, theme, reduced: next, motion }); };
-  const login = async (email: string, password: string) => { setUser(null); const me = await api.login(email, password); setUser(me); return me; };
-  const logout = async () => { setUser(null); await api.logout(); };
+  const login = async (email: string, password: string) => { cancelVerification(); setUser(null); const me = await api.login(email, password); setUser(me); return me; };
+  const logout = async () => { cancelVerification(); setUser(null); await api.logout(); };
   const refreshUser = async () => { const me = await api.me(); setUser(me); return me; };
-  return <UIContext.Provider value={{ lang, setLang, theme, setTheme, reduced, setReduced, t: (es, en) => lang === "es" ? es : en, api, user, login, logout, refreshUser, previewStore, changePreview, previewFiles }}>{children}</UIContext.Provider>;
+  return <UIContext.Provider value={{ lang, setLang, theme, setTheme, reduced, setReduced, t: (es, en) => lang === "es" ? es : en, api, user, login, logout, refreshUser, requestVerification, previewStore, changePreview, previewFiles }}>{children}{verification && <VerificationDialog key={verification.id} intent={verification} returnFocus={verification.opener} api={api} lang={lang} onCancel={cancelVerification} onVerified={completeVerification} />}</UIContext.Provider>;
 }
 export function useUI() { const context = useContext(UIContext); if (!context) throw new Error("UI context missing"); return context; }
 

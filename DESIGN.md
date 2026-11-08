@@ -118,7 +118,7 @@ components:
 
 El mundo elegido combina fotografía amplia de campus, esmeralda luminoso, tinta verde y planos diagonales sencillos. La implementación usa Manrope local para una voz continua entre presentación, acceso y trabajo académico. La fotografía acompaña el catálogo público de cinco programas; por decisión expresa del usuario, la interfaz no lleva avisos que llamen ficticia a la institución, incluida la privacidad. Las cuentas de ejemplo y las operaciones de vista previa conservan su identificación.
 
-Los portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La extensión actual conserva B+C y se documenta después de la corrección de alineación superior; no hereda un veredicto de entrega de revisiones anteriores.
+Los portales reducen la intensidad compositiva: superficies tranquilas, navegación estable, divisores y tablas. ES/EN, tema claro/oscuro/sistema y preferencia de movimiento persisten entre superficies. Este documento describe reglas reutilizadas del código; no certifica integración, seguridad ni aprobación visual global. La extensión de verificación contextual conserva B+C y los tokens existentes; no hereda un veredicto de entrega de revisiones anteriores.
 
 **Key Characteristics:**
 - Identidad esmeralda con acciones en verde de contraste.
@@ -171,9 +171,13 @@ El acceso usa dos columnas con bloque menta lateral y formulario de hasta 430px;
 
 Los puntos de adaptación observados son 1250px, 950px y 760px, más un ajuste de presentación desde 1800px. La navegación pública se despliega mediante botón desde 950px. Los formularios generales elevan los campos a 16px en móvil; controles compactos tienen ajustes propios.
 
+El diálogo de verificación se centra en escritorio: ancho máximo de 520px, margen de viewport de 16px, altura máxima de 100dvh menos 32px y desplazamiento vertical interno. Hasta 760px adopta una hoja inferior de ancho completo y altura máxima de 100dvh menos 16px. Su contenido usa relleno de 28px y separación de 20px; en móvil, relleno de 24px / 20px, área segura inferior y acciones apiladas de ancho completo.
+
 ## Elevation & Depth
 
 Predominan planos de color, bordes finos y fotografía. Los paneles de trabajo no usan sombras de tarjeta. Las fichas fotográficas emplean una gradación oscura para sostener el texto sobre la imagen. La única sombra ambiental reutilizable definida en el origen corresponde al control de movimiento; el marcador de historia lleva un contorno circular local.
+
+La verificación contextual usa el plano superior nativo de dialog y un velo oscuro (#071a13b8), sin sombra de tarjeta. El velo pertenece al componente y no amplía la paleta global.
 
 ### Shadow Vocabulary
 - **Control flotante:** `0 12px 35px #103c2620` en claro y `0 12px 35px #0004` en oscuro; variable `--shadow` aplicada al control de movimiento.
@@ -219,6 +223,14 @@ La selección pública combina un select nativo de cinco programas, etiqueta vis
 La fotografía de campus combina zoom y desplazamiento lateral (`18s ease-in-out infinite alternate`, de `scale(1.03) translateX(-.7%)` a `scale(1.12) translateX(.7%)`). El fondo admite además desplazamiento ligado al scroll (`min(scrollY * .1,45)px`). El control pausa o reactiva la fotografía; la animación conserva su posición al pausar y se suspende cuando el hero queda fuera del viewport o la pestaña está oculta. La pausa fuera del viewport está observada; la ocultación de pestaña está implementada, sin comprobación mediante un cambio real de pestaña.
 
 Sin elección explícita, el movimiento sigue `prefers-reduced-motion`, también cuando cambia el sistema. El control guarda una elección explícita `full` o `reduced` que prevalece sobre el sistema y persiste entre superficies y recargas. En preferencias antiguas, `reduced:true` conserva la pausa y `reduced:false` vuelve a seguir el sistema. La resolución se aplica antes de pintar y en React. El estado reducido pausa la animación de campus y anula el desplazamiento del fondo, el scroll suave y las transiciones generales; no se infiere de ello una auditoría completa de todo movimiento.
+
+### Contextual verification
+
+Confirmación efímera ligada a la acción solicitada, implementada en src/components/verification-dialog.tsx con contexto y verbos de src/lib/sensitive-actions.ts. Reutiliza surface, ink, muted, line, mint y la pareja de acción del tema activo; conserva Manrope y ES/EN. Tiene borde de 1px y esquinas de 12px, limitadas a las superiores en móvil. Son valores del componente, sin cambiar los tokens generales. El título usa 24px / 1.25; las explicaciones, 16px / 1.55; las etiquetas, 14px / 700; el código, 24px con cifras tabulares e interletraje .2em. Campos y selector mantienen 16px y los botones un mínimo de 46px.
+
+El título nombra la operación; el bloque menta identifica el destino cuando hay nombre disponible. La explicación expresa consecuencias de archivado, suspensión, eliminación o cierre según la acción. La confirmación dice «Verificar y archivar», «Verificar y cambiar contraseña» o el verbo correspondiente. El selector nativo permite elegir autenticador y el código de seis dígitos se solicita dentro del contexto; Seguridad conserva estado y acceso a configuración inicial sin campo permanente de códigos. La configuración puede mostrar el QR privado generado por el servicio y su clave manual; no son imágenes editoriales nuevas.
+
+Accesibilidad implementada: showModal(), título y descripción asociados mediante ARIA, etiquetas visibles, inputMode numeric, autoComplete one-time-code, errores textuales con role alert y carga/ayuda con role status. El código recibe foco después de cargar un factor verificado; al cerrar se intenta devolverlo al control iniciador si sigue conectado. Cancelar y Escape cierran sin descartar el formulario subyacente. Deben conservarse estos criterios al reutilizar el componente; no certifican una auditoría completa de accesibilidad ni una autorización de un solo uso.
 
 ## Do's and Don'ts
 

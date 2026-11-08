@@ -1,5 +1,20 @@
 # Estado y siguiente paso
 
+## Verificación contextual preparada (8 de noviembre de 2026)
+
+El usuario confirmó factor verified y el mensaje de verificación completada en su sesión. Después solicitó retirar el formulario permanente de Seguridad. Se implementó un diálogo compartido que identifica acción/destino, explica consecuencias, admite Cancelar/Escape y retiene el formulario. Seguridad conserva estado/configuración inicial. Cambio y recuperación de contraseña piden autenticador si existe un factor verificado. Las lecturas privilegiadas se separan de las escrituras protegidas, sin ampliar roles ni acceso a notas. Se conserva por ahora la cobertura administrativa anterior; no se recibió respuesta a la pregunta opcional sobre limitarla.
+
+La migración 021 exige aal2 y TOTP reciente (90 segundos) para operaciones ya protegidas y mantiene 26 tablas públicas con RLS. Es una ventana de frescura, no un permiso de un solo uso vinculado a una operación. No modifica factores ni usuarios. Debe aplicarla el propietario después de 001–020 y antes de publicar el frontend nuevo. No reinstalar la base ni ejecutar bootstrap.sql remoto.
+
+Comprobaciones locales: 21 migraciones mediante instalador transaccional, rechazo de reinstalación y tres suites SQL (seguridad, académica, MFA contextual), código 0. Once pruebas del cliente y nueve pruebas de privacidad aprobadas. Lint, tipos y compilación finales terminaron con código 0 después del cambio de foco. El instalador del primer administrador también se comprobó con 21 migraciones; no se creó otra cuenta remota.
+
+Navegador local con respuestas sintéticas: código inválido y Cancelar no escriben; código válido archiva; cancelar durante verificación mantiene cero escrituras incluso después de aceptarse el código; fallo al consultar factores no ofrece configurar otro; recuperación con factor exige código, Escape retiene contraseña y la aceptación produce una escritura y navegación al campus. El foco inicial llega al código y, tras Cancelar, vuelve a Guardar estado. Escritorio 990×760 y móvil 390×844 sin overflow observado; las capturas fallaron, por lo que hay evidencia DOM/accesible, sin aprobación visual por imagen ni suite E2E automatizada. El detector único produjo 59 avisos de deriva en CSS, incluidos valores locales intencionales del nuevo componente documentados en DESIGN.md; no se reparó ni canonizó la deriva histórica.
+
+Siguiente paso: seguir docs/VERIFICACION-CONTEXTUAL.md para aplicar únicamente 021 y publicar el commit. Todo este bloque es local: sin push, despliegue, correos ni escrituras Supabase. La entrega real de correo, recuperación asistida y recorrido conectado por roles siguen pendientes. Antes de una semilla remota, adaptar su rechazo de cuentas ajenas a la etiqueta sintética para conservar el administrador propio.
+
+Los apartados siguientes describen bloques anteriores; sus pendientes de MFA se actualizan con la confirmación del usuario indicada arriba.
+
+
 ## Confirmación MFA conservada durante la recarga
 
 El usuario confirmó el alta del primer administrador y después informó que no apareció el mensaje de verificación. Se encontró un defecto local: refreshUser cambiaba el usuario y la carga sustituía SecurityPanel por skeletons, desmontándolo y perdiendo el estado del mensaje. Se corrigió su montaje para que permanezca en la vista Seguridad; el éxito se muestra al aceptar el código y una recarga posterior fallida se distingue de un código rechazado. El QR/clave manual se retiran al aceptar el código. No se alteran RLS, roles, MFA ni endpoints de autenticación.

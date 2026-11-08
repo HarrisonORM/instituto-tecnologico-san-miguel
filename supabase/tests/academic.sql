@@ -49,7 +49,7 @@ insert into public.submission_versions(submission_id,version,body,late)
 select ('70000000-0000-0000-0000-'||lpad(n::text,12,'0'))::uuid,1,'Respuesta ponderada ficticia',false from generate_series(4,6) n;
 
 set local role authenticated;
-select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal2"}',true) \gset
+select set_config('request.jwt.claims',jsonb_set('{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal2"}'::jsonb,'{amr}',jsonb_build_array(jsonb_build_object('method','totp','timestamp',floor(extract(epoch from statement_timestamp())))))::text,true) \gset
 select public.close_period('20000000-0000-0000-0000-000000000001');
 reset role;
 set constraints all immediate;

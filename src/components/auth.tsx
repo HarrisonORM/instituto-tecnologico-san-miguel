@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Icon, Logo, Message, Preferences, useUI } from "./ui";
 import { roleNames } from "@/lib/content";
+import { ClientApiError } from "@/client/api";
 import type { Role } from "@/contracts/academic";
 
 export function AuthScreen({ recovery = false, profile = "" }: { recovery?: boolean; profile?: string }) {
@@ -43,7 +44,7 @@ export function ConfirmAccess() {
       if (!verified.current) { if (session.current) await api.acceptSession(session.current.access, session.current.refresh); else if (token.current) await api.verify(token.current.hash, token.current.type); verified.current = true; token.current = null; session.current = null; }
       await api.changePassword(password); await refreshUser(); router.replace("/campus");
     }
-    catch (e) { setError(lang === "es" && e instanceof Error ? e.message : "The link could not be verified. Request a new link and try again."); }
+    catch (e) { if (!(e instanceof ClientApiError && e.status === 499)) setError(lang === "es" && e instanceof Error ? e.message : "The link could not be verified. Request a new link and try again."); }
     finally { setBusy(false); }
   }
   return <main className="reading-page"><Logo /><div className="auth-form-wrap" style={{ marginTop: 60 }}><Preferences /><h1>{t("Crea tu contraseña", "Create your password")}</h1><p>{t("Activa tu cuenta o completa la recuperación con el enlace recibido.", "Activate your account or complete recovery using the link you received.")}</p>{valid ? <form onSubmit={submit}><label>{t("Nueva contraseña", "New password")}<input name="password" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label><label>{t("Repite la contraseña", "Repeat password")}<input name="confirm" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label>{error && <Message error>{error}</Message>}<button disabled={busy} className="button button-primary">{busy ? t("Verificando…", "Verifying…") : t("Guardar y continuar", "Save and continue")}</button></form> : <Message error>{t("Este enlace no contiene una verificación válida. Solicita un nuevo correo de recuperación.", "This link does not contain valid verification. Request a new recovery email.")}</Message>}<Link className="text-link" href="/olvide-contrasena">{t("Solicitar otro enlace", "Request another link")}<Icon name="arrow" /></Link></div></main>;

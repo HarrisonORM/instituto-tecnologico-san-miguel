@@ -2,7 +2,7 @@
 version: 1
 slug: "src-app-page-tsx"
 primary_target: "src/app/page.tsx"
-related_targets: ["src/app/layout.tsx","src/app/globals.css","src/components/landing.tsx","src/components/portal.tsx"]
+related_targets: ["src/app/layout.tsx","src/app/globals.css","src/components/landing.tsx","src/components/portal.tsx","src/components/verification-dialog.tsx","src/lib/sensitive-actions.ts","src/components/ui.tsx","src/components/auth.tsx"]
 ---
 
 # Landing y campus del Instituto Tecnológico de San Miguel
@@ -36,3 +36,15 @@ Ante «la imagen principal de la landing page no tiene movimiento», el refinami
 El contrato se consolida con el registro de la implementación, sin fingir que las revisiones posteriores ya ocurrieron. Hay capturas de escritorio/móvil y revisión independiente. Sus dos hallazgos materiales se corrigieron y se puntuaron Resolved: ship solo al alcance de esas correcciones. La documentación del sistema se deriva del código y de las capturas, sin canonizar el boceto como aprobado. El usuario autorizó después las pruebas locales. Lint, tipos, build y escenarios locales pasaron; no se autorizaron modificaciones a Supabase, correo ni despliegue. Contacto y traducciones revisadas tienen código, pero su integración real está pendiente. Los adjuntos no se traducen automáticamente.
 
 Evidencia del refinamiento de movimiento: `.impeccable/review/motion-behavior.json` registra transformación activa, pausa móvil estable y pausa fuera del viewport. Las capturas `.impeccable/review/motion-desktop.jpg` y `motion-mobile.jpg` son JPEG del host escalados proporcionalmente (982×714 y 382×826) desde viewports DOM de 990×720 y 390×844. La ocultación de pestaña está implementada, sin comprobación mediante cambio real. El primer dictamen de `.impeccable/review/motion-review.md` pidió dos correcciones documentales; el mismo revisor las puntuó resolved con disposition: ship limitado a esas dos correcciones. Los 51 avisos de deriva previa del detector (45 tamaños, 4 colores, 2 radios) no se reparan ni se canonizan en este alcance.
+
+## Extensión de verificación contextual (8 de noviembre de 2026)
+
+Modo Operate y ruta code-led: el usuario pidió retirar el formulario permanente de código MFA de Seguridad y solicitarlo al confirmar una acción protegida o cambiar/recuperar contraseña. Conserva B+C, Manrope, paleta, ES/EN y Claro/Oscuro/Sistema. No hay comp nuevo aprobado ni cambio en el límite de la semilla histórica d5b30ae5.
+
+VerificationDialog es reutilizable; sensitive-actions aporta contexto y verbos. El Provider abre un diálogo efímero y el cliente espera su resultado antes de continuar la operación. Seguridad conserva estado y configuración inicial. El diálogo se centra en escritorio y adopta una hoja inferior hasta 760px; identifica acción y destino disponible, explica consecuencias y ofrece autenticador, código, errores inline, ayuda y Cancelar. Escape conserva los datos del formulario; el código recibe foco tras cargar un factor verificado y el cierre intenta restaurarlo al control iniciador. El botón nombra la acción posterior. El QR privado de configuración procede del servicio; no es una imagen editorial añadida.
+
+Evidencia DOM comunicada por el implementador: escritorio 990×760, diálogo 520×683 en x230/y38; móvil 390×844, diálogo aproximadamente 381.6×601 en y242.9, sin overflow observado. No se equipara esa medición móvil con el ancho CSS nominal. Se observaron cancelación y código inválido sin escrituras; un código válido dio una escritura. Se observaron cambio de contraseña y datos conservados tras Escape. La captura IAB falló incluso con pestaña visible: no hay revisión visual por imagen ni aprobación de render de esta extensión. El ajuste posterior de foco y botón está implementado; su confirmación final se registra por separado en el cierre de validación.
+
+Las comprobaciones locales comunicadas cubren 21 migraciones y tres suites. La vigencia técnica de MFA reciente de 90 segundos para escrituras no implica una garantía de autorización de un solo uso. Las lecturas mantienen control por rol sin pedir código. La migración 021 no se aplicó remotamente; estos resultados no acreditan Supabase, correo ni despliegue. Se conservan sin canonizar las desviaciones históricas de tamaño, color y radio, incluidos textos auxiliares de 9–11px, por quedar fuera de esta extensión.
+
+Confirmación final DOM: el campo código recibió foco y Cancelar devolvió el foco a Guardar estado; Escape conservó los campos de recuperación. Cancelar durante una validación aceptada dejó cero escrituras; la recuperación aceptada produjo una escritura y navegación al campus. Un fallo de consulta mostró error sin ofrecer configurar otro factor. El detector único devolvió 59 avisos advisory en CSS, con deriva histórica y valores intencionales del componente documentados arriba. No hubo hallazgos de severidad superior. Continúa sin captura nueva ni aprobación visual por imagen.

@@ -9,7 +9,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const source = path.join(root, "supabase", "migrations");
 const output = path.join(root, "work", "database-install");
 const files = (await fs.readdir(source)).filter(name => /^\d{12}_[a-z_]+\.sql$/.test(name)).sort();
-if (files.length !== 20 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611070020_program_catalog.sql") {
+if (files.length !== 21 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611080021_contextual_mfa.sql") {
   throw new Error("El conjunto de migraciones cambió. Revisar la instalación antes de generar otro archivo.");
 }
 const manifest = [];
@@ -32,7 +32,7 @@ for (const name of files) {
 const preflight = `-- Instalación inicial del Instituto Tecnológico de San Miguel.
 -- Destino previsto: instituto-tecnologico-san-miguel (smbtvfevndmpxpxxiorj).
 -- Revisar ese proyecto en el panel antes de ejecutar TODO el archivo una sola vez.
--- Solo migraciones 001-020: no incluye bootstrap.sql, pruebas, cuentas ni secretos.
+-- Solo migraciones 001-021: no incluye bootstrap.sql, pruebas, cuentas ni secretos.
 -- No cargar sobre otro proyecto ni sobre una instalación existente.
 begin;
 set local lock_timeout = '10s';

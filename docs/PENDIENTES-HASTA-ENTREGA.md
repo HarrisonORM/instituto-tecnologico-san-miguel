@@ -2,6 +2,8 @@
 
 Este documento resume el avance; PRODUCT.md sigue siendo la fuente de requisitos y PLAN.md conserva las etapas. No se expresa un porcentaje global: tener código, validarlo localmente y comprobarlo con los servicios reales son resultados distintos.
 
+Actualización del 8 de noviembre: landing y salud pública observadas; primer administrador y MFA confirmados por el usuario. El segundo administrador sigue pendiente. La nueva verificación contextual pasó las comprobaciones locales con 21 migraciones; falta aplicar únicamente 021 en el proyecto existente y publicar ese código. El inventario histórico siguiente no reemplaza el bloque actual de ESTADO.md. Antes de cargar datos de ejemplo, adaptar la semilla para preservar cuentas propias.
+
 ## Evidencia actual
 
 - Hay una aplicación Next.js en un solo repositorio: interfaz y API, con landing, acceso, recuperación, cuatro portales, datos de ejemplo, navegación por rol y preferencias ES/EN/temas.

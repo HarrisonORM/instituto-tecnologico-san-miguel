@@ -87,7 +87,7 @@ end $$;
 
 select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal1"}',true) \gset
 do $$ begin perform private.expect_rejection($q$select public.manage_account('00000000-0000-0000-0000-000000000001','suspended')$q$); end $$;
-select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal2"}',true) \gset
+select set_config('request.jwt.claims',jsonb_set('{"sub":"00000000-0000-0000-0000-000000000005","aal":"aal2"}'::jsonb,'{amr}',jsonb_build_array(jsonb_build_object('method','totp','timestamp',floor(extract(epoch from statement_timestamp())))))::text,true) \gset
 do $$ begin
  assert (select count(*) from public.submissions)=0,'account admin has no grades';
  assert (select count(*) from storage.objects)=0,'account admin has no academic evidence access';
@@ -97,7 +97,7 @@ do $$ begin
  perform public.request_deletion('00000000-0000-0000-0000-000000000007');
  perform private.expect_rejection('select public.approve_deletion('''||(select id::text from public.deletion_requests where target_id='00000000-0000-0000-0000-000000000007')||''')');
 end $$;
-select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000006","aal":"aal2"}',true) \gset
+select set_config('request.jwt.claims',jsonb_set('{"sub":"00000000-0000-0000-0000-000000000006","aal":"aal2"}'::jsonb,'{amr}',jsonb_build_array(jsonb_build_object('method','totp','timestamp',floor(extract(epoch from statement_timestamp())))))::text,true) \gset
 do $$ begin
  perform public.approve_deletion((select id from public.deletion_requests where target_id='00000000-0000-0000-0000-000000000007'));
  assert (select state from public.deletion_requests where target_id='00000000-0000-0000-0000-000000000007')='approved','second admin approval';
@@ -109,7 +109,7 @@ do $$ begin
  perform private.expect_rejection($q$select public.add_comment('70000000-0000-0000-0000-000000000001','No permitido')$q$);
 end $$;
 
-select set_config('request.jwt.claims','{"sub":"00000000-0000-0000-0000-000000000004","aal":"aal2"}',true) \gset
+select set_config('request.jwt.claims',jsonb_set('{"sub":"00000000-0000-0000-0000-000000000004","aal":"aal2"}'::jsonb,'{amr}',jsonb_build_array(jsonb_build_object('method','totp','timestamp',floor(extract(epoch from statement_timestamp())))))::text,true) \gset
 do $$ begin perform private.expect_rejection($q$select public.close_period('20000000-0000-0000-0000-000000000001')$q$); end $$;
 
 reset role;

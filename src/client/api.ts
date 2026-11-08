@@ -2,12 +2,26 @@
 
 import type { AuthTokens, CurrentUser, PaginatedQuery, PublicProgram } from "@/contracts/academic";
 
+import { needsVerification, type SensitiveContext, type VerificationIntent } from "@/lib/sensitive-actions";
+
+export interface MfaFactor { id: string; friendly_name?: string; status: string; factor_type?: string }
+export type VerificationRequest = Omit<VerificationIntent, "id" | "generation">;
+
 export class ClientApiError extends Error {
   constructor(public status: number, message: string) { super(message); }
 }
 
 // Instanciar por contexto de navegador. Nunca guardar tokens en localStorage o URLs.
 export class InstituteClient {
+  private verifier: ((intent: VerificationRequest) => Promise<void>) | null = null;
+  setVerifier(verifier: ((intent: VerificationRequest) => Promise<void>) | null) { this.verifier = verifier; }
+  sessionVersion() { return this.generation; }
+  private async verifyBefore(operation: string, context: SensitiveContext = {}, variant?: string) {
+    const generation = this.generation;
+    if (!this.verifier) throw new ClientApiError(428, "La verificación de esta acción no está disponible");
+    await this.verifier({ operation, ...context, variant });
+    if (generation !== this.generation) throw new ClientApiError(401, "La sesión ha cambiado");
+  }
   private tokens: AuthTokens | null = null;
   private generation = 0;
   private refreshInFlight: Promise<void> | null = null;
@@ -74,8 +88,9 @@ export class InstituteClient {
     for(const [key,value] of Object.entries(query)) if(value!==undefined)params.set(key,String(value));
     return this.send<T[]>(`/api/backend/${resource}?${params}`,"GET");
   }
-  command<T>(operation: string,parameters: Record<string,unknown>,idempotencyKey?: string) {
+  async command<T>(operation: string,parameters: Record<string,unknown>,idempotencyKey?: string,context?: SensitiveContext) {
     if(!/^[a-z_]+$/.test(operation)) throw new ClientApiError(400,"Operación no válida");
+    if (needsVerification(operation, parameters)) await this.verifyBefore(operation, context, String(parameters.p_state ?? parameters.p_kind ?? ""));
     return this.send<T>(`/api/backend/${operation}`,"POST",parameters,true,true,idempotencyKey?{"Idempotency-Key":idempotencyKey}:{});
   }
   recover(email: string) {return this.send("/api/auth/recover","POST",{email},false);}
@@ -85,9 +100,13 @@ export class InstituteClient {
     if(generation!==this.generation)throw new ClientApiError(401,"La sesión ha cambiado");
     this.tokens=result;
   }
-  changePassword(password: string) {return this.send("/api/auth/password","POST",{password});}
+  async changePassword(password: string) {
+    const factors = await this.listMfa();
+    if (factors.some(item => item.status === "verified")) await this.verifyBefore("password");
+    return this.send("/api/auth/password","POST",{password});
+  }
   enrollMfa() {return this.send<{id:string;totp:{qr_code:string;secret:string;uri:string}}>("/api/auth/mfa-enroll","POST",{});}
-  listMfa() {return this.send<{id:string;friendly_name?:string;status:string}[]>("/api/auth/mfa-list","POST",{});}
+  listMfa() {return this.send<MfaFactor[]>("/api/auth/mfa-list","POST",{});}
   challengeMfa(factor: string) {return this.send<{id:string}>("/api/auth/mfa-challenge","POST",{factor_id:factor});}
   async verifyMfa(factor: string,challenge: string,code: string) {
     const generation=this.generation;
@@ -95,11 +114,12 @@ export class InstituteClient {
     if(generation!==this.generation)throw new ClientApiError(401,"La sesión ha cambiado");
     this.tokens=result;
   }
-  invite(email: string,fullName: string,role: string,key: string) {
+  async invite(email: string,fullName: string,role: string,key: string) {
+    await this.verifyBefore("invite", { target: fullName });
     return this.send("/api/admin/invitations","POST",{email,full_name:fullName,role},true,true,{"Idempotency-Key":key});
   }
-  reconcileInvitation(id: string) {return this.send(`/api/admin/invitations/${encodeURIComponent(id)}`,"POST",{});}
-  executeDeletion(id: string) {return this.send(`/api/admin/deletions/${encodeURIComponent(id)}`,"POST",{});}
+  async reconcileInvitation(id: string) { await this.verifyBefore("reconcile_invitation"); return this.send(`/api/admin/invitations/${encodeURIComponent(id)}`,"POST",{}); }
+  async executeDeletion(id: string,context?: SensitiveContext) { await this.verifyBefore("execute_deletion",context); return this.send(`/api/admin/deletions/${encodeURIComponent(id)}`,"POST",{}); }
   inspectUpload(id: string) {return this.send(`/api/files/${encodeURIComponent(id)}/inspect`,"POST",{});}
   discardUpload(id: string) {return this.send(`/api/files/${encodeURIComponent(id)}`,"DELETE",{});}
   async storageUpload(path: string,file: File) {

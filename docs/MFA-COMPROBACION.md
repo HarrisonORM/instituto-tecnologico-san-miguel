@@ -1,5 +1,7 @@
 # Comprobar la verificación en dos pasos
 
+Actualización del 8 de noviembre: el usuario confirmó factor verified y verificación completada en su sesión. El formulario permanente descrito abajo se sustituye en el nuevo código por una confirmación contextual. Para activarla, seguir VERIFICACION-CONTEXTUAL.md; requiere la migración 021 antes de publicar. Los apartados siguientes conservan la explicación histórica y la lectura limitada de factores.
+
 ## Qué se corrigió
 
 La recarga posterior a verificar el código desmontaba el panel de seguridad y perdía su confirmación. El panel ahora permanece durante la carga. Una respuesta de aceptación muestra el éxito inmediatamente; si falla la consulta posterior, conserva esa confirmación y muestra una advertencia distinta de un rechazo del código. No se modifican permisos, roles, RLS ni la exigencia de MFA.

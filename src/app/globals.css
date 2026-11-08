@@ -23,3 +23,23 @@ table,.grade{font-variant-numeric:tabular-nums}
 .program-feature:last-child:nth-child(odd){grid-column:1/-1}.program-feature:last-child:nth-child(odd) .program-feature-copy h3{max-width:28ch}
 @media(max-width:760px){.theme-select select{width:127px;font-size:13px}.program-detail-hero h1{font-size:clamp(30px,8vw,43px);overflow-wrap:anywhere}}
 @media(max-width:760px){.public-header{padding:14px 16px;gap:10px}.public-header .brand{gap:7px}.public-header .brand strong{font-size:26px}.public-header .brand-mark i{width:7px;height:24px}.public-header .preferences{gap:6px}.public-header .theme-select select{width:110px;padding-left:30px;padding-right:24px;font-size:12px}.public-header .theme-select>svg{left:9px}.public-header .theme-select>svg:last-child{left:auto;right:8px}}
+
+/* Confirmación contextual de operaciones protegidas. */
+.verification-dialog{width:min(100% - 32px,520px);max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);overflow-y:auto;font-family:var(--font-manrope),sans-serif}
+.verification-dialog::backdrop{background:#071a13b8}
+.verification-content{padding:28px;display:grid;gap:20px}
+.verification-content h2{font-size:24px;line-height:1.25;margin:0;letter-spacing:-.02em}
+.verification-content p{font-size:16px;line-height:1.55;margin:0;color:var(--muted)}
+.verification-content form{display:grid;gap:18px}
+.verification-content label{display:grid;gap:8px;font-size:14px;font-weight:700}
+.verification-content input,.verification-content select{width:100%;min-width:0;font-size:16px}
+.verification-content input[name=code]{font-variant-numeric:tabular-nums;letter-spacing:.2em;font-size:24px}
+.verification-target{display:grid;gap:6px;padding:16px;background:var(--mint);border-radius:7px;overflow-wrap:anywhere}
+.verification-target strong{font-size:14px;color:var(--muted)}
+.verification-target span{font-size:18px;font-weight:700}
+.verification-setup{display:grid;gap:16px;justify-items:start}
+.verification-setup label{width:100%;min-width:0}
+.verification-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.verification-footer .small-link{font-size:14px;text-align:left}
+.verification-content .button{min-height:46px}
+@media(max-width:760px){.verification-dialog{width:100%;max-width:none;max-height:calc(100dvh - 16px);margin:auto 0 0;border-radius:12px 12px 0 0}.verification-content{padding:24px 20px max(24px,env(safe-area-inset-bottom))}.verification-footer{align-items:stretch;flex-direction:column}.verification-footer .button{width:100%}}

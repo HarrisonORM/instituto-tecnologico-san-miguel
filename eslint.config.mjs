@@ -9,6 +9,7 @@ export default defineConfig([
     "out/**",
     "dist/**",
     "coverage/**",
+    "work/**",
     "next-env.d.ts",
   ]),
   js.configs.recommended,

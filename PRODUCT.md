@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 20 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 21 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -59,6 +59,11 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 - Las tareas pueden asignarse a un grupo, varios grupos del docente o estudiantes seleccionados entre sus grupos. Los destinatarios se validan en el servidor.
 
 ### Plan de seguridad y presupuesto
+
+Actualización confirmada el 8 de noviembre: retirar el formulario permanente de verificación de Seguridad y pedir el código en el contexto de una acción protegida, mediante ventana adaptable. Seguridad conserva el estado y la configuración inicial del autenticador. Cambiar o recuperar una contraseña de una cuenta con factor verificado solicita ese factor antes de guardar; perder el autenticador requiere recuperación asistida, sin desactivarlo automáticamente.
+
+La implementación conserva las operaciones privilegiadas ya protegidas (cuentas, roles, permisos, correcciones y cierre, entre otras); no interpreta los ejemplos de bajas y contraseña como autorización para quitar la protección restante. La consulta del panel sigue limitada por rol/recurso sin pedir código. La pregunta opcional sobre limitar el alcance exclusivamente a bajas y contraseña sigue sin respuesta: conservar la cobertura anterior es una decisión técnica provisional, no una nueva aprobación del usuario. La frescura del código de 90 segundos en servidor es una propuesta implementada localmente; no es una autorización vinculada a una sola operación.
+
 
 - Comprobar permisos, estado de cuenta y relación con cada recurso tanto en el servidor como en la base de datos y el almacenamiento.
 - Utilizar almacenamiento privado, MFA con aplicación autenticadora para funciones privilegiadas, auditoría y operaciones reversibles para las bajas ordinarias.

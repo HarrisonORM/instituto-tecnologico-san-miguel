@@ -39,7 +39,7 @@ try {
   if ($LASTEXITCODE -ne 0) { throw 'Fallo createdb local.' }
   CheckFile (Join-Path $repo 'supabase/tests/bootstrap.sql')
   foreach ($m in (Get-ChildItem -LiteralPath (Join-Path $repo 'supabase/migrations') -Filter '*.sql' | Sort-Object Name)) { CheckFile $m.FullName }
-  Write-Output 'Base aislada: 20 migraciones aplicadas.'
+  Write-Output 'Base aislada: 21 migraciones aplicadas.'
   CheckFile $templatePath 'Primero reemplaza el UID'
   Write-Output 'Correcto: plantilla sin completar rechazada.'
   $uid = '11111111-1111-4111-a111-111111111111'
@@ -61,7 +61,7 @@ try {
   Write-Output 'Correcto: repetición rechazada.'
   if ((Sql 'select count(*) from pg_catalog.pg_tables where schemaname=''public'' and rowsecurity;') -ne '26') { throw 'RLS no coincide con la instalación.' }
   $aal1 = Sql "set role authenticated; set request.jwt.claims='{`"sub`":`"$uid`",`"aal`":`"aal1`"}'; select private.system_admin();"
-  $aal2 = Sql "set role authenticated; set request.jwt.claims='{`"sub`":`"$uid`",`"aal`":`"aal2`"}'; select private.system_admin();"
+  $aal2 = (Sql "set role authenticated; select set_config('request.jwt.claims',jsonb_build_object('sub','$uid','aal','aal2','amr',jsonb_build_array(jsonb_build_object('method','totp','timestamp',floor(extract(epoch from statement_timestamp())))))::text,false); select private.system_admin();").Split([char]10)[-1]
   if ($aal1 -ne 'f' -or $aal2 -ne 't') { throw 'La exigencia MFA no se conservó.' }
   Write-Output 'Correcto: 26 tablas con RLS; acciones de administrador requieren aal2.'
 } finally {

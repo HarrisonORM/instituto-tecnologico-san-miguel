@@ -11,6 +11,7 @@ import { roleNames } from "@/lib/content";
 import { academicPermissions, canOpenPortalView } from "@/lib/portal-access";
 import { selectPreview, previewViewer, str, number, type Row, type Dataset } from "@/lib/preview-data";
 import { prepareEvidence } from "@/client/evidence";
+import { ClientApiError } from "@/client/api";
 import type { Role } from "@/contracts/academic";
 
 type View = "overview" | "courses" | "tasks" | "grades" | "calendar" | "notifications" | "profile" | "users" | "structure" | "audit" | "security" | "new-task" | "detail" | "contacts";
@@ -90,15 +91,19 @@ export function Portal({ previewRole }: { previewRole?: Role }) {
         const snapshot = selectPreview(next, previewRole); dataRef.current = snapshot; setData(snapshot);
       }
       else {
+        const deletion = (dataRef.current.deletion_requests ?? []).find(row => row.id === (params.p_request ?? params.id));
+        const targetId = params.p_user ?? deletion?.target_id ?? deletion?.user_id ?? params.p_id ?? params.p_period ?? params.p_program;
+        const target = ["profiles", "periods", "programs", "subjects", "groups"].flatMap(key => dataRef.current[key] ?? []).find(row => row.id === targetId);
+        const verificationContext = { target: target ? str(target, "full_name") || str(target, "name") : undefined };
         const body = JSON.stringify([operation, params]);
         if (!receipts.current.has(body)) receipts.current.set(body, crypto.randomUUID());
         const receiptKey = receipts.current.get(body)!;
-        result = operation === "invite" ? await api.invite(String(params.email), String(params.full_name), String(params.role), receiptKey) : operation === "execute_deletion" ? await api.executeDeletion(String(params.id)) : await api.command(operation, params, idempotent.includes(operation) ? receiptKey : undefined);
+        result = operation === "invite" ? await api.invite(String(params.email), String(params.full_name), String(params.role), receiptKey) : operation === "execute_deletion" ? await api.executeDeletion(String(params.id), verificationContext) : await api.command(operation, params, idempotent.includes(operation) ? receiptKey : undefined, verificationContext);
         await load();
       }
       setNotice(preview ? t("Cambio realizado en la vista previa. No se modificaron datos institucionales.", "Preview updated. Institutional data has not been changed.") : t("Operación completada.", "Operation completed."));
       return result;
-    } catch (e) { const message = lang === "es" && e instanceof Error ? e.message : "The operation could not be completed. Check your permissions and try again."; setError(message); throw e; }
+    } catch (e) { if (e instanceof ClientApiError && e.status === 499) throw e; const message = lang === "es" && e instanceof Error ? e.message : "The operation could not be completed. Check your permissions and try again."; setError(message); throw e; }
     finally { setBusy(false); }
   }
   function navigate(next: View) { if (!canOpenPortalView(next, role, permissions)) return; setView(next); setSearch(""); setError(""); setNotice(""); if (next !== "detail" && next !== "tasks") { setStudentFilter(""); setTaskId(""); setSubmissionId(""); } }
@@ -251,31 +256,25 @@ function ProfilePanel({ profile, program, command, busy, preview, avatarFile }: 
 }
 
 function SecurityPanel({ preview, busy }: { preview: boolean; busy: boolean }) {
-  const { t, lang, api, reduced, setReduced, refreshUser } = useUI(); const [message, setMessage] = useState(""); const [error, setError] = useState(""); const [factor, setFactor] = useState<{ id: string; totp: { qr_code: string; secret: string; uri: string } } | null>(null); const [working, setWorking] = useState(false); const [factors, setFactors] = useState<{ id: string; friendly_name?: string; status: string }[]>([]);
-  useEffect(() => { if (!preview) void api.listMfa().then(setFactors).catch(() => undefined); }, [api, preview]);
-  async function verifyCode(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (working) return;
-    const form = event.currentTarget; const fields = new FormData(form);
-    setWorking(true); setError(""); setMessage("");
-    let accepted = false;
-    try {
-      const factorId = String(fields.get("factor"));
-      const challenge = await api.challengeMfa(factorId);
-      await api.verifyMfa(factorId, challenge.id, String(fields.get("code")));
-      accepted = true;
-      setFactor(null); form.reset();
-      setMessage(t("Verificación completada para esta sesión.", "Verification completed for this session."));
-      await refreshUser();
-      setFactors(await api.listMfa());
-    } catch {
-      setError(accepted
-        ? t("El código fue aceptado, pero no se pudo actualizar toda la información. Vuelve a iniciar sesión y verifica con tu autenticador existente.", "The code was accepted, but some information could not be refreshed. Sign in again and verify with your existing authenticator.")
-        : t("No se pudo verificar el código. Intenta con el siguiente.", "Could not verify the code. Try the next one."));
-    } finally { setWorking(false); }
+  const { t, lang, api, reduced, setReduced, requestVerification } = useUI();
+  const [message, setMessage] = useState(""); const [error, setError] = useState(""); const [working, setWorking] = useState(false);
+  const [configured, setConfigured] = useState<boolean | null>(null);
+  useEffect(() => { let current = true; if (!preview) void api.listMfa().then(items => { if (current) setConfigured(items.some(item => item.status === "verified")); }).catch(() => { if (current) setError(lang === "es" ? "No se pudo consultar la protección de tu cuenta." : "Account protection could not be loaded."); }); return () => { current = false; }; }, [api, preview, lang]);
+  async function changePassword(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault(); const form = event.currentTarget; const data = new FormData(form); setError(""); setMessage("");
+    if (data.get("password") !== data.get("confirm")) { setError(t("Las contraseñas no coinciden.", "Passwords do not match.")); return; }
+    setWorking(true);
+    try { if (!preview) await api.changePassword(String(data.get("password"))); setMessage(preview ? t("Ejemplo de cambio de contraseña. No se modificó ninguna cuenta.", "Sample password change. No account has been changed.") : t("Contraseña actualizada.", "Password updated.")); form.reset(); }
+    catch (e) { if (!(e instanceof ClientApiError && e.status === 499)) setError(lang === "es" && e instanceof Error ? e.message : "Password could not be changed."); }
+    finally { setWorking(false); }
   }
-  async function changePassword(event: FormEvent<HTMLFormElement>) { event.preventDefault(); const form = event.currentTarget; const d = new FormData(form); setError(""); if (d.get("password") !== d.get("confirm")) { setError(t("Las contraseñas no coinciden.", "Passwords do not match.")); return; } setWorking(true); try { if (!preview) await api.changePassword(String(d.get("password"))); setMessage(preview ? t("Ejemplo de cambio de contraseña. No se modificó ninguna cuenta.", "Sample password change. No account has been changed.") : t("Contraseña actualizada.", "Password updated.")); form.reset(); } catch (e) { setError(lang === "es" && e instanceof Error ? e.message : "Password could not be changed."); } finally { setWorking(false); } }
-  return <div className="portal-columns"><section className="detail-panel"><h2>{t("Cambiar contraseña", "Change password")}</h2><form onSubmit={changePassword}><label>{t("Nueva contraseña · Mínimo 12 caracteres", "New password · At least 12 characters")}<input type="password" name="password" required minLength={12} maxLength={128} autoComplete="new-password" /></label><label>{t("Confirmar contraseña", "Confirm password")}<input type="password" name="confirm" required minLength={12} maxLength={128} autoComplete="new-password" /></label><button className="button button-primary" disabled={working || busy}>{t("Actualizar contraseña", "Update password")}</button></form><h3>{t("Tus preferencias", "Your preferences")}</h3><Preferences /><label className="checkbox-label" style={{ marginTop: 20 }}><input type="checkbox" checked={reduced} onChange={e => setReduced(e.target.checked)} />{t("Reducir movimiento", "Reduce motion")}</label></section><section className="detail-panel"><h2>{t("Verificación en dos pasos", "Two-step verification")}</h2><p>{t("Las acciones administrativas sensibles requieren un código de una aplicación autenticadora. Nunca compartas la clave de configuración.", "Sensitive administrative actions require a code from an authenticator app. Never share the setup secret.")}</p>{preview ? <Message>{t("La inscripción del autenticador solo está disponible con una sesión institucional real.", "Authenticator enrollment is only available with a real institutional session.")}</Message> : <><button className="button button-secondary" style={{ marginTop: 20 }} disabled={working} onClick={async () => { setWorking(true); setError(""); try { setFactor(await api.enrollMfa()); } catch { setError(t("No se pudo inscribir otro factor. Si ya tienes uno, utiliza su identificador para verificarlo.", "Could not enroll another factor. If you already have one, use its identifier to verify it.")); } finally { setWorking(false); } }}>{t("Configurar autenticador", "Set up authenticator")}</button>{factor && <div className="work-section"><Image src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(factor.totp.qr_code)}`} unoptimized width={180} height={180} alt={t("Código QR privado para el autenticador", "Private authenticator QR code")} /><label>{t("Clave manual privada", "Private manual key")}<input value={factor.totp.secret} readOnly /></label></div>}<form onSubmit={verifyCode}><label>{t("Aplicación autenticadora", "Authenticator app")}<select name="factor" key={factor?.id} defaultValue={factor?.id || factors[0]?.id || ""} required><option value="">{t("Selecciona tu autenticador", "Select your authenticator")}</option>{factor && <option value={factor.id}>{t("Autenticador recién configurado", "Newly configured authenticator")}</option>}{factors.filter(item => item.id !== factor?.id).map(item => <option key={item.id} value={item.id}>{item.friendly_name || t("Mi autenticador", "My authenticator")}</option>)}</select></label><label>{t("Código de 6 dígitos", "6-digit code")}<input name="code" inputMode="numeric" pattern="[0-9]{6}" autoComplete="one-time-code" required maxLength={6} /></label><button className="button button-primary" disabled={working}>{t("Verificar código", "Verify code")}</button></form></>}{message && <Message>{message}</Message>}{error && <Message error>{error}</Message>}</section></div>;
+  async function configure() {
+    setWorking(true); setError(""); setMessage("");
+    try { await requestVerification({ operation: "setup" }); setConfigured(true); setMessage(t("Autenticador activado. Te pediremos su código al confirmar una acción protegida.", "Authenticator enabled. We will ask for its code when you confirm a protected action.")); }
+    catch (e) { if (!(e instanceof ClientApiError && e.status === 499)) setError(t("No se pudo completar la configuración.", "Setup could not be completed.")); }
+    finally { setWorking(false); }
+  }
+  return <div className="portal-columns"><section className="detail-panel"><h2>{t("Cambiar contraseña", "Change password")}</h2><form onSubmit={changePassword}><label>{t("Nueva contraseña · Mínimo 12 caracteres", "New password · At least 12 characters")}<input type="password" name="password" required minLength={12} maxLength={128} autoComplete="new-password" /></label><label>{t("Confirmar contraseña", "Confirm password")}<input type="password" name="confirm" required minLength={12} maxLength={128} autoComplete="new-password" /></label><button className="button button-primary" disabled={working || busy}>{t("Actualizar contraseña", "Update password")}</button></form><h3>{t("Tus preferencias", "Your preferences")}</h3><Preferences /><label className="checkbox-label" style={{ marginTop: 20 }}><input type="checkbox" checked={reduced} onChange={event => setReduced(event.target.checked)} />{t("Reducir movimiento", "Reduce motion")}</label></section><section className="detail-panel"><h2>{t("Protección de tu cuenta", "Account protection")}</h2><p>{t("La verificación aparece al confirmar una acción protegida. Aquí puedes consultar el estado de tu autenticador.", "Verification appears when you confirm a protected action. You can check your authenticator status here.")}</p>{preview ? <Message>{t("La vista previa no configura autenticadores reales.", "Preview does not configure real authenticators.")}</Message> : configured === null ? (error ? null : <p role="status">{t("Consultando protección…", "Loading protection…")}</p>) : <><span className="badge">{configured ? t("Autenticador activado", "Authenticator enabled") : t("Sin configurar", "Not configured")}</span>{!configured && <button type="button" className="button button-secondary" disabled={working || busy} onClick={() => void configure()}>{t("Configurar autenticador", "Set up authenticator")}</button>}<p>{t("Si pierdes acceso a tu aplicación autenticadora, necesitarás una recuperación asistida por personal autorizado.", "If you lose access to your authenticator app, you will need assisted recovery from authorized staff.")}</p></>}{message && <Message>{message}</Message>}{error && <Message error>{error}</Message>}</section></div>;
 }
 
 function AccountPanel({ data, command, busy }: { data: Dataset; command: Command; busy: boolean }) {
