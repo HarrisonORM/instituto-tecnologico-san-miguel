@@ -18,14 +18,14 @@ const requestKey = "11111111-1111-4111-a111-111111111111";
 
 async function fixture(run, { permitted = true, state = "active", complete = false } = {}) {
   const previousFetch = globalThis.fetch;
-  const values = { NEXT_PUBLIC_SUPABASE_URL: "https://abcdefghijklmnopqrst.supabase.co", NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_synthetic", SUPABASE_SECRET_KEY: "sb_secret_synthetic", INSTITUTION_EMAIL_DOMAIN: "old-setting.invalid" };
+  const values = { NEXT_PUBLIC_SUPABASE_URL: "https://abcdefghijklmnopqrst.supabase.co", NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_synthetic", SUPABASE_SECRET_KEY: "sb_secret_synthetic", INSTITUTION_EMAIL_DOMAIN: "old-setting.invalid", AUTH_RECOVERY_REDIRECT_URL: "https://campus.example.invalid/auth/confirmar" };
   const previous = Object.fromEntries(Object.keys(values).map(key => [key, process.env[key]]));
   Object.assign(process.env, values);
   const calls = [];
   globalThis.fetch = async (url, options) => {
     const path = new URL(url).pathname;
     const body = options.body ? JSON.parse(options.body) : undefined;
-    calls.push({ path, body });
+    calls.push({ path, body, redirect: new URL(url).searchParams.get("redirect_to") });
     if (path === "/auth/v1/user") return globalThis.Response.json({ id: "local-admin" });
     if (path === "/rest/v1/profiles") return globalThis.Response.json([{ id: "local-admin", state }]);
     if (path.endsWith("require_account_admin") && !permitted) return globalThis.Response.json({ code: "42501" }, { status: 403 });
@@ -48,6 +48,7 @@ test("acepta Gmail sin dominio propio e ignora la antigua restricción configura
   const response = await invoke("  Persona+prueba@gmail.com  ");
   assert.equal(response.status, 200);
   assert.equal(calls.find(call => call.path === "/auth/v1/invite").body.email, "persona+prueba@gmail.com");
+  assert.equal(calls.find(call => call.path === "/auth/v1/invite").redirect, "https://campus.example.invalid/auth/confirmar");
   assert.ok(calls.findIndex(call => call.path.endsWith("require_account_admin")) < calls.findIndex(call => call.path === "/auth/v1/invite"));
 }));
 test("acepta Outlook aunque no exista la antigua variable de dominio", () => fixture(async (invoke, calls) => {
@@ -79,3 +80,17 @@ test("un trabajo completado devuelve su resultado sin reenviar el correo", () =>
   assert.equal((await invoke("persona@gmail.com")).status, 200);
   assert.equal(calls.some(call => call.path === "/auth/v1/invite"), false);
 }, { complete: true }));
+
+test("una dirección de activación ausente o incorrecta bloquea antes de crear el trabajo y enviar", () => fixture(async (invoke, calls) => {
+  for (const redirect of [undefined, "no-es-url", "https://campus.example.invalid/", "http://campus.example.invalid/auth/confirmar", "https://user:pass@campus.example.invalid/auth/confirmar", "https://campus.example.invalid/auth/confirmar#token", "https://campus.example.invalid/auth/confirmar?next=otro"]) {
+    if (redirect === undefined) delete process.env.AUTH_RECOVERY_REDIRECT_URL; else process.env.AUTH_RECOVERY_REDIRECT_URL = redirect;
+    assert.equal((await invoke("persona@gmail.com")).status, 503);
+  }
+  assert.equal(calls.some(call => call.path.endsWith("prepare_invitation") || call.path === "/auth/v1/invite"), false);
+}));
+
+test("el retorno local solo admite HTTP en loopback y conserva la página de activación", () => fixture(async (invoke, calls) => {
+  process.env.AUTH_RECOVERY_REDIRECT_URL = "http://127.0.0.1:3000/auth/confirmar/";
+  assert.equal((await invoke("persona@gmail.com")).status, 200);
+  assert.equal(calls.find(call => call.path === "/auth/v1/invite").redirect, "http://127.0.0.1:3000/auth/confirmar");
+}));

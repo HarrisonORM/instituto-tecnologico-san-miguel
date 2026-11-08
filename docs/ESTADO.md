@@ -1,5 +1,16 @@
 # Estado y siguiente paso
 
+## Bienvenida y enlace de activación preparados (8 de noviembre de 2026)
+
+El usuario recibió una invitación de Supabase, informó que no pudo crear su contraseña y pidió correo de bienvenida del Instituto con enlace de activación. La pantalla exacta/mensaje sigue pendiente de su respuesta. Se encontró que la ruta de invitación no enviaba redirect_to; se corrige para /auth/confirmar y se comparte su validación con recuperación, mediante AUTH_RECOVERY_REDIRECT_URL existente. No se afirma que sea la única causa del fallo remoto.
+
+Plantilla HTML de bienvenida en supabase/templates/invite.html y guía manual en CORREO-BIENVENIDA.md. El enlace transporta TokenHash en fragmento, el formulario lo captura en memoria y limpia la URL; no verifica ni consume el enlace al abrirlo, sino al enviar la contraseña. Se conservan enlaces antiguos en query y fragmentos de sesión. Se mejoran estados inicial, ausente y expirado con ES/EN y requisito de 12 caracteres; metadatos de la pantalla sin indexación ni referrer. No se quita MFA existente ni se amplían roles.
+
+15 pruebas de invitación/interpretación y 11 de MFA contextual aprobaron sin red externa. Build, tipos y lint código 0. Se observaron en navegador local bienvenida, botón, formulario, ausencia de consumo al abrir, discrepancia de contraseñas, una verificación/una escritura al confirmar y navegación al campus. Correo sin overflow a 390/990px; error de expiración en ES/EN. Las respuestas son simuladas y no acreditan persistencia Supabase ni compatibilidad de todos los clientes de correo. Captura fallida: evidencia DOM/accesible. Detector único: dos warnings de fuentes y tres advisory de valores locales del correo; son excepciones de compatibilidad email documentadas, no cambios de tipografía global.
+
+Siguiente paso: publicar el nuevo commit, comprobar AUTH_RECOVERY_REDIRECT_URL y URL Configuration y pegar manualmente asunto/HTML en Invite user. Una invitación ya recibida no cambia: si venció/usó, utilizar recuperación con el mismo correo, sin borrar la cuenta. No se cambió ningún servicio remoto ni se envió otro mensaje desde el agente. No hay SQL nuevo ni costes añadidos.
+
+
 ## Correos personales en invitaciones (8 de noviembre de 2026)
 
 El usuario obtuvo «Correo institucional no permitido» e informó que no tiene dominio propio. El bloqueo estaba en la ruta de la aplicación: exigía INSTITUTION_EMAIL_DOMAIN y la coincidencia del destinatario, antes de preparar el trabajo o solicitar el envío a Auth. Se eliminó esa exigencia, se normaliza la dirección y se valida su formato. La variable se retira de .env.example; si quedó en Vercel, el nuevo código la ignora. No se requieren dominio comprado, migración SQL ni cambios de claves.

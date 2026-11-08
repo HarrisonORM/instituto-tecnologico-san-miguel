@@ -7,6 +7,7 @@ import { Icon, Logo, Message, Preferences, useUI } from "./ui";
 import { roleNames } from "@/lib/content";
 import { ClientApiError } from "@/client/api";
 import type { Role } from "@/contracts/academic";
+import { readConfirmationLink } from "@/lib/confirmation-link";
 
 export function AuthScreen({ recovery = false, profile = "" }: { recovery?: boolean; profile?: string }) {
   const { t, lang, login, api } = useUI(); const router = useRouter();
@@ -27,14 +28,17 @@ export function ConfirmAccess() {
   const { t, lang, api, refreshUser } = useUI(); const router = useRouter();
   const token = useRef<{ hash: string; type: "invite" | "recovery" | "email" } | null>(null);
   const session = useRef<{ access: string; refresh: string } | null>(null); const verified = useRef(false);
-  const [valid, setValid] = useState(false); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
+  const captured = useRef(false);
+  const [valid, setValid] = useState(false); const [ready, setReady] = useState(false); const [expired, setExpired] = useState(false); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search); const hash = params.get("token_hash"); const type = params.get("type");
-    if (hash && (type === "invite" || type === "recovery" || type === "email")) { token.current = { hash, type }; setValid(true); }
-    const fragment = new URLSearchParams(window.location.hash.slice(1));
-    const access = fragment.get("access_token"); const refresh = fragment.get("refresh_token");
-    if (access && refresh) { session.current = { access, refresh }; setValid(true); }
+    if (captured.current) return;
+    captured.current = true;
+    const link = readConfirmationLink(window.location.search, window.location.hash);
+    if (link.mode === "token") { token.current = { hash: link.hash, type: link.type }; setValid(true); }
+    else if (link.mode === "session") { session.current = { access: link.access, refresh: link.refresh }; setValid(true); }
+    else setExpired(link.expired);
     window.history.replaceState(null, "", window.location.pathname);
+    setReady(true);
   }, []);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget); const password = String(data.get("password"));
@@ -47,5 +51,5 @@ export function ConfirmAccess() {
     catch (e) { if (!(e instanceof ClientApiError && e.status === 499)) setError(lang === "es" && e instanceof Error ? e.message : "The link could not be verified. Request a new link and try again."); }
     finally { setBusy(false); }
   }
-  return <main className="reading-page"><Logo /><div className="auth-form-wrap" style={{ marginTop: 60 }}><Preferences /><h1>{t("Crea tu contraseña", "Create your password")}</h1><p>{t("Activa tu cuenta o completa la recuperación con el enlace recibido.", "Activate your account or complete recovery using the link you received.")}</p>{valid ? <form onSubmit={submit}><label>{t("Nueva contraseña", "New password")}<input name="password" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label><label>{t("Repite la contraseña", "Repeat password")}<input name="confirm" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label>{error && <Message error>{error}</Message>}<button disabled={busy} className="button button-primary">{busy ? t("Verificando…", "Verifying…") : t("Guardar y continuar", "Save and continue")}</button></form> : <Message error>{t("Este enlace no contiene una verificación válida. Solicita un nuevo correo de recuperación.", "This link does not contain valid verification. Request a new recovery email.")}</Message>}<Link className="text-link" href="/olvide-contrasena">{t("Solicitar otro enlace", "Request another link")}<Icon name="arrow" /></Link></div></main>;
+  return <main className="reading-page"><Logo /><div className="auth-form-wrap" style={{ marginTop: 60 }}><Preferences /><h1>{t("Crea tu contraseña", "Create your password")}</h1><p>{t("Te damos la bienvenida al Instituto Tecnológico de San Miguel. Elige una contraseña de al menos 12 caracteres para acceder a tu plataforma.", "Welcome to Instituto Tecnológico de San Miguel. Choose a password with at least 12 characters to access your platform.")}</p>{!ready ? <p role="status">{t("Comprobando el enlace…", "Checking the link…")}</p> : valid ? <form onSubmit={submit}><label>{t("Nueva contraseña", "New password")}<input name="password" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label><label>{t("Repite la contraseña", "Repeat password")}<input name="confirm" type="password" minLength={12} maxLength={128} required autoComplete="new-password" /></label>{error && <Message error>{error}</Message>}<button disabled={busy} className="button button-primary">{busy ? t("Verificando…", "Verifying…") : t("Guardar y continuar", "Save and continue")}</button></form> : <Message error>{expired ? t("Este enlace expiró o ya se utilizó. Solicita otro enlace para crear tu contraseña.", "This link expired or was already used. Request another link to create your password.") : t("Abre el enlace completo de tu correo para crear tu contraseña. Si ya no lo tienes, solicita otro.", "Open the complete link from your email to create your password. If you no longer have it, request another.")}</Message>}<Link className="text-link" href="/olvide-contrasena">{t("Solicitar otro enlace", "Request another link")}<Icon name="arrow" /></Link></div></main>;
 }

@@ -1,5 +1,7 @@
 # Configuración y pruebas de los servicios
 
+Para la bienvenida y activación, consultar CORREO-BIENVENIDA.md. AUTH_RECOVERY_REDIRECT_URL se comparte entre invitaciones y recuperación y debe terminar en /auth/confirmar; debe coincidir con Redirect URLs de Supabase. La plantilla Invite user se publica por separado en el panel: versionar su HTML no la instala automáticamente. El usuario confirmó recepción de una invitación, pero el ciclo de creación de contraseña real sigue pendiente.
+
 Actualización del 8 de noviembre: no se requiere dominio de correo propio. La aplicación permite invitaciones administrativas a direcciones personales válidas; INSTITUTION_EMAIL_DOMAIN ya no se utiliza. Esa validación es independiente del remitente SMTP de Supabase. El mensaje «Correo institucional no permitido» se producía antes de registrar/enviar la invitación; corregirlo no demuestra recepción de correo. Se conserva desactivado el registro público. El SMTP y el ciclo real de invitación siguen pendientes de confirmación.
 
 ## Avance comunicado por el usuario

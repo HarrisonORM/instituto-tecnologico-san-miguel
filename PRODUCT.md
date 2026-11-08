@@ -60,6 +60,8 @@ Desarrollar una aplicación universitaria fullstack, utilizable desde celular y 
 
 ### Plan de seguridad y presupuesto
 
+El usuario solicitó un correo de bienvenida con el nombre Instituto Tecnológico de San Miguel y un enlace para crear su propia contraseña y acceder a la plataforma. La invitación dirige a /auth/confirmar, no a la portada. El cuerpo y el asunto se personalizan en la plantilla Invite user de Supabase; el nombre/dirección del remitente y su transporte se configuran por separado. Se conserva la recepción por correo confirmada por el usuario sin dar por validada la activación real.
+
 El usuario confirmó que no tiene dominio de correo propio. El acceso y las invitaciones aceptan direcciones personales válidas, incluidas Gmail y Outlook, sin exigir ni comprar un dominio institucional. Se retira la restricción INSTITUTION_EMAIL_DOMAIN; el alta sigue reservada al administrador activo con verificación y sin registro público. La aceptación de la dirección no acredita entrega: el transporte SMTP se configura y comprueba por separado.
 
 Actualización confirmada el 8 de noviembre: retirar el formulario permanente de verificación de Seguridad y pedir el código en el contexto de una acción protegida, mediante ventana adaptable. Seguridad conserva el estado y la configuración inicial del autenticador. Cambiar o recuperar una contraseña de una cuenta con factor verificado solicita ese factor antes de guardar; perder el autenticador requiere recuperación asistida, sin desactivarlo automáticamente.

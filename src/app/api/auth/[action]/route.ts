@@ -1,6 +1,5 @@
-import process from "node:process";
 import { randomUUID } from "node:crypto";
-import { ApiError, bodyOf, handle, session, supabase, text } from "@/server/backend";
+import { ApiError, bodyOf, confirmationRedirect, handle, session, supabase, text } from "@/server/backend";
 
 export const dynamic = "force-dynamic";
 type Context = { params: Promise<{ action: string }> };
@@ -12,7 +11,8 @@ export async function POST(request: Request, context: Context) {
     if (action === "verify") {
       const type = text(body.type, 20);
       if (!["invite", "recovery", "email"].includes(type)) throw new ApiError(400, "Verificación no admitida");
-      return supabase("/auth/v1/verify", undefined, { token_hash: text(body.token_hash, 4096), type }, "POST");
+      try { return await supabase("/auth/v1/verify", undefined, { token_hash: text(body.token_hash, 4096), type }, "POST"); }
+      catch (error) { if (error instanceof ApiError && [400,401,403].includes(error.status)) throw new ApiError(400, "No se pudo verificar el enlace. Puede haber expirado o haberse utilizado. Solicita otro enlace."); throw error; }
     }
     if (action === "login" || action === "refresh") {
       const result = await supabase(`/auth/v1/token?grant_type=${action === "login" ? "password" : "refresh_token"}`, undefined,
@@ -21,10 +21,7 @@ export async function POST(request: Request, context: Context) {
       return result;
     }
     if (action === "recover") {
-      const redirect = process.env.AUTH_RECOVERY_REDIRECT_URL;
-      if (!redirect) throw new ApiError(503, "Retorno de recuperación pendiente de configurar");
-      const parsed = new URL(redirect);
-      if (parsed.protocol !== "https:" && !(parsed.protocol === "http:" && ["localhost", "127.0.0.1"].includes(parsed.hostname))) throw new ApiError(503, "Retorno no válido");
+      const redirect = confirmationRedirect();
       // Auth aplica sus límites de envío; respuesta genérica para no enumerar cuentas.
       try { await supabase(`/auth/v1/recover?redirect_to=${encodeURIComponent(redirect)}`, undefined, { email: text(body.email, 254) }, "POST"); }
       catch (error) { if (error instanceof ApiError && [429,503].includes(error.status)) throw error; }

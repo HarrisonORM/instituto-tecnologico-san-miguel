@@ -6,6 +6,19 @@ export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }
 }
 
+export function confirmationRedirect() {
+  const configured = process.env.AUTH_RECOVERY_REDIRECT_URL;
+  if (!configured) throw new ApiError(503, "Configura la dirección de activación y recuperación antes de enviar correos");
+  let parsed: URL;
+  try { parsed = new URL(configured); } catch { throw new ApiError(503, "La dirección de activación no es válida"); }
+  const local = parsed.protocol === "http:" && ["localhost", "127.0.0.1"].includes(parsed.hostname);
+  if ((!local && parsed.protocol !== "https:") || parsed.username || parsed.password || parsed.search || parsed.hash || parsed.pathname.replace(/\/$/, "") !== "/auth/confirmar") {
+    throw new ApiError(503, "La dirección de activación debe terminar en /auth/confirmar y usar HTTPS");
+  }
+  parsed.pathname = "/auth/confirmar";
+  return parsed.href;
+}
+
 export function config() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;

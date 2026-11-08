@@ -234,6 +234,11 @@ Accesibilidad implementada: showModal(), título y descripción asociados median
 
 ## Do's and Don'ts
 
+### Correo de bienvenida
+
+supabase/templates/invite.html extiende la identidad esmeralda (#48b292 / acción #146c53), tinta #102e25, menta #e5f4ed, fondo #f7fbf9 y líneas #cedfd6 sin una dirección visual nueva. Usa tabla fluida con máximo 560px, estilos inline, marca ITSM textual y un único botón de creación de contraseña. Arial/Helvetica, marca de 30px, título de 28px, cuerpo de 16px, auxiliares de 14px y botón con radio de 6px se limitan al medio email por compatibilidad; no alteran Manrope, la rampa ni los componentes de la aplicación. El HTML se comprobó mediante DOM en navegador móvil/escritorio; no hay aprobación por imágenes ni validación de render en Gmail/Outlook.
+
+
 ### Do:
 - **Do** conservar la pareja de color de acción del tema activo.
 - **Do** mantener Manrope local y cifras tabulares en datos comparables.
