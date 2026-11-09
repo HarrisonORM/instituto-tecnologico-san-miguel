@@ -127,6 +127,7 @@ export const operations: Record<string, readonly string[]> = {
   manage_account: ["p_user", "p_state"], correct_identity: ["p_user", "p_name", "p_document", "p_birth"],
   request_deletion: ["p_user"], approve_deletion: ["p_request"], mark_notification: ["p_notification"],
   set_permission: ["p_user", "p_permission", "p_enabled"], release_upload: ["p_upload"],
+  set_permissions: ["p_user", "p_permissions", "p_expected"],
   request_identity_change: ["p_proposed", "p_reason"], resolve_identity_request: ["p_request", "p_accept"],
   assign_program: ["p_user", "p_program"], set_role: ["p_user", "p_role", "p_enabled"],
   add_calendar_event: ["p_period", "p_title", "p_start", "p_end"], set_rubric: ["p_task", "p_criteria"],
@@ -145,3 +146,4 @@ export const operations: Record<string, readonly string[]> = {
 export const resources = ["profiles", "programs", "periods", "subjects", "groups", "teacher_groups", "enrollments", "categories", "tasks", "submissions", "submission_versions", "comments", "grade_history", "final_results", "notifications", "audit_events", "deletion_requests", "uploads", "identity_requests", "calendar_events", "rubrics"];
 resources.push("invitation_jobs");
 resources.push("content_translations", "contact_inquiries");
+resources.push("user_roles", "user_permissions");

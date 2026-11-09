@@ -1,5 +1,19 @@
 # Estado y siguiente paso
 
+## Directorio por rol y permisos individuales preparados (8 de noviembre de 2026)
+
+El usuario pidió ocultar funciones del personal al gestionar estudiantes, casillas independientes y filtros de personas. Confirmó conservar los seis permisos para administrativo académico y las funciones docentes limitadas a grupos asignados. Se separó AccountPanel, se cargan roles/permisos reales y se añadió búsqueda combinada con filtro, detalle por perfil, casillas precargadas y guardado conjunto con una verificación. Roles del personal quedan separados y los borradores se conservan al cancelar. Ver GESTION-PERSONAS.md.
+
+Migración 022 preparada para aplicar manualmente después de 021: guardado atómico con comprobación del conjunto esperado, elegibilidad académica también en la base, limpieza auditada de concesiones ineficaces a otros roles y retirada de permisos al quitar el rol académico. Se conservan MFA reciente, separación de acceso y 26 tablas públicas con RLS. Sin nuevas variables ni servicios.
+
+Verificación local: instalador completo con 22 migraciones y rechazo de repetición; cuatro suites SQL (seguridad, académica, MFA contextual y permisos), código 0. Siete pruebas Node de directorio/recursos, doce de MFA y nueve de privacidad aprobadas; lint, tipos y build código 0. El instalador del primer administrador se comprobó en el bloque anterior con 21 migraciones; no se declara una nueva comprobación de ese instalador con 22.
+
+Recorrido local de escritorio/móvil con respuestas simuladas: filtros, estudiante sin controles del personal, docente sin los seis permisos, administrativo con seis casillas y preselección real, borrador conservado al cancelar, restablecimiento y guardado completo. El foco vuelve al encabezado de la persona al guardar. Capturas no disponibles: evidencia DOM/accesible, no validación visual por imagen ni integración Supabase. El detector único dio 60 advisory de CSS, sin warning/error: deriva previa y valores de 16px coherentes con los controles existentes. No se reparó la documentación visual ni se normalizó CSS ajeno.
+
+Siguiente paso: aplicar solo 022 y publicar este commit siguiendo GESTION-PERSONAS.md. No se ejecutó push, despliegue, correo, semilla ni escritura Supabase. El fallo remoto previo al consultar el autenticador sigue sin diagnóstico confirmado; esta revisión no lo da por resuelto. Antes de una semilla remota sigue pendiente conservar el administrador propio.
+
+Los apartados posteriores registran los bloques anteriores y su evidencia histórica.
+
 ## Bienvenida y enlace de activación preparados (8 de noviembre de 2026)
 
 El usuario recibió una invitación de Supabase, informó que no pudo crear su contraseña y pidió correo de bienvenida del Instituto con enlace de activación. La pantalla exacta/mensaje sigue pendiente de su respuesta. Se encontró que la ruta de invitación no enviaba redirect_to; se corrige para /auth/confirmar y se comparte su validación con recuperación, mediante AUTH_RECOVERY_REDIRECT_URL existente. No se afirma que sea la única causa del fallo remoto.

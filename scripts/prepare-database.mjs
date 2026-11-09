@@ -9,7 +9,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const source = path.join(root, "supabase", "migrations");
 const output = path.join(root, "work", "database-install");
 const files = (await fs.readdir(source)).filter(name => /^\d{12}_[a-z_]+\.sql$/.test(name)).sort();
-if (files.length !== 21 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611080021_contextual_mfa.sql") {
+if (files.length !== 22 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611080022_people_permissions.sql") {
   throw new Error("El conjunto de migraciones cambió. Revisar la instalación antes de generar otro archivo.");
 }
 const manifest = [];

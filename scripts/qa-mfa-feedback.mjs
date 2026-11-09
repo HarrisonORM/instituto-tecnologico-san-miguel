@@ -26,7 +26,10 @@ const student='44444444-4444-4444-a444-444444444444';
 const id='11111111-1111-4111-a111-111111111111',factor='22222222-2222-4222-a222-222222222222';
 const tokens={access_token:'local-test-token',refresh_token:'local-test-refresh',expires_in:3600,token_type:'bearer'};
 const user={profile:{id,full_name:'Cuenta de prueba local',address:'',state:'active'},roles:[{user_id:id,role:'system_admin'}],permissions:[]};
-const profiles=[user.profile,{id:student,full_name:'Estudiante de prueba',document_number:'',state:'active'}];
+const teacher='55555555-5555-4555-a555-555555555555',academic='66666666-6666-4666-a666-666666666666';
+const profiles=[user.profile,{id:student,full_name:'Estudiante de prueba',document_number:'12345',state:'active'},{id:teacher,full_name:'Docente de prueba',state:'active'},{id:academic,full_name:'Administrativo de prueba',state:'active'}];
+const roles=[{user_id:id,role:'system_admin'},{user_id:student,role:'student'},{user_id:teacher,role:'teacher'},{user_id:academic,role:'academic_admin'}];
+let permissions=[{user_id:academic,permission:'structure.manage'}];
 const server=http.createServer(async(req,res)=>{
  try{
   const url=new URL(req.url,'http://127.0.0.1:3103');
@@ -63,9 +66,15 @@ const server=http.createServer(async(req,res)=>{
    if(scenario==='reject'||args.code!=='000000'){send('Código de prueba rechazado',400);return}
    if(scenario==='slow-verify')await new Promise(r=>setTimeout(r,5000));verified=true;configured=true;send(tokens);return;
   }
-  if(url.pathname==='/api/backend/manage_account'&&req.method==='POST'){if(!verified){send('Falta verificación reciente',403);return}writes++;profiles[1].state=args.p_state;send(null);return}
+  if(url.pathname==='/api/backend/set_permissions'&&req.method==='POST'){
+   if(!verified||args.p_user!==academic){send('No autorizado',403);return}
+   const current=permissions.filter(item=>item.user_id===academic).map(item=>item.permission).sort();
+   if(JSON.stringify(current)!==JSON.stringify([...args.p_expected].sort())||scenario==='permissions-conflict'){send('Los permisos cambiaron. Actualiza antes de guardar.',409);return}
+   permissions=args.p_permissions.map(permission=>({user_id:academic,permission}));writes++;send(null);return;
+  }
+  if(url.pathname==='/api/backend/manage_account'&&req.method==='POST'){if(!verified){send('Falta verificación reciente',403);return}writes++;profiles.find(item=>item.id===args.p_user).state=args.p_state;send(null);return}
   if(url.pathname==='/api/auth/password'&&req.method==='POST'){if(configured&&!verified){send('Falta verificación reciente',403);return}writes++;send(null);return}
-  if(url.pathname.startsWith('/api/backend/')){if(verified)await new Promise(r=>setTimeout(r,700));send(url.pathname.endsWith('/profiles')?profiles:[]);return}
+  if(url.pathname.startsWith('/api/backend/')){if(verified)await new Promise(r=>setTimeout(r,700));send(url.pathname.endsWith('/profiles')?profiles:url.pathname.endsWith('/user_roles')?roles:url.pathname.endsWith('/user_permissions')?permissions:[]);return}
   send(null);
  }catch{res.writeHead(500);res.end('Fallo de la prueba local')}
 });

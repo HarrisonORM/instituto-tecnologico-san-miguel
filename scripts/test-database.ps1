@@ -51,7 +51,7 @@ try {
       if ($LASTEXITCODE -ne 0) { throw ('Fallo en ' + $migration.Name) }
     }
   }
-  foreach ($suite in @('security.sql','academic.sql','contextual_mfa.sql')) {
+  foreach ($suite in @('security.sql','academic.sql','contextual_mfa.sql','people_permissions.sql')) {
     Write-Output ('Escenarios locales: ' + $suite)
     & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f (Join-Path $root ('supabase/tests/' + $suite))
     if ($LASTEXITCODE -ne 0) { throw ('Falló la comprobación ' + $suite) }

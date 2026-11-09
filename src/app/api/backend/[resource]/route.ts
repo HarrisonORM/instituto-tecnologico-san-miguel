@@ -25,6 +25,8 @@ export async function GET(request: Request, context: Context) {
     query.set("order", resource === "rubrics" ? "task_id" : resource === "final_results" ? "group_id,student_id" : resource === "enrollments" ? "group_id,student_id" : resource === "teacher_groups" ? "group_id,teacher_id" : "id");
     const orders:Record<string,string>={tasks:"due_at,id",notifications:"created_at.desc,id",comments:"created_at,id",submission_versions:"submitted_at.desc,id",calendar_events:"starts_at,id",profiles:"full_name,id",periods:"starts_on.desc,id",audit_events:"created_at.desc,id",grade_history:"created_at.desc,id"};
     if(orders[resource])query.set("order",orders[resource]);
+    if(resource === "user_roles")query.set("order", "user_id,role");
+    if(resource === "user_permissions")query.set("order", "user_id,permission");
     return supabase(`/rest/v1/${resource}?${query}`, token);
   });
 }

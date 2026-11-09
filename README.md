@@ -37,9 +37,11 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 ## Cómo continuar
 
+La gestión de personas incorpora filtros por rol, opciones según perfil y permisos académicos con casillas independientes. Para activarla, aplicar únicamente la migración 022 después de 021 y publicar el frontend nuevo: [guía de gestión de personas](docs/GESTION-PERSONAS.md). El agente comprobó este cambio localmente; su activación remota corresponde al propietario.
+
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 
-Para recorrer el avance no necesitas credenciales: abre la landing y la vista previa. El acceso institucional requiere configuración privada y migraciones que aún no se aplicaron. El usuario autorizó las pruebas locales. Las migraciones remotas, los envíos y el despliegue siguen fuera del alcance actual.
+Para recorrer el avance no necesitas credenciales: abre la landing y la vista previa. El acceso institucional requiere configuración privada. El usuario informó que instaló la base y configuró cuenta, MFA, publicación y correo; los recorridos reales completos siguen pendientes de comprobar. El usuario autorizó las pruebas locales. Las migraciones remotas, los envíos y el despliegue desde el agente siguen fuera del alcance actual.
 
 ## Arranque local
 

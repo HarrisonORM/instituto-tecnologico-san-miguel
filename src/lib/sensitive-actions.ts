@@ -2,7 +2,7 @@ export type SensitiveContext = { target?: string };
 export type VerificationIntent = SensitiveContext & { id: string; operation: string; variant?: string; generation: number };
 
 const protectedWrites = new Set([
-  "manage_account", "set_role", "set_permission", "request_deletion", "approve_deletion", "cancel_deletion",
+  "manage_account", "set_role", "set_permission", "set_permissions", "request_deletion", "approve_deletion", "cancel_deletion",
   "correct_identity", "resolve_identity_request", "assign_program", "manage_structure", "edit_structure", "retire_structure",
   "remove_assignment", "set_evaluation", "close_period", "add_calendar_event", "set_public_offer", "mark_contact", "reconcile_storage_budget",
 ]);
@@ -14,7 +14,7 @@ export function verificationCopy(intent: Pick<VerificationIntent, "operation" | 
   const labels: Record<string, [string, string]> = {
     suspended: ["Suspender cuenta", "Suspend account"], archived: ["Archivar cuenta", "Archive account"], active: ["Reactivar cuenta", "Reactivate account"],
     request_deletion: ["Solicitar eliminación", "Request deletion"], approve_deletion: ["Aprobar eliminación", "Approve deletion"], execute_deletion: ["Eliminar definitivamente", "Permanently delete"],
-    cancel_deletion: ["Cancelar solicitud de eliminación", "Cancel deletion request"], set_role: ["Cambiar rol", "Change role"], set_permission: ["Cambiar permisos", "Change permissions"],
+    cancel_deletion: ["Cancelar solicitud de eliminación", "Cancel deletion request"], set_role: ["Cambiar rol", "Change role"], set_permission: ["Cambiar permisos", "Change permissions"], set_permissions: ["Guardar permisos académicos", "Save academic permissions"],
     invite: ["Crear una cuenta", "Create an account"], reconcile_invitation: ["Conciliar invitación", "Reconcile invitation"],
     password: ["Cambiar tu contraseña", "Change your password"], setup: ["Activar la verificación", "Enable verification"],
     close_period: ["Cerrar período académico", "Close academic period"], correct_identity: ["Corregir identidad", "Correct identity"], resolve_identity_request: ["Resolver corrección de identidad", "Resolve identity correction"],

@@ -38,6 +38,14 @@ test('las tareas y comentarios ordinarios no solicitan verificación administrat
 test('una invitación no se envía si se cancela la verificación',()=>fixture(async(api,calls)=>{
  api.setVerifier(async()=>{throw new ClientApiError(499,'Cancelado')});await assert.rejects(api.invite('student@example.invalid','Prueba','student','key'),e=>e.status===499);assert.equal(calls.some(c=>c.path.includes('/api/admin/')),false);
 }));
+test('las seis casillas se guardan con una verificación y una petición, sin guardar al cancelar',()=>fixture(async(api,calls)=>{
+ let checks=0;api.setVerifier(async intent=>{assert.equal(intent.operation,'set_permissions');checks++});
+ await api.command('set_permissions',{p_user:'academic',p_permissions:['structure.manage','evaluation.manage'],p_expected:[]});
+ assert.equal(checks,1);assert.equal(calls.filter(c=>c.path==='/api/backend/set_permissions').length,1);
+ api.setVerifier(async()=>{throw new ClientApiError(499,'Cancelado')});
+ await assert.rejects(api.command('set_permissions',{p_user:'academic',p_permissions:[],p_expected:['structure.manage','evaluation.manage']}),e=>e.status===499);
+ assert.equal(calls.filter(c=>c.path==='/api/backend/set_permissions').length,1);
+}));
 test('la eliminación ejecutable solicita verificación antes de llamar al servidor',()=>fixture(async(api,calls)=>{
  let called=false;api.setVerifier(async intent=>{assert.equal(intent.operation,'execute_deletion');called=true});await api.executeDeletion('local-request');assert.equal(called,true);assert.equal(calls.at(-1).path,'/api/admin/deletions/local-request');
 }));

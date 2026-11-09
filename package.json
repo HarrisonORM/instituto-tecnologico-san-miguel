@@ -17,6 +17,7 @@
     "test:contextual-mfa": "node --test scripts/contextual-mfa.test.mjs",
     "test:invitations": "node --test scripts/invitations.test.mjs",
     "test:confirmation-link": "node --test scripts/confirmation-link.test.mjs",
+    "test:accounts": "node --test scripts/account-management.test.mjs scripts/account-resources.test.mjs",
     "test:privacy": "node --test scripts/portal-privacy.test.mjs",
     "qa:mfa": "node scripts/qa-mfa-feedback.mjs",
     "test:motion": "node --test scripts/motion-preferences.test.mjs",
