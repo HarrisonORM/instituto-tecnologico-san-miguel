@@ -58,10 +58,14 @@ function RoleEditor({ person, roles, command, busy, onDirty, onSaved }: { person
   const [chosen, setChosen] = useState(roles.length === 1 ? roles[0] : "");
   const dirty = Boolean(chosen) && (roles.length !== 1 || chosen !== roles[0]);
   useEffect(() => { onDirty(dirty); return () => onDirty(false); }, [dirty, onDirty]);
+  if (roles.length > 1) return <section className="people-section" aria-label={t("Rol de la cuenta", "Account role")}>
+    <h3>{t("Rol de la cuenta", "Account role")}</h3>
+    <Message error>{t("Esta cuenta tiene roles duplicados y requiere una corrección por parte del responsable de la plataforma. Después de corregirla, actualiza esta vista. Su cuenta e historial se conservan.", "This account has duplicate roles and needs a correction by the platform owner. Refresh this view after it is corrected. The account and its history are preserved.")}</Message>
+    <p className="people-description">{t("Roles detectados: ", "Detected roles: ")}{roles.map(role => roleNames[role][lang]).join(", ")}</p>
+  </section>;
   return <section className="people-section" aria-label={t("Rol de la cuenta", "Account role")}>
     <h3>{t("Rol de la cuenta", "Account role")}</h3>
     <p className="people-description">{t("Cada persona tiene un único rol. Al cambiarlo, se sustituye el anterior y se conserva el historial.", "Each person has one role. Changing it replaces the previous role and preserves history.")}</p>
-    {roles.length > 1 && <Message error>{t("Esta cuenta tiene más de un rol. Selecciona cuál debe conservar.", "This account has more than one role. Select which one to keep.")}</Message>}
     <form className="people-state-form" onSubmit={async event => { event.preventDefault(); if (!dirty) return; try { await command("assign_account_role", { p_user: person.id, p_role: chosen, p_expected: roles }); onSaved(); } catch { /* Conservar elección y mostrar error en el contenedor. */ } }}>
       <label>{t("Rol único", "Single role")}<select value={chosen} required disabled={busy} onChange={event => setChosen(event.target.value as Role)}><option value="" disabled>{t("Selecciona un rol", "Select a role")}</option>{accountRoleOrder.map(role => <option value={role} key={role}>{roleNames[role][lang]}</option>)}</select></label>
       <button className="button button-secondary" disabled={busy || !dirty}>{t("Guardar rol", "Save role")}</button>

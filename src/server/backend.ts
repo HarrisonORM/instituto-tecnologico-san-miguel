@@ -50,6 +50,9 @@ export async function supabase(path: string, token?: string, body?: unknown, met
   if (!response.ok) {
     // No reenviar mensajes de Auth, SQL, nombres de restricciones ni cuerpos privados.
     const error = await response.json().catch(() => ({})) as { code?: string; message?: string };
+    if (path === "/rest/v1/rpc/assign_account_role" && response.status === 404) {
+      throw new ApiError(503, "El cambio de rol todavía no está habilitado. Solicita completar la actualización de la plataforma.");
+    }
     const status = response.status === 404 ? 404 : response.status === 429 || error.code === "P0429" ? 429 : response.status === 401 ? 401 :
       response.status === 403 || error.code === "42501" ? 403 : response.status >= 500 ? 503 : 400;
     throw new ApiError(status, status === 429 ? "Demasiados intentos; espera antes de repetir" : error.code === "P0001" && error.message ? error.message : "La operación no pudo completarse");

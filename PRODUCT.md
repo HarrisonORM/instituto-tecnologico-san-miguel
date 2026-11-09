@@ -28,6 +28,7 @@ La matriz fue confirmada por el usuario mediante la imagen adjunta. No ampliar p
 
 - Conservar la separación por rol, confirmada expresamente por el usuario: los seis permisos de estructura, matrículas, evaluación, cierre, identidad y contacto corresponden exclusivamente al administrativo académico. El docente conserva tareas, entregas y calificaciones de sus grupos asignados.
 - Corrección posterior del usuario: cada persona tiene un único rol. Cambiarlo sustituye el anterior; no se acumulan roles. Los conflictos antiguos requieren una decisión explícita antes de activar la restricción; no elegir uno automáticamente.
+- Mientras exista un conflicto antiguo, la pantalla explica la corrección previa a cargo del propietario y no ofrece guardar el rol ni solicita MFA para ese intento. Una actualización pendiente no se presenta como un problema del autenticador.
 - Al gestionar un estudiante no aparecen controles de roles del personal ni permisos académicos. El personal utiliza un selector de rol único; los seis permisos específicos siguen siendo casillas exclusivas del administrativo académico.
 - El administrador del sistema filtra el directorio por estudiante, docente, administrativo académico o administrador del sistema, combinándolo con búsqueda por nombre o documento.
 - Cada permiso académico tiene su propia casilla, precargada con el valor guardado. El conjunto se guarda de forma atómica con una sola verificación contextual. Cancelar conserva el borrador; una edición desactualizada se rechaza para evitar sobrescribir cambios ajenos.

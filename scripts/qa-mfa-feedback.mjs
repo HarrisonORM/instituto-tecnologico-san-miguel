@@ -41,6 +41,7 @@ const server=http.createServer(async(req,res)=>{
   }
   if(['/', '/recover', '/campus', '/auth/confirmar'].includes(url.pathname)){
    if(url.pathname!=='/campus'){scenario=url.searchParams.get('case')||'success';verified=false;configured=!['enroll','initial-invite'].includes(scenario);enrolled=configured;writes=0;linkChecks=0;profiles[1].state='active';}
+   if(scenario==='role-conflict'&&!roles.some(row=>row.user_id===teacher&&row.role==='student'))roles.push({user_id:teacher,role:'student'});
    res.writeHead(200,{'content-type':'text/html; charset=utf-8','cache-control':'no-store'});
    res.end('<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/app.css"><style>@font-face{font-family:Manrope;src:url(/font.ttf)}body{--font-manrope:Manrope}.qa-note{padding:8px 16px;background:#e9f7f1;color:#102e25;font:14px Manrope}</style></head><body><div class="qa-note">Prueba local · Respuestas simuladas · Sin cuentas ni códigos reales</div><div id="root"></div><script src="/bundle.js"></script></body></html>');return;
   }

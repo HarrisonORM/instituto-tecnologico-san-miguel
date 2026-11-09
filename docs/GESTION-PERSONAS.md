@@ -15,7 +15,7 @@ El directorio ocupa todo el ancho útil, hasta 1240px. La búsqueda por nombre/d
 
 Títulos locales de 28px y 24px en móvil sustituyen el tamaño fluido de la landing. Los filtros muestran su texto completo; el buscador usa el ancho disponible. La tabla desplaza sus propias columnas cuando hace falta, mientras ficha y permisos se apilan en móvil. Se conservan Manrope, B+C, temas y ES/EN. Cambiar de idioma o recargar datos de la misma identidad no desmonta el formulario. Una identidad diferente conserva el bloqueo que impide mostrar datos ajenos.
 
-Guardar permisos mantiene la operación conjunta con una verificación, Restablecer vuelve a lo guardado y Cancelar conserva el borrador. Guardar rol sustituye el anterior y advierte sobre la retirada de permisos académicos. Un conflicto antiguo no se presenta como dos roles válidos ni se resuelve escogiendo el primero. Volver con un borrador solicita descartarlo.
+Guardar permisos mantiene la operación conjunta con una verificación, Restablecer vuelve a lo guardado y Cancelar conserva el borrador. Guardar rol sustituye el anterior y advierte sobre la retirada de permisos académicos. Un conflicto antiguo muestra los roles detectados y requiere corrección previa por el propietario: no ofrece selector, Guardar rol ni MFA para ese intento. Una actualización pendiente se distingue de un rechazo de permisos; Revisar seguridad solo aparece para 401/403. Volver con un borrador solicita descartarlo.
 
 ## Base y activación
 

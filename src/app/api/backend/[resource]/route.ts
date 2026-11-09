@@ -39,6 +39,9 @@ export async function POST(request: Request, context: Context) {
     const { token } = await session(request, reads.includes(operation) ? "read" : "write");
     const body = await bodyOf(request);
     if (Object.keys(body).some(key => !operations[operation].includes(key))) throw new ApiError(400, "Campo no admitido");
+    if (operation === "assign_account_role" && Array.isArray(body.p_expected) && body.p_expected.length > 1) {
+      throw new ApiError(409, "Esta cuenta tiene roles duplicados. Completa su corrección y actualiza la información antes de cambiar el rol.");
+    }
     const key=request.headers.get("idempotency-key");
     if(key) {
       if(!/^[0-9a-f-]{36}$/i.test(key))throw new ApiError(400,"Clave de idempotencia no válida");

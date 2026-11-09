@@ -1,5 +1,13 @@
 # Estado y siguiente paso
 
+## Conflicto antiguo separado del autenticador (8 de noviembre de 2026)
+
+La captura del usuario muestra la interfaz nueva con una cuenta que aún tiene dos roles. Confirmó que todavía no ejecutó ambos archivos previos: corrección específica y actualización 023. Esto deja un requisito pendiente; la captura no prueba que el código TOTP fuese incorrecto. Se encontró un defecto de la interfaz: ofrecía resolver un conflicto antiguo mediante assign_account_role, aunque 023 exige resolver esos conflictos antes de instalarse y la nueva RPC admite un máximo de un rol esperado.
+
+Se retira el formulario de cambio de rol para ese estado y se explica que el propietario debe completar la corrección y actualizar. Una petición antigua con varios roles esperados se rechaza con 409 antes de llamar a la escritura. La operación de rol no disponible informa actualización pendiente con 503. Revisar seguridad se limita a errores 401/403; no se ofrece para cualquier fallo. No se rebaja MFA ni se modifica SQL.
+
+Verificación: 32 pruebas Node, lint y compilación con TypeScript aprobados; detector de ambos TSX sin hallazgos. Navegador local con conflicto sintético en ES/EN y 390px: mensaje de corrección, cero campos/botones de rol y ningún diálogo de verificación, sin desbordamiento. Sin servicios externos ni acciones sobre cuentas reales. No se repiten suites SQL porque no hay cambios de base. Pendiente: ejecutar manualmente la corrección autorizada, luego 023 y publicar este ajuste. No repetir 022. Se conserva la falta de diagnóstico de cualquier otro fallo remoto de MFA hasta observarlo por separado.
+
 ## Pantalla amplia y un único rol preparados (8 de noviembre de 2026)
 
 El usuario rechazó el espacio reducido de la división 50/50 y confirmó que una persona solo puede tener un rol. Directorio, ficha e invitación ocupan vistas independientes a todo el ancho útil. Un selector sustituye las casillas de roles del personal; los seis permisos académicos conservan sus casillas. El estudiante sigue sin controles del personal. Volver conserva búsqueda/filtro y devuelve el foco. La ficha y los borradores permanecen al cambiar de idioma o recargar datos de la misma identidad; otra identidad sigue pasando por el bloqueo de carga anterior.
