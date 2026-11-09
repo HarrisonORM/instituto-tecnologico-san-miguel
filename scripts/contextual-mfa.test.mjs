@@ -46,6 +46,15 @@ test('las seis casillas se guardan con una verificación y una petición, sin gu
  await assert.rejects(api.command('set_permissions',{p_user:'academic',p_permissions:[],p_expected:['structure.manage','evaluation.manage']}),e=>e.status===499);
  assert.equal(calls.filter(c=>c.path==='/api/backend/set_permissions').length,1);
 }));
+test('el rol único se sustituye con una verificación y cancelar no envía cambios',()=>fixture(async(api,calls)=>{
+ let checks=0;api.setVerifier(async intent=>{assert.equal(intent.operation,'assign_account_role');checks++});
+ await api.command('assign_account_role',{p_user:'teacher',p_role:'academic_admin',p_expected:['teacher']});
+ assert.equal(checks,1);assert.equal(calls.filter(c=>c.path==='/api/backend/assign_account_role').length,1);
+ api.setVerifier(async()=>{throw new ClientApiError(499,'Cancelado')});
+ await assert.rejects(api.command('assign_account_role',{p_user:'teacher',p_role:'student',p_expected:['academic_admin']}),e=>e.status===499);
+ assert.equal(calls.filter(c=>c.path==='/api/backend/assign_account_role').length,1);
+}));
+
 test('la eliminación ejecutable solicita verificación antes de llamar al servidor',()=>fixture(async(api,calls)=>{
  let called=false;api.setVerifier(async intent=>{assert.equal(intent.operation,'execute_deletion');called=true});await api.executeDeletion('local-request');assert.equal(called,true);assert.equal(calls.at(-1).path,'/api/admin/deletions/local-request');
 }));

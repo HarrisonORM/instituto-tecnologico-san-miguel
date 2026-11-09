@@ -39,7 +39,7 @@ try {
   if ($LASTEXITCODE -ne 0) { throw 'Fallo createdb local.' }
   CheckFile (Join-Path $repo 'supabase/tests/bootstrap.sql')
   foreach ($m in (Get-ChildItem -LiteralPath (Join-Path $repo 'supabase/migrations') -Filter '*.sql' | Sort-Object Name)) { CheckFile $m.FullName }
-  Write-Output 'Base aislada: 22 migraciones aplicadas.'
+  Write-Output 'Base aislada: 23 migraciones aplicadas.'
   CheckFile $templatePath 'Primero reemplaza el UID'
   Write-Output 'Correcto: plantilla sin completar rechazada.'
   $uid = '11111111-1111-4111-a111-111111111111'

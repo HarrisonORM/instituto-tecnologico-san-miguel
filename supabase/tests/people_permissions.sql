@@ -37,11 +37,11 @@ end $$;
 select public.set_permissions('b1000000-0000-4000-a000-000000000002',array['enrollment.manage'],array['evaluation.manage','structure.manage']);
 select public.set_permission('b1000000-0000-4000-a000-000000000002','contact.manage',true);
 select public.set_permission('b1000000-0000-4000-a000-000000000002','contact.manage',false);
-select public.set_role('b1000000-0000-4000-a000-000000000002','academic_admin',false);
+select public.assign_account_role('b1000000-0000-4000-a000-000000000002','teacher',array['academic_admin']);
 do $$ begin
  if exists(select 1 from public.user_permissions where user_id='b1000000-0000-4000-a000-000000000002') then raise exception 'ASSERT: permisos persistieron al quitar el rol'; end if;
 end $$;
-select public.set_role('b1000000-0000-4000-a000-000000000002','academic_admin',true);
+select public.assign_account_role('b1000000-0000-4000-a000-000000000002','academic_admin',array['teacher']);
 select public.set_permissions('b1000000-0000-4000-a000-000000000002',array['structure.manage'],'{}');
 select public.set_permissions('b1000000-0000-4000-a000-000000000002','{}',array['structure.manage']);
 select set_config('request.jwt.claims','{"sub":"b1000000-0000-4000-a000-000000000004","aal":"aal1"}',true) \gset

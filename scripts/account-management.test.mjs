@@ -10,21 +10,26 @@ const source = (await fs.readFile(new URL("../src/lib/account-management.ts", im
 const { accountRoles, accountPermissions, accountManagementKind, filterAccounts } = await import(moduleUrl(source));
 const data = {
   profiles: [{ id: "s", full_name: "María López", document_number: "12345" }, { id: "t", full_name: "Andrés Ruiz" }, { id: "a", full_name: "Elena Duarte" }, { id: "root", full_name: "Sistema" }],
-  user_roles: [{ user_id: "s", role: "student" }, { user_id: "t", role: "teacher" }, { user_id: "a", role: "academic_admin" }, { user_id: "a", role: "teacher" }, { user_id: "root", role: "system_admin" }],
+  user_roles: [{ user_id: "s", role: "student" }, { user_id: "t", role: "teacher" }, { user_id: "a", role: "academic_admin" }, { user_id: "root", role: "system_admin" }],
   user_permissions: [{ user_id: "a", permission: "evaluation.manage" }, { user_id: "a", permission: "structure.manage" }],
 };
-test("clasifica desde las relaciones reales y conserva varios roles", () => {
-  assert.deepEqual(accountRoles(data, data.profiles[2]), ["teacher", "academic_admin"]);
+test("clasifica el rol único desde las relaciones reales", () => {
+  assert.deepEqual(accountRoles(data, data.profiles[2]), ["academic_admin"]);
   assert.equal(accountManagementKind(accountRoles(data, data.profiles[0])), "student");
   assert.equal(accountManagementKind(accountRoles(data, data.profiles[1])), "teacher");
   assert.equal(accountManagementKind(accountRoles(data, data.profiles[2])), "academic");
   assert.equal(accountManagementKind(accountRoles(data, data.profiles[3])), "system");
 });
-test("filtra por rol sin perder personas con roles múltiples", () => {
+test("filtra el directorio por el rol asignado", () => {
   assert.deepEqual(filterAccounts(data, "", "student").map(row => row.id), ["s"]);
-  assert.deepEqual(filterAccounts(data, "", "teacher").map(row => row.id), ["t", "a"]);
+  assert.deepEqual(filterAccounts(data, "", "teacher").map(row => row.id), ["t"]);
   assert.deepEqual(filterAccounts(data, "", "academic_admin").map(row => row.id), ["a"]);
   assert.deepEqual(filterAccounts(data, "", "system_admin").map(row => row.id), ["root"]);
+});
+test("un conflicto antiguo no elige ni concede silenciosamente un rol", () => {
+  const conflicted = { ...data, user_roles: [...data.user_roles, { user_id: "s", role: "teacher" }] };
+  assert.deepEqual(accountRoles(conflicted, data.profiles[0]), ["student", "teacher"]);
+  assert.equal(accountManagementKind(accountRoles(conflicted, data.profiles[0])), "conflict");
 });
 test("combina nombre o documento con rol, tolerando acentos y mayúsculas", () => {
   assert.deepEqual(filterAccounts(data, " MARIA ", "student").map(row => row.id), ["s"]);

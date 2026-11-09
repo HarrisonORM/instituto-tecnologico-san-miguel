@@ -1,4 +1,4 @@
-param([switch]$InstallBundle)
+param([switch]$InstallBundle, [switch]$VerifyRoleUpgrade)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $cluster = Join-Path $root ('work/db-test-' + [guid]::NewGuid().ToString('N'))
@@ -46,12 +46,26 @@ try {
     Write-Output 'Correcto: el instalador rechaza una segunda ejecución sin borrar tablas.'
   } else {
     foreach ($migration in (Get-ChildItem -LiteralPath (Join-Path $root 'supabase/migrations') -Filter '*.sql' | Sort-Object Name)) {
+      if ($VerifyRoleUpgrade -and $migration.Name -eq '202611080023_single_account_role.sql') {
+        & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f (Join-Path $root 'supabase/tests/single_role_upgrade_setup.sql')
+        if ($LASTEXITCODE -ne 0) { throw 'Falló la preparación del conflicto local.' }
+        $upgradeLog = Join-Path $cluster 'duplicate-role-denied.log'
+        & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $migration.FullName *> $upgradeLog
+        if ($LASTEXITCODE -eq 0 -or -not ([IO.File]::ReadAllText($upgradeLog).Contains('Hay cuentas con más de un rol'))) { throw '023 no rechazó el conflicto previo.' }
+        & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f (Join-Path $root 'supabase/tests/single_role_upgrade_resolve.sql')
+        if ($LASTEXITCODE -ne 0) { throw 'Falló la resolución explícita del conflicto local.' }
+        Write-Output 'Correcto: 023 rechaza duplicados sin escoger un rol ni aplicar parcialmente.'
+      }
       Write-Output ('Migración local: ' + $migration.Name)
       & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f $migration.FullName
       if ($LASTEXITCODE -ne 0) { throw ('Fallo en ' + $migration.Name) }
     }
+    if ($VerifyRoleUpgrade) {
+      & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -c "delete from public.user_roles where user_id='c2000000-0000-4000-a000-000000000001'; delete from public.profiles where id='c2000000-0000-4000-a000-000000000001'; delete from auth.users where id='c2000000-0000-4000-a000-000000000001';"
+      if ($LASTEXITCODE -ne 0) { throw 'Falló la limpieza de la identidad sintética de actualización.' }
+    }
   }
-  foreach ($suite in @('security.sql','academic.sql','contextual_mfa.sql','people_permissions.sql')) {
+  foreach ($suite in @('security.sql','academic.sql','contextual_mfa.sql','people_permissions.sql','single_account_role.sql')) {
     Write-Output ('Escenarios locales: ' + $suite)
     & (Join-Path $bin 'psql.exe') -X -q -v ON_ERROR_STOP=1 -f (Join-Path $root ('supabase/tests/' + $suite))
     if ($LASTEXITCODE -ne 0) { throw ('Falló la comprobación ' + $suite) }

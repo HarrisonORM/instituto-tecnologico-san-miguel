@@ -37,7 +37,7 @@ Aplicación universitaria ficticia de portafolio, prevista para celular y comput
 
 ## Cómo continuar
 
-La gestión de personas incorpora filtros por rol, opciones según perfil y permisos académicos con casillas independientes. Para activarla, aplicar únicamente la migración 022 después de 021 y publicar el frontend nuevo: [guía de gestión de personas](docs/GESTION-PERSONAS.md). El agente comprobó este cambio localmente; su activación remota corresponde al propietario.
+La gestión de personas usa directorio, ficha e invitación a todo el ancho, un único rol por persona y permisos académicos independientes. Para activar esta revisión, resolver los conflictos antiguos, aplicar solo 023 después de 022 y publicar el frontend nuevo: [guía de gestión de personas](docs/GESTION-PERSONAS.md). Comprobado localmente; su activación remota corresponde al propietario.
 
 Abre esta carpeta en VS Code y revisa [el estado del proyecto](docs/ESTADO.md), que distingue los comandos configurados de las comprobaciones ya ejecutadas.
 

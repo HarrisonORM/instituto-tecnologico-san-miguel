@@ -1,5 +1,17 @@
 # Estado y siguiente paso
 
+## Pantalla amplia y un único rol preparados (8 de noviembre de 2026)
+
+El usuario rechazó el espacio reducido de la división 50/50 y confirmó que una persona solo puede tener un rol. Directorio, ficha e invitación ocupan vistas independientes a todo el ancho útil. Un selector sustituye las casillas de roles del personal; los seis permisos académicos conservan sus casillas. El estudiante sigue sin controles del personal. Volver conserva búsqueda/filtro y devuelve el foco. La ficha y los borradores permanecen al cambiar de idioma o recargar datos de la misma identidad; otra identidad sigue pasando por el bloqueo de carga anterior.
+
+Migración 023: UNIQUE por usuario y sustitución atómica del rol con TOTP reciente, comprobación del valor esperado y protección de administradores. La RPC antigua también sustituye y rechaza retirar el único rol. Los permisos se limpian al dejar el rol académico. 023 se detiene ante conflictos previos sin elegir roles. El usuario eligió Docente para la cuenta con dos roles mostrada; su corrección específica se entrega fuera de Git para ejecución manual, sin borrar historial. La captura previa mostró presentes las tres funciones y los dos triggers comprobados de 022; no volver a ejecutar 022.
+
+Verificación local: 23 migraciones en instalador, rechazo de reinstalación y cinco suites SQL aprobadas. Actualización desde 022 con conflicto sintético: rechazo sin aplicación parcial y éxito tras conservar explícitamente Docente. Treinta pruebas Node de directorio/recursos, MFA y privacidad; lint, tipos y compilación correctos. Se mantienen 26 tablas públicas con RLS. No se volvió a probar el instalador del primer administrador, aunque su iteración recoge 23 migraciones.
+
+Navegador local con respuestas simuladas: directorio de unos 1098px en viewport 1440 y filtro de 360px; ficha independiente, encabezado 28px/24px y casillas de 20px. Sin desbordamiento de página a 390px y 1024px; tabla con desplazamiento propio. Cancelar conserva la elección; confirmar sustituye el rol y actualiza funciones. Se comprobaron idioma ES/EN, tema claro, borrador conservado al cambiar de idioma y retorno de foco. Captura fallida: evidencia DOM/accesible, sin aprobación visual por imagen ni integración remota. Detector final único: 66 advisory de CSS, sin warnings/errors; 16/20/24px locales responden a legibilidad y escala fija. No se reparó la deriva de documentación visual.
+
+Siguiente paso: corrección manual del conflicto autorizado, aplicar solo 023 y publicar este commit. Ver GESTION-PERSONAS.md. Sin push, despliegue, escritura Supabase, correo ni semilla desde el agente. El fallo remoto de consulta del autenticador sigue sin diagnóstico confirmado. Los apartados posteriores son evidencia histórica de bloques anteriores.
+
 ## Directorio por rol y permisos individuales preparados (8 de noviembre de 2026)
 
 El usuario pidió ocultar funciones del personal al gestionar estudiantes, casillas independientes y filtros de personas. Confirmó conservar los seis permisos para administrativo académico y las funciones docentes limitadas a grupos asignados. Se separó AccountPanel, se cargan roles/permisos reales y se añadió búsqueda combinada con filtro, detalle por perfil, casillas precargadas y guardado conjunto con una verificación. Roles del personal quedan separados y los borradores se conservan al cancelar. Ver GESTION-PERSONAS.md.

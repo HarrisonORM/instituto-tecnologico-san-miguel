@@ -28,7 +28,7 @@ const tokens={access_token:'local-test-token',refresh_token:'local-test-refresh'
 const user={profile:{id,full_name:'Cuenta de prueba local',address:'',state:'active'},roles:[{user_id:id,role:'system_admin'}],permissions:[]};
 const teacher='55555555-5555-4555-a555-555555555555',academic='66666666-6666-4666-a666-666666666666';
 const profiles=[user.profile,{id:student,full_name:'Estudiante de prueba',document_number:'12345',state:'active'},{id:teacher,full_name:'Docente de prueba',state:'active'},{id:academic,full_name:'Administrativo de prueba',state:'active'}];
-const roles=[{user_id:id,role:'system_admin'},{user_id:student,role:'student'},{user_id:teacher,role:'teacher'},{user_id:academic,role:'academic_admin'}];
+let roles=[{user_id:id,role:'system_admin'},{user_id:student,role:'student'},{user_id:teacher,role:'teacher'},{user_id:academic,role:'academic_admin'}];
 let permissions=[{user_id:academic,permission:'structure.manage'}];
 const server=http.createServer(async(req,res)=>{
  try{
@@ -50,7 +50,7 @@ const server=http.createServer(async(req,res)=>{
    const dir=path.join(root,'.next/static/css');const css=(await fs.readdir(dir)).filter(n=>n.endsWith('.css'));
    res.writeHead(200,{'content-type':'text/css'});res.end((await Promise.all(css.map(n=>fs.readFile(path.join(dir,n),'utf8')))).join('\n'));return;
   }
-  if(url.pathname==='/qa-state'){send({verified,writes,state:profiles[1].state,linkChecks});return}
+  if(url.pathname==='/qa-state'){send({verified,writes,state:profiles[1].state,linkChecks,teacherRole:roles.filter(row=>row.user_id===teacher).map(row=>row.role)});return}
   if(!url.pathname.startsWith('/api/')){res.writeHead(404);res.end();return}
   let body='';for await(const chunk of req)body+=chunk;const args=body?JSON.parse(body):{};
   if(url.pathname==='/api/auth/verify'){linkChecks++;if(args.token_hash==='bad'){send('Enlace simulado vencido',400);return}send(tokens);return}
@@ -71,6 +71,14 @@ const server=http.createServer(async(req,res)=>{
    const current=permissions.filter(item=>item.user_id===academic).map(item=>item.permission).sort();
    if(JSON.stringify(current)!==JSON.stringify([...args.p_expected].sort())||scenario==='permissions-conflict'){send('Los permisos cambiaron. Actualiza antes de guardar.',409);return}
    permissions=args.p_permissions.map(permission=>({user_id:academic,permission}));writes++;send(null);return;
+  }
+  if(url.pathname==='/api/backend/assign_account_role'&&req.method==='POST'){
+   if(!verified||args.p_user===id){send('No autorizado',403);return}
+   const current=roles.filter(item=>item.user_id===args.p_user).map(item=>item.role).sort();
+   if(JSON.stringify(current)!==JSON.stringify([...args.p_expected].sort())){send('El rol cambió. Actualiza antes de guardar.',400);return}
+   roles=roles.filter(item=>item.user_id!==args.p_user);roles.push({user_id:args.p_user,role:args.p_role});
+   if(current.includes('academic_admin')&&args.p_role!=='academic_admin')permissions=permissions.filter(item=>item.user_id!==args.p_user);
+   writes++;send(null);return;
   }
   if(url.pathname==='/api/backend/manage_account'&&req.method==='POST'){if(!verified){send('Falta verificación reciente',403);return}writes++;profiles.find(item=>item.id===args.p_user).state=args.p_state;send(null);return}
   if(url.pathname==='/api/auth/password'&&req.method==='POST'){if(configured&&!verified){send('Falta verificación reciente',403);return}writes++;send(null);return}

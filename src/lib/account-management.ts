@@ -12,6 +12,7 @@ export function accountPermissions(data: Dataset, person: Row): string[] {
   return academicPermissions.filter(permission => assigned.includes(permission));
 }
 export function accountManagementKind(roles: readonly Role[]) {
+  if (roles.length > 1) return "conflict";
   return roles.includes("academic_admin") ? "academic" : roles.includes("teacher") ? "teacher" : roles.includes("system_admin") ? "system" : roles.includes("student") ? "student" : "unknown";
 }
 const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();

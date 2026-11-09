@@ -9,7 +9,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const source = path.join(root, "supabase", "migrations");
 const output = path.join(root, "work", "database-install");
 const files = (await fs.readdir(source)).filter(name => /^\d{12}_[a-z_]+\.sql$/.test(name)).sort();
-if (files.length !== 22 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611080022_people_permissions.sql") {
+if (files.length !== 23 || files[0] !== "202611070001_backend.sql" || files.at(-1) !== "202611080023_single_account_role.sql") {
   throw new Error("El conjunto de migraciones cambió. Revisar la instalación antes de generar otro archivo.");
 }
 const manifest = [];
@@ -32,7 +32,7 @@ for (const name of files) {
 const preflight = `-- Instalación inicial del Instituto Tecnológico de San Miguel.
 -- Destino previsto: instituto-tecnologico-san-miguel (smbtvfevndmpxpxxiorj).
 -- Revisar ese proyecto en el panel antes de ejecutar TODO el archivo una sola vez.
--- Solo migraciones 001-021: no incluye bootstrap.sql, pruebas, cuentas ni secretos.
+-- Solo migraciones 001-023: no incluye bootstrap.sql, pruebas, cuentas ni secretos.
 -- No cargar sobre otro proyecto ni sobre una instalación existente.
 begin;
 set local lock_timeout = '10s';
@@ -67,5 +67,5 @@ select 'Instalación completada' as resultado,
 await fs.mkdir(output, { recursive: true });
 await fs.writeFile(path.join(output, "instalar-base.sql"), `${preflight}\n${bodies.join("\n")}\n${verify}`, "utf8");
 await fs.writeFile(path.join(output, "migraciones.json"), `${JSON.stringify({ target: "smbtvfevndmpxpxxiorj", migrations: manifest }, null, 2)}\n`, "utf8");
-console.log("Preparadas 20 migraciones en work/database-install/instalar-base.sql.");
+console.log("Preparadas 23 migraciones en work/database-install/instalar-base.sql.");
 console.log("Solo archivos locales: no se conectó ni modificó Supabase.");

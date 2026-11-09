@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 22 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
+Base del plan aceptado: Next.js, React, TypeScript, Tailwind CSS, PostgreSQL mediante Supabase, Supabase Auth y Storage, Zod, Git y GitHub. Pruebas previstas con Vitest, Playwright y comprobaciones de permisos en la base de datos. Publicación personal en Vercel Hobby sujeta a condiciones gratuitas. Hay implementación local de backend, cliente, landing y paneles por rol; las 23 migraciones y escenarios SQL se comprobaron localmente; integración real y recorridos completos contra Supabase siguen pendientes.
 
 El encargo de arranque establece una aplicación Next.js modular en un solo repositorio. Separar interfaz, operaciones del servidor, validaciones, integraciones y cambios de base de datos.
 
@@ -27,10 +27,12 @@ La matriz fue confirmada por el usuario mediante la imagen adjunta. No ampliar p
 ### Gestión de personas confirmada (8 de noviembre de 2026)
 
 - Conservar la separación por rol, confirmada expresamente por el usuario: los seis permisos de estructura, matrículas, evaluación, cierre, identidad y contacto corresponden exclusivamente al administrativo académico. El docente conserva tareas, entregas y calificaciones de sus grupos asignados.
-- Al gestionar un perfil únicamente de estudiante no aparecen controles de roles del personal ni permisos académicos. Si una cuenta tiene varios roles explícitos, se muestran las funciones que esos roles permiten.
+- Corrección posterior del usuario: cada persona tiene un único rol. Cambiarlo sustituye el anterior; no se acumulan roles. Los conflictos antiguos requieren una decisión explícita antes de activar la restricción; no elegir uno automáticamente.
+- Al gestionar un estudiante no aparecen controles de roles del personal ni permisos académicos. El personal utiliza un selector de rol único; los seis permisos específicos siguen siendo casillas exclusivas del administrativo académico.
 - El administrador del sistema filtra el directorio por estudiante, docente, administrativo académico o administrador del sistema, combinándolo con búsqueda por nombre o documento.
 - Cada permiso académico tiene su propia casilla, precargada con el valor guardado. El conjunto se guarda de forma atómica con una sola verificación contextual. Cancelar conserva el borrador; una edición desactualizada se rechaza para evitar sobrescribir cambios ajenos.
 - Quitar el rol académico retira sus permisos; volver a concederlo no recupera permisos antiguos automáticamente. Las restricciones se comprueban en la base, además de la interfaz.
+- El usuario rechazó la división permanente del directorio y el detalle en dos mitades por resultar estrecha. Directorio, ficha e invitación se presentan como vistas separadas a todo el ancho disponible. Volver conserva búsqueda/filtro y devuelve el foco; los encabezados usan tamaños fijos de interfaz, conservando el estilo B+C.
 
 ## Product Purpose
 

@@ -2,7 +2,7 @@ export type SensitiveContext = { target?: string };
 export type VerificationIntent = SensitiveContext & { id: string; operation: string; variant?: string; generation: number };
 
 const protectedWrites = new Set([
-  "manage_account", "set_role", "set_permission", "set_permissions", "request_deletion", "approve_deletion", "cancel_deletion",
+  "manage_account", "set_role", "assign_account_role", "set_permission", "set_permissions", "request_deletion", "approve_deletion", "cancel_deletion",
   "correct_identity", "resolve_identity_request", "assign_program", "manage_structure", "edit_structure", "retire_structure",
   "remove_assignment", "set_evaluation", "close_period", "add_calendar_event", "set_public_offer", "mark_contact", "reconcile_storage_budget",
 ]);
@@ -12,6 +12,7 @@ export function needsVerification(operation: string, parameters: Record<string, 
 
 export function verificationCopy(intent: Pick<VerificationIntent, "operation" | "variant">, english: boolean) {
   const labels: Record<string, [string, string]> = {
+    assign_account_role: ["Cambiar el rol de la cuenta", "Change account role"],
     suspended: ["Suspender cuenta", "Suspend account"], archived: ["Archivar cuenta", "Archive account"], active: ["Reactivar cuenta", "Reactivate account"],
     request_deletion: ["Solicitar eliminación", "Request deletion"], approve_deletion: ["Aprobar eliminación", "Approve deletion"], execute_deletion: ["Eliminar definitivamente", "Permanently delete"],
     cancel_deletion: ["Cancelar solicitud de eliminación", "Cancel deletion request"], set_role: ["Cambiar rol", "Change role"], set_permission: ["Cambiar permisos", "Change permissions"], set_permissions: ["Guardar permisos académicos", "Save academic permissions"],
